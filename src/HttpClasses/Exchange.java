@@ -5,9 +5,10 @@ import com.sun.net.httpserver.HttpExchange;
 import helpers.Logger;
 import helpers.ParamMap;
 
-import java.io.*;
-import java.net.MalformedURLException;
-import java.util.Scanner;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 //Wrapper class for an httpExchange providing related functionality
 public class Exchange {
@@ -142,6 +143,7 @@ public class Exchange {
             os.write(response.getBytes());
             os.flush();
             os.close();
+            log.error("Serving 404 response");
         }catch (Exception e){
             log.error("error During page not found "+e.getStackTrace().toString());
         }
