@@ -15,6 +15,7 @@ public class ParamMap {
             this.paramMap = createParamMap(query);
     }
 
+    //parses url for parameters
     public Map<String, String> createParamMap(String query){
         Map<String, String> query_pairs= new LinkedHashMap<>();
         int start = query.indexOf("?");
@@ -34,7 +35,7 @@ public class ParamMap {
             }
         }
         log.out("created paramMap:\n"+query_pairs.toString());
-        return query_pairs;
+        return query_pairs;// returns key value map
     }
 
     public Map<String,String> getParamMap(){
@@ -43,7 +44,12 @@ public class ParamMap {
     }
 
     public String getParam(String param){
+        boolean present =paramMap.containsKey(param);
+        if(present){
+            return paramMap.get(param);
+        }else{
+            return "error param not found";
+        }
 
-        return paramMap.get(param);
     }
 }

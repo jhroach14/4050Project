@@ -7,6 +7,7 @@ import main.javaSrc.handlers.IndexHandler;
 import main.javaSrc.HttpClasses.Configurator;
 import main.javaSrc.helpers.Logger;
 import main.javaSrc.services.AuthService;
+import main.javaSrc.services.AuthServiceImpl;
 
 
 import javax.net.ssl.*;
@@ -47,7 +48,7 @@ public class Server {
 
         log.out("Starting Server...");
 
-        AuthService authService = new AuthService();
+        AuthService authService = new AuthServiceImpl();
 
         indexHandler = new IndexHandler(authService);
         dataHandler = new DataHandler(authService);
