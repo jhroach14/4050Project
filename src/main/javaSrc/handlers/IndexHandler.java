@@ -13,16 +13,16 @@ public class IndexHandler extends Handler {
 
     public IndexHandler(AuthService auth){
         this.auth =auth;
-    }
+    }// get auth instance from server
 
     //default control flow for https requests
     @Override
     public void handle(HttpExchange httpExchange){
 
-        Exchange exchange = new Exchange(httpExchange);
+        Exchange exchange = new Exchange(httpExchange); //create exchange to handle dirty work
         token = exchange.getParam("token");
 
-        if (exchange.isHtmlRequest()){
+        if (exchange.isHtmlRequest()){//if they request an html page
 
             if (auth.isValidToken(token)){//respond with resource if valid token
                 exchange.respondFile();
@@ -30,7 +30,7 @@ public class IndexHandler extends Handler {
                 exchange.respondFile("login.html");//requests with invalid token sent to login
             }
         }else {
-            exchange.respondFile();//respond with non html resource
+            exchange.respondFile();// else respond with non html resource
         }
     }
 }

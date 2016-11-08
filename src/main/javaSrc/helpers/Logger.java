@@ -17,7 +17,7 @@ public class Logger {
     }
 
     public void out(String log){
-        String message =time()+" - "+c+" - "+log;
+        String message =time()+" - "+c+" - "+log; //adds useful data to log
         System.out.println(message);
     }
     public void error(String log){

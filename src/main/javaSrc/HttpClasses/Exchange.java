@@ -11,12 +11,12 @@ import java.io.*;
 //Wrapper class for an httpExchange providing related functionality
 public class Exchange {
 
-    private static Logger log = new Logger(Exchange.class);
+    protected static Logger log = new Logger(Exchange.class);
 
-    private String root = "resources/";
-    private String request;
-    private HttpExchange httpExchange;
-    private ParamMap paramMap;
+    protected String root = "resources/";
+    protected String request;
+    protected HttpExchange httpExchange;
+    protected ParamMap paramMap;
 
     public Exchange(HttpExchange httpExchange){
 
@@ -29,6 +29,9 @@ public class Exchange {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Exchange() {
     }
 
     public boolean isHtmlRequest(){
@@ -52,10 +55,11 @@ public class Exchange {
             if(path.charAt(0)=='/'){
                 path=path.substring(1);
             }
+            //this makes it work in a packaged jar
             InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
 
 
-            if (in == null) {
+            if (in == null) { //cant find resource
                 pageNotFound();
 
             } else {
@@ -71,14 +75,14 @@ public class Exchange {
 
                 OutputStream os = httpExchange.getResponseBody();
 
-                final byte[] buffer = new byte[0x10000];
+                final byte[] buffer = new byte[0x10000];  //read resource
                 int count = 0;
                 while ((count = in.read(buffer)) >= 0) {
                     os.write(buffer, 0, count);
                 }
                 in.close();
                 os.flush();
-                os.close();
+                os.close();  //respond
                 log.out("serving "+path);
 
             }
@@ -152,7 +156,7 @@ public class Exchange {
         }
     }
 
-    private String getMime(String path){
+    protected String getMime(String path){
 
         String mime = "text/html";
 

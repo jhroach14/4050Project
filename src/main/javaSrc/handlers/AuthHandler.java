@@ -14,18 +14,18 @@ public class AuthHandler extends Handler {
 
     public AuthHandler(AuthService auth){
         this.auth = auth;
-    }
+    }//takes in auth service instance from server
 
     //TODO implement non mock
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
 
-        Exchange exchange = new Exchange(httpExchange);
+        Exchange exchange = new Exchange(httpExchange);//create exchange to handle nitty gritty
 
         String user = exchange.getParam("user");
         String pass = exchange.getParam("pass");
-        String[] resopnse = auth.isValidCredentials(user,pass);
+        String[] resopnse = auth.isValidCredentials(user,pass); //use service to validate credintials
 
-        exchange.respondStr((resopnse[1]+"?token="+resopnse[0]), "text/html");
+        exchange.respondStr((resopnse[1]+"?token="+resopnse[0]), "text/html"); //return redirect
     }
 }
