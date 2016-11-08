@@ -48,7 +48,11 @@ public class DataHandler extends Handler {
             }
             if(helper != null){
                 Entity entity = helper.execute();
-                exchange.returnObject(entity);
+                if(entity != null) {
+                    exchange.returnObject(entity);
+                }else{
+                    exchange.respondStr("200 success","text/html");
+                }
             }
         }else{
             exchange.invalidToken();
