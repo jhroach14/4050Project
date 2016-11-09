@@ -19,7 +19,7 @@ public interface Issue extends BallotItem {
     int getNoCount();
     
 
-
+    void setNoCount(int noCount) throws EVException;
 
     
     void addYesVote();
