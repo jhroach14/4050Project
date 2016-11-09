@@ -10,9 +10,7 @@ import java.io.InputStreamReader;
 
 import static oracle.net.aso.C00.t;
 
-/**
- * Created by User on 10/30/2016.
- */
+//child of exchange object that provides database related functionality
 public class DBExchange extends Exchange{
 
     private String dbRequest;
@@ -33,6 +31,7 @@ public class DBExchange extends Exchange{
 
     }
 
+    //used if there is an example object
     private String getDBRequestBody() {
         String RequestBody=null;
         try {
@@ -69,6 +68,7 @@ public class DBExchange extends Exchange{
         }
     }
 
+    //returns an entity
     public String getDBRequestType(){
         int dataLoc = dbRequest.indexOf("data/")+5;
         String requestType = dbRequest.substring(dataLoc,dbRequest.indexOf('/',dataLoc));

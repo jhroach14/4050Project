@@ -1,5 +1,6 @@
 package main.javaSrc.DBHelpers.CDFSHelpers;
 
+import main.javaSrc.DBHelpers.DbConnHelper;
 import main.javaSrc.DBHelpers.ObjectLayer;
 import main.javaSrc.DBHelpers.ObjectLayerImpl;
 import main.javaSrc.DBHelpers.PersistenceLayerImpl;
@@ -13,7 +14,8 @@ public abstract class CDFSHelper {
     Entity entity;
     ObjectLayer objectLayer;
     DBExchange dbExchange;
-    public CDFSHelper(DBExchange dbExchange){
+    DbConnHelper dbConnHelper;
+    public CDFSHelper(DBExchange dbExchange, DbConnHelper dbConnHelper){
         this.objectLayer = new ObjectLayerImpl(new PersistenceLayerImpl());
         this.dbExchange = dbExchange;
     }

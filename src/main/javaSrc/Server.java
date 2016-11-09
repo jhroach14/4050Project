@@ -43,7 +43,7 @@ public class Server {
         log.out("server Instantiated at port "+ port);
     }
 
-
+    //bind handlers to routes and rev up server
     public void start(){
 
         log.out("Starting Server...");

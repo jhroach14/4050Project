@@ -2,12 +2,12 @@ package main.javaSrc.services;
 
 import main.javaSrc.helpers.Logger;
 
-/**
- * Created by User on 10/20/2016.
- */
+//this handler takes care of client authorization
 public class AuthServiceImpl implements AuthService{
+
     private static Logger log = new Logger(AuthService.class);
 
+    //TODO: implement non mock
     @Override
     public boolean isValidToken(String token) {
         if(token==null){

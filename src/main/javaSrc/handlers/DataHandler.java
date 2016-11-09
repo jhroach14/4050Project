@@ -2,6 +2,8 @@ package main.javaSrc.handlers;
 
 import com.sun.net.httpserver.HttpExchange;
 import main.javaSrc.DBHelpers.CDFSHelpers.*;
+import main.javaSrc.DBHelpers.DbConnHelper;
+import main.javaSrc.DBHelpers.DbConnHelperImpl;
 import main.javaSrc.Entities.Entity;
 import main.javaSrc.HttpClasses.DBExchange;
 import main.javaSrc.helpers.Logger;
@@ -23,11 +25,12 @@ public class DataHandler extends Handler {
 
         if(auth.isValidToken(token)){
             CDFSHelper helper=null;
+            DbConnHelper dbConnHelper = new DbConnHelperImpl();
             String actionType = exchange.getDBRequestType();
             switch (actionType){
 
                 case "create":
-                    helper = new CreateHelper(exchange);
+                    helper = new CreateHelper(exchange,dbConnHelper);
                     break;
 
                 case "delete":

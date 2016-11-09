@@ -266,7 +266,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
 
     @Override
     public List<Voter> restoreVoterBelongsToElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
-        return electoralDistrict.restore(electoralDistrict);
+        return electoralDistrictManager.restore(electoralDistrict);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package main.javaSrc.DBHelpers.CDFSHelpers;
 
+import main.javaSrc.DBHelpers.DbConnHelper;
 import main.javaSrc.Entities.*;
 import main.javaSrc.HttpClasses.DBExchange;
 import main.javaSrc.helpers.Logger;
@@ -13,8 +14,8 @@ import java.io.IOException;
 public class CreateHelper extends CDFSHelper {
     private static Logger log = new Logger(CreateHelper.class);
 
-    public CreateHelper(DBExchange dbExchange) {
-        super(dbExchange);
+    public CreateHelper(DBExchange dbExchange, DbConnHelper dbConnHelper) {
+        super(dbExchange,dbConnHelper);
     }
 
     public Entity execute(){

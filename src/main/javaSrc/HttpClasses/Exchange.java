@@ -34,6 +34,7 @@ public class Exchange {
     public Exchange() {
     }
 
+    //determines if request for page
     public boolean isHtmlRequest(){
         String path = httpExchange.getRequestURI().getPath();
         return path.substring(path.length() - 5).equals(".html");
@@ -121,6 +122,7 @@ public class Exchange {
         return paramMap.getParam(param);
     }
 
+    //returns 401 unauthorized
     public void invalidToken(){
 
         try {
@@ -138,6 +140,7 @@ public class Exchange {
         }
     }
 
+    //returns 404 not found
     public void pageNotFound(){
 
         try {
@@ -156,6 +159,7 @@ public class Exchange {
         }
     }
 
+    //determines resource type
     protected String getMime(String path){
 
         String mime = "text/html";

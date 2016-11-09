@@ -45,7 +45,6 @@ public class DbConnHelperImpl implements DbConnHelper {
         } catch (ClassNotFoundException e) {
 
             System.out.println(e.getMessage());
-
         }
 
         try {
