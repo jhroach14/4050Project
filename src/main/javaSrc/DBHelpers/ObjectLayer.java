@@ -28,7 +28,7 @@ public interface ObjectLayer {
 
     
     public Voter createVoter(String firstName, String lastName, String userName, String password,
-                             String emailAddress, String address, int age ) throws EVException;
+                             String emailAddress, String address, int age ,String state, int zip, String city) throws EVException;
 
     
     public Voter createVoter();

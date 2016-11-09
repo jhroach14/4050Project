@@ -15,6 +15,12 @@ public class VoterImpl extends UserImpl implements Voter{
     private int age;
     private ElectoralDistrict electoralDistrict;
 
+    public VoterImpl(String firstName, String lastName, String userName, String password, String emailAddress, String address, int age,String state, int zip, String city) {
+       super(firstName,lastName,userName,password,emailAddress,address,state,zip,city);
+    }
+    public VoterImpl(){
+
+    }
     @Override
     public int getVoterId() {
         return voterId;
