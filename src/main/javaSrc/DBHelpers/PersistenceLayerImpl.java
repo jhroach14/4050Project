@@ -186,7 +186,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
 
     @Override
     public List<BallotItem> restoreBallotIncludesBallotItem(Ballot ballot) throws EVException {
-        return ballotManager.restore(ballot);
+        return ballotManager.restoreBallotItems(ballot);
     }
 
     @Override
