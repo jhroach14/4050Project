@@ -380,5 +380,114 @@ public class CandidateManager {
             throw new EVException( "candidateManager.delete: failed to delete a candidate: " + e );        }
     }
 
+
+
+
+    public void store(Candidate candidate, PoliticalParty politicalParty) throws EVException{
+
+        String insert = "insert into Candidate (Candidate_Name, Party_ID, Vote_Count) value (?, ? ,?)";
+        String update = "update Candidate set Candidate_Name = ?, Party_ID = ?, Vote_Count = ?";
+        PreparedStatement stmt = null;
+        int queryExecution;
+        int candidateId;
+
+        try{
+
+            if( !candidate.isPersistent() )
+                stmt = conn.prepareStatement( insert );
+            else
+                stmt = conn.prepareStatement( update );
+
+            //Cannot be null
+            if( candidate.getName() != null )
+                stmt.setString( 1, candidate.getName() );
+            else
+                throw new EVException( "CandidateManager.save: can't save a candidate: Name undefined" );
+
+            if(politicalParty.getId() > 0)
+                stmt.setInt(2, politicalParty.getId());
+            else
+                throw new EVException( "CandidateManager.save: can't save a candidate: Name undefined" );
+
+            //Can be null
+            if( candidate.getVoteCount() >= 0 )
+                stmt.setInt( 3, candidate.getVoteCount() );
+            else
+                stmt.setNull( 3, java.sql.Types.INTEGER );
+
+
+            queryExecution = stmt.executeUpdate();
+
+            if( !candidate.isPersistent() ) {
+                if( queryExecution >= 1 ) {
+                    String sql = "select last_insert_id()";
+                    if( stmt.execute( sql ) ) { // statement returned a result
+
+                        // retrieve the result
+                        ResultSet r = stmt.getResultSet();
+
+                        // we will use only the first row!
+                        //
+                        while( r.next() ) {
+
+                            // retrieve the last insert auto_increment value
+                            candidateId = r.getInt( 1 );
+                            if( candidateId > 0){
+                                candidate.setId( candidateId ); // set this person's db id (proxy object)
+                                candidate.setPoliticalParty(politicalParty);
+                            }
+                        }
+                    }
+                }
+                else
+                    throw new EVException( "CandidateManager.save: failed to save a candidate" );
+            }
+            else {
+                if( queryExecution < 1 )
+                    throw new EVException( "CandidateManager.save: failed to save a candidate" );
+            }
+
+        } catch(SQLException e){
+            e.printStackTrace();
+            throw new EVException("candidateManager.store: Could not store Candidate.");
+        }
+
+    }
+
+    public void delete(Candidate candidate, PoliticalParty politicalParty) throws EVException{
+
+        String delete = "delete from Candidate where Candidate_ID = ? and Party_ID = ?";
+        PreparedStatement stmt = null;
+        int queryExecution;
+
+        if(!candidate.isPersistent())
+            return;
+
+        try{
+
+            stmt = conn.prepareStatement(delete);
+            stmt.setInt(1, candidate.getId());
+            stmt.setInt(2, politicalParty.getId());
+
+            queryExecution = stmt.executeUpdate();
+
+            if(queryExecution == 1){
+                return;
+            } else {
+                throw new EVException( "candidateManager.delete: failed to delete a candidate" );
+            }
+
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new EVException( "candidateManager.delete: failed to delete a candidate: " + e );
+        }
+
+    }
+
+
+
+
+
 }
+
 
