@@ -201,7 +201,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
 
     @Override
     public Election restoreCandidateIsCandidateInElection(Candidate candidate) throws EVException {
-        return candidateManager.restore(candidate);
+        return candidateManager.restoreElectionCandidate(candidate);
     }
 
     @Override
