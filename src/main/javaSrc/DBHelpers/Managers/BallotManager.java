@@ -228,10 +228,10 @@ public class BallotManager {
                     startDate = rs.getDate( 2 );
                     closeDate = rs.getDate( 3 );
 
-                    nextBallot = objectLayer.createBallot();
-                    nextBallot.setId( ballotId );
-                    nextBallot.setOpenDate( startDate );
-                    nextBallot.setCloseDate( closeDate );
+                    newBallot = objectLayer.createBallot();
+                    newBallot.setId( ballotId );
+                    newBallot.setOpenDate( startDate );
+                    newBallot.setCloseDate( closeDate );
                     break;
                 }
                 return newBallot;
