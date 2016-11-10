@@ -1,6 +1,7 @@
 package main.javaSrc.DBHelpers.Managers;
 
 import main.javaSrc.DBHelpers.ObjectLayer;
+import main.javaSrc.Entities.Ballot;
 import main.javaSrc.Entities.ElectoralDistrict;
 import main.javaSrc.helpers.EVException;
 
@@ -148,6 +149,74 @@ public class ElectoralDistrictManager {
 
 
     }
+
+    //needs work to be done
+    public void store(ElectoralDistrict electoralDistrict, Ballot ballot)throws EVException{
+        String insertDistrictsBallot = "";  //select statement goes here
+        PreparedStatement stmt = null;
+        int queryExecution;
+
+        try {
+            stmt = conn.prepareStatement( insertDistrictsBallot );
+            if(electoralDistrict.getId() > 0)
+                stmt.setInt(1, electoralDistrict.getId());
+            else
+                throw new EVException("ElectoralDistrictManager.save can't save a electoralDistrict: electoralDistrict ID undefined") ;
+
+            if(ballot.getId() > 0)
+                stmt.setInt(2, ballot.getId());
+            else
+                throw new EVException("ElectoralDistrictManager.save can't save a ballot: Ballot ID undefined") ;
+
+            queryExecution = stmt.executeUpdate();
+
+            if(queryExecution < 1)
+                throw new EVException("ElectoralDistrictManager.save failed to save Districts_Ballots");
+
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+            throw new EVException("ElectoralDistrictManager.store failed to save a Districts_Ballots" +e);
+        }
+
+    }
+
+    //needs work still
+    public ElectoralDistrict restoreElectoralDistrict (Ballot ballot) throws EVException{
+        return null;
+    }
+
+    //still needs work
+    public List<Ballot> restoreBallot (ElectoralDistrict electoralDistrict) throws EVException{
+        return null;
+    }
+
+    //needs finishing
+    public void delete(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException{
+        String               deleteElectoralDistrict = ""; //where the select statement goes
+        PreparedStatement    stmt = null;
+        int                  queryExecution;
+
+        try{
+            stmt = conn.prepareStatement( deleteElectoralDistrict );
+            if(electoralDistrict.getId() >0)
+                stmt.setInt(1, electoralDistrict.getId());
+            else
+                throw new EVException("ElectoralDistrictManager.delete failed to delete electoralDistrict");
+            if(ballot.getId() > 0)
+                stmt.setInt(2, ballot.getId());
+            else
+                throw new EVException("ElectoralDistrictManager.delete failed to delete Ballot");
+            queryExecution = stmt.executeUpdate();
+            if(queryExecution != 1)
+                throw new EVException("ElectoralDistrictManager.delete failed to delete");
+        }
+        catch( SQLException e ) {
+            e.printStackTrace();
+            throw new EVException( "ElectoralDistrictManger.delete: failed to delete a ElectoralDistrict: " + e );
+        }
+    }
+
 
     public void delete(ElectoralDistrict electoralDistrict) throws EVException {
 

@@ -221,12 +221,12 @@ public class PersistenceLayerImpl implements PersistenceLayer{
 
     @Override
     public ElectoralDistrict restoreElectoralDistrictHasBallotBallot(Ballot ballot) throws EVException {
-        return electoralDistrictManager.restore(ballot);
+        return electoralDistrictManager.restoreElectoralDistrict(ballot);
     }
 
     @Override
     public List<Ballot> restoreElectoralDistrictHasBallotBallot(ElectoralDistrict electoralDistrict) throws EVException {
-        return electoralDistrictManager.restore(electoralDistrict);
+        return electoralDistrictManager.restoreBallot(electoralDistrict);
     }
 
     @Override
