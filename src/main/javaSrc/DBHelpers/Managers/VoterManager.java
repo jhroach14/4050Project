@@ -226,10 +226,14 @@ public class VoterManager {
 
 
             //Can be null
-            if( voter.getElectoralDistrict().getId() >= 0 )
-                stmt.setInt( 1, voter.getElectoralDistrict().getId() );
-            else
-                stmt.setNull( 1, java.sql.Types.INTEGER );
+            if(voter.getElectoralDistrict()!=null) {
+                if (voter.getElectoralDistrict().getId() >= 0)
+                    stmt.setInt(1, voter.getElectoralDistrict().getId());
+                else
+                    stmt.setNull(1, java.sql.Types.INTEGER);
+            }else{
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }
 
             //Cannot be null
 

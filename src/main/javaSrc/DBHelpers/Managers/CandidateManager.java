@@ -2,6 +2,7 @@ package main.javaSrc.DBHelpers.Managers;
 
 import main.javaSrc.DBHelpers.ObjectLayer;
 import main.javaSrc.Entities.Candidate;
+import main.javaSrc.Entities.Election;
 import main.javaSrc.Entities.EntityImpl.PoliticalPartyImpl;
 import main.javaSrc.Entities.PoliticalParty;
 import main.javaSrc.helpers.EVException;
@@ -151,11 +152,14 @@ public class CandidateManager {
 
 
             //The rest can be null
-
-            if( candidate.getPoliticalParty().getId() >= 0 )
-                stmt.setInt( 2, candidate.getPoliticalParty().getId() );
-            else
+            if(candidate.getPoliticalParty()!=null){
+                if( candidate.getPoliticalParty().getId() >= 0 )
+                    stmt.setInt( 2, candidate.getPoliticalParty().getId() );
+                else
+                    stmt.setNull( 2, java.sql.Types.INTEGER );
+            }else{
                 stmt.setNull( 2, java.sql.Types.INTEGER );
+            }
 
             if( candidate.getVoteCount() >= 0 )
                 stmt.setInt( 3, candidate.getVoteCount() );
@@ -222,6 +226,7 @@ public class CandidateManager {
             e.printStackTrace();
             throw new EVException( "candidateManager.delete: failed to delete a candidate: " + e );        }
     }
+
 
 }
 

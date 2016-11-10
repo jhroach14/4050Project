@@ -1,5 +1,7 @@
 package main.javaSrc.DBHelpers;
 
+import main.javaSrc.helpers.Logger;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,6 +11,8 @@ import java.sql.SQLException;
  */
 public class DbConnHelperImpl implements DbConnHelper {
 
+    private static Logger log = new Logger(DbConnHelperImpl.class);
+
     public DbConnHelperImpl(){
     }
 
@@ -16,22 +20,38 @@ public class DbConnHelperImpl implements DbConnHelper {
 
     @Override
     public void disableAutoCommit(Connection conn) {
-
+        try {
+            conn.setAutoCommit(false);
+        }catch (SQLException ex){
+            log.error("SQLException on setting auto-commit false");
+        }
     }
 
     @Override
     public void enableAutoCommit(Connection conn) {
-
+        try {
+            conn.setAutoCommit(true);
+        }catch (SQLException ex){
+            log.error("SQLException on setting auto-commit true");
+        }
     }
 
     @Override
     public void commit(Connection conn) {
-
+        try {
+            conn.commit();
+        }catch (SQLException ex){
+            log.error("SQLException committing connection");
+        }
     }
 
     @Override
     public void rollback(Connection conn) {
-
+        try {
+            conn.rollback();
+        }catch (SQLException ex){
+            log.error("SQLException on rolling back connection");
+        }
     }
 
     @Override

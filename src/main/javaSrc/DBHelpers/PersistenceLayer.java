@@ -89,63 +89,63 @@ public interface PersistenceLayer {
     public void deleteVoteRecord( VoteRecord voteRecord ) throws EVException;
 
     
-    public void storeBallotIncludesBallotItem( Ballot ballot, BallotItem ballotItem ) throws EVException;
+    /*public void storeBallotIncludesBallotItem( Ballot ballot, BallotItem ballotItem ) throws EVException;
 
-    
+
     public Ballot restoreBallotIncludesBallotItem( BallotItem ballotItem ) throws EVException;
 
-    
+
     public List<BallotItem> restoreBallotIncludesBallotItem( Ballot ballot ) throws EVException;
 
-    
+
     public void deleteBallotIncludesBallotItem( Ballot ballot, BallotItem ballotItem ) throws EVException;
 
-    
+
     public void storeCandidateIsCandidateInElection( Candidate candidate, Election election ) throws EVException;
 
-    
+
     public Election restoreCandidateIsCandidateInElection( Candidate candidate ) throws EVException;
 
-    
+
     public List<Candidate> restoreCandidateIsCandidateInElection( Election election ) throws EVException;
 
-    
+
     public void deleteCandidateIsCandidateInElection( Candidate candidate, Election election ) throws EVException;
 
-    
+
     public void storeElectoralDistrictHasBallotBallot( ElectoralDistrict electoralDistrict, Ballot ballot ) throws EVException;
 
-    
+
     public ElectoralDistrict restoreElectoralDistrictHasBallotBallot( Ballot ballot ) throws EVException;
 
-    
+
     public List<Ballot> restoreElectoralDistrictHasBallotBallot( ElectoralDistrict electoralDistrict ) throws EVException;
 
-    
+
     public void deleteElectoralDistrictHasBallotBallot( ElectoralDistrict electoralDistrict, Ballot ballot ) throws EVException;
 
 
-    
+
     public void storeCandidateIsMemberOfPoliticalParty( Candidate candidate, PoliticalParty politicalParty ) throws EVException;
 
-    
+
     public PoliticalParty restoreCandidateIsMemberOfPoliticalParty( Candidate candidate ) throws EVException;
 
-    
+
     public List<Candidate> restoreCandidateIsMemberOfPoliticalParty( PoliticalParty politicalParty ) throws EVException;
 
-    
+
     public void deleteCandidateIsMemberOfElection( Candidate candidate, PoliticalParty politicalParty ) throws EVException;
 
-    
+
     public void storeVoterBelongsToElectoralDistrict( Voter voter, ElectoralDistrict electoralDistrict ) throws EVException;
 
-    
+
     public ElectoralDistrict restoreVoterBelongsToElectoralDistrict( Voter voter ) throws EVException;
 
-    
+
     public List<Voter> restoreVoterBelongsToElectoralDistrict( ElectoralDistrict electoralDistrict ) throws EVException;
 
-    
-    public void deleteVoterBelongsToElection( Voter voter, ElectoralDistrict electoralDistrict ) throws EVException;
+
+    public void deleteVoterBelongsToElection( Voter voter, ElectoralDistrict electoralDistrict ) throws EVException;*/
 }

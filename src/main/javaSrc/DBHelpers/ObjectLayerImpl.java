@@ -15,12 +15,24 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     private static Logger log = new Logger( ObjectLayerImpl.class);
 
-    PersistenceLayer persistenceLayer;
+    public PersistenceLayer getPersistenceLayer() {
+        return persistenceLayer;
+    }
+
+    public void setPersistenceLayer(PersistenceLayer persistenceLayer) {
+        this.persistenceLayer = persistenceLayer;
+    }
+
+    private PersistenceLayer persistenceLayer;
 
 
     public ObjectLayerImpl(PersistenceLayer persistenceLayer) {
 
         this.persistenceLayer = persistenceLayer;
+    }
+
+    public ObjectLayerImpl(){
+        this.persistenceLayer=null;
     }
 
     @Override

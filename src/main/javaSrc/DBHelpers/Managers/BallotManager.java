@@ -166,10 +166,6 @@ public class BallotManager {
 
     }
 
-    public void store(Ballot ballot, BallotItem ballotItem){
-        
-    }
-
     public void delete(Ballot ballot) throws EVException {
 
         String               deleteBallot = "delete from Ballot where Ballot_ID = ?";

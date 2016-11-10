@@ -1,6 +1,8 @@
 package main.javaSrc.DBHelpers.CDFSHelpers;
 
+import main.javaSrc.DBHelpers.DbConnHelper;
 import main.javaSrc.Entities.*;
+import main.javaSrc.Entities.EntityImpl.*;
 import main.javaSrc.HttpClasses.DBExchange;
 import main.javaSrc.helpers.EVException;
 import main.javaSrc.helpers.Logger;
@@ -12,8 +14,9 @@ import java.io.IOException;
 public class StoreHelper extends CDFSHelper {
     private static Logger log = new Logger(StoreHelper.class);
 
-    public StoreHelper(DBExchange dbExchange) {
-        super(dbExchange);
+    public StoreHelper(DBExchange dbExchange, DbConnHelper dbConnHelper) {
+
+        super(dbExchange,dbConnHelper);
     }
 
     public Entity execute(){
@@ -27,49 +30,49 @@ public class StoreHelper extends CDFSHelper {
 
                 case "Ballot":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), Ballot.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), BallotImpl.class);
                         objectLayer.storeBallot((Ballot) entity);
                     }
                     break;
                 case "Candidate":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), Candidate.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), CandidateImpl.class);
                         objectLayer.storeCandidate((Candidate) entity);
                     }
                     break;
                 case "Election":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), Election.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), ElectionImpl.class);
                         objectLayer.storeElection((Election) entity);
                     }
                     break;
-                case "ElectionsOfficer":
+                case "ElectionOfficer":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), ElectionsOfficer.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), ElectionsOfficerImpl.class);
                         objectLayer.storeElectionsOfficer((ElectionsOfficer) entity);
                     }
                     break;
                 case "ElectoralDistrict":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), ElectoralDistrict.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), ElectoralDistrictImpl.class);
                         objectLayer.storeElectoralDistrict((ElectoralDistrict) entity);
                     }
                     break;
                 case "Issue":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), Issue.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), IssueImpl.class);
                         objectLayer.storeIssue((Issue) entity);
                     }
                     break;
                 case "PoliticalParty":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), PoliticalParty.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), PoliticalPartyImpl.class);
                         objectLayer.storePoliticalParty((PoliticalParty) entity);
                     }
                     break;
                 case "Voter":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), Voter.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), VoterImpl.class);
                         objectLayer.storeVoter((Voter) entity);
                     }
                     break;
@@ -81,6 +84,8 @@ public class StoreHelper extends CDFSHelper {
         }catch (EVException e){
             e.printStackTrace();
         }
+
+        dbConnHelper.commit(connection);
         return entity;
     }
 }

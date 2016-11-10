@@ -7,6 +7,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 
 import static oracle.net.aso.C00.t;
 
@@ -26,7 +27,16 @@ public class DBExchange extends Exchange{
     }
 
     public void returnObject(Entity entity){
-
+        try {
+            httpExchange.sendResponseHeaders(200,0);
+            ObjectMapper mapper = new ObjectMapper();
+            OutputStream outputStream = httpExchange.getResponseBody();
+            mapper.writeValue(outputStream,entity);
+            //outputStream.flush();
+            outputStream.close();
+        }catch (Exception e){
+            log.error(e.toString());
+        }
 
 
     }

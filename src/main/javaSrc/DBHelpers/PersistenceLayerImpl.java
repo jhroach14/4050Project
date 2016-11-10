@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.sql.Connection;
 import java.util.List;
 
 /**
@@ -27,15 +28,19 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     VoteRecordManager voteRecordManager = null;
 
     public PersistenceLayerImpl() {
-        this.ballotManager = new BallotManager();
-        this.candidateManager = new CandidateManager();
-        this.electionManager = new ElectionManager();
-        this.electionsOfficerManager = new ElectionsOfficerManager();
-        this.electoralDistrictManager = new ElectoralDistrictManager();
-        this.issueManager = new IssueManager();
-        this.politicalPartyManager =  new PoliticalPartyManager();
-        this.voterManager = new VoterManager();
-        this.voteRecordManager = new VoteRecordManager();
+
+    }
+
+    public PersistenceLayerImpl(Connection connection,ObjectLayer objectLayer) {
+        this.ballotManager = new BallotManager(connection,objectLayer);
+        this.candidateManager = new CandidateManager(connection,objectLayer);
+        this.electionManager = new ElectionManager(connection,objectLayer);
+        this.electionsOfficerManager = new ElectionsOfficerManager(connection,objectLayer);
+        this.electoralDistrictManager = new ElectoralDistrictManager(connection,objectLayer);
+        this.issueManager = new IssueManager(connection,objectLayer);
+        this.politicalPartyManager =  new PoliticalPartyManager(connection,objectLayer);
+        this.voterManager = new VoterManager(connection,objectLayer);
+        this.voteRecordManager = new VoteRecordManager(connection,objectLayer);
     }
 
     @Override
@@ -174,7 +179,9 @@ public class PersistenceLayerImpl implements PersistenceLayer{
         voteRecordManager.delete(voteRecord);
     }
 
-    @Override
+
+
+   /* @Override
     public void storeBallotIncludesBallotItem(Ballot ballot, BallotItem ballotItem) throws EVException {
         ballotManager.store(ballot, ballotItem);
     }
@@ -272,5 +279,5 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     @Override
     public void deleteVoterBelongsToElection(Voter voter, ElectoralDistrict electoralDistrict) throws EVException {
         voterManager.delete(voter, electoralDistrict);
-    }
+    }*/
 }

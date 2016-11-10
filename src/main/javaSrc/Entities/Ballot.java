@@ -2,7 +2,7 @@ package main.javaSrc.Entities;
 
 import main.javaSrc.helpers.EVException;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 

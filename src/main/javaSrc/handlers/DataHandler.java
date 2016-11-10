@@ -9,6 +9,8 @@ import main.javaSrc.HttpClasses.DBExchange;
 import main.javaSrc.helpers.Logger;
 import main.javaSrc.services.AuthService;
 
+import java.sql.Connection;
+
 //handler for processing data requests
 public class DataHandler extends Handler {
 
@@ -24,9 +26,12 @@ public class DataHandler extends Handler {
         token = exchange.getParam("token");
 
         if(auth.isValidToken(token)){
+
             CDFSHelper helper=null;
-            DbConnHelper dbConnHelper = new DbConnHelperImpl();
             String actionType = exchange.getDBRequestType();
+
+            DbConnHelper dbConnHelper = new DbConnHelperImpl();
+
             switch (actionType){
 
                 case "create":
@@ -34,15 +39,15 @@ public class DataHandler extends Handler {
                     break;
 
                 case "delete":
-                    helper = new DeleteHelper(exchange);
+                    helper = new DeleteHelper(exchange,dbConnHelper);
                     break;
 
                 case "find":
-                    helper = new FindHelper(exchange);
+                    helper = new FindHelper(exchange,dbConnHelper);
                     break;
 
                 case "store":
-                    helper = new StoreHelper(exchange);
+                    helper = new StoreHelper(exchange,dbConnHelper);
                     break;
 
                 default:
@@ -51,6 +56,7 @@ public class DataHandler extends Handler {
             }
             if(helper != null){
                 Entity entity = helper.execute();
+
                 if(entity != null) {
                     exchange.returnObject(entity);
                 }else{

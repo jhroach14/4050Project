@@ -47,6 +47,11 @@ public class IssueImpl extends BallotItemImpl implements Issue {
     }
 
     @Override
+    public void setNoCount(int noCount){
+        this.noCount=noCount;
+    }
+
+    @Override
     public void addYesVote() {
         yesCount++;
     }

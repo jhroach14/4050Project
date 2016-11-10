@@ -1,6 +1,8 @@
 package main.javaSrc.DBHelpers.CDFSHelpers;
 
+import main.javaSrc.DBHelpers.DbConnHelper;
 import main.javaSrc.Entities.*;
+import main.javaSrc.Entities.EntityImpl.*;
 import main.javaSrc.HttpClasses.DBExchange;
 import main.javaSrc.helpers.EVException;
 import main.javaSrc.helpers.Logger;
@@ -12,8 +14,9 @@ import java.io.IOException;
 public class FindHelper extends CDFSHelper {
     private static Logger log = new Logger(FindHelper.class);
 
-    public FindHelper(DBExchange dbExchange) {
-        super(dbExchange);
+    public FindHelper(DBExchange dbExchange , DbConnHelper dbConnHelper) {
+
+        super(dbExchange,dbConnHelper);
     }
 
     public Entity execute(){
@@ -27,49 +30,49 @@ public class FindHelper extends CDFSHelper {
 
                 case "Ballot":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), Ballot.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), BallotImpl.class);
                         objectLayer.findBallot((Ballot) entity);
                     }
                     break;
                 case "Candidate":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), Candidate.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), CandidateImpl.class);
                         objectLayer.findCandidate((Candidate) entity);
                     }
                     break;
                 case "Election":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), Election.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), ElectionImpl.class);
                         objectLayer.findElection((Election) entity);
                     }
                     break;
-                case "ElectionsOfficer":
+                case "ElectionOfficer":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), ElectionsOfficer.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), ElectionsOfficerImpl.class);
                         objectLayer.findElectionsOfficer((ElectionsOfficer) entity);
                     }
                     break;
                 case "ElectoralDistrict":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), ElectoralDistrict.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), ElectoralDistrictImpl.class);
                         objectLayer.findElectoralDistrict((ElectoralDistrict) entity);
                     }
                     break;
                 case "Issue":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), Issue.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), IssueImpl.class);
                         objectLayer.findIssue((Issue) entity);
                     }
                     break;
                 case "PoliticalParty":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), PoliticalParty.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), PoliticalPartyImpl.class);
                         objectLayer.findPoliticalParty((PoliticalParty) entity);
                     }
                     break;
                 case "Voter":
                     if (sourced.equals("true")) {
-                        entity = mapper.readValue(dbExchange.getRequestBody(), Voter.class);
+                        entity = mapper.readValue(dbExchange.getRequestBody(), VoterImpl.class);
                         objectLayer.findVoter((Voter) entity);
                     }
                     break;
@@ -81,6 +84,7 @@ public class FindHelper extends CDFSHelper {
         }catch (EVException e){
             e.printStackTrace();
         }
+        dbConnHelper.commit(connection);
         return entity;
     }
 }

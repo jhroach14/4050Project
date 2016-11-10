@@ -1,5 +1,6 @@
 package main.javaSrc;
 
+import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpsServer;
 import main.javaSrc.handlers.AuthHandler;
 import main.javaSrc.handlers.DataHandler;
@@ -23,7 +24,7 @@ public class Server {
     private static Logger log = new Logger(Server.class);
     private int port;
 
-    private HttpsServer server;
+    private HttpServer server;
     private IndexHandler indexHandler;
     private DataHandler dataHandler;
     private AuthHandler authHandler;
@@ -33,7 +34,7 @@ public class Server {
         try {
 
             log.out("Creating Server Instance at "+port+"...");
-            server = HttpsServer.create(new InetSocketAddress(port),0);
+            server = HttpServer.create(new InetSocketAddress(port),0);
 
         } catch (Exception e) {
             log.error("Server Instantiation failed\n"+e.getMessage());
@@ -66,7 +67,7 @@ public class Server {
         log.out("Server Started");
     }
 
-    //configures server for HTTPS using selfsigned jks ssl key
+    /*//configures server for HTTPS using selfsigned jks ssl key
     public void initiateSecure(){
         try {
 
@@ -92,7 +93,7 @@ public class Server {
         }catch (Exception e){
             log.error("HTTPS initiation failed" +e.getMessage());
         }
-    }
+    }*/
 
 
 }

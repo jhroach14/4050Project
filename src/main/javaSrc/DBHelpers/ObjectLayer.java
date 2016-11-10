@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ObjectLayer {
 
-
+    void setPersistenceLayer(PersistenceLayer persistenceLayer);
     
     public ElectionsOfficer createElectionsOfficer(String firstName, String lastName, String userName,
                                                    String password, String emailAddress, String address,String state, int zip, String city ) throws EVException;

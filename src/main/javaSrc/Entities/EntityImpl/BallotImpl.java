@@ -4,7 +4,7 @@ import main.javaSrc.Entities.*;
 import main.javaSrc.helpers.EVException;
 
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -13,15 +13,15 @@ import java.util.List;
 public class BallotImpl extends EntityImpl implements Ballot {
     private Date openDate;
     private Date closeDate;
-    private boolean approved;
     private ElectoralDistrict electoralDistrict;
+    private boolean approved;
     private List<BallotItem> ballotItems;
     private List<VoteRecord> voteRecords;
 
     public BallotImpl(Date openDate, Date closeDate, boolean approved, ElectoralDistrict electoralDistrict) {
+        this.approved = approved;
         this.openDate=openDate;
         this.closeDate=closeDate;
-        this.approved=approved;
         this.electoralDistrict = electoralDistrict;
     }
 
@@ -30,22 +30,22 @@ public class BallotImpl extends EntityImpl implements Ballot {
     }
 
     @Override
-    public java.util.Date getOpenDate() {
+    public Date getOpenDate() {
         return openDate;
     }
 
     @Override
-    public void setOpenDate(java.util.Date openDate) {
+    public void setOpenDate(Date openDate) {
         this.openDate = openDate;
     }
 
     @Override
-    public java.util.Date getCloseDate() {
+    public Date getCloseDate() {
         return closeDate;
     }
 
     @Override
-    public void setCloseDate(java.util.Date closeDate) {
+    public void setCloseDate(Date closeDate) {
         this.closeDate = closeDate;
     }
 
