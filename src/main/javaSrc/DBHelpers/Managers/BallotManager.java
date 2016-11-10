@@ -172,9 +172,9 @@ public class BallotManager {
         String insertBallotIssue = "insert into Ballot_Issues (Ballot_ID, Issues_ID) values (?, ?)";
         PreparedStatement stmt = null;
         int queryExecution;
-        int ballotId;
 
         try {
+            stmt = conn.prepareStatement( insertBallotIssue );
             if(ballot.getId() > 0)
                 stmt.setInt(1, ballot.getId());
             else

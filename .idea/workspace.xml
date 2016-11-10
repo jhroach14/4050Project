@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e1ab4881-2ed0-450e-b8b3-5a6ff98dfe5e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/BallotManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/BallotManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/CandidateManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/CandidateManager.java" />
     </list>
     <ignored path="4050Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,23 +24,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CandidateManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CandidateManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/CandidateManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-835">
-              <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+            <state relative-caret-position="204">
+              <caret line="205" column="27" selection-start-line="205" selection-start-column="27" selection-end-line="205" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BallotManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BallotManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/BallotManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="710">
-              <caret line="236" column="31" selection-start-line="236" selection-start-column="31" selection-end-line="236" selection-end-column="31" />
+            <state relative-caret-position="305">
+              <caret line="176" column="62" selection-start-line="176" selection-start-column="12" selection-end-line="176" selection-end-column="62" />
               <folding>
-                <element signature="e#8709#8721#0" expanded="true" />
+                <element signature="e#8750#8762#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,8 +59,8 @@
       <file leaf-file-name="PersistenceLayerImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="199" column="5" selection-start-line="196" selection-start-column="4" selection-end-line="199" selection-end-column="5" />
+            <state relative-caret-position="649">
+              <caret line="197" column="81" selection-start-line="197" selection-start-column="81" selection-end-line="197" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -80,6 +81,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayerImpl.java" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/BallotManager.java" />
+        <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/CandidateManager.java" />
       </list>
     </option>
   </component>
@@ -589,27 +591,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="199" column="5" selection-start-line="196" selection-start-column="4" selection-end-line="199" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/CandidateManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-835">
-          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+        <state relative-caret-position="649">
+          <caret line="197" column="81" selection-start-line="197" selection-start-column="81" selection-end-line="197" selection-end-column="81" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/BallotManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="236" column="31" selection-start-line="236" selection-start-column="31" selection-end-line="236" selection-end-column="31" />
+        <state relative-caret-position="305">
+          <caret line="176" column="62" selection-start-line="176" selection-start-column="12" selection-end-line="176" selection-end-column="62" />
           <folding>
-            <element signature="e#8709#8721#0" expanded="true" />
+            <element signature="e#8750#8762#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/CandidateManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="205" column="27" selection-start-line="205" selection-start-column="27" selection-end-line="205" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

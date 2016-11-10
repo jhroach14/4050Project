@@ -2,6 +2,7 @@ package main.javaSrc.DBHelpers.Managers;
 
 import main.javaSrc.DBHelpers.ObjectLayer;
 import main.javaSrc.Entities.Candidate;
+import main.javaSrc.Entities.Election;
 import main.javaSrc.Entities.EntityImpl.PoliticalPartyImpl;
 import main.javaSrc.Entities.PoliticalParty;
 import main.javaSrc.helpers.EVException;
@@ -194,6 +195,37 @@ public class CandidateManager {
         catch( SQLException e ) {
             e.printStackTrace();
             throw new EVException( "CandidateManager.save: failed to save a candidate: " + e );
+        }
+
+
+    }
+
+    public void store(Candidate candidate, Election election)throws EVException{
+        String insertElectionCandidates = "insert into Election_Candidates (Candidate_ID, Election_ID) values (?, ?)";
+        PreparedStatement stmt = null;
+        int queryExecution;
+
+        try {
+            stmt = conn.prepareStatement( insertElectionCandidates );
+            if(candidate.getId() > 0)
+                stmt.setInt(1, candidate.getId());
+            else
+                throw new EVException("CandidateManager.save can't save a candidate: Candidate ID undefined") ;
+
+            if(election.getId() > 0)
+                stmt.setInt(2, election.getId());
+            else
+                throw new EVException("CandidateManager.save can't save a election: Election ID undefined") ;
+
+            queryExecution = stmt.executeUpdate();
+
+            if(queryExecution < 1)
+                throw new EVException("CandidateManager.save failed to save Election_Candidates");
+
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+            throw new EVException("CandidateManager.store failed to save a Election_Candidates" +e);
         }
 
 
