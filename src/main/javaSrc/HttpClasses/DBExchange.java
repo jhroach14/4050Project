@@ -8,8 +8,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.List;
 
-import static oracle.net.aso.C00.t;
+
 
 //child of exchange object that provides database related functionality
 public class DBExchange extends Exchange{
@@ -24,6 +25,18 @@ public class DBExchange extends Exchange{
         this.requestBody = getDBRequestBody();
         String spacer = "\n\n*********************************************";
         log.out(spacer+"Received DB request:\n"+dbRequest);
+    }
+
+    public void returnObjectList(List<Entity> entities) {
+        try {
+            httpExchange.sendResponseHeaders(200,0);
+            ObjectMapper mapper = new ObjectMapper();
+            OutputStream outputStream = httpExchange.getResponseBody();
+            mapper.writeValue(outputStream,entities);
+            outputStream.close();
+        }catch (Exception e){
+            log.error(e.toString());
+        }
     }
 
     public void returnObject(Entity entity){
@@ -94,6 +107,7 @@ public class DBExchange extends Exchange{
         dbRequest = dbRequest.substring(0, cutoff);
         return dbRequest;
     }
+
 
 }
 

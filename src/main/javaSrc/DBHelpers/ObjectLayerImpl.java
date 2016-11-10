@@ -281,5 +281,92 @@ public class ObjectLayerImpl implements ObjectLayer {
     @Override
     public void deleteVoteRecord(VoteRecord voteRecord) throws EVException {
         persistenceLayer.deleteVoteRecord(voteRecord);
+
+
+
+
     }
+
+    @Override
+    public void createLink(Ballot ballot, BallotItem ballotItem) throws EVException {
+        persistenceLayer.storeBallotIncludesBallotItem(ballot,ballotItem);
+    }
+
+    @Override
+    public Ballot getBallot(BallotItem ballotItem) throws EVException {
+        return persistenceLayer.restoreBallotIncludesBallotItem(ballotItem);
+    }
+
+    @Override
+    public List<BallotItem> getBallotItems(Ballot ballot) throws EVException {
+        return persistenceLayer.restoreBallotIncludesBallotItem(ballot);
+    }
+
+    @Override
+    public void deleteLink(Ballot ballot, BallotItem ballotItem) throws EVException {
+        persistenceLayer.deleteBallotIncludesBallotItem(ballot,ballotItem);
+    }
+
+    @Override
+    public void createLink(Candidate candidate, Election election) throws EVException {
+        persistenceLayer.storeCandidateIsCandidateInElection(candidate,election);
+    }
+
+    @Override
+    public Election getElection(Candidate candidate) throws EVException {
+        return persistenceLayer.restoreCandidateIsCandidateInElection(candidate);
+    }
+
+    @Override
+    public List<Candidate> getCandidates(Election election) throws EVException {
+        return persistenceLayer.restoreCandidateIsCandidateInElection(election);
+    }
+
+    @Override
+    public void deleteLink(Candidate candidate, Election election) throws EVException {
+        persistenceLayer.deleteCandidateIsCandidateInElection(candidate, election);
+    }
+
+    @Override
+    public void deleteLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException {
+        persistenceLayer.deleteElectoralDistrictHasBallotBallot(electoralDistrict,ballot);
+    }
+
+    @Override
+    public void deleteLink(ElectoralDistrict electoralDistrict, Voter voter) throws EVException {
+        persistenceLayer.deleteVoterBelongsToElection(voter,electoralDistrict);
+    }
+
+    @Override
+    public void deleteLink(PoliticalParty party, Candidate candidate) throws EVException {
+        persistenceLayer.deleteCandidateIsMemberOfElection(candidate,party);
+    }
+
+    @Override
+    public void createLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException {
+        persistenceLayer.storeElectoralDistrictHasBallotBallot(electoralDistrict,ballot);
+    }
+
+    @Override
+    public void createLink(ElectoralDistrict electoralDistrict, Voter voter) throws EVException {
+        persistenceLayer.storeVoterBelongsToElectoralDistrict(voter,electoralDistrict);
+    }
+
+    @Override
+    public void createLink(PoliticalParty party, Candidate candidate) throws EVException {
+        persistenceLayer.storeCandidateIsMemberOfPoliticalParty(candidate,party);
+    }
+
+    @Override
+    public VoteRecord createVoterRecord() {
+        return new VoterRecordImpl();
+    }
+
+    @Override
+    public VoteRecord createVoterRecord(Date date, Voter voter, Ballot ballot) {
+        VoteRecord voteRecord = new VoterRecordImpl(date,voter,ballot);
+        return voteRecord;
+    }
+
+
 }

@@ -146,6 +146,39 @@ public interface ObjectLayer {
 
     
     public void deleteVoteRecord( VoteRecord voteRecord ) throws EVException;
+
+    public void createLink(Ballot ballot,BallotItem ballotItem) throws EVException;
+
+    public Ballot getBallot(BallotItem ballotItem) throws EVException;
+
+    public List<BallotItem> getBallotItems(Ballot ballot)throws EVException;
+
+    public void deleteLink(Ballot ballot, BallotItem ballotItem)throws EVException;
+
+    public void createLink(Candidate candidate,Election election) throws EVException;
+
+    public Election getElection(Candidate candidate) throws EVException;
+
+    public List<Candidate> getCandidates(Election election)throws EVException;
+
+    public void deleteLink(Candidate candidate, Election election)throws EVException;
+
+
+    void deleteLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException;
+
+    void deleteLink(ElectoralDistrict electoralDistrict, Voter voter) throws EVException;
+
+    void deleteLink(PoliticalParty party, Candidate candidate) throws EVException;
+
+    void createLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException;
+
+    void createLink(ElectoralDistrict electoralDistrict, Voter voter) throws EVException;
+
+    void createLink(PoliticalParty party, Candidate candidate) throws EVException;
+
+    VoteRecord createVoterRecord();
+
+    VoteRecord createVoterRecord(Date date, Voter voter, Ballot ballot);
 }
 
 

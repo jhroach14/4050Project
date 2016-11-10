@@ -323,6 +323,13 @@ public class VoterManager {
 
     }
 
+
+
+
+
+
+
+
     public void delete(Voter voter) throws EVException {
 
         String               deleteVoter = "delete from Voter where Voter_ID = ?";

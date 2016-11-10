@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS ElectionsOfficer, Party, Candidate, District, Ballot, Election, Ballot_Elections, Voter, Record, Issue, Ballot_Issues; 
+DROP TABLE IF EXISTS ElectionsOfficer, Party, Party_Candidates, District_Voters, Candidate, District_Ballots, District, Ballot, Election, Ballot_Elections, Voter, Record, Issue, Ballot_Issues, Election_Candidates;
 
 /*Done.*/
 CREATE TABLE ElectionsOfficer (
@@ -92,8 +92,8 @@ CREATE TABLE Voter (
  District_ID INT,
  First_Name VARCHAR(100) NOT NULL,
  Last_Name VARCHAR(100) NOT NULL,
- Username VARCHAR(100) NOT NULL,  
- User_Password VARCHAR(100) NOT NULL, 
+ Username VARCHAR(100) NOT NULL,
+ User_Password VARCHAR(100) NOT NULL,
  Email_Address VARCHAR(100),
  Address VARCHAR(100),
  City VARCHAR(100),
@@ -137,3 +137,29 @@ CREATE TABLE Ballot_Issues (
   FOREIGN KEY(Ballot_ID) REFERENCES Ballot(Ballot_ID),
   FOREIGN KEY(Issue_ID) REFERENCES Issue(Issue_ID)
 );
+
+CREATE TABLE District_Ballots (
+ District_ID INT,
+ Ballot_ID INT,
+
+ FOREIGN KEY(District_ID) REFERENCES District(District_ID),
+ FOREIGN KEY(Ballot_ID) REFERENCES Ballot(Ballot_ID)
+);
+
+CREATE TABLE Party_Candidates (
+ Party_ID INT,
+ Candidate_ID INT,
+
+ FOREIGN KEY(Party_ID) REFERENCES Party(Party_ID),
+ FOREIGN KEY(Candidate_ID) REFERENCES Candidate(Candidate_ID)
+);
+
+CREATE TABLE District_Voters (
+ District_ID INT,
+ Voter_ID INT,
+
+ FOREIGN KEY(District_ID) REFERENCES District(District_ID),
+ FOREIGN KEY(Voter_ID) REFERENCES Voter(Voter_ID)
+);
+
+

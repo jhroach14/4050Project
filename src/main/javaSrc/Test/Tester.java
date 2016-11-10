@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.sql.Date;
 
 /**
  * Created by User on 11/9/2016.
@@ -27,43 +28,37 @@ public class Tester {
             ElectionsOfficer officer1 = new ElectionsOfficerImpl("john","smith","jsmith","1234","jsmith@com.com","123 street","GA",3000,"athens");
             String officer1Str = mapper.writeValueAsString(officer1);
             writeToServer("store","ElectionOfficer",officer1Str);
-
             ElectionsOfficer officer2 = new ElectionsOfficerImpl("john2","smith2","jsmith2","12342","jsmith@com.com2","123 street2","GA",30002,"athens2");
-            String officer2Str = mapper.writeValueAsString(officer1);
+            String officer2Str = mapper.writeValueAsString(officer2);
             writeToServer("store","ElectionOfficer",officer2Str);
-
 
             ElectoralDistrict electoralDistrict = new ElectoralDistrictImpl("district1");
             String districtStr = mapper.writeValueAsString(electoralDistrict);
             writeToServer("store","ElectoralDistrict",districtStr);
 
-
             Voter voter1 = new VoterImpl("john3","smith3","jsmith3","12343","jsmith@com.com3","123 street3",21,"GA",30003,"athens3");
             String voter1Str = mapper.writeValueAsString(voter1);
             writeToServer("store","Voter",voter1Str);
-
             Voter voter2 = new VoterImpl("john4","smith4","jsmith4","12344","jsmith@com.com4","123 street4",21,"GA",30004,"athens4");
             String voter2Str = mapper.writeValueAsString(voter2);
             writeToServer("store","Voter",voter2Str);
 
+            writeToServer("store","District_Voter",districtStr+"**|**"+voter1Str);
+            writeToServer("store","District_Voter",districtStr+"**|**"+voter2Str);
 
             PoliticalParty politicalParty1 = new PoliticalPartyImpl("part1");
             String party1Str = mapper.writeValueAsString(politicalParty1);
             writeToServer("store","PoliticalParty",party1Str);
-
             PoliticalParty politicalParty2 = new PoliticalPartyImpl("part2");
             String party2Str = mapper.writeValueAsString(politicalParty2);
             writeToServer("store","PoliticalParty",party2Str);
 
-
             Issue issue1 = new IssueImpl("q1");
             String issue1Str = mapper.writeValueAsString(issue1);
             writeToServer("store","Issue",issue1Str);
-
             Issue issue2 = new IssueImpl("q2");
             String issue2Str = mapper.writeValueAsString(issue2);
             writeToServer("store","Issue",issue2Str);
-
             Issue issue3 = new IssueImpl("q3");
             String issue3Str = mapper.writeValueAsString(issue3);
             writeToServer("store","Issue",issue3Str);
@@ -71,11 +66,9 @@ public class Tester {
             Election election1 = new ElectionImpl("office1",true,null);
             String election1Str = mapper.writeValueAsString(election1);
             writeToServer("store","Election",election1Str);
-
             Election election2 = new ElectionImpl("office2",false,null);
             String election2Str = mapper.writeValueAsString(election2);
             writeToServer("store","Election",election2Str);
-
             Election election3 = new ElectionImpl("office3",false,null);
             String election3Str = mapper.writeValueAsString(election3);
             writeToServer("store","Election",election3Str);
@@ -83,17 +76,45 @@ public class Tester {
             Candidate candidate1 = new CandidateImpl("cantidate1",null,null);
             String candidate1Str =mapper.writeValueAsString(candidate1);
             writeToServer("store","Candidate",candidate1Str);
-
             Candidate candidate2 = new CandidateImpl("cantidate2",null,null);
             String candidate2Str =mapper.writeValueAsString(candidate2);
             writeToServer("store","Candidate",candidate2Str);
-
             Candidate candidate3 = new CandidateImpl("cantidat3",null,null);
             String candidate3Str =mapper.writeValueAsString(candidate3);
             writeToServer("store","Candidate",candidate3Str);
 
+            writeToServer("store","Party_Candidate",party1Str+"**|**"+candidate1Str);
+            writeToServer("store","Party_Candidate",party2Str+"**|**"+candidate2Str);
 
-        } catch (IOException e) {
+            writeToServer("store", "Election_Candidate",election1Str+"**|**"+candidate1Str);
+            writeToServer("store", "Election_Candidate",election1Str+"**|**"+candidate2Str);
+            writeToServer("store", "Election_Candidate",election1Str+"**|**"+candidate3Str);
+            writeToServer("store", "Election_Candidate",election2Str+"**|**"+candidate1Str);
+            writeToServer("store", "Election_Candidate",election2Str+"**|**"+candidate2Str);
+            writeToServer("store", "Election_Candidate",election2Str+"**|**"+candidate3Str);
+            writeToServer("store", "Election_Candidate",election3Str+"**|**"+candidate1Str);
+            writeToServer("store", "Election_Candidate",election3Str+"**|**"+candidate2Str);
+            writeToServer("store", "Election_Candidate",election3Str+"**|**"+candidate3Str);
+
+            Ballot ballot1 = new BallotImpl(null,null,false,electoralDistrict);
+            String ballot1Str = mapper.writeValueAsString(ballot1);
+            writeToServer("store","Ballot",ballot1Str);
+            Ballot ballot2 = new BallotImpl(null,null,false,electoralDistrict);
+            String ballot2Str = mapper.writeValueAsString(ballot1);
+            writeToServer("store","Ballot",ballot2Str);
+
+            writeToServer("store","Ballot_BallotItem",ballot1Str+"**|**"+election1Str);
+            writeToServer("store","Ballot_BallotItem",ballot1Str+"**|**"+election2Str);
+            writeToServer("store","Ballot_BallotItem",ballot1Str+"**|**"+election2Str);
+
+            writeToServer("store","Ballot_BallotItem",ballot1Str+"**|**"+issue1Str);
+            writeToServer("store","Ballot_BallotItem",ballot1Str+"**|**"+issue2Str);
+            writeToServer("store","Ballot_BallotItem",ballot1Str+"**|**"+issue3Str);
+
+            
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

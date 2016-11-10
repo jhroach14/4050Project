@@ -9,9 +9,10 @@ import main.javaSrc.helpers.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
+import java.util.List;
 
 
-public class StoreHelper extends CDFSHelper {
+public class StoreHelper extends CDFSTHelper {
     private static Logger log = new Logger(StoreHelper.class);
 
     public StoreHelper(DBExchange dbExchange, DbConnHelper dbConnHelper) {
@@ -19,7 +20,7 @@ public class StoreHelper extends CDFSHelper {
         super(dbExchange,dbConnHelper);
     }
 
-    public Entity execute(){
+    public List<Entity> execute(){
 
         String objectType = dbExchange.getDBRequestObjectType();
         String sourced = dbExchange.getParam("sourced");
@@ -76,6 +77,52 @@ public class StoreHelper extends CDFSHelper {
                         objectLayer.storeVoter((Voter) entity);
                     }
                     break;
+                case "Ballot_BallotItem":
+                    if (sourced.equals("true")) {
+                        String[] ballot_ballotItem = parseObjects(dbExchange.getRequestBody());
+                        Ballot ballot = mapper.readValue(ballot_ballotItem[0], BallotImpl.class);
+                        BallotItem ballotItem = mapper.readValue(ballot_ballotItem[1], BallotItemImpl.class);
+                        objectLayer.createLink(ballot, ballotItem);
+                    }
+                    break;
+                case "Election_Candidate":
+                    if (sourced.equals("true")) {
+                        String[] election_candidate = parseObjects(dbExchange.getRequestBody());
+                        Election election = mapper.readValue(election_candidate[0], ElectionImpl.class);
+                        Candidate candidate = mapper.readValue(election_candidate[1], CandidateImpl.class);
+                        objectLayer.createLink(candidate, election);
+                    }
+                    break;
+                case "District_Ballot":
+                    if(sourced.equals("true")){
+                        String[] district_ballots = parseObjects(dbExchange.getRequestBody());
+                        ElectoralDistrict electoralDistrict = mapper.readValue(district_ballots[0],ElectoralDistrictImpl.class);
+                        Ballot ballot = mapper.readValue(district_ballots[1],BallotImpl.class);
+                        objectLayer.createLink(electoralDistrict,ballot);
+                    }
+                    break;
+                case "District_Voter":
+                    if(sourced.equals("true")){
+                        String[] district_ballots = parseObjects(dbExchange.getRequestBody());
+                        ElectoralDistrict electoralDistrict = mapper.readValue(district_ballots[0],ElectoralDistrictImpl.class);
+                        Voter voter = mapper.readValue(district_ballots[1],VoterImpl.class);
+                        objectLayer.createLink(electoralDistrict,voter);
+                    }
+                    break;
+                case "Party_Candidate":
+                    if(sourced.equals("true")){
+                        String[] party_candidate = parseObjects(dbExchange.getRequestBody());
+                        PoliticalParty party = mapper.readValue(party_candidate[0],PoliticalPartyImpl.class);
+                        Candidate candidate = mapper.readValue(party_candidate[1],CandidateImpl.class);
+                        objectLayer.createLink(party,candidate);
+                    }
+                    break;
+                case "VoterRecord":
+                    if (sourced.equals("true")) {
+                        entity = mapper.readValue(dbExchange.getRequestBody(), VoterRecordImpl.class);
+                        objectLayer.storeVoteRecord((VoteRecord)entity);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -86,6 +133,7 @@ public class StoreHelper extends CDFSHelper {
         }
 
         dbConnHelper.commit(connection);
-        return entity;
+        entities.add(entity);
+        return entities;
     }
 }

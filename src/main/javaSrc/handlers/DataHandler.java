@@ -9,7 +9,7 @@ import main.javaSrc.HttpClasses.DBExchange;
 import main.javaSrc.helpers.Logger;
 import main.javaSrc.services.AuthService;
 
-import java.sql.Connection;
+import java.util.List;
 
 //handler for processing data requests
 public class DataHandler extends Handler {
@@ -27,7 +27,7 @@ public class DataHandler extends Handler {
 
         if(auth.isValidToken(token)){
 
-            CDFSHelper helper=null;
+            CDFSTHelper helper=null;
             String actionType = exchange.getDBRequestType();
 
             DbConnHelper dbConnHelper = new DbConnHelperImpl();
@@ -50,15 +50,19 @@ public class DataHandler extends Handler {
                     helper = new StoreHelper(exchange,dbConnHelper);
                     break;
 
+                case "traverse":
+                    helper = new TraverseHelper(exchange,dbConnHelper);
+                    break;
+
                 default:
                     exchange.pageNotFound();
                     break;
             }
             if(helper != null){
-                Entity entity = helper.execute();
+                List<Entity> entities = helper.execute();
 
-                if(entity != null) {
-                    exchange.returnObject(entity);
+                if(entities != null) {
+                    exchange.returnObjectList(entities);
                 }else{
                     exchange.respondStr("200 success","text/html");
                 }

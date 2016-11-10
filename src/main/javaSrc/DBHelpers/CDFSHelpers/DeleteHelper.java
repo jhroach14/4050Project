@@ -9,18 +9,20 @@ import main.javaSrc.helpers.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by User on 10/30/2016.
  */
-public class DeleteHelper extends CDFSHelper {
+@SuppressWarnings("Duplicates")
+public class DeleteHelper extends CDFSTHelper {
     private static Logger log = new Logger(DeleteHelper.class);
 
     public DeleteHelper(DBExchange dbExchange, DbConnHelper dbConnHelper) {
         super(dbExchange,dbConnHelper);
     }
 
-    public Entity execute(){
+    public List<Entity> execute(){
 
         String objectType = dbExchange.getDBRequestObjectType();
         String sourced = dbExchange.getParam("sourced");
@@ -77,6 +79,52 @@ public class DeleteHelper extends CDFSHelper {
                         objectLayer.deleteVoter((Voter) entity);
                     }
                     break;
+                case "Ballot_BallotItem":
+                    if(sourced.equals("true")){
+                        String[] ballot_ballotItem = parseObjects(dbExchange.getRequestBody());
+                        Ballot ballot = mapper.readValue(ballot_ballotItem[0],BallotImpl.class);
+                        BallotItem ballotItem = mapper.readValue(ballot_ballotItem[1],BallotItemImpl.class);
+                        objectLayer.deleteLink(ballot,ballotItem);
+                    }
+                    break;
+                case "Election_Candidate":
+                    if(sourced.equals("true")){
+                        String[] election_candidate = parseObjects(dbExchange.getRequestBody());
+                        Election election = mapper.readValue(election_candidate[0],ElectionImpl.class);
+                        Candidate candidate = mapper.readValue(election_candidate[1],CandidateImpl.class);
+                        objectLayer.deleteLink(candidate,election);
+                    }
+                    break;
+                case "District_Ballot":
+                    if(sourced.equals("true")){
+                        String[] district_ballots = parseObjects(dbExchange.getRequestBody());
+                        ElectoralDistrict electoralDistrict = mapper.readValue(district_ballots[0],ElectoralDistrictImpl.class);
+                        Ballot ballot = mapper.readValue(district_ballots[1],BallotImpl.class);
+                        objectLayer.deleteLink(electoralDistrict,ballot);
+                    }
+                    break;
+                case "District_Voter":
+                    if(sourced.equals("true")){
+                        String[] district_ballots = parseObjects(dbExchange.getRequestBody());
+                        ElectoralDistrict electoralDistrict = mapper.readValue(district_ballots[0],ElectoralDistrictImpl.class);
+                        Voter voter = mapper.readValue(district_ballots[1],VoterImpl.class);
+                        objectLayer.deleteLink(electoralDistrict,voter);
+                    }
+                    break;
+                case "Party_Candidate":
+                    if(sourced.equals("true")){
+                        String[] party_candidate = parseObjects(dbExchange.getRequestBody());
+                        PoliticalParty party = mapper.readValue(party_candidate[0],PoliticalPartyImpl.class);
+                        Candidate candidate = mapper.readValue(party_candidate[1],CandidateImpl.class);
+                        objectLayer.deleteLink(party,candidate);
+                    }
+                    break;
+                case "VoterRecord":
+                    if(sourced.equals("true")){
+                        entity = mapper.readValue(dbExchange.getRequestBody(), VoterRecordImpl.class);
+                        objectLayer.deleteVoteRecord((VoteRecord) entity);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -86,6 +134,7 @@ public class DeleteHelper extends CDFSHelper {
             e.printStackTrace();
         }
         dbConnHelper.commit(connection);
-        return entity;
+        entities.add(entity);
+        return entities;
     }
 }

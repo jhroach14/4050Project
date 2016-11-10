@@ -4,6 +4,7 @@ import main.javaSrc.DBHelpers.ObjectLayer;
 import main.javaSrc.Entities.Candidate;
 import main.javaSrc.Entities.Election;
 import main.javaSrc.Entities.EntityImpl.CandidateImpl;
+import main.javaSrc.Entities.PoliticalParty;
 import main.javaSrc.helpers.EVException;
 
 import java.sql.*;
@@ -11,33 +12,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by User on 11/9/2016.
+ * Created by User on 11/10/2016.
  */
-public class Election_CandidatesManager {
+public class Party_CandidatesManager {
+
     private ObjectLayer objectLayer;
     private Connection conn;
-    
-    public Election_CandidatesManager(ObjectLayer objectLayer, Connection conn){
-        this.objectLayer = objectLayer;
-        this.conn = conn;
+
+    public Party_CandidatesManager(ObjectLayer objectLayer, Connection connection) {
+        this.objectLayer=objectLayer;
+        this.conn=connection;
     }
-    
-    public void store(Candidate candidate, Election election) {
-        
-        String insertElection_Candidates = "insert into Election_Candidates (Candidate_ID, Election_ID) values (?, ?)";
+
+    public void store(Candidate candidate, PoliticalParty politicalParty) {
+        String insertParty_Candidates = "insert into Party_Candidates (Party_ID, Election_ID) values (?, ?)";
         PreparedStatement stmt = null;
         int queryExecution;
 
         try {
-            stmt = conn.prepareStatement( insertElection_Candidates );
+            stmt = conn.prepareStatement( insertParty_Candidates );
 
             if(candidate.getId() > 0)
-                stmt.setInt(1, candidate.getId());
+                stmt.setInt(2, candidate.getId());
             else
                 throw new EVException("Election_CandidatesManager.save can't save a candidate_election: candidate ID undefined") ;
 
-            if(election.getId() > 0)
-                stmt.setInt(2, election.getId());
+            if(politicalParty.getId() > 0)
+                stmt.setInt(1, politicalParty.getId());
             else
                 throw new EVException("Election_CandidatesManger.save can't save a candidate_election: election ID undefined") ;
 
@@ -53,45 +54,41 @@ public class Election_CandidatesManager {
         }
     }
 
-    public Election restore (Candidate candidate) throws EVException{
+    public PoliticalParty restore(Candidate candidate) throws EVException {
+
         StringBuffer query = new StringBuffer(500);
         Statement stmt = null;
 
         if(candidate.getId() <1)
-            throw new EVException("Election_Candidates.restore could not restore non persistent candidate");
+            throw new EVException("Party_Candidates.restore could not restore non persistent candidate");
 
-        query.append("select Election.Election_ID, Election.Office_Name, Election.Is_Partisan, Election.Vote_Count ");
-        query.append(" from Election ");
-        query.append("join Election_Candidates");
-        query.append("on Election.Election_ID = Election_Candidates.Election_ID");
-        query.append("Where Election_Candidates.Candidate_ID = '" + candidate.getId() + "'");
+        query.append("select Party_ID, Party_Name");
+        query.append(" from Party");
+        query.append("join Party_Candidates");
+        query.append("on Party.Party_ID = Party_Candidates.Party_ID");
+        query.append("Where Party_Candidates.Candidate_ID = '" + candidate.getId() + "'");
 
         try{
             stmt = conn.createStatement();
 
             if (stmt.execute(query.toString())) {
-                int electionID;
-                String officeName;
-                boolean isPartisan;
-                int voteCount;
-                Election newElection = null;
+                int politicalPartyId;
+                String name;
+                PoliticalParty politicalParty = null;
 
                 ResultSet rs = stmt.getResultSet();
 
                 while (rs.next()) {
-                    electionID = rs.getInt(1);
-                    officeName = rs.getString(2);
-                    isPartisan = rs.getBoolean(3);
-                    voteCount = rs.getInt(4);
+                    politicalPartyId = rs.getInt( 1 );
+                    name = rs.getString( 2 );
 
-                    newElection = objectLayer.createElection();
-                    newElection.setId(electionID);
-                    newElection.setOffice(officeName);
-                    newElection.setIsPartisan(isPartisan);
-                    newElection.setVoteCount(voteCount);
+                    politicalParty = objectLayer.createPoliticalParty(); // create a proxy politicalParty object
+                    // and now set its retrieved attributes
+                    politicalParty.setId( politicalPartyId );
+                    politicalParty.setName( name );
                     break;
                 }
-                return newElection;
+                return politicalParty;
             }
         }
 
@@ -102,25 +99,27 @@ public class Election_CandidatesManager {
         throw new EVException("Election_Candidates.restore could not restore candidate object");
     }
 
-    public List<Candidate> restore(Election election) throws EVException{
+    public List<Candidate> restore(PoliticalParty politicalParty) throws EVException {
+
         StringBuffer query = new StringBuffer(500);
         Statement stmt = null;
         List<Candidate> candidates = new ArrayList<Candidate>();
 
-        if (election.getId() < 1)
+        if (politicalParty.getId() < 1)
             throw new EVException("CandidateManger.restore could not restore persistent Candidate_Elections");
 
-        query.append("select Candidate.Candidate_Name, Candidate.Vote_Count");
+        query.append("select Candidate.Candidate_ID,Candidate.Candidate_Name, Candidate.Vote_Count");
         query.append(" from Candidate ");
-        query.append("join Election_Candidates");
-        query.append("on Election.Election_ID = Election_Candidates.Election_ID");
-        query.append("Where Election.Election_ID = '" + election.getId() + "'");
+        query.append("join Party_Candidates");
+        query.append("on Party.Party_ID = Party_Candidates.Party_ID");
+        query.append("Where Party.Party_ID = '" + politicalParty.getId() + "'");
 
         try {
             stmt = conn.createStatement();
 
             if (stmt.execute(query.toString())) { // statement returned a result
 
+                int candidateId;
                 String candidateName;
                 int voteCount;
 
@@ -132,10 +131,12 @@ public class Election_CandidatesManager {
 
                 while (rs.next()) {
 
-                    candidateName = rs.getString(1);
-                    voteCount = rs.getInt(2);
+                    candidateId = rs.getInt(1);
+                    candidateName = rs.getString(2);
+                    voteCount = rs.getInt(3);
 
                     newCandidate = new CandidateImpl();
+                    newCandidate.setId(candidateId);
                     newCandidate.setName(candidateName);
                     newCandidate.setVoteCount(voteCount);
 
@@ -149,11 +150,12 @@ public class Election_CandidatesManager {
             throw new EVException("BallotManager.store failed to save a ballot_issue" + e);
         }
         throw new EVException("BallotManager.restore could not restore ballot object");
+
     }
 
+    public void delete(Candidate candidate, PoliticalParty politicalParty) throws EVException {
 
-    public void delete(Election election, Candidate candidate) throws EVException{
-        String               deleteElection = "delete from Election_Candidates where Candidate_ID = ? and Election_ID = ?";
+        String               deleteElection = "delete from Party_Candidates where Candidate_ID = ? and Party_ID = ?";
         PreparedStatement    stmt = null;
         int                  queryExecution;
 
@@ -163,8 +165,8 @@ public class Election_CandidatesManager {
                 stmt.setInt(1, candidate.getId());
             else
                 throw new EVException("Election_Candidates.delete failed to delete candidate_Issues");
-            if(election.getId() > 0)
-                stmt.setInt(2, election.getId());
+            if(politicalParty.getId() > 0)
+                stmt.setInt(2, politicalParty.getId());
             else
                 throw new EVException("Election_CandidatesManager.delete failed to delete candidate_Issues");
             queryExecution = stmt.executeUpdate();
@@ -175,5 +177,6 @@ public class Election_CandidatesManager {
             e.printStackTrace();
             throw new EVException( "Election_CandidatesManager.delete: failed to delete a candidate: " + e );
         }
+
     }
 }
