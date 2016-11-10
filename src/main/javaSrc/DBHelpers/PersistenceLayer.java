@@ -89,7 +89,7 @@ public interface PersistenceLayer {
     public void deleteVoteRecord( VoteRecord voteRecord ) throws EVException;
 
     
-    /*public void storeBallotIncludesBallotItem( Ballot ballot, BallotItem ballotItem ) throws EVException;
+    public void storeBallotIncludesBallotItem( Ballot ballot, BallotItem ballotItem ) throws EVException;
 
 
     public Ballot restoreBallotIncludesBallotItem( BallotItem ballotItem ) throws EVException;
@@ -147,5 +147,5 @@ public interface PersistenceLayer {
     public List<Voter> restoreVoterBelongsToElectoralDistrict( ElectoralDistrict electoralDistrict ) throws EVException;
 
 
-    public void deleteVoterBelongsToElection( Voter voter, ElectoralDistrict electoralDistrict ) throws EVException;*/
+    public void deleteVoterBelongsToElection( Voter voter, ElectoralDistrict electoralDistrict ) throws EVException;
 }

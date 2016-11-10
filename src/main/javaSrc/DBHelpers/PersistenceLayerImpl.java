@@ -181,7 +181,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
 
 
 
-   /* @Override
+    @Override
     public void storeBallotIncludesBallotItem(Ballot ballot, BallotItem ballotItem) throws EVException {
         ballotManager.store(ballot, ballotItem);
     }
@@ -279,5 +279,5 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     @Override
     public void deleteVoterBelongsToElection(Voter voter, ElectoralDistrict electoralDistrict) throws EVException {
         voterManager.delete(voter, electoralDistrict);
-    }*/
+    }
 }

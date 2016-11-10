@@ -24,7 +24,7 @@ public class Tester {
 
             ObjectMapper mapper = new ObjectMapper();
 
-            /*ElectionsOfficer officer1 = new ElectionsOfficerImpl("john","smith","jsmith","1234","jsmith@com.com","123 street","GA",3000,"athens");
+            ElectionsOfficer officer1 = new ElectionsOfficerImpl("john","smith","jsmith","1234","jsmith@com.com","123 street","GA",3000,"athens");
             String officer1Str = mapper.writeValueAsString(officer1);
             writeToServer("store","ElectionOfficer",officer1Str);
 
@@ -78,7 +78,7 @@ public class Tester {
 
             Election election3 = new ElectionImpl("office3",false,null);
             String election3Str = mapper.writeValueAsString(election3);
-            writeToServer("store","Election",election3Str);*/
+            writeToServer("store","Election",election3Str);
 
             Candidate candidate1 = new CandidateImpl("cantidate1",null,null);
             String candidate1Str =mapper.writeValueAsString(candidate1);
