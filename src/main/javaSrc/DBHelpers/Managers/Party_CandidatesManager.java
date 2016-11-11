@@ -25,7 +25,7 @@ public class Party_CandidatesManager {
     }
 
     public void store(Candidate candidate, PoliticalParty politicalParty) {
-        String insertParty_Candidates = "insert into Party_Candidates (Party_ID, Election_ID) values (?, ?)";
+        String insertParty_Candidates = "insert into Party_Candidates (Party_ID, Candidate_ID) values (?, ?)";
         PreparedStatement stmt = null;
         int queryExecution;
 

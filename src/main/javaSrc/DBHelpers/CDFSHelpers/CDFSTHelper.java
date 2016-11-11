@@ -35,7 +35,7 @@ public abstract class CDFSTHelper {
         String[] strArr = new String[2];
 
         strArr[0] = requestBody.substring(0,requestBody.indexOf("**|**"));
-        strArr[2] = requestBody.substring(requestBody.indexOf("**|**")+5,requestBody.length());
+        strArr[1] = requestBody.substring(requestBody.indexOf("**|**")+5,requestBody.length());
 
         return strArr;
 

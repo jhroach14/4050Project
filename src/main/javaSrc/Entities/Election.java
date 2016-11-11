@@ -1,6 +1,8 @@
 package main.javaSrc.Entities;
 
+import main.javaSrc.Entities.EntityImpl.ElectionImpl;
 import main.javaSrc.helpers.EVException;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 import java.util.List;
 

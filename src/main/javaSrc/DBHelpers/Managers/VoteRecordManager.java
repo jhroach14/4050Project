@@ -153,7 +153,7 @@ public class VoteRecordManager {
                 throw new EVException( "VoteRecordManager.save: can't save a voteRecord: Date undefined" );
 
             if( voteRecord.getVoter().getVoterId() >= 0 )
-                stmt.setInt( 2, voteRecord.getVoter().getVoterId() );
+                stmt.setInt( 2, voteRecord.getVoter().getId() );
             else
                 throw new EVException( "VoteRecordManager.save: can't save a voteRecord: Voter_ID undefined" );
 

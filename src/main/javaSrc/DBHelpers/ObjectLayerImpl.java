@@ -150,7 +150,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public Ballot createBallot(Date openDate, Date closeDate, boolean approved, ElectoralDistrict electoralDistrict) throws EVException {
-        Ballot ballot = new BallotImpl(openDate, closeDate, approved, electoralDistrict);
+        Ballot ballot = new BallotImpl(openDate, closeDate, approved, (ElectoralDistrictImpl) electoralDistrict);
         return ballot;
     }
 

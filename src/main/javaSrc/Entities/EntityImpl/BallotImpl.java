@@ -13,20 +13,24 @@ import java.util.List;
 public class BallotImpl extends EntityImpl implements Ballot {
     private Date openDate;
     private Date closeDate;
-    private ElectoralDistrict electoralDistrict;
+    private ElectoralDistrictImpl electoralDistrict;
     private boolean approved;
     private List<BallotItem> ballotItems;
     private List<VoteRecord> voteRecords;
 
-    public BallotImpl(Date openDate, Date closeDate, boolean approved, ElectoralDistrict electoralDistrict) {
+    public BallotImpl(Date openDate, Date closeDate, boolean approved, ElectoralDistrictImpl electoralDistrict) {
         this.approved = approved;
         this.openDate=openDate;
         this.closeDate=closeDate;
-        this.electoralDistrict = electoralDistrict;
+        this.electoralDistrict =  electoralDistrict;
     }
 
     public BallotImpl() {
 
+    }
+
+    public void setElectoralDistrict(ElectoralDistrictImpl electoralDistrict) {
+        this.electoralDistrict = electoralDistrict;
     }
 
     @Override
@@ -56,7 +60,7 @@ public class BallotImpl extends EntityImpl implements Ballot {
 
     @Override
     public void setElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
-        this.electoralDistrict = electoralDistrict;
+        this.electoralDistrict = (ElectoralDistrictImpl) electoralDistrict;
     }
 
     @Override
