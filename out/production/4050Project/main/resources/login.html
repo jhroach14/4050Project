@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>login</title>
+        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="js/login.js"></script>
+    </head>
+
+    <body>
+        <div ng-app="loginApp" class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 sidePanel">
+                </div>
+                <div class=" col-md-6">
+                    <div id="mainCol" class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="header" class="jumbotron">
+                                <h2>Welcome to the Voter Registration System</h2>
+                                <p>please sign in or register below</p>
+                            </div>
+                            <form name="loginForm" ng-controller="loginCtrl" class="loginForm collapse in">
+                                <div class="form-group">
+                                    <label for="email">Email address:</label>
+                                    <input ng-model="email" type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Password:</label>
+                                    <input ng-model="password" type="password" class="form-control" id="pwd" required>
+                                </div>
+                                <div class="form-actions">
+                                    <button ng-click="submit()" ng-disabled="loginForm.$invalid" type="submit" class="btn btn-primary">Login</button>
+                                </div>
+                            </form>
+                            <div id="loginLinks" class="form-actions">
+                                <a class="loginForm collapse in"data-toggle="collapse" href=".loginForm">Click to Register</a>
+                                <a class="loginForm collapse" data-toggle="collapse" href=".loginForm">Return to login</a>
+                            </div>
+                            <form name="registerForm" ng-controller="registerCtrl" class="loginForm collapse">
+                                <div class="form-group">
+                                    <label for="email2">Email address(will be your username):</label>
+                                    <input ng-model="email" type="email" class="form-control" id="email2" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Full Name:</label>
+                                    <input ng-model="name" type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="age">Age:</label>
+                                    <input ng-model="age" type="number" class="form-control" id="age"required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address:</label>
+                                    <input ng-model="address" type="text" class="form-control" id="address" required>
+                                </div>
+                                <div class="form-actions">
+                                    <button ng-disabled="registerForm.$invalid" ng-click="submit()" type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 sidePanel">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

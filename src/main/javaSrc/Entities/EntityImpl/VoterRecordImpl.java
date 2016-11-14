@@ -5,7 +5,7 @@ import main.javaSrc.Entities.VoteRecord;
 import main.javaSrc.Entities.Voter;
 import main.javaSrc.helpers.EVException;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by User on 11/8/2016.

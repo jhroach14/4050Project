@@ -7,19 +7,20 @@ import main.javaSrc.HttpClasses.DBExchange;
 import main.javaSrc.helpers.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by User on 10/30/2016.
  */
-public class CreateHelper extends CDFSHelper {
+public class CreateHelper extends CDFSTHelper {
     private static Logger log = new Logger(CreateHelper.class);
 
     public CreateHelper(DBExchange dbExchange, DbConnHelper dbConnHelper) {
         super(dbExchange,dbConnHelper);
     }
 
-    public Entity execute(){
+    public List<Entity> execute(){
 
         String objectType = dbExchange.getDBRequestObjectType();
         String sourced = dbExchange.getParam("sourced");
@@ -92,6 +93,14 @@ public class CreateHelper extends CDFSHelper {
                         entity = objectLayer.createVoter();
                     }
                     break;
+                case "VoterRecord":
+                    if (sourced.equals("true")) {
+                        entity = mapper.readValue(dbExchange.getRequestBody(), VoterRecordImpl.class);
+                        objectLayer.createVoterRecord(((VoterRecordImpl)entity).getDate(),((VoterRecordImpl)entity).getVoter(),((VoterRecordImpl)entity).getBallot());
+                    } else {
+                        entity = objectLayer.createVoterRecord();
+                    }
+                    break;
                 default:
                     break;
             }
@@ -101,7 +110,9 @@ public class CreateHelper extends CDFSHelper {
         }
 
         dbConnHelper.commit(connection);
-
-        return entity;
+        entities.add(entity);
+        return entities;
     }
+
+
 }
