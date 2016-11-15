@@ -2,8 +2,6 @@ package main.javaSrc.DBHelpers.Managers;
 
 import main.javaSrc.DBHelpers.ObjectLayer;
 import main.javaSrc.Entities.ElectionsOfficer;
-import main.javaSrc.Entities.Entity;
-import main.javaSrc.Entities.EntityImpl.EntityImpl;
 import main.javaSrc.helpers.EVException;
 
 import java.sql.*;
@@ -13,14 +11,11 @@ import java.util.List;
 /**
  * Created by User on 11/2/2016.
  */
-public class ElectionsOfficerManager {
+public class ElectionsOfficerManager extends Manager{
 
-    private ObjectLayer objectLayer = null;
-    private Connection conn = null;
 
     public ElectionsOfficerManager(Connection conn, ObjectLayer objectLayer){
-        this.conn = conn;
-        this.objectLayer = objectLayer;
+        super(conn, objectLayer);
     }
 
     public ElectionsOfficerManager() {
@@ -29,99 +24,12 @@ public class ElectionsOfficerManager {
 
     public List<ElectionsOfficer> restore(ElectionsOfficer electionsOfficer) throws EVException {
 
-        String       selectElectionsOfficer = "select Elections_Officer_ID, First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip from ElectionsOfficer";
         Statement    stmt = null;
-        StringBuffer query = new StringBuffer( 100 );
-        StringBuffer condition = new StringBuffer( 100 );
+        String query = "";
         List<ElectionsOfficer>   electionsOfficers = new ArrayList<ElectionsOfficer>();
 
-        condition.setLength( 0 );
-
-        // form the query based on the given electionsOfficer object instance
-        query.append( selectElectionsOfficer );
-
         if( electionsOfficer != null ) {
-            if( electionsOfficer.getId() >= 0 ) { // id is unique, so it is sufficient to get a person
-                query.append(" where Elections_Officer_ID = " + electionsOfficer.getId());
-            }
-            else {
-
-                if( electionsOfficer.getFirstName() != null )
-                    condition.append( " where First_Name = '" + electionsOfficer.getFirstName() + "'" );
-
-                if( electionsOfficer.getLastName() != null ) {
-                    if( condition.length() > 0 )
-                        condition.append( " and" );
-                    else
-                        condition.append( " where" );
-                    condition.append( " Last_Name = '" + electionsOfficer.getLastName() + "'" );
-                }
-
-                if( electionsOfficer.getUserName() != null ){
-                    if( condition.length() > 0 )
-                        condition.append( " and" );
-                    else
-                        condition.append( " where" );
-                    condition.append( " User_Name = '" + electionsOfficer.getUserName() + "'" );
-                }
-
-
-                if( electionsOfficer.getUserPassword() != null ){
-                    if( condition.length() > 0 )
-                        condition.append( " and" );
-                    else
-                        condition.append( " where" );
-                    condition.append( " User_Password = '" + electionsOfficer.getUserPassword() + "'" );
-
-                }
-
-                if( electionsOfficer.getEmailAddress() != null ){
-                    if( condition.length() > 0 )
-                        condition.append( " and" );
-                    else
-                        condition.append( " where" );
-                    condition.append( " Email_Address = '" + electionsOfficer.getEmailAddress() + "'" );
-
-                }
-
-                if( electionsOfficer.getAddress() != null ){
-                    if( condition.length() > 0 )
-                        condition.append( " and" );
-                    else
-                        condition.append( " where" );
-                    condition.append( " Address = '" + electionsOfficer.getAddress() + "'" );
-
-                }
-
-                if( electionsOfficer.getCity() != null ){
-                    if( condition.length() > 0 )
-                        condition.append( " and" );
-                    else
-                        condition.append( " where" );
-                    condition.append( " City = '" + electionsOfficer.getCity() + "'" );
-
-                }
-
-                if( electionsOfficer.getState() != null ){
-                    if( condition.length() > 0 )
-                        condition.append( " and" );
-                    else
-                        condition.append( " where" );
-                    condition.append( " State = '" + electionsOfficer.getState() + "'" );
-
-                }
-
-                if( Integer.toString(electionsOfficer.getZip()) != null ){
-                    if( condition.length() > 0 )
-                        condition.append( " and" );
-                    else
-                        condition.append( " where" );
-                    condition.append( " Zip = '" + electionsOfficer.getZip() + "'" );
-
-                }
-
-                query.append( condition );
-            }
+            query = electionsOfficer.getRestoreString();
         }
 
         try {
@@ -130,7 +38,7 @@ public class ElectionsOfficerManager {
 
             // retrieve the persistent electionsOfficer objects
             //
-            if( stmt.execute( query.toString() ) ) { // statement returned a result
+            if( stmt.execute( query) ) { // statement returned a result
 
                 int electionsOfficerId;
                 String firstName;
@@ -187,7 +95,7 @@ public class ElectionsOfficerManager {
 
     }
 
-    public void store(ElectionsOfficer electionsOfficer) throws EVException{
+    public ElectionsOfficer store(ElectionsOfficer electionsOfficer) throws EVException{
         String insertElectionsOfficer = "insert into ElectionsOfficer ( First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip) values ( ?, ?, ?, ?, ?, ?, ?, ?, ? )";
         String updateElectionsOfficer = "update ElectionsOfficer set First_Name = ?, Last_Name = ?, Username = ?, User_Password = ?, Email_Address = ?, Address = ?, City = ?, State = ?, Zip = ?";
         PreparedStatement stmt = null;
@@ -201,77 +109,13 @@ public class ElectionsOfficerManager {
             else
                 stmt = conn.prepareStatement( updateElectionsOfficer );
 
-            //Cannot be null
-
-            if( electionsOfficer.getFirstName() != null )
-                stmt.setString( 1, electionsOfficer.getFirstName() );
-            else
-                throw new EVException( "ElectionsOfficerManager.save: can't save a electionsOfficer: First Name undefined" );
-
-            if( electionsOfficer.getLastName() != null )
-                stmt.setString( 2, electionsOfficer.getLastName() );
-            else
-                throw new EVException( "ElectionsOfficerManager.save: can't save a electionsOfficer: Last Name undefined" );
-
-            if( electionsOfficer.getUserName() != null )
-                stmt.setString( 3, electionsOfficer.getUserName() );
-            else
-                throw new EVException( "ElectionsOfficerManager.save: can't save a electionsOfficer: Username undefined" );
-
-            if( electionsOfficer.getUserPassword() != null )
-                stmt.setString( 4, electionsOfficer.getUserPassword() );
-            else
-                throw new EVException( "ElectionsOfficerManager.save: can't save a electionsOfficer: Password undefined" );
-
-            //The rest can be null
-
-            if( electionsOfficer.getEmailAddress() != null )
-                stmt.setString( 5, electionsOfficer.getEmailAddress() );
-            else
-                stmt.setNull( 5, java.sql.Types.VARCHAR );
-
-            if( electionsOfficer.getAddress() != null )
-                stmt.setString( 6, electionsOfficer.getAddress() );
-            else
-                stmt.setNull( 6, java.sql.Types.VARCHAR );
-
-            if( electionsOfficer.getCity() != null )
-                stmt.setString( 7, electionsOfficer.getCity() );
-            else
-                stmt.setNull( 7, java.sql.Types.VARCHAR );
-
-            if( electionsOfficer.getState() != null )
-                stmt.setString( 8, electionsOfficer.getState() );
-            else
-                stmt.setNull( 8, java.sql.Types.CHAR );
-
-            //ElectionsOfficer.getZip() returns an int, the db schema specified zip as a char array of length 5
-            //I just converted the .getZip() output to a string. Could cause problems later
-            if( Integer.toString(electionsOfficer.getZip()) != null )
-                stmt.setString( 9, Integer.toString(electionsOfficer.getZip()) );
-            else
-                stmt.setNull( 9, java.sql.Types.CHAR );
+            stmt = electionsOfficer.insertStoreData(stmt);
 
             queryExecution = stmt.executeUpdate();
 
             if( !electionsOfficer.isPersistent() ) {
                 if( queryExecution >= 1 ) {
-                    String sql = "select last_insert_id()";
-                    if( stmt.execute( sql ) ) { // statement returned a result
-
-                        // retrieve the result
-                        ResultSet r = stmt.getResultSet();
-
-                        // we will use only the first row!
-                        //
-                        while( r.next() ) {
-
-                            // retrieve the last insert auto_increment value
-                            electionsOfficerId = r.getInt( 1 );
-                            if( electionsOfficerId > 0 )
-                                electionsOfficer.setId( electionsOfficerId ); // set this person's db id (proxy object)
-                        }
-                    }
+                   electionsOfficer = (ElectionsOfficer)setId(stmt,electionsOfficer);
                 }
                 else
                     throw new EVException( "ElectionsOfficerManager.save: failed to save a electionsOfficer" );
@@ -286,7 +130,7 @@ public class ElectionsOfficerManager {
             throw new EVException( "ElectionsOfficerManager.save: failed to save a electionsOfficer: " + e );
         }
 
-
+        return electionsOfficer;
     }
 
     public void delete(ElectionsOfficer electionsOfficer) throws EVException {

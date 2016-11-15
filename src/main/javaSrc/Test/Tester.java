@@ -26,11 +26,11 @@ public class Tester {
             ObjectMapper mapper = new ObjectMapper();
 
             ElectionsOfficer officer1 = new ElectionsOfficerImpl("john","smith","jsmith","1234","jsmith@com.com","123 street","GA",3000,"athens");
-            officer1.setId(1);
+            officer1.setId(2);
             String officer1Str = mapper.writeValueAsString(officer1);
             writeToServer("store","ElectionOfficer",officer1Str);
             ElectionsOfficer officer2 = new ElectionsOfficerImpl("john2","smith2","jsmith2","12342","jsmith@com.com2","123 street2","GA",30002,"athens2");
-            officer2.setId(2);
+            officer2.setId(3);
             String officer2Str = mapper.writeValueAsString(officer2);
             writeToServer("store","ElectionOfficer",officer2Str);
 

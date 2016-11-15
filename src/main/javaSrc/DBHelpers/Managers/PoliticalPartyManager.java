@@ -11,14 +11,11 @@ import java.util.List;
 /**
  * Created by User on 11/2/2016.
  */
-public class PoliticalPartyManager {
+public class PoliticalPartyManager extends Manager{
 
-    private ObjectLayer objectLayer = null;
-    private Connection conn = null;
 
     public PoliticalPartyManager(Connection conn, ObjectLayer objectLayer){
-        this.conn = conn;
-        this.objectLayer = objectLayer;
+        super(conn,objectLayer);
     }
 
     public PoliticalPartyManager() {
@@ -27,28 +24,12 @@ public class PoliticalPartyManager {
 
     public List<PoliticalParty> restore(PoliticalParty politicalParty) throws EVException {
 
-        String       selectPoliticalParty = "select Party_ID, Party_Name from Party";
         Statement    stmt = null;
-        StringBuffer query = new StringBuffer( 100 );
-        StringBuffer condition = new StringBuffer( 100 );
+        String query = "";
         List<PoliticalParty>   politicalParties = new ArrayList<PoliticalParty>();
 
-        condition.setLength( 0 );
-
-        // form the query based on the given politicalParty object instance
-        query.append( selectPoliticalParty );
-
         if( politicalParty != null ) {
-            if( politicalParty.getId() >= 0 ) { // id is unique, so it is sufficient to get a person
-                query.append(" where Party_ID = " + politicalParty.getId());
-            }
-            else {
-
-                if( politicalParty.getName() != null )
-                    condition.append( " where Party_Name = '" + politicalParty.getName() + "'" );
-
-            }
-            query.append( condition );
+            query = politicalParty.getRestoreString();
         }
 
         try {
@@ -57,7 +38,7 @@ public class PoliticalPartyManager {
 
             // retrieve the persistent politicalParty objects
             //
-            if( stmt.execute( query.toString() ) ) { // statement returned a result
+            if( stmt.execute( query ) ) { // statement returned a result
 
                 int politicalPartyId;
                 String name;
@@ -90,7 +71,7 @@ public class PoliticalPartyManager {
 
     }
 
-    public void store(PoliticalParty politicalParty) throws EVException{
+    public PoliticalParty store(PoliticalParty politicalParty) throws EVException{
         String insertPoliticalParty = "insert into Party ( Party_Name ) values ( ? )";
         String updatePoliticalParty = "update Party set Party_Name = ?";
         PreparedStatement stmt = null;
@@ -104,34 +85,13 @@ public class PoliticalPartyManager {
             else
                 stmt = conn.prepareStatement( updatePoliticalParty );
 
-            //Cannot be null
-
-            if( politicalParty.getName() != null )
-                stmt.setString( 1, politicalParty.getName() );
-            else
-                throw new EVException( "PoliticalPartyManager.save: can't save a politicalParty: Name undefined" );
-
+            stmt = politicalParty.insertStoreData(stmt);
 
             queryExecution = stmt.executeUpdate();
 
             if( !politicalParty.isPersistent() ) {
                 if( queryExecution >= 1 ) {
-                    String sql = "select last_insert_id()";
-                    if( stmt.execute( sql ) ) { // statement returned a result
-
-                        // retrieve the result
-                        ResultSet r = stmt.getResultSet();
-
-                        // we will use only the first row!
-                        //
-                        while( r.next() ) {
-
-                            // retrieve the last insert auto_increment value
-                            politicalPartyId = r.getInt( 1 );
-                            if( politicalPartyId > 0 )
-                                politicalParty.setId( politicalPartyId ); // set this person's db id (proxy object)
-                        }
-                    }
+                    politicalParty = (PoliticalParty)setId(stmt,politicalParty);
                 }
                 else
                     throw new EVException( "PoliticalPartyManager.save: failed to save a politicalParty" );
@@ -146,7 +106,7 @@ public class PoliticalPartyManager {
             throw new EVException( "PoliticalPartyManager.save: failed to save a politicalParty: " + e );
         }
 
-
+        return politicalParty;
     }
 
     public void delete(PoliticalParty politicalParty) throws EVException {

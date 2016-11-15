@@ -12,14 +12,11 @@ import java.util.List;
 /**
  * Created by User on 11/2/2016.
  */
-public class ElectoralDistrictManager {
+public class ElectoralDistrictManager extends Manager{
 
-    private ObjectLayer objectLayer = null;
-    private Connection conn = null;
 
     public ElectoralDistrictManager(Connection conn, ObjectLayer objectLayer){
-        this.conn = conn;
-        this.objectLayer = objectLayer;
+        super(conn, objectLayer);
     }
 
     public ElectoralDistrictManager() {
@@ -28,28 +25,12 @@ public class ElectoralDistrictManager {
 
     public List<ElectoralDistrict> restore(ElectoralDistrict electoralDistrict) throws EVException {
 
-        String       selectElectoralDistrict = "select District_ID, District_Name from District";
         Statement    stmt = null;
-        StringBuffer query = new StringBuffer( 100 );
-        StringBuffer condition = new StringBuffer( 100 );
+        String query ="";
         List<ElectoralDistrict>   electoralDistricts = new ArrayList<ElectoralDistrict>();
 
-        condition.setLength( 0 );
-
-        // form the query based on the given electoralDistrict object instance
-        query.append( selectElectoralDistrict );
-
         if( electoralDistrict != null ) {
-            if( electoralDistrict.getId() >= 0 ) { // id is unique, so it is sufficient to get a person
-                query.append(" where District_ID = " + electoralDistrict.getId());
-            }
-            else {
-
-                if( electoralDistrict.getName() != null )
-                    condition.append( " where District_Name = '" + electoralDistrict.getName() + "'" );
-
-            }
-            query.append( condition );
+            query = electoralDistrict.getRestoreString();
         }
 
         try {
@@ -58,7 +39,7 @@ public class ElectoralDistrictManager {
 
             // retrieve the persistent electoralDistrict objects
             //
-            if( stmt.execute( query.toString() ) ) { // statement returned a result
+            if( stmt.execute( query) ) { // statement returned a result
 
                 int electoralDistrictId;
                 String name;
@@ -91,7 +72,7 @@ public class ElectoralDistrictManager {
 
     }
 
-    public void store(ElectoralDistrict electoralDistrict) throws EVException{
+    public ElectoralDistrict store(ElectoralDistrict electoralDistrict) throws EVException{
         String insertElectoralDistrict = "insert into District ( District_Name ) values ( ? )";
         String updateElectoralDistrict = "update District set District_Name = ?";
         PreparedStatement stmt = null;
@@ -100,39 +81,19 @@ public class ElectoralDistrictManager {
 
         try {
 
-            if( !electoralDistrict.isPersistent() )
-                stmt = conn.prepareStatement( insertElectoralDistrict );
-            else
-                stmt = conn.prepareStatement( updateElectoralDistrict );
+            if( !electoralDistrict.isPersistent() ) {
+                stmt = conn.prepareStatement(insertElectoralDistrict);
+            }else {
+                stmt = conn.prepareStatement(updateElectoralDistrict);
+            }
 
-            //Cannot be null
-
-            if( electoralDistrict.getName() != null )
-                stmt.setString( 1, electoralDistrict.getName() );
-            else
-                throw new EVException( "ElectoralDistrictManager.save: can't save a electoralDistrict: Name undefined" );
-
+            stmt = electoralDistrict.insertStoreData(stmt);
 
             queryExecution = stmt.executeUpdate();
 
             if( !electoralDistrict.isPersistent() ) {
                 if( queryExecution >= 1 ) {
-                    String sql = "select last_insert_id()";
-                    if( stmt.execute( sql ) ) { // statement returned a result
-
-                        // retrieve the result
-                        ResultSet r = stmt.getResultSet();
-
-                        // we will use only the first row!
-                        //
-                        while( r.next() ) {
-
-                            // retrieve the last insert auto_increment value
-                            electoralDistrictId = r.getInt( 1 );
-                            if( electoralDistrictId > 0 )
-                                electoralDistrict.setId( electoralDistrictId ); // set this person's db id (proxy object)
-                        }
-                    }
+                    electoralDistrict = (ElectoralDistrict)setId(stmt,electoralDistrict);
                 }
                 else
                     throw new EVException( "ElectoralDistrictManager.save: failed to save a electoralDistrict" );
@@ -147,7 +108,7 @@ public class ElectoralDistrictManager {
             throw new EVException( "ElectoralDistrictManager.save: failed to save a electoralDistrict: " + e );
         }
 
-
+        return electoralDistrict;
     }
 
     //needs work to be done

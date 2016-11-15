@@ -1,9 +1,6 @@
 package main.javaSrc.DBHelpers;
 
 import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 import main.javaSrc.Entities.*;
@@ -14,14 +11,6 @@ import main.javaSrc.helpers.Logger;
 public class ObjectLayerImpl implements ObjectLayer {
 
     private static Logger log = new Logger( ObjectLayerImpl.class);
-
-    public PersistenceLayer getPersistenceLayer() {
-        return persistenceLayer;
-    }
-
-    public void setPersistenceLayer(PersistenceLayer persistenceLayer) {
-        this.persistenceLayer = persistenceLayer;
-    }
 
     private PersistenceLayer persistenceLayer;
 
@@ -34,6 +23,8 @@ public class ObjectLayerImpl implements ObjectLayer {
     public ObjectLayerImpl(){
         this.persistenceLayer=null;
     }
+
+
 
     @Override
     public ElectionsOfficer createElectionsOfficer(String firstName, String lastName, String userName, String password, String emailAddress, String address, String state, int zip, String city) throws EVException {
@@ -51,14 +42,13 @@ public class ObjectLayerImpl implements ObjectLayer {
     @Override
     public List<ElectionsOfficer> findElectionsOfficer(ElectionsOfficer modelElectionsOfficer) throws EVException {
 
-        persistenceLayer.restoreElectionsOfficer(modelElectionsOfficer);
-        return null;
+        return persistenceLayer.restoreElectionsOfficer(modelElectionsOfficer);
     }
 
     @Override
-    public void storeElectionsOfficer(ElectionsOfficer electionsOfficer) throws EVException {
+    public ElectionsOfficer storeElectionsOfficer(ElectionsOfficer electionsOfficer) throws EVException {
 
-        persistenceLayer.storeElectionsOfficer(electionsOfficer);
+       return persistenceLayer.storeElectionsOfficer(electionsOfficer);
     }
 
     @Override
@@ -80,13 +70,12 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public List<Voter> findVoter(Voter modelVoter) throws EVException {
-        persistenceLayer.restoreVoter(modelVoter);
-        return null;
+        return persistenceLayer.restoreVoter(modelVoter);
     }
 
     @Override
-    public void storeVoter(Voter voter) throws EVException {
-        persistenceLayer.storeVoter(voter);
+    public Voter storeVoter(Voter voter) throws EVException {
+        return persistenceLayer.storeVoter(voter);
     }
 
     @Override
@@ -107,13 +96,12 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public List<PoliticalParty> findPoliticalParty(PoliticalParty modelPoliticalParty) throws EVException {
-        persistenceLayer.restorePoliticalParty(modelPoliticalParty);
-        return null;
+        return persistenceLayer.restorePoliticalParty(modelPoliticalParty);
     }
 
     @Override
-    public void storePoliticalParty(PoliticalParty politicalParty) throws EVException {
-        persistenceLayer.storePoliticalParty(politicalParty);
+    public PoliticalParty storePoliticalParty(PoliticalParty politicalParty) throws EVException {
+        return persistenceLayer.storePoliticalParty(politicalParty);
     }
 
     @Override
@@ -134,13 +122,12 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public List<ElectoralDistrict> findElectoralDistrict(ElectoralDistrict modelElectoralDistrict) throws EVException {
-        persistenceLayer.restoreElectoralDistrict(modelElectoralDistrict);
-        return null;
+        return persistenceLayer.restoreElectoralDistrict(modelElectoralDistrict);
     }
 
     @Override
-    public void storeElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
-        persistenceLayer.storeElectoralDistrict(electoralDistrict);
+    public ElectoralDistrict storeElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
+        return persistenceLayer.storeElectoralDistrict(electoralDistrict);
     }
 
     @Override
@@ -161,13 +148,13 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public List<Ballot> findBallot(Ballot modelBallot) throws EVException {
-        persistenceLayer.restoreBallot(modelBallot);
-        return null;
+
+        return persistenceLayer.restoreBallot(modelBallot);
     }
 
     @Override
-    public void storeBallot(Ballot ballot) throws EVException {
-        persistenceLayer.storeBallot(ballot);
+    public Ballot storeBallot(Ballot ballot) throws EVException {
+        return persistenceLayer.storeBallot(ballot);
     }
 
     @Override
@@ -188,13 +175,12 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public List<Candidate> findCandidate(Candidate modelCandidate) throws EVException {
-        persistenceLayer.restoreCandidate(modelCandidate);
-        return null;
+        return persistenceLayer.restoreCandidate(modelCandidate);
     }
 
     @Override
-    public void storeCandidate(Candidate candidate) throws EVException {
-        persistenceLayer.storeCandidate(candidate);
+    public Candidate storeCandidate(Candidate candidate) throws EVException {
+        return persistenceLayer.storeCandidate(candidate);
     }
 
     @Override
@@ -215,13 +201,12 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public List<Issue> findIssue(Issue modelIssue) throws EVException {
-        persistenceLayer.restoreIssue(modelIssue);
-        return null;
+        return persistenceLayer.restoreIssue(modelIssue);
     }
 
     @Override
-    public void storeIssue(Issue issue) throws EVException {
-        persistenceLayer.storeIssue(issue);
+    public Issue storeIssue(Issue issue) throws EVException {
+        return persistenceLayer.storeIssue(issue);
     }
 
     @Override
@@ -242,13 +227,12 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public List<Election> findElection(Election modelElection) throws EVException {
-        persistenceLayer.restoreElection(modelElection);
-        return null;
+        return persistenceLayer.restoreElection(modelElection);
     }
 
     @Override
-    public void storeElection(Election election) throws EVException {
-        persistenceLayer.storeElection(election);
+    public Election storeElection(Election election) throws EVException {
+        return persistenceLayer.storeElection(election);
     }
 
     @Override
@@ -269,22 +253,17 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public List<VoteRecord> findVoteRecord(VoteRecord modelVoteRecord) throws EVException {
-        persistenceLayer.restoreVoteRecord(modelVoteRecord);
-        return null;
+        return persistenceLayer.restoreVoteRecord(modelVoteRecord);
     }
 
     @Override
-    public void storeVoteRecord(VoteRecord voteRecord) throws EVException {
-        persistenceLayer.storeVoteRecord(voteRecord);
+    public VoteRecord storeVoteRecord(VoteRecord voteRecord) throws EVException {
+        return persistenceLayer.storeVoteRecord(voteRecord);
     }
 
     @Override
     public void deleteVoteRecord(VoteRecord voteRecord) throws EVException {
         persistenceLayer.deleteVoteRecord(voteRecord);
-
-
-
-
     }
 
     @Override
@@ -368,5 +347,12 @@ public class ObjectLayerImpl implements ObjectLayer {
         return voteRecord;
     }
 
+    public void setPersistenceLayer(PersistenceLayer persistenceLayer) {
+        this.persistenceLayer = persistenceLayer;
+    }
+
+    public PersistenceLayer getPersistenceLayer() {
+        return persistenceLayer;
+    }
 
 }

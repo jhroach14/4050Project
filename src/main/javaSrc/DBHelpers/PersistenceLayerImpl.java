@@ -2,12 +2,7 @@ package main.javaSrc.DBHelpers;
 
 import main.javaSrc.DBHelpers.Managers.*;
 import main.javaSrc.Entities.*;
-import main.javaSrc.Entities.EntityImpl.ElectionsOfficerImpl;
 import main.javaSrc.helpers.EVException;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import java.sql.Connection;
 import java.util.List;
@@ -62,8 +57,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeElectionsOfficer(ElectionsOfficer electionsOfficer) throws EVException {
-        electionsOfficerManager.store(electionsOfficer);
+    public ElectionsOfficer storeElectionsOfficer(ElectionsOfficer electionsOfficer) throws EVException {
+        return electionsOfficerManager.store(electionsOfficer);
 
     }
 
@@ -78,8 +73,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeVoter(Voter voter) throws EVException {
-        voterManager.store(voter);
+    public Voter storeVoter(Voter voter) throws EVException {
+        return voterManager.store(voter);
     }
 
     @Override
@@ -93,8 +88,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeBallot(Ballot ballot) throws EVException {
-        ballotManager.store(ballot);
+    public Ballot storeBallot(Ballot ballot) throws EVException {
+        return ballotManager.store(ballot);
     }
 
     @Override
@@ -108,8 +103,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeCandidate(Candidate candidate) throws EVException {
-        candidateManager.store(candidate);
+    public Candidate storeCandidate(Candidate candidate) throws EVException {
+        return candidateManager.store(candidate);
     }
 
     @Override
@@ -123,8 +118,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeElection(Election election) throws EVException {
-        electionManager.store(election);
+    public Election storeElection(Election election) throws EVException {
+        return electionManager.store(election);
     }
 
     @Override
@@ -138,8 +133,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
-        electoralDistrictManager.store(electoralDistrict);
+    public ElectoralDistrict storeElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
+        return electoralDistrictManager.store(electoralDistrict);
     }
 
     @Override
@@ -153,8 +148,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeIssue(Issue issue) throws EVException {
-        issueManager.store(issue);
+    public Issue storeIssue(Issue issue) throws EVException {
+        return issueManager.store(issue);
     }
 
     @Override
@@ -168,8 +163,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storePoliticalParty(PoliticalParty politicalParty) throws EVException {
-        politicalPartyManager.store(politicalParty);
+    public PoliticalParty storePoliticalParty(PoliticalParty politicalParty) throws EVException {
+        return politicalPartyManager.store(politicalParty);
     }
 
     @Override
@@ -183,8 +178,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeVoteRecord(VoteRecord voteRecord) throws EVException {
-        voteRecordManager.store(voteRecord);
+    public VoteRecord storeVoteRecord(VoteRecord voteRecord) throws EVException {
+        return voteRecordManager.store(voteRecord);
     }
 
     @Override

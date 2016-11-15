@@ -1,7 +1,7 @@
 package main.javaSrc.handlers;
 
 import com.sun.net.httpserver.HttpExchange;
-import main.javaSrc.DBHelpers.CDFSHelpers.*;
+import main.javaSrc.DBHelpers.CDFSTHelpers.*;
 import main.javaSrc.DBHelpers.DbConnHelper;
 import main.javaSrc.DBHelpers.DbConnHelperImpl;
 import main.javaSrc.Entities.Entity;

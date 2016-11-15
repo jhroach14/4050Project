@@ -21,7 +21,7 @@ public interface ObjectLayer {
     public List<ElectionsOfficer> findElectionsOfficer(ElectionsOfficer modelElectionsOfficer ) throws EVException;
 
     
-    public void storeElectionsOfficer( ElectionsOfficer electionsOfficer ) throws EVException;
+    public ElectionsOfficer storeElectionsOfficer(ElectionsOfficer electionsOfficer ) throws EVException;
 
     
     public void deleteElectionsOfficer( ElectionsOfficer electionsOfficer ) throws EVException;
@@ -37,7 +37,7 @@ public interface ObjectLayer {
     public List<Voter> findVoter( Voter modelVoter ) throws EVException;
 
     
-    public void storeVoter( Voter voter ) throws EVException;
+    public Voter storeVoter(Voter voter ) throws EVException;
 
     
     public void deleteVoter( Voter voter ) throws EVException;
@@ -52,7 +52,7 @@ public interface ObjectLayer {
     public List<PoliticalParty> findPoliticalParty( PoliticalParty modelPoliticalParty ) throws EVException;
 
     
-    public void storePoliticalParty( PoliticalParty politicalParty ) throws EVException;
+    public PoliticalParty storePoliticalParty(PoliticalParty politicalParty ) throws EVException;
 
     
     public void deletePoliticalParty( PoliticalParty politicalParty ) throws EVException;
@@ -67,7 +67,7 @@ public interface ObjectLayer {
     public List<ElectoralDistrict> findElectoralDistrict( ElectoralDistrict modelElectoralDistrict ) throws EVException;
 
     
-    public void storeElectoralDistrict( ElectoralDistrict electoralDistrict ) throws EVException;
+    public ElectoralDistrict storeElectoralDistrict(ElectoralDistrict electoralDistrict ) throws EVException;
 
     
     public void deleteElectoralDistrict( ElectoralDistrict electoralDistrict ) throws EVException;
@@ -82,7 +82,7 @@ public interface ObjectLayer {
     public List<Ballot> findBallot( Ballot modelBallot ) throws EVException;
 
     
-    public void storeBallot( Ballot ballot ) throws EVException;
+    public Ballot storeBallot(Ballot ballot ) throws EVException;
 
     
     public void deleteBallot( Ballot ballot ) throws EVException;
@@ -97,7 +97,7 @@ public interface ObjectLayer {
     public List<Candidate> findCandidate( Candidate modelCandidate ) throws EVException;
 
     
-    public void storeCandidate( Candidate candidate ) throws EVException;
+    public Candidate storeCandidate(Candidate candidate ) throws EVException;
 
     
     public void deleteCandidate( Candidate candidate ) throws EVException;
@@ -112,7 +112,7 @@ public interface ObjectLayer {
     public List<Issue> findIssue( Issue modelIssue ) throws EVException;
 
     
-    public void storeIssue( Issue issue ) throws EVException;
+    public Issue storeIssue(Issue issue ) throws EVException;
 
     
     public void deleteIssue( Issue issue ) throws EVException;
@@ -127,7 +127,7 @@ public interface ObjectLayer {
     public List<Election> findElection( Election modelElection ) throws EVException;
 
     
-    public void storeElection( Election election ) throws EVException;
+    public Election storeElection(Election election ) throws EVException;
 
     
     public void deleteElection( Election election ) throws EVException;
@@ -142,7 +142,7 @@ public interface ObjectLayer {
     public List<VoteRecord> findVoteRecord( VoteRecord modelVoteRecord ) throws EVException;
 
     
-    public void storeVoteRecord( VoteRecord voteRecord ) throws EVException;
+    public VoteRecord storeVoteRecord(VoteRecord voteRecord ) throws EVException;
 
     
     public void deleteVoteRecord( VoteRecord voteRecord ) throws EVException;

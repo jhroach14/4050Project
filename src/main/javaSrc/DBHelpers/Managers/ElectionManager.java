@@ -12,14 +12,11 @@ import java.util.List;
 /**
  * Created by User on 11/2/2016.
  */
-public class ElectionManager {
+public class ElectionManager extends Manager{
 
-    private ObjectLayer objectLayer = null;
-    private Connection conn = null;
 
     public ElectionManager(Connection conn, ObjectLayer objectLayer){
-        this.conn = conn;
-        this.objectLayer = objectLayer;
+        super(conn,objectLayer);
     }
 
     public ElectionManager() {
@@ -28,46 +25,12 @@ public class ElectionManager {
 
     public List<Election> restore(Election election) throws EVException {
 
-        String       selectElection = "select Election_ID, Office_Name, Is_Partisan, Vote_Count from Election";
         Statement    stmt = null;
-        StringBuffer query = new StringBuffer( 100 );
-        StringBuffer condition = new StringBuffer( 100 );
+        String query="";
         List<Election>   elections = new ArrayList<Election>();
 
-        condition.setLength( 0 );
-
-        // form the query based on the given election object instance
-        query.append( selectElection );
-
         if( election != null ) {
-            if( election.getId() >= 0 ) { // id is unique, so it is sufficient to get a person
-                query.append(" where Elections_Officer_ID = " + election.getId());
-            }
-            else {
-
-                if( election.getOffice() != null )
-                    condition.append( " where Office_Name = '" + election.getOffice() + "'" );
-
-
-                if( election.getIsPartisan() || !election.getIsPartisan()){
-                    if( condition.length() > 0 )
-                        condition.append( " and" );
-                    else
-                        condition.append( " where" );
-                    condition.append( " Is_Partisan = '" + election.getIsPartisan() + "'" );
-                }
-
-
-                if( election.getVoteCount() >= 0 ){
-                    if( condition.length() > 0 )
-                        condition.append( " and" );
-                    else
-                        condition.append( " where" );
-                    condition.append( " Vote_Count = '" + election.getVoteCount() + "'" );
-
-                }
-            }
-            query.append( condition );
+            query = election.getRestoreString();
         }
 
         try {
@@ -76,7 +39,7 @@ public class ElectionManager {
 
             // retrieve the persistent election objects
             //
-            if( stmt.execute( query.toString() ) ) { // statement returned a result
+            if( stmt.execute( query) ) { // statement returned a result
 
                 int electionId;
                 String officeName;
@@ -115,7 +78,7 @@ public class ElectionManager {
 
     }
 
-    public void store(Election election) throws EVException{
+    public Election store(Election election) throws EVException{
         String insertElection = "insert into Election ( Office_Name, Is_Partisan, Vote_Count) values ( ?, ?, ? )";
         String updateElection = "update Election set  Office_Name = ?, Is_Partisan = ?, Vote_Count = ?";
         PreparedStatement stmt = null;
@@ -124,52 +87,19 @@ public class ElectionManager {
 
         try {
 
-            if( !election.isPersistent() )
-                stmt = conn.prepareStatement( insertElection );
-            else
-                stmt = conn.prepareStatement( updateElection );
+            if( !election.isPersistent() ) {
+                stmt = conn.prepareStatement(insertElection);
+            }else {
+                stmt = conn.prepareStatement(updateElection);
+            }
 
-            //Cannot be null
-
-            if( election.getOffice() != null )
-                stmt.setString( 1, election.getOffice() );
-            else
-                throw new EVException( "ElectionManager.save: can't save a election: Office Name undefined" );
-
-            if( election.getIsPartisan() || !election.getIsPartisan() )
-                stmt.setBoolean( 2, election.getIsPartisan() );
-            else
-                throw new EVException( "ElectionManager.save: can't save a election: Is_Partisan undefined" );
-
-
-            //The rest can be null
-
-            if( election.getVoteCount() >= 0 )
-                stmt.setInt( 3, election.getVoteCount() );
-            else
-                stmt.setNull( 3, java.sql.Types.INTEGER );
-
+            stmt = election.insertStoreData(stmt);
 
             queryExecution = stmt.executeUpdate();
 
             if( !election.isPersistent() ) {
                 if( queryExecution >= 1 ) {
-                    String sql = "select last_insert_id()";
-                    if( stmt.execute( sql ) ) { // statement returned a result
-
-                        // retrieve the result
-                        ResultSet r = stmt.getResultSet();
-
-                        // we will use only the first row!
-                        //
-                        while( r.next() ) {
-
-                            // retrieve the last insert auto_increment value
-                            electionId = r.getInt( 1 );
-                            if( electionId > 0 )
-                                election.setId( electionId ); // set this person's db id (proxy object)
-                        }
-                    }
+                   election = (Election) setId(stmt,election);
                 }
                 else
                     throw new EVException( "ElectionManager.save: failed to save a election" );
@@ -183,7 +113,7 @@ public class ElectionManager {
             e.printStackTrace();
             throw new EVException( "ElectionManager.save: failed to save a election: " + e );
         }
-
+        return election;
 
     }
 

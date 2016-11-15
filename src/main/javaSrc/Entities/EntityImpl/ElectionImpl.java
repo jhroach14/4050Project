@@ -3,7 +3,10 @@ package main.javaSrc.Entities.EntityImpl;
 import main.javaSrc.Entities.Candidate;
 import main.javaSrc.Entities.Election;
 import main.javaSrc.helpers.EVException;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -23,6 +26,74 @@ public class ElectionImpl extends BallotItemImpl implements Election{
 
     public ElectionImpl(){
 
+    }
+
+    @JsonIgnore
+    @Override
+    public String getRestoreString() throws EVException {
+        StringBuffer query = new StringBuffer( 100 );
+        StringBuffer condition = new StringBuffer( 100 );
+        String restoreStr = "select Election_ID, Office_Name, Is_Partisan, Vote_Count from Election";
+
+        condition.setLength( 0 );
+        query.append( restoreStr );
+
+        if( getId() >= 0 ) { // id is unique, so it is sufficient to get a person
+            query.append(" where Elections_Officer_ID = " + getId());
+        }
+        else {
+
+            if( getOffice() != null )
+                condition.append( " where Office_Name = '" + getOffice() + "'" );
+
+
+            if( getIsPartisan() || !getIsPartisan()){
+                if( condition.length() > 0 )
+                    condition.append( " and" );
+                else
+                    condition.append( " where" );
+                condition.append( " Is_Partisan = '" + getIsPartisan() + "'" );
+            }
+
+
+            if( getVoteCount() >= 0 ){
+                if( condition.length() > 0 )
+                    condition.append( " and" );
+                else
+                    condition.append( " where" );
+                condition.append( " Vote_Count = '" + getVoteCount() + "'" );
+
+            }
+        }
+        query.append( condition );
+
+        return query.toString();
+    }
+
+    @JsonIgnore
+    @Override
+    public PreparedStatement insertStoreData(PreparedStatement stmt) throws EVException, SQLException {
+        //Cannot be null
+
+        if( getOffice() != null )
+            stmt.setString( 1, getOffice() );
+        else
+            throw new EVException( "ElectionManager.save: can't save a  Office Name undefined" );
+
+        if( getIsPartisan() || !getIsPartisan() )
+            stmt.setBoolean( 2, getIsPartisan() );
+        else
+            throw new EVException( "ElectionManager.save: can't save a  Is_Partisan undefined" );
+
+
+        //The rest can be null
+
+        if( getVoteCount() >= 0 )
+            stmt.setInt( 3, getVoteCount() );
+        else
+            stmt.setNull( 3, java.sql.Types.INTEGER );
+        
+        return stmt;
     }
 
     @Override

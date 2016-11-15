@@ -15,7 +15,8 @@ CREATE TABLE ElectionsOfficer (
 
  PRIMARY KEY(Elections_Officer_ID)
 );
-
+insert into ElectionsOfficer ( First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip)
+values ( "John", "smith", "officerJS", "1234", "jsmith@gmail.com", "1 street", "athens", "GA", "30067" );
 /*Done.*/
 CREATE TABLE Party (
  Party_ID INT AUTO_INCREMENT NOT NULL,

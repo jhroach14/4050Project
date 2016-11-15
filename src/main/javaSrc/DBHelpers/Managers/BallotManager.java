@@ -14,14 +14,11 @@ import java.util.List;
 /**
  * Created by User on 11/2/2016.
  */
-public class BallotManager {
+public class BallotManager extends Manager{
 
-    private ObjectLayer objectLayer = null;
-    private Connection conn = null;
 
     public BallotManager(Connection conn, ObjectLayer objectLayer){
-        this.conn = conn;
-        this.objectLayer = objectLayer;
+        super(conn,objectLayer);
     }
 
     public BallotManager() {
@@ -30,36 +27,12 @@ public class BallotManager {
 
     public List<Ballot> restore(Ballot ballot) throws EVException {
 
-        String       selectBallot = "select Ballot_ID, Start_Date, End_Date from Ballot";
         Statement    stmt = null;
-        StringBuffer query = new StringBuffer( 100 );
-        StringBuffer condition = new StringBuffer( 100 );
+        String query = "";
         List<Ballot>   ballots = new ArrayList<Ballot>();
 
-        condition.setLength( 0 );
-
-        // form the query based on the given ballot object instance
-        query.append( selectBallot );
-
         if( ballot != null ) {
-            if( ballot.getId() >= 0 ) { // id is unique, so it is sufficient to get a person
-                query.append(" where Ballot_ID = " + ballot.getId());
-            }
-            else {
-
-                if( ballot.getOpenDate() != null )
-                    condition.append( " where Start_Date = '" + ballot.getOpenDate() + "'" );
-
-                if( ballot.getCloseDate() != null ) {
-                    if( condition.length() > 0 )
-                        condition.append( " and" );
-                    else
-                        condition.append( " where" );
-                    condition.append( " End_Date = '" + ballot.getCloseDate() + "'" );
-                }
-
-            }
-            query.append( condition );
+            query = ballot.getRestoreString();
         }
 
         try {
@@ -68,7 +41,7 @@ public class BallotManager {
 
             // retrieve the persistent ballot objects
             //
-            if( stmt.execute( query.toString() ) ) { // statement returned a result
+            if( stmt.execute( query) ) { // statement returned a result
 
                 int ballotId;
                 Date startDate;
@@ -104,53 +77,28 @@ public class BallotManager {
 
     }
 
-    public void store(Ballot ballot) throws EVException{
+    public Ballot store(Ballot ballot) throws EVException{
+
         String insertBallot = "insert into Ballot ( Start_Date, End_Date ) values ( ?, ? )";
         String updateBallot = "update Ballot set Start_Date = ?, End_Date = ?";
         PreparedStatement stmt = null;
         int queryExecution;
-        int ballotId;
 
         try {
 
-            if( !ballot.isPersistent() )
-                stmt = conn.prepareStatement( insertBallot );
-            else
-                stmt = conn.prepareStatement( updateBallot );
+            if( !ballot.isPersistent() ) {
+                stmt = conn.prepareStatement(insertBallot);
+            }else {
+                stmt = conn.prepareStatement(updateBallot);
+            }
 
-            //Cannot be null
-
-            if( ballot.getOpenDate() != null )
-                stmt.setDate( 1, (Date) ballot.getOpenDate());
-            else
-                throw new EVException( "BallotManager.save: can't save a ballot: Start Date undefined" );
-
-            if( ballot.getCloseDate() != null )
-                stmt.setDate( 2, (Date) ballot.getCloseDate());
-            else
-                throw new EVException( "BallotManager.save: can't save a ballot: Close Date undefined" );
-
+            stmt = ballot.insertStoreData(stmt);
 
             queryExecution = stmt.executeUpdate();
 
             if( !ballot.isPersistent() ) {
                 if( queryExecution >= 1 ) {
-                    String sql = "select last_insert_id()";
-                    if( stmt.execute( sql ) ) { // statement returned a result
-
-                        // retrieve the result
-                        ResultSet r = stmt.getResultSet();
-
-                        // we will use only the first row!
-                        //
-                        while( r.next() ) {
-
-                            // retrieve the last insert auto_increment value
-                            ballotId = r.getInt( 1 );
-                            if( ballotId > 0 )
-                                ballot.setId( ballotId ); // set this person's db id (proxy object)
-                        }
-                    }
+                    ballot = (Ballot) setId(stmt,ballot);
                 }
                 else
                     throw new EVException( "BallotManager.save: failed to save a ballot" );
@@ -164,7 +112,7 @@ public class BallotManager {
             e.printStackTrace();
             throw new EVException( "BallotManager.save: failed to save a ballot: " + e );
         }
-
+        return ballot;
 
     }
 

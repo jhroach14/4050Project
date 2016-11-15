@@ -5,13 +5,18 @@ import main.javaSrc.Entities.BallotItem;
 import main.javaSrc.Entities.Entity;
 import main.javaSrc.helpers.EVException;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /**
  * Created by User on 11/8/2016.
  */
-public class BallotItemImpl extends EntityImpl implements BallotItem {
+public  class BallotItemImpl extends EntityImpl implements BallotItem {
 
     private int voteCount;
     private Ballot ballot;
+
+
 
     @Override
     public int getVoteCount() {
@@ -36,5 +41,15 @@ public class BallotItemImpl extends EntityImpl implements BallotItem {
     @Override
     public void setBallot(Ballot ballot) throws EVException {
         this.ballot=ballot;
+    }
+
+    @Override
+    public String getRestoreString() throws EVException {
+        return null;
+    }
+
+    @Override
+    public PreparedStatement insertStoreData(PreparedStatement stmt) throws EVException, SQLException {
+        return null;
     }
 }
