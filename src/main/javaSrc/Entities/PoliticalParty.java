@@ -11,7 +11,5 @@ public interface PoliticalParty extends Entity{
     
     
     void setName(String name);
-    
-    
-    List<Candidate> getCandidates() throws EVException;
+
 }

@@ -66,6 +66,7 @@ public class IssueManager extends Manager{
                     nextIssue.setVoteCount( voteCount );
                     nextIssue.setYesCount( yesCount );
                     nextIssue.setNoCount( noCount );
+                    nextIssue.setPersistent(true);
 
                     issues.add( nextIssue );
                 }
@@ -101,6 +102,7 @@ public class IssueManager extends Manager{
             if( !issue.isPersistent() ) {
                 if( queryExecution >= 1 ) {
                     issue = (Issue)setId(stmt,issue);
+                    issue.setPersistent(true);
                 }
                 else
                     throw new EVException( "IssueManager.save: failed to save a issue" );

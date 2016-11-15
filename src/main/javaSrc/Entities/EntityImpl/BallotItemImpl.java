@@ -14,8 +14,6 @@ import java.sql.SQLException;
 public  class BallotItemImpl extends EntityImpl implements BallotItem {
 
     private int voteCount;
-    private Ballot ballot;
-
 
 
     @Override
@@ -31,16 +29,6 @@ public  class BallotItemImpl extends EntityImpl implements BallotItem {
     @Override
     public void addVote() {
         voteCount++;
-    }
-
-    @Override
-    public Ballot getBallot() throws EVException {
-        return ballot;
-    }
-
-    @Override
-    public void setBallot(Ballot ballot) throws EVException {
-        this.ballot=ballot;
     }
 
     @Override

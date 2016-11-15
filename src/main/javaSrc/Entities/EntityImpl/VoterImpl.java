@@ -14,9 +14,7 @@ import java.util.List;
  * Created by User on 10/31/2016.
  */
 public class VoterImpl extends UserImpl implements Voter{
-    private int d;
     private int age;
-    private ElectoralDistrict electoralDistrict;
 
     public VoterImpl(String firstName, String lastName, String userName, String password, String emailAddress, String address, int age,String state, int zip, String city) {
        super(firstName,lastName,userName,password,emailAddress,address,state,zip,city);
@@ -31,7 +29,7 @@ public class VoterImpl extends UserImpl implements Voter{
     public String getRestoreString() throws EVException {
         StringBuffer query = new StringBuffer( 100 );
         StringBuffer condition = new StringBuffer( 100 );
-        String restoreStr = "select Voter_ID, District_ID, First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip from Voter";
+        String restoreStr = "select Voter_ID, First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip from Voter";
 
         condition.setLength( 0 );
         query.append( restoreStr );
@@ -40,9 +38,6 @@ public class VoterImpl extends UserImpl implements Voter{
             query.append(" where Voter_ID = " + getId());
         }
         else {
-
-            if( getElectoralDistrict().getId() >= 0 )
-                condition.append( " where District_ID = '" + getElectoralDistrict().getId() + "'" );
 
             if( getFirstName() != null ) {
                 if( condition.length() > 0 )
@@ -132,78 +127,59 @@ public class VoterImpl extends UserImpl implements Voter{
     @JsonIgnore
     @Override
     public PreparedStatement insertStoreData(PreparedStatement stmt) throws EVException, SQLException {
-        //Can be null
-        if(getElectoralDistrict()!=null) {
-            if (getElectoralDistrict().getId() >= 0)
-                stmt.setInt(1, getElectoralDistrict().getId());
-            else
-                stmt.setNull(1, java.sql.Types.INTEGER);
-        }else{
-            stmt.setNull(1, java.sql.Types.INTEGER);
-        }
 
         //Cannot be null
 
         if( getFirstName() != null )
-            stmt.setString( 2, getFirstName() );
+            stmt.setString( 1, getFirstName() );
         else
             throw new EVException( "VoterManager.save: can't save a  First Name undefined" );
 
         if( getLastName() != null )
-            stmt.setString( 3, getLastName() );
+            stmt.setString( 2, getLastName() );
         else
             throw new EVException( "VoterManager.save: can't save a  Last Name undefined" );
 
         if( getUserName() != null )
-            stmt.setString( 4, getUserName() );
+            stmt.setString( 3, getUserName() );
         else
             throw new EVException( "VoterManager.save: can't save a  Username undefined" );
 
         if( getUserPassword() != null )
-            stmt.setString( 5, getUserPassword() );
+            stmt.setString( 4, getUserPassword() );
         else
             throw new EVException( "VoterManager.save: can't save a  Password undefined" );
 
         //The rest can be null
 
         if( getEmailAddress() != null )
-            stmt.setString( 6, getEmailAddress() );
+            stmt.setString( 5, getEmailAddress() );
+        else
+            stmt.setNull( 5, java.sql.Types.VARCHAR );
+
+        if( getAddress() != null )
+            stmt.setString( 6, getAddress() );
         else
             stmt.setNull( 6, java.sql.Types.VARCHAR );
 
-        if( getAddress() != null )
-            stmt.setString( 7, getAddress() );
+        if( getCity() != null )
+            stmt.setString( 7, getCity() );
         else
             stmt.setNull( 7, java.sql.Types.VARCHAR );
 
-        if( getCity() != null )
-            stmt.setString( 8, getCity() );
-        else
-            stmt.setNull( 8, java.sql.Types.VARCHAR );
-
         if( getState() != null )
-            stmt.setString( 9, getState() );
+            stmt.setString( 8, getState() );
         else
-            stmt.setNull( 9, java.sql.Types.CHAR );
+            stmt.setNull( 8, java.sql.Types.CHAR );
 
         //Voter.getZip() returns an int, the db schema specified zip as a char array of length 5
         //I just converted the .getZip() output to a string. Could cause problems later
         if( Integer.toString(getZip()) != null )
-            stmt.setString( 10, Integer.toString(getZip()) );
+            stmt.setString( 9, Integer.toString(getZip()) );
         else
-            stmt.setNull( 10, java.sql.Types.CHAR );
+            stmt.setNull( 9, java.sql.Types.CHAR );
 
         return stmt;
-    }
-
-    @Override
-    public int getVoterId() {
-        return d;
-    }
-
-    @Override
-    public void setVoterId(int d) {
-        this.d = d;
     }
 
     @Override
@@ -216,18 +192,4 @@ public class VoterImpl extends UserImpl implements Voter{
         this.age = age;
     }
 
-    @Override
-    public ElectoralDistrict getElectoralDistrict() throws EVException {
-        return electoralDistrict;
-    }
-
-    @Override
-    public void setElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
-        this.electoralDistrict = electoralDistrict;
-    }
-
-    @Override
-    public List<VoteRecord> getBallotVoteRecords() throws EVException {
-        return null;
-    }
 }

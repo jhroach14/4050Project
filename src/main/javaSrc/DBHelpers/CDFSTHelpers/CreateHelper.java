@@ -31,7 +31,7 @@ public class CreateHelper extends CDFSTHelper {
                 case "Ballot":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), BallotImpl.class);
-                        objectLayer.createBallot(((Ballot)entity).getOpenDate(),((Ballot)entity).getCloseDate(),false,((Ballot)entity).getElectoralDistrict());
+                        objectLayer.createBallot(((Ballot)entity).getOpenDate(),((Ballot)entity).getCloseDate(),false);
                     } else {
                         entity = objectLayer.createBallot();
                     }
@@ -39,7 +39,7 @@ public class CreateHelper extends CDFSTHelper {
                 case "Candidate":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), CandidateImpl.class);
-                        objectLayer.createCandidate(((Candidate)entity).getName(),((Candidate)entity).getPoliticalParty(),((Candidate)entity).getElection());
+                        objectLayer.createCandidate(((Candidate)entity).getName());
                     } else {
                         entity = objectLayer.createCandidate();
                     }

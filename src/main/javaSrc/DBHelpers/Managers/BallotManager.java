@@ -62,6 +62,7 @@ public class BallotManager extends Manager{
                     nextBallot.setId( ballotId );
                     nextBallot.setOpenDate( startDate );
                     nextBallot.setCloseDate( closeDate );
+                    nextBallot.setPersistent(true);
 
                     ballots.add( nextBallot );
                 }
@@ -99,6 +100,7 @@ public class BallotManager extends Manager{
             if( !ballot.isPersistent() ) {
                 if( queryExecution >= 1 ) {
                     ballot = (Ballot) setId(stmt,ballot);
+                    ballot.setPersistent(true);
                 }
                 else
                     throw new EVException( "BallotManager.save: failed to save a ballot" );

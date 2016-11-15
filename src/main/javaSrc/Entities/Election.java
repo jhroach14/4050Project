@@ -20,13 +20,4 @@ public interface Election extends BallotItem {
     
     
      void setIsPartisan(boolean isPartisan);
-    
-    
-     List<Candidate> getCandidates() throws EVException;
-    
-    
-     void addCandidate(Candidate candidate) throws EVException;
-    
-    
-     void deleteCandidate(Candidate candidate) throws EVException;
 }

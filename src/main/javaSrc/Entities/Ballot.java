@@ -22,12 +22,7 @@ import java.util.List;
       void setCloseDate(Date closeDate);
     
     
-      ElectoralDistrict getElectoralDistrict() throws EVException;
-    
-    
-      void setElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException;
-    
-    
+
       List<BallotItem> getBallotItems() throws EVException;
     
     

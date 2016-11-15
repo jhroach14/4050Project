@@ -17,6 +17,8 @@ import java.sql.Date;
  * Created by User on 11/9/2016.
  */
 public class Tester {
+    
+    static ObjectMapper mapper = new ObjectMapper();
 
 
     public static void main(String[] args) {
@@ -26,180 +28,182 @@ public class Tester {
             ObjectMapper mapper = new ObjectMapper();
 
             ElectionsOfficer officer1 = new ElectionsOfficerImpl("john","smith","jsmith","1234","jsmith@com.com","123 street","GA",3000,"athens");
-            officer1.setId(2);
-            String officer1Str = mapper.writeValueAsString(officer1);
-            writeToServer("store","ElectionOfficer",officer1Str);
+            officer1=(ElectionsOfficer)stringToEntity(writeToServer("store","ElectionOfficer",entityToString(officer1)),ElectionsOfficerImpl.class);
             ElectionsOfficer officer2 = new ElectionsOfficerImpl("john2","smith2","jsmith2","12342","jsmith@com.com2","123 street2","GA",30002,"athens2");
-            officer2.setId(3);
-            String officer2Str = mapper.writeValueAsString(officer2);
-            writeToServer("store","ElectionOfficer",officer2Str);
+            officer2= (ElectionsOfficer) stringToEntity(writeToServer("store","ElectionOfficer",entityToString(officer2)),ElectionsOfficerImpl.class);
 
             ElectoralDistrictImpl electoralDistrict = new ElectoralDistrictImpl("district1");
-            electoralDistrict.setId(1);
-            String districtStr = mapper.writeValueAsString(electoralDistrict);
-            writeToServer("store","ElectoralDistrict",districtStr);
+            electoralDistrict = (ElectoralDistrictImpl) stringToEntity(writeToServer("store","ElectoralDistrict",entityToString(electoralDistrict)),ElectoralDistrictImpl.class);
 
             Voter voter1 = new VoterImpl("john3","smith3","jsmith3","12343","jsmith@com.com3","123 street3",21,"GA",30003,"athens3");
-            voter1.setId(1);
-            String voter1Str = mapper.writeValueAsString(voter1);
-            writeToServer("store","Voter",voter1Str);
+            voter1= (Voter) stringToEntity(writeToServer("store","Voter",entityToString(voter1)),VoterImpl.class);
             Voter voter2 = new VoterImpl("john4","smith4","jsmith4","12344","jsmith@com.com4","123 street4",21,"GA",30004,"athens4");
-            voter2.setId(2);
-            String voter2Str = mapper.writeValueAsString(voter2);
-            writeToServer("store","Voter",voter2Str);
+            voter2= (Voter) stringToEntity(writeToServer("store","Voter",entityToString(voter2)),VoterImpl.class);
 
-
-
-            writeToServer("store","District_Voter",districtStr+"**|**"+voter1Str);
-            writeToServer("store","District_Voter",districtStr+"**|**"+voter2Str);
+            writeToServer("store","District_Voter",entityToString(electoralDistrict)+"**|**"+entityToString(voter1));
+            writeToServer("store","District_Voter",entityToString(electoralDistrict)+"**|**"+entityToString(voter2));
 
             PoliticalParty politicalParty1 = new PoliticalPartyImpl("part1");
             politicalParty1.setId(1);
-            String party1Str = mapper.writeValueAsString(politicalParty1);
-            writeToServer("store","PoliticalParty",party1Str);
+            writeToServer("store","PoliticalParty",entityToString(politicalParty1));
             PoliticalParty politicalParty2 = new PoliticalPartyImpl("part2");
             politicalParty2.setId(2);
-            String party2Str = mapper.writeValueAsString(politicalParty2);
-            writeToServer("store","PoliticalParty",party2Str);
+            writeToServer("store","PoliticalParty",entityToString(politicalParty2));
 
             Issue issue1 = new IssueImpl("q1");
             issue1.setId(1);
-            String issue1Str = mapper.writeValueAsString(issue1);
-            writeToServer("store","Issue",issue1Str);
+            writeToServer("store","Issue",entityToString(issue1));
             Issue issue2 = new IssueImpl("q2");
             issue2.setId(2);
-            String issue2Str = mapper.writeValueAsString(issue2);
-            writeToServer("store","Issue",issue2Str);
+            writeToServer("store","Issue",entityToString(issue2));
             Issue issue3 = new IssueImpl("q3");
             issue3.setId(3);
-            String issue3Str = mapper.writeValueAsString(issue3);
-            writeToServer("store","Issue",issue3Str);
 
-            Election election1 = new ElectionImpl("office1",true,null);
+            writeToServer("store","Issue",entityToString(issue3));
+
+            Election election1 = new ElectionImpl("office1",true);
             election1.setId(1);
-            String election1Str = mapper.writeValueAsString(election1);
-            writeToServer("store","Election",election1Str);
-            Election election2 = new ElectionImpl("office2",false,null);
+
+            writeToServer("store","Election",entityToString(election1));
+            Election election2 = new ElectionImpl("office2",false);
             election2.setId(2);
-            String election2Str = mapper.writeValueAsString(election2);
-            writeToServer("store","Election",election2Str);
-            Election election3 = new ElectionImpl("office3",false,null);
+
+            writeToServer("store","Election",entityToString(election2));
+            Election election3 = new ElectionImpl("office3",false);
             election3.setId(3);
-            String election3Str = mapper.writeValueAsString(election3);
-            writeToServer("store","Election",election3Str);
 
-            Candidate candidate1 = new CandidateImpl("cantidate1",null,null);
+            writeToServer("store","Election",entityToString(election3));
+
+            Candidate candidate1 = new CandidateImpl("cantidate1");
             candidate1.setId(1);
-            String candidate1Str =mapper.writeValueAsString(candidate1);
-            writeToServer("store","Candidate",candidate1Str);
-            Candidate candidate2 = new CandidateImpl("cantidate2",null,null);
+
+            writeToServer("store","Candidate",entityToString(candidate1));
+            Candidate candidate2 = new CandidateImpl("cantidate2");
             candidate2.setId(2);
-            String candidate2Str =mapper.writeValueAsString(candidate2);
-            writeToServer("store","Candidate",candidate2Str);
-            Candidate candidate3 = new CandidateImpl("cantidat3",null,null);
+
+            writeToServer("store","Candidate",entityToString(candidate2));
+            Candidate candidate3 = new CandidateImpl("cantidat3");
             candidate3.setId(3);
-            String candidate3Str =mapper.writeValueAsString(candidate3);
-            writeToServer("store","Candidate",candidate3Str);
 
-            writeToServer("store","Party_Candidate",party1Str+"**|**"+candidate1Str);
-            writeToServer("store","Party_Candidate",party2Str+"**|**"+candidate2Str);
+            writeToServer("store","Candidate",entityToString(candidate3));
 
-            writeToServer("store", "Election_Candidate",election1Str+"**|**"+candidate1Str);
-            writeToServer("store", "Election_Candidate",election1Str+"**|**"+candidate2Str);
-            writeToServer("store", "Election_Candidate",election1Str+"**|**"+candidate3Str);
-            writeToServer("store", "Election_Candidate",election2Str+"**|**"+candidate1Str);
-            writeToServer("store", "Election_Candidate",election2Str+"**|**"+candidate2Str);
-            writeToServer("store", "Election_Candidate",election2Str+"**|**"+candidate3Str);
-            writeToServer("store", "Election_Candidate",election3Str+"**|**"+candidate1Str);
-            writeToServer("store", "Election_Candidate",election3Str+"**|**"+candidate2Str);
-            writeToServer("store", "Election_Candidate",election3Str+"**|**"+candidate3Str);
+            writeToServer("store","Party_Candidate",entityToString(politicalParty1)+"**|**"+entityToString(candidate1));
+            writeToServer("store","Party_Candidate",entityToString(politicalParty2)+"**|**"+entityToString(candidate2));
+
+            writeToServer("store", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate1));
+            writeToServer("store", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate2));
+            writeToServer("store", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate3));
+            writeToServer("store", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate1));
+            writeToServer("store", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate2));
+            writeToServer("store", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate3));
+            writeToServer("store", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate1));
+            writeToServer("store", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate2));
+            writeToServer("store", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate3));
 
             long num = 123123;
             java.sql.Date date = new Date(num);
-            Ballot ballot1 = new BallotImpl(date,date,false,null);
+            Ballot ballot1 = new BallotImpl(date,date,false);
             ballot1.setId(1);
-            String ballot1Str = mapper.writeValueAsString(ballot1);
-            writeToServer("store","Ballot",ballot1Str);
-            Ballot ballot2 = new BallotImpl(date,date,false,null);
+
+            writeToServer("store","Ballot",entityToString(ballot1));
+            Ballot ballot2 = new BallotImpl(date,date,false);
             ballot2.setId(2);
-            String ballot2Str = mapper.writeValueAsString(ballot1);
-            writeToServer("store","Ballot",ballot2Str);
 
-            writeToServer("store","Ballot_Election",ballot1Str+"**|**"+election1Str);
-            writeToServer("store","Ballot_Election",ballot1Str+"**|**"+election2Str);
-            writeToServer("store","Ballot_Election",ballot1Str+"**|**"+election3Str);
+            writeToServer("store","Ballot",entityToString(ballot2));
 
-            writeToServer("store","Ballot_Issue",ballot1Str+"**|**"+issue1Str);
-            writeToServer("store","Ballot_Issue",ballot1Str+"**|**"+issue2Str);
-            writeToServer("store","Ballot_Issue",ballot1Str+"**|**"+issue3Str);
+            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election1));
+            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election2));
+            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election3));
+
+            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue1));
+            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue2));
+            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue3));
 
             VoterRecordImpl voteRecord1 = new VoterRecordImpl(date,voter1,ballot1);
-            String voteRecord1Str = mapper.writeValueAsString(voteRecord1);
+
             VoterRecordImpl voteRecord2 = new VoterRecordImpl(date,voter2,ballot2);
-            String voteRecord2Str = mapper.writeValueAsString(voteRecord2);
-            writeToServer("store","VoterRecord",voteRecord1Str);
-            writeToServer("store","VoterRecord",voteRecord2Str);
 
-            writeToServer("delete","VoterRecord",voteRecord1Str);
-            writeToServer("delete","VoterRecord",voteRecord2Str);
+            writeToServer("store","VoterRecord",entityToString(voteRecord1));
+            writeToServer("store","VoterRecord",entityToString(voteRecord2));
+
+            writeToServer("delete","VoterRecord",entityToString(voteRecord1));
+            writeToServer("delete","VoterRecord",entityToString(voteRecord2));
 
 
-            writeToServer("delete","Ballot_Election",ballot1Str+"**|**"+election1Str);
-            writeToServer("delete","Ballot_Election",ballot1Str+"**|**"+election2Str);
-            writeToServer("delete","Ballot_Election",ballot1Str+"**|**"+election3Str);
+            writeToServer("delete","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election1));
+            writeToServer("delete","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election2));
+            writeToServer("delete","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election3));
 
-            writeToServer("delete","Ballot_Issue",ballot1Str+"**|**"+issue1Str);
-            writeToServer("delete","Ballot_Issue",ballot1Str+"**|**"+issue2Str);
-            writeToServer("delete","Ballot_Issue",ballot1Str+"**|**"+issue3Str);
+            writeToServer("delete","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue1));
+            writeToServer("delete","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue2));
+            writeToServer("delete","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue3));
 
-            writeToServer("delete","Ballot",ballot2Str);
-            writeToServer("delete","Ballot",ballot1Str);
+            writeToServer("delete","Ballot",entityToString(ballot2));
+            writeToServer("delete","Ballot",entityToString(ballot1));
 
-            writeToServer("delete","Candidate",candidate3Str);
+            writeToServer("delete","Candidate",entityToString(candidate3));
 
-            writeToServer("delete","Party_Candidate",party1Str+"**|**"+candidate1Str);
-            writeToServer("delete","Party_Candidate",party2Str+"**|**"+candidate2Str);
+            writeToServer("delete","Party_Candidate",entityToString(politicalParty1)+"**|**"+entityToString(candidate1));
+            writeToServer("delete","Party_Candidate",entityToString(politicalParty2)+"**|**"+entityToString(candidate2));
 
-            writeToServer("delete", "Election_Candidate",election1Str+"**|**"+candidate1Str);
-            writeToServer("delete", "Election_Candidate",election1Str+"**|**"+candidate2Str);
-            writeToServer("delete", "Election_Candidate",election1Str+"**|**"+candidate3Str);
-            writeToServer("delete", "Election_Candidate",election2Str+"**|**"+candidate1Str);
-            writeToServer("delete", "Election_Candidate",election2Str+"**|**"+candidate2Str);
-            writeToServer("delete", "Election_Candidate",election2Str+"**|**"+candidate3Str);
-            writeToServer("delete", "Election_Candidate",election3Str+"**|**"+candidate1Str);
-            writeToServer("delete", "Election_Candidate",election3Str+"**|**"+candidate2Str);
-            writeToServer("delete", "Election_Candidate",election3Str+"**|**"+candidate3Str);
+            writeToServer("delete", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate1));
+            writeToServer("delete", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate2));
+            writeToServer("delete", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate3));
+            writeToServer("delete", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate1));
+            writeToServer("delete", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate2));
+            writeToServer("delete", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate3));
+            writeToServer("delete", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate1));
+            writeToServer("delete", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate2));
+            writeToServer("delete", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate3));
 
-            writeToServer("delete","Candidate",candidate1Str);
+            writeToServer("delete","Candidate",entityToString(candidate1));
 
-            writeToServer("delete","Election",election1Str);
-            writeToServer("delete","Election",election2Str);
-            writeToServer("delete","Election",election3Str);
+            writeToServer("delete","Election",entityToString(election1));
+            writeToServer("delete","Election",entityToString(election2));
+            writeToServer("delete","Election",entityToString(election3));
 
-            writeToServer("delete","Issue",issue1Str);
-            writeToServer("delete","Issue",issue2Str);
-            writeToServer("delete","Issue",issue3Str);
+            writeToServer("delete","Issue",entityToString(issue1));
+            writeToServer("delete","Issue",entityToString(issue2));
+            writeToServer("delete","Issue",entityToString(issue3));
 
-            writeToServer("delete","PoliticalParty",party1Str);
-            writeToServer("delete","PoliticalParty",party2Str);
+            writeToServer("delete","PoliticalParty",entityToString(politicalParty1));
+            writeToServer("delete","PoliticalParty",entityToString(politicalParty2));
 
-            writeToServer("delete","District_Voter",districtStr+"**|**"+voter1Str);
-            writeToServer("delete","District_Voter",districtStr+"**|**"+voter2Str);
+            writeToServer("delete","District_Voter",entityToString(electoralDistrict)+"**|**"+entityToString(voter1));
+            writeToServer("delete","District_Voter",entityToString(electoralDistrict)+"**|**"+entityToString(voter2));
 
-            writeToServer("delete","Voter",voter2Str);
-            writeToServer("delete","Voter",voter1Str);
+            writeToServer("delete","Voter",entityToString(voter2));
+            writeToServer("delete","Voter",entityToString(voter1));
 
-            writeToServer("delete","ElectoralDistrict",districtStr);
+            writeToServer("delete","ElectoralDistrict",entityToString(electoralDistrict));
 
-            writeToServer("store","ElectionOfficer",officer1Str);
-            writeToServer("store","ElectionOfficer",officer2Str);
+            writeToServer("store","ElectionOfficer",entityToString(officer1));
+            writeToServer("store","ElectionOfficer",entityToString(officer2));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void writeToServer(String action, String objectType, String content){
+    public static Entity stringToEntity(String entityStr,Class cls){
+        try {
+            return (Entity) mapper.readValue(entityStr,cls);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static String entityToString(Entity entity){
+        try {
+            return mapper.writeValueAsString(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
+    }
+
+    public static String writeToServer(String action, String objectType, String content){
         try {
 
             String httpURL = "http://localhost:9001/data/" + action + "/" + objectType+"?token=testToken123&sourced=true";
@@ -220,18 +224,22 @@ public class Tester {
 
             DataInputStream input = new DataInputStream(con.getInputStream());
 
-
-            for (int c = input.read(); c != -1; c = input.read())
-                System.out.print((char) c);
+            String object="";
+            for (int c = input.read(); c != -1; c = input.read()) {
+                object += ((char) c);
+            }
             input.close();
 
+            System.out.println(object);
             System.out.println("Resp Code:" + con.getResponseCode());
             System.out.println("Resp Message:" + con.getResponseMessage());
+            return object.substring(1,object.length()-1);
         }catch (Exception e){
             System.out.println(e.toString());
+            return e.getMessage();
         }
     }
-    static {
+    /*static {
         //for localhost testing only
         javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
                 new javax.net.ssl.HostnameVerifier(){
@@ -244,5 +252,5 @@ public class Tester {
                         return false;
                     }
                 });
-    }
+    }*/
 }

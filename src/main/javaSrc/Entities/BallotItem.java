@@ -14,10 +14,5 @@ public interface BallotItem extends Entity{
 
     
      void addVote();
-    
-    
-     Ballot getBallot() throws EVException;
-    
-    
-     void setBallot(Ballot ballot) throws EVException;
+
 }

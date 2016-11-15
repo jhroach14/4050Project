@@ -14,7 +14,6 @@ import java.util.List;
  */
 public class PoliticalPartyImpl extends EntityImpl implements PoliticalParty {
     String name;
-    List<Candidate> candidates;
 
     public PoliticalPartyImpl(String name) {
         this.name = name;
@@ -69,11 +68,6 @@ public class PoliticalPartyImpl extends EntityImpl implements PoliticalParty {
     @Override
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public List<Candidate> getCandidates() throws EVException {
-        return candidates;
     }
 
 }

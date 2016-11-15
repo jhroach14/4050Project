@@ -12,16 +12,5 @@ public interface ElectoralDistrict extends Entity{
     
     
     void setName(String name);
-    
-    
-    List<Voter> getVoters() throws EVException;
-        
-    
-    List<Ballot> getBallots() throws EVException;
-    
-    
-    void addBallot(Ballot ballot) throws EVException;
-    
-    
-    void deleteBallot(Ballot ballot) throws EVException;
+
 }

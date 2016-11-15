@@ -15,14 +15,10 @@ import java.sql.SQLException;
 public class CandidateImpl extends EntityImpl implements Candidate {
 
     private String name;
-    private PoliticalParty politicalParty;
-    private Election election;
     private  int voteCount;
 
-    public CandidateImpl(String name, PoliticalParty politicalParty, Election election) {
+    public CandidateImpl(String name) {
         this.name=name;
-        this.politicalParty = politicalParty;
-        this.election = election;
     }
 
     public CandidateImpl() {
@@ -34,7 +30,7 @@ public class CandidateImpl extends EntityImpl implements Candidate {
     public String getRestoreString() throws EVException {
         StringBuffer query = new StringBuffer( 100 );
         StringBuffer condition = new StringBuffer( 100 );
-        String restoreStr = "select Candidate_ID, Candidate_Name, Party_ID, Vote_Count from Candidate";
+        String restoreStr = "select Candidate_ID, Candidate_Name, Vote_Count from Candidate";
 
         condition.setLength( 0 );
         query.append( restoreStr );
@@ -46,15 +42,6 @@ public class CandidateImpl extends EntityImpl implements Candidate {
 
             if( getName() != null )
                 condition.append( " where Candidate_Name = '" + getName() + "'" );
-
-
-            if( getPoliticalParty().getId() >= 0){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " Party_ID = '" + getPoliticalParty().getId() + "'" );
-            }
 
             if( getVoteCount() >= 0){
                 if( condition.length() > 0 )
@@ -83,19 +70,11 @@ public class CandidateImpl extends EntityImpl implements Candidate {
 
 
         //The rest can be null
-        if(getPoliticalParty()!=null){
-            if( getPoliticalParty().getId() >= 0 )
-                stmt.setInt( 2, getPoliticalParty().getId() );
-            else
-                stmt.setNull( 2, java.sql.Types.INTEGER );
-        }else{
-            stmt.setNull( 2, java.sql.Types.INTEGER );
-        }
 
         if( getVoteCount() >= 0 )
-            stmt.setInt( 3, getVoteCount() );
+            stmt.setInt( 2, getVoteCount() );
         else
-            stmt.setNull( 3, java.sql.Types.INTEGER );
+            stmt.setNull( 2, java.sql.Types.INTEGER );
         
         return stmt;
     }
@@ -125,23 +104,4 @@ public class CandidateImpl extends EntityImpl implements Candidate {
         voteCount++;
     }
 
-    @Override
-    public Election getElection() throws EVException {
-        return election;
-    }
-
-    @Override
-    public void setElection(Election election) throws EVException {
-        this.election = election;
-    }
-
-    @Override
-    public PoliticalParty getPoliticalParty() throws EVException {
-        return politicalParty;
-    }
-
-    @Override
-    public void setPoliticalParty(PoliticalParty politicalParty) throws EVException {
-        this.politicalParty = politicalParty;
-    }
 }

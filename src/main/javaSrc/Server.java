@@ -18,7 +18,7 @@ import java.security.KeyStore;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-//server class built around HttpsServer
+//server class built around HttpServer
 public class Server {
 
     private static Logger log = new Logger(Server.class);
@@ -54,7 +54,6 @@ public class Server {
         indexHandler = new IndexHandler(authService);
         dataHandler = new DataHandler(authService);
         authHandler = new AuthHandler(authService);
-
 
         server.createContext("/", indexHandler);
         server.createContext("/data",dataHandler);  //bind handlers

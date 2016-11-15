@@ -30,11 +30,9 @@ CREATE TABLE Candidate (
  Candidate_ID INT AUTO_INCREMENT NOT NULL,
  Candidate_Name VARCHAR(100) NOT NULL,
  Is_Alternate BOOLEAN,
- Party_ID INT,
  Vote_Count INT,
 
- PRIMARY KEY(Candidate_ID),
- FOREIGN KEY(Party_ID) REFERENCES Party(Party_ID)
+ PRIMARY KEY(Candidate_ID)
 );
 
 /*Done.*/
@@ -58,14 +56,12 @@ CREATE TABLE Ballot (
 /*Done.*/
 CREATE TABLE Election (
  Election_ID INT AUTO_INCREMENT NOT NULL,
- District_ID INT,
  Office_Name VARCHAR(100) NOT NULL,
  Is_Partisan BOOLEAN NOT NULL,
  Alternate_Allowed BOOLEAN,
  Vote_Count INT,
 
- PRIMARY KEY(Election_ID),
- FOREIGN KEY(District_ID) REFERENCES District(District_ID)
+ PRIMARY KEY(Election_ID)
 
 );
 
@@ -90,7 +86,6 @@ CREATE TABLE Ballot_Elections (
 /*Done.*/
 CREATE TABLE Voter (
  Voter_ID INT AUTO_INCREMENT NOT NULL,
- District_ID INT,
  First_Name VARCHAR(100) NOT NULL,
  Last_Name VARCHAR(100) NOT NULL,
  Username VARCHAR(100) NOT NULL,
@@ -101,8 +96,7 @@ CREATE TABLE Voter (
  State CHAR(2),
  Zip CHAR(5),
 
-  PRIMARY KEY(Voter_ID),
-  FOREIGN KEY(District_ID) REFERENCES District(District_ID)
+  PRIMARY KEY(Voter_ID)
 );
 
 /*Done.*/
@@ -126,8 +120,7 @@ CREATE TABLE Issue (
  Yes_Count INT,
  No_Count INT,
 
- PRIMARY KEY(Issue_ID),
- FOREIGN KEY(District_ID) REFERENCES District(District_ID)
+ PRIMARY KEY(Issue_ID)
 );
 
 /* To create a many-to-many relationship between ballot and issues*/

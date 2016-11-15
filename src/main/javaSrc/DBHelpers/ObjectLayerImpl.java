@@ -136,8 +136,8 @@ public class ObjectLayerImpl implements ObjectLayer {
     }
 
     @Override
-    public Ballot createBallot(Date openDate, Date closeDate, boolean approved, ElectoralDistrict electoralDistrict) throws EVException {
-        Ballot ballot = new BallotImpl(openDate, closeDate, approved, (ElectoralDistrictImpl) electoralDistrict);
+    public Ballot createBallot(Date openDate, Date closeDate, boolean approved) throws EVException {
+        Ballot ballot = new BallotImpl(openDate, closeDate, approved);
         return ballot;
     }
 
@@ -163,8 +163,8 @@ public class ObjectLayerImpl implements ObjectLayer {
     }
 
     @Override
-    public Candidate createCandidate(String name, PoliticalParty politicalParty, Election election) throws EVException {
-        Candidate candidate = new CandidateImpl(name, politicalParty, election);
+    public Candidate createCandidate(String name) throws EVException {
+        Candidate candidate = new CandidateImpl(name);
         return candidate;
     }
 
@@ -216,7 +216,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public Election createElection(String office, boolean isPartisan) throws EVException {
-        Election election = new ElectionImpl(office, isPartisan,null);
+        Election election = new ElectionImpl(office, isPartisan);
         return election;
     }
 
@@ -312,6 +312,16 @@ public class ObjectLayerImpl implements ObjectLayer {
     }
 
     @Override
+    public List<Ballot> getBallots(ElectoralDistrict district) throws EVException {
+        return persistenceLayer.restoreElectoralDistrictHasBallotBallot(district);
+    }
+
+    @Override
+    public ElectoralDistrict getDistrict(Ballot ballot) throws EVException {
+        return persistenceLayer.restoreElectoralDistrictHasBallotBallot(ballot);
+    }
+
+    @Override
     public void deleteLink(ElectoralDistrict electoralDistrict, Voter voter) throws EVException {
         persistenceLayer.deleteVoterBelongsToElection(voter,electoralDistrict);
     }
@@ -322,6 +332,16 @@ public class ObjectLayerImpl implements ObjectLayer {
     }
 
     @Override
+    public List<Candidate> getCandidates(PoliticalParty politicalParty) throws EVException {
+        return persistenceLayer.restoreCandidateIsMemberOfPoliticalParty(politicalParty);
+    }
+
+    @Override
+    public PoliticalParty getParty(Candidate candidate) throws EVException {
+        return persistenceLayer.restoreCandidateIsMemberOfPoliticalParty(candidate);
+    }
+
+    @Override
     public void createLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException {
         persistenceLayer.storeElectoralDistrictHasBallotBallot(electoralDistrict,ballot);
     }
@@ -329,6 +349,16 @@ public class ObjectLayerImpl implements ObjectLayer {
     @Override
     public void createLink(ElectoralDistrict electoralDistrict, Voter voter) throws EVException {
         persistenceLayer.storeVoterBelongsToElectoralDistrict(voter,electoralDistrict);
+    }
+
+    @Override
+    public List<Voter> getVoters(ElectoralDistrict district) throws EVException {
+        return persistenceLayer.restoreVoterBelongsToElectoralDistrict(district);
+    }
+
+    @Override
+    public ElectoralDistrict getDistrict(Voter voter) throws EVException {
+        return persistenceLayer.restoreVoterBelongsToElectoralDistrict(voter);
     }
 
     @Override

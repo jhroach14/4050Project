@@ -16,12 +16,10 @@ public class ElectionImpl extends BallotItemImpl implements Election{
 
     private String office;
     private boolean isPartisan;
-    private List<Candidate> candidates;
 
-    public ElectionImpl(String office, boolean isPartisan, List<Candidate> candidates) {
+    public ElectionImpl(String office, boolean isPartisan) {
         this.office = office;
         this.isPartisan = isPartisan;
-        this.candidates = candidates;
     }
 
     public ElectionImpl(){
@@ -33,7 +31,7 @@ public class ElectionImpl extends BallotItemImpl implements Election{
     public String getRestoreString() throws EVException {
         StringBuffer query = new StringBuffer( 100 );
         StringBuffer condition = new StringBuffer( 100 );
-        String restoreStr = "select Election_ID, Office_Name, Is_Partisan, Vote_Count from Election";
+        String restoreStr = "select Election_ID, District_ID, Office_Name, Is_Partisan, Vote_Count from Election";
 
         condition.setLength( 0 );
         query.append( restoreStr );
@@ -116,18 +114,4 @@ public class ElectionImpl extends BallotItemImpl implements Election{
         this.isPartisan=isPartisan;
     }
 
-    @Override
-    public List<Candidate> getCandidates() throws EVException {
-        return candidates;
-    }
-
-    @Override
-    public void addCandidate(Candidate candidate) throws EVException {
-            candidates.add(candidate);
-    }
-
-    @Override
-    public void deleteCandidate(Candidate candidate) throws EVException {
-            candidates.remove(candidate);
-    }
 }

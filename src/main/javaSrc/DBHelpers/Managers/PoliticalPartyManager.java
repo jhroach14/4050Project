@@ -56,6 +56,7 @@ public class PoliticalPartyManager extends Manager{
                     // and now set its retrieved attributes
                     nextPoliticalParty.setId( politicalPartyId );
                     nextPoliticalParty.setName( name );
+                    nextPoliticalParty.setPersistent(true);
 
                     politicalParties.add( nextPoliticalParty );
                 }
@@ -92,6 +93,7 @@ public class PoliticalPartyManager extends Manager{
             if( !politicalParty.isPersistent() ) {
                 if( queryExecution >= 1 ) {
                     politicalParty = (PoliticalParty)setId(stmt,politicalParty);
+                    politicalParty.setPersistent(true);
                 }
                 else
                     throw new EVException( "PoliticalPartyManager.save: failed to save a politicalParty" );

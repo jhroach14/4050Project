@@ -63,6 +63,7 @@ public class ElectionManager extends Manager{
                     nextElection.setOffice( officeName );
                     nextElection.setIsPartisan( isPartisan );
                     nextElection.setVoteCount( voteCount );
+                    nextElection.setPersistent(true);
 
                     elections.add( nextElection );
                 }
@@ -100,6 +101,7 @@ public class ElectionManager extends Manager{
             if( !election.isPersistent() ) {
                 if( queryExecution >= 1 ) {
                    election = (Election) setId(stmt,election);
+                    election.setPersistent(true);
                 }
                 else
                     throw new EVException( "ElectionManager.save: failed to save a election" );

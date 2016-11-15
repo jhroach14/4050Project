@@ -22,15 +22,4 @@ public interface Candidate extends Entity{
     
     void addVote();
 
-    
-    Election getElection() throws EVException;
-    
-    
-    void setElection(Election election) throws EVException;
-    
-    
-    PoliticalParty getPoliticalParty() throws EVException;
-    
-    
-    void setPoliticalParty(PoliticalParty politicalParty) throws EVException;
 }

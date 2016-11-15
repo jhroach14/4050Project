@@ -65,20 +65,19 @@ public class VoteRecordManager extends Manager{
 
                     //Check VoterManager or CandidateManager for an explanation
                     if(voterId >= 0) {
-                        Voter v = new VoterImpl();
-                        v.setId(voterId);
-                        Voter voterToSet = objectLayer.findVoter( v ).get(0);
+                        Voter voterToSet = objectLayer.createVoter();
+                        voterToSet.setId(voterId);
                         if(voterToSet != null)
                             nextVoteRecord.setVoter(voterToSet);
                     }
 
                     if(ballotId >= 0) {
-                        Ballot b = new BallotImpl();
-                        b.setId(ballotId);
-                        Ballot ballotToSet = objectLayer.findBallot( b ).get(0);
+                        Ballot ballotToSet = objectLayer.createBallot();
+                        ballotToSet.setId(ballotId);
                         if(ballotToSet != null)
                             nextVoteRecord.setBallot(ballotToSet);
                     }
+                    nextVoteRecord.setPersistent(true);
 
 
                     voteRecords.add( nextVoteRecord );
@@ -118,6 +117,7 @@ public class VoteRecordManager extends Manager{
 
                 if( queryExecution >= 1 ) {
                     voteRecord = (VoteRecord) setId(stmt,voteRecord);
+                    voteRecord.setPersistent(true);
                 }
                 else
                     throw new EVException( "VoteRecordManager.save: failed to save a voteRecord" );

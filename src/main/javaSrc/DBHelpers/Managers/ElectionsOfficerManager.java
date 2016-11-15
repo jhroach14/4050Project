@@ -80,6 +80,7 @@ public class ElectionsOfficerManager extends Manager{
                     nextElectionsOfficer.setState( state );
                     nextElectionsOfficer.setCity( city );
                     nextElectionsOfficer.setZip( Integer.parseInt(zip) );
+                    nextElectionsOfficer.setPersistent(true);
 
                     electionsOfficers.add( nextElectionsOfficer );
                 }
@@ -116,6 +117,7 @@ public class ElectionsOfficerManager extends Manager{
             if( !electionsOfficer.isPersistent() ) {
                 if( queryExecution >= 1 ) {
                    electionsOfficer = (ElectionsOfficer)setId(stmt,electionsOfficer);
+                    electionsOfficer.setPersistent(true);
                 }
                 else
                     throw new EVException( "ElectionsOfficerManager.save: failed to save a electionsOfficer" );

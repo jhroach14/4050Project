@@ -80,7 +80,7 @@ public class VoterRecordImpl extends EntityImpl implements VoteRecord {
         else
             throw new EVException( "VoteRecordManager.save: can't save a  Date undefined" );
 
-        if( getVoter().getVoterId() >= 0 )
+        if( getVoter().getId() >= 0 )
             stmt.setInt( 2, getVoter().getId() );
         else
             throw new EVException( "VoteRecordManager.save: can't save a  Voter_ID undefined" );

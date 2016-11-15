@@ -27,7 +27,19 @@ public class District_VoterManager {
     }
 
     public void store(Voter voter, ElectoralDistrict electoralDistrict) {
+
+       /* try {
+            if(voter.getElectoralDistrict()!=null){
+                ElectoralDistrict district = objectLayer.createElectoralDistrict();
+                district.setId(voter.getElectoralDistrict().getId());
+                delete(voter,district);
+            }
+        } catch (EVException e) {
+            e.printStackTrace();
+        }*/
+
         String insertVoter_electoralDistrict = "insert into District_Voters (District_ID, Voter_ID) values (?, ?)";
+
         PreparedStatement stmt = null;
         int queryExecution;
 
@@ -49,11 +61,17 @@ public class District_VoterManager {
             if(queryExecution < 1)
                 throw new EVException("Voter_electoralManager.save failed to save voter");
 
+            String updateVoter = "update Voter set District_ID = ?;";
+
+            stmt.setInt(1,electoralDistrict.getId());
+
         }
         catch(Exception e){
             e.printStackTrace();
             //throw new EVException("Voter_electoralManager.store failed to save a voter" +e);
         }
+
+
     }
 
     public ElectoralDistrict restore(Voter voter) throws EVException {

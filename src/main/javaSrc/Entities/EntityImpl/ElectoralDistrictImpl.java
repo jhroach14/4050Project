@@ -16,8 +16,6 @@ import java.util.List;
 public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistrict {
 
     private String name;
-    private List<Voter> voters;
-    private List<Ballot> ballots;
 
     public ElectoralDistrictImpl(String name) {
         this.name = name;
@@ -73,26 +71,6 @@ public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistri
     @Override
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public List<Voter> getVoters() throws EVException {
-        return voters;
-    }
-
-    @Override
-    public List<Ballot> getBallots() throws EVException {
-        return ballots;
-    }
-
-    @Override
-    public void addBallot(Ballot ballot) throws EVException {
-        ballots.add(ballot);
-    }
-
-    @Override
-    public void deleteBallot(Ballot ballot) throws EVException {
-        ballots.remove(ballot);
     }
 
 

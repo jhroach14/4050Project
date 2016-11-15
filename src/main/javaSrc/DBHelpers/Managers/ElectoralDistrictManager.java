@@ -57,6 +57,7 @@ public class ElectoralDistrictManager extends Manager{
                     // and now set its retrieved attributes
                     nextElectoralDistrict.setId( electoralDistrictId );
                     nextElectoralDistrict.setName( name );
+                    nextElectoralDistrict.setPersistent(true);
 
                     electoralDistricts.add( nextElectoralDistrict );
                 }
@@ -94,6 +95,7 @@ public class ElectoralDistrictManager extends Manager{
             if( !electoralDistrict.isPersistent() ) {
                 if( queryExecution >= 1 ) {
                     electoralDistrict = (ElectoralDistrict)setId(stmt,electoralDistrict);
+                    electoralDistrict.setPersistent(true);
                 }
                 else
                     throw new EVException( "ElectoralDistrictManager.save: failed to save a electoralDistrict" );
@@ -110,100 +112,6 @@ public class ElectoralDistrictManager extends Manager{
 
         return electoralDistrict;
     }
-
-    //needs work to be done
-    public void store(ElectoralDistrict electoralDistrict, Ballot ballot)throws EVException{
-        String insertDistrictsBallot = "insert into Ballot (Start_Date, End_Date, District_ID) values ( ?, ?, ?)";
-        String updateDistrictBallot = "update Ballot set Start_Date = ?, End_Date = ?, District_ID = ?";
-        PreparedStatement stmt = null;
-        int queryExecution;
-        int ballotID;
-
-        try {
-
-            if( !ballot.isPersistent() )
-                stmt = conn.prepareStatement( insertDistrictsBallot );
-            else
-                stmt = conn.prepareStatement( updateDistrictBallot );
-
-            if( ballot.getOpenDate() != null )
-                stmt.setDate( 1, (Date)ballot.getOpenDate());
-            else
-                throw new EVException( "ElectoralDistrictManager.save: can't save a ballot: Start Date undefined" );
-
-            if( ballot.getCloseDate() != null )
-                stmt.setDate( 2, (Date)ballot.getCloseDate() );
-            else
-                throw new EVException( "ElectoralDistrictManager.save: can't save a ballot: Close Date undefined" );
-
-            if(electoralDistrict.getId() !=0)
-                stmt.setInt(3, electoralDistrict.getId());
-            else
-                throw new EVException( "ElectoralDistrictManager.save: can't save a ballot: ElectoralDistrict_ID undefined" );
-
-
-            queryExecution = stmt.executeUpdate();
-
-            if( !ballot.isPersistent() ) {
-                if( queryExecution >= 1 ) {
-                    String sql = "select last_insert_id()";
-                    if( stmt.execute( sql ) ) {
-                        ResultSet r = stmt.getResultSet();
-
-                        while( r.next() ) {
-                            ballotID = r.getInt( 1 );
-                            if( ballotID > 0 )
-                                ballot.setId( ballotID ); // set this person's db id (proxy object)
-                        }
-                    }
-                }
-                else
-                    throw new EVException( "ElectoralDistrictManager.save: failed to save a electoralDistrict" );
-            }
-            else {
-                if( queryExecution < 1 )
-                    throw new EVException( "ElectoralDistrictManager.save: failed to save a electoralDistrict" );
-            }
-        }
-        catch( SQLException e ) {
-            e.printStackTrace();
-            throw new EVException( "ElectoralDistrictManager.save: failed to save a electoralDistrict: " + e );
-        }
-
-    }
-
-    //needs work still
-    public ElectoralDistrict restoreElectoralDistrict (Ballot ballot) throws EVException{
-        return null;
-    }
-
-    //still needs work
-    public List<Ballot> restoreBallot (ElectoralDistrict electoralDistrict) throws EVException{
-        return null;
-    }
-
-
-    public void delete(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException{
-        String               deleteElectoralDistrict = "delete from Ballot where District_ID = ?";
-        PreparedStatement    stmt = null;
-        int                  queryExecution;
-
-        try{
-            stmt = conn.prepareStatement( deleteElectoralDistrict );
-            if(electoralDistrict.getId() >0)
-                stmt.setInt(1, electoralDistrict.getId());
-            else
-                throw new EVException("ElectoralDistrictManager.delete failed to delete electoralDistrict");
-            queryExecution = stmt.executeUpdate();
-            if(queryExecution != 1)
-                throw new EVException("ElectoralDistrictManager.delete failed to delete");
-        }
-        catch( SQLException e ) {
-            e.printStackTrace();
-            throw new EVException( "ElectoralDistrictManger.delete: failed to delete a ElectoralDistrict: " + e );
-        }
-    }
-
 
     public void delete(ElectoralDistrict electoralDistrict) throws EVException {
 

@@ -73,7 +73,7 @@ public interface ObjectLayer {
     public void deleteElectoralDistrict( ElectoralDistrict electoralDistrict ) throws EVException;
 
     
-    public Ballot createBallot(Date openDate, Date closeDate, boolean approved, ElectoralDistrict electoralDistrict ) throws EVException;
+    public Ballot createBallot(Date openDate, Date closeDate, boolean approved) throws EVException;
 
     
     public Ballot createBallot();
@@ -88,7 +88,7 @@ public interface ObjectLayer {
     public void deleteBallot( Ballot ballot ) throws EVException;
 
     
-    public Candidate createCandidate( String name, PoliticalParty politicalParty, Election election ) throws EVException;
+    public Candidate createCandidate( String name) throws EVException;
 
     
     public Candidate createCandidate();
@@ -163,17 +163,19 @@ public interface ObjectLayer {
 
     public void deleteLink(Candidate candidate, Election election)throws EVException;
 
-
+    void createLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException;
     void deleteLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException;
+    List<Ballot> getBallots(ElectoralDistrict district)throws EVException;
+    ElectoralDistrict getDistrict(Ballot ballot)throws EVException;
 
+    void createLink(ElectoralDistrict electoralDistrict, Voter voter) throws EVException;
+    List<Voter> getVoters(ElectoralDistrict district)throws EVException;
+    ElectoralDistrict getDistrict(Voter voter)throws EVException;
     void deleteLink(ElectoralDistrict electoralDistrict, Voter voter) throws EVException;
 
     void deleteLink(PoliticalParty party, Candidate candidate) throws EVException;
-
-    void createLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException;
-
-    void createLink(ElectoralDistrict electoralDistrict, Voter voter) throws EVException;
-
+    List<Candidate> getCandidates(PoliticalParty politicalParty) throws EVException;
+    PoliticalParty getParty(Candidate candidate) throws EVException;
     void createLink(PoliticalParty party, Candidate candidate) throws EVException;
 
     VoteRecord createVoterRecord();

@@ -42,7 +42,6 @@ public class VoterManager extends Manager{
             if( stmt.execute( query) ) { // statement returned a result
 
                 int voterId;
-                int districtId;
                 String firstName;
                 String lastName;
                 String userName;
@@ -60,33 +59,19 @@ public class VoterManager extends Manager{
                 while( rs.next() ) {
 
                     voterId = rs.getInt( 1 );
-                    districtId = rs.getInt( 2 );
-                    firstName = rs.getString( 3 );
-                    lastName = rs.getString( 4 );
-                    userName = rs.getString( 5 );
-                    userPassword = rs.getString( 6 );
-                    emailAddress = rs.getString( 7 );
-                    address = rs.getString( 8 );
-                    state = rs.getString( 9 );
-                    city = rs.getString( 10 );
-                    zip = rs.getString( 11 );
+                    firstName = rs.getString( 2 );
+                    lastName = rs.getString( 3 );
+                    userName = rs.getString( 4 );
+                    userPassword = rs.getString( 5 );
+                    emailAddress = rs.getString( 6 );
+                    address = rs.getString( 7 );
+                    state = rs.getString( 8 );
+                    city = rs.getString( 9 );
+                    zip = rs.getString( 10 );
 
                     nextVoter = objectLayer.createVoter(); // create a proxy voter object
                     // and now set its retrieved attributes
                     nextVoter.setId( voterId );
-
-                    //This part creates a new ElectoralDistrict as a model **ElectoralDistrict still needs to be implemented**
-                    //then checks the objectLayer to see if it can find a district with that districtId
-                    //if so, then assigns the voters district to be that found district
-                    if(districtId >= 0) {
-                        ElectoralDistrict d = new ElectoralDistrictImpl();
-                        d.setId(districtId);
-                        ElectoralDistrict districtToSet = objectLayer.findElectoralDistrict( d ).get(0);
-                        if(districtToSet != null)
-                            nextVoter.setElectoralDistrict(districtToSet);
-                    }
-
-
                     nextVoter.setFirstName( firstName );
                     nextVoter.setLastName( lastName );
                     nextVoter.setUserName( userName );
@@ -96,6 +81,7 @@ public class VoterManager extends Manager{
                     nextVoter.setState( state );
                     nextVoter.setCity( city );
                     nextVoter.setZip( Integer.parseInt(zip) );
+                    nextVoter.setPersistent(true);
 
                     voters.add( nextVoter );
                 }
@@ -112,8 +98,8 @@ public class VoterManager extends Manager{
     }
 
     public Voter store(Voter voter) throws EVException{
-        String insertVoter = "insert into Voter ( District_ID, First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-        String updateVoter = "update Voter set District_ID = ?, First_Name = ?, Last_Name = ?, Username = ?, User_Password = ?, Email_Address = ?, Address = ?, City = ?, State = ?, Zip = ?";
+        String insertVoter = "insert into Voter (First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String updateVoter = "update Voter set First_Name = ?, Last_Name = ?, Username = ?, User_Password = ?, Email_Address = ?, Address = ?, City = ?, State = ?, Zip = ?";
         PreparedStatement stmt = null;
         int queryExecution;
         int voterId;
@@ -133,6 +119,7 @@ public class VoterManager extends Manager{
             if( !voter.isPersistent() ) {
                 if( queryExecution >= 1 ) {
                    voter = (Voter) setId(stmt,voter);
+                    voter.setPersistent(true);
                 }
                 else
                     throw new EVException( "VoterManager.save: failed to save a voter" );
