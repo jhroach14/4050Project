@@ -85,6 +85,7 @@ public class District_BallotsManager {
                     electoralDistrict = objectLayer.createElectoralDistrict();
                     electoralDistrict.setId(districtid);
                     electoralDistrict.setName(districtName);
+                    electoralDistrict.setPersistent(true);
                     break;
                 }
                 return electoralDistrict;

@@ -28,15 +28,6 @@ public class District_VoterManager {
 
     public void store(Voter voter, ElectoralDistrict electoralDistrict) {
 
-       /* try {
-            if(voter.getElectoralDistrict()!=null){
-                ElectoralDistrict district = objectLayer.createElectoralDistrict();
-                district.setId(voter.getElectoralDistrict().getId());
-                delete(voter,district);
-            }
-        } catch (EVException e) {
-            e.printStackTrace();
-        }*/
 
         String insertVoter_electoralDistrict = "insert into District_Voters (District_ID, Voter_ID) values (?, ?)";
 
@@ -81,11 +72,11 @@ public class District_VoterManager {
         if(voter.getId() <1)
             throw new EVException("voter_district.restore could not restore non persistent voter");
 
-        query.append("select District.District_ID, District.DistrictName");
+        query.append("select District.District_ID, District.District_Name");
         query.append(" from District ");
-        query.append("join District_Voters");
-        query.append("on District.District_ID = District_Voters.District_ID");
-        query.append("Where District_Voters.Voter_ID = '" + voter.getId() + "'");
+        query.append("join District_Voters ");
+        query.append("on District.District_ID = District_Voters.District_ID ");
+        query.append(" Where District_Voters.Voter_ID = '" + voter.getId() + "'");
 
         try{
             stmt = conn.createStatement();
@@ -104,6 +95,7 @@ public class District_VoterManager {
                     electoralDistrict = objectLayer.createElectoralDistrict();
                     electoralDistrict.setId(districtid);
                     electoralDistrict.setName(districtName);
+                    electoralDistrict.setPersistent(true);
                     break;
                 }
                 return electoralDistrict;
@@ -125,11 +117,11 @@ public class District_VoterManager {
         if (electoralDistrict.getId() < 1)
             throw new EVException("CandidateManger.restore could not restore persistent Candidate_Elections");
 
-        query.append("select select Voter_ID, District_ID, First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip");
+        query.append("select Voter.Voter_ID, Voter.First_Name, Voter.Last_Name, Voter.Username, Voter.User_Password, Voter.Email_Address, Voter.Address, Voter.City, Voter.State, Voter.Zip");
         query.append(" from Voter ");
-        query.append("join District_Voters");
-        query.append("on District.District_ID = District_Voters.District_ID");
-        query.append("Where District.District_ID = '" + electoralDistrict.getId() + "'");
+        query.append("join District_Voters ");
+        query.append("on Voter.Voter_ID = District_Voters.Voter_ID ");
+        query.append("Where District_Voters.District_ID = '" + electoralDistrict.getId() + "'");
 
         try {
 
@@ -140,7 +132,6 @@ public class District_VoterManager {
             if( stmt.execute( query.toString() ) ) { // statement returned a result
 
                 int voterId;
-                int districtId;
                 String firstName;
                 String lastName;
                 String userName;
@@ -158,16 +149,15 @@ public class District_VoterManager {
                 while( rs.next() ) {
 
                     voterId = rs.getInt( 1 );
-                    districtId = rs.getInt( 2 );
-                    firstName = rs.getString( 3 );
-                    lastName = rs.getString( 4 );
-                    userName = rs.getString( 5 );
-                    userPassword = rs.getString( 6 );
-                    emailAddress = rs.getString( 7 );
-                    address = rs.getString( 8 );
-                    state = rs.getString( 9 );
-                    city = rs.getString( 10 );
-                    zip = rs.getString( 11 );
+                    firstName = rs.getString( 2 );
+                    lastName = rs.getString( 3);
+                    userName = rs.getString( 4 );
+                    userPassword = rs.getString( 5 );
+                    emailAddress = rs.getString( 6 );
+                    address = rs.getString( 7 );
+                    state = rs.getString( 8 );
+                    city = rs.getString( 9 );
+                    zip = rs.getString( 10 );
 
                     nextVoter = objectLayer.createVoter(); // create a proxy voter object
                     // and now set its retrieved attributes
@@ -181,6 +171,7 @@ public class District_VoterManager {
                     nextVoter.setState( state );
                     nextVoter.setCity( city );
                     nextVoter.setZip( Integer.parseInt(zip) );
+                    nextVoter.setPersistent(true);
 
                     voters.add( nextVoter );
                 }

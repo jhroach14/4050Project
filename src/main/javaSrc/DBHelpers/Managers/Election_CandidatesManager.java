@@ -89,6 +89,7 @@ public class Election_CandidatesManager {
                     newElection.setOffice(officeName);
                     newElection.setIsPartisan(isPartisan);
                     newElection.setVoteCount(voteCount);
+                    newElection.setPersistent(true);
                     break;
                 }
                 return newElection;
@@ -138,6 +139,7 @@ public class Election_CandidatesManager {
                     newCandidate = new CandidateImpl();
                     newCandidate.setName(candidateName);
                     newCandidate.setVoteCount(voteCount);
+                    newCandidate.setPersistent(true);
 
                     candidates.add(newCandidate);
                 }

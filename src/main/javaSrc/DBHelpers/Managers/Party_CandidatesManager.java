@@ -86,6 +86,7 @@ public class Party_CandidatesManager {
                     // and now set its retrieved attributes
                     politicalParty.setId( politicalPartyId );
                     politicalParty.setName( name );
+                    politicalParty.setPersistent(true);
                     break;
                 }
                 return politicalParty;
@@ -139,6 +140,7 @@ public class Party_CandidatesManager {
                     newCandidate.setId(candidateId);
                     newCandidate.setName(candidateName);
                     newCandidate.setVoteCount(voteCount);
+                    newCandidate.setPersistent(true);
 
                     candidates.add(newCandidate);
                 }

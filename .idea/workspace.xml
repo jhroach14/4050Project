@@ -1,73 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e1ab4881-2ed0-450e-b8b3-5a6ff98dfe5e" name="Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/javaSrc/DBHelpers/Managers/CandidateManager.java&#10;">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/CDFSHelpers/CDFSTHelper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/CDFSHelpers/CreateHelper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/CDFSHelpers/DeleteHelper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/CDFSHelpers/FindHelper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/CDFSHelpers/StoreHelper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/CDFSHelpers/TraverseHelper.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/BallotManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/BallotManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/CandidateManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/CandidateManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionsOfficerManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionsOfficerManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectoralDistrictManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectoralDistrictManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/IssueManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/IssueManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/PoliticalPartyManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/PoliticalPartyManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/VoteRecordManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/VoteRecordManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/VoterManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/VoterManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/ObjectLayer.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/ObjectLayer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/ObjectLayerImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/ObjectLayerImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/PersistenceLayer.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/PersistenceLayer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/PersistenceLayerImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/PersistenceLayerImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/Entity.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/Entity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/BallotImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/BallotImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/BallotItemImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/BallotItemImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/CandidateImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/CandidateImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectionImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectionImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectionsOfficerImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectionsOfficerImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectoralDistrictImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectoralDistrictImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/EntityImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/EntityImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/IssueImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/IssueImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/PoliticalPartyImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/PoliticalPartyImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/VoterImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/VoterImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/VoterRecordImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/VoterRecordImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Test/Tester.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Test/Tester.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/handlers/DataHandler.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/handlers/DataHandler.class" />
+    <list default="true" id="e1ab4881-2ed0-450e-b8b3-5a6ff98dfe5e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Test/Tester$1.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/District_VoterManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/District_VoterManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/Ballot.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/Ballot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/BallotItem.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/BallotItem.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/Candidate.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/Candidate.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/Election.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/Election.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/ElectoralDistrict.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/ElectoralDistrict.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/PoliticalParty.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/PoliticalParty.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/Voter.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/Voter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Server.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Server.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/scripts/evote-schema.sql" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/scripts/evote-schema.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/CreateHelper.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/CreateHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/TraverseHelper.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/TraverseHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/BallotManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/BallotManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/CandidateManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/CandidateManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_IssuesManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_IssuesManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_BallotsManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_BallotsManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_VoterManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_VoterManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/ElectionManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/ElectionManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/ElectionsOfficerManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/ElectionsOfficerManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/ElectoralDistrictManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/ElectoralDistrictManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/IssueManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/IssueManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/PoliticalPartyManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/PoliticalPartyManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/VoteRecordManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/VoteRecordManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/VoterManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/VoterManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayer.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayerImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayerImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Election_CandidatesManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Election_CandidatesManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Party_CandidatesManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Party_CandidatesManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/scripts/evote-schema.sql" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/scripts/evote-schema.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/Ballot.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/Ballot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/BallotItem.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/BallotItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/Candidate.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/Candidate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/Election.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/Election.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/ElectoralDistrict.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/ElectoralDistrict.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/BallotImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/BallotImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/BallotItemImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/BallotItemImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/CandidateImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/CandidateImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectionImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectionImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectoralDistrictImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectoralDistrictImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/PoliticalPartyImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/PoliticalPartyImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/VoterImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/VoterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/VoterRecordImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/VoterRecordImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/PoliticalParty.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/PoliticalParty.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/Voter.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/Voter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Server.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Server.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java" />
     </list>
     <ignored path="4050Project.iws" />
@@ -91,11 +43,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="evote-schema.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/scripts/evote-schema.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-50">
+              <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ObjectLayerImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7358">
-              <caret line="354" column="33" selection-start-line="354" selection-start-column="33" selection-end-line="354" selection-end-column="33" />
+            <state relative-caret-position="240">
+              <caret line="280" column="43" selection-start-line="280" selection-start-column="43" selection-end-line="280" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersistenceLayerImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayerImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2452">
+              <caret line="308" column="0" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -104,18 +76,41 @@
       <file leaf-file-name="Tester.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersistenceLayer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayer.java">
+      <file leaf-file-name="Ballot_ElectionsManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="134" column="27" selection-start-line="134" selection-start-column="27" selection-end-line="134" selection-end-column="27" />
+            <state relative-caret-position="1439">
+              <caret line="151" column="54" selection-start-line="151" selection-start-column="47" selection-end-line="151" selection-end-column="54" />
+              <folding>
+                <marker date="1479244302395" expanded="true" signature="781:848" placeholder="insert into Ballot_Elections... " />
+                <marker date="1479244302395" expanded="true" signature="5315:5383" placeholder="delete from " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TraverseHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/TraverseHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="40" column="57" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObjectLayer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="153" column="28" selection-start-line="153" selection-start-column="28" selection-end-line="153" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -149,8 +144,6 @@
         <option value="$PROJECT_DIR$/src/main/javaSrc/Entities/Entity.java" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectionsOfficerImpl.java" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/IssueImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_VoterManager.java" />
-        <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/scripts/evote-schema.sql" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayerImpl.java" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectionImpl.java" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/Entities/Election.java" />
@@ -180,6 +173,13 @@
         <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayer.java" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/TraverseHelper.java" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayerImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/scripts/evote-schema.sql" />
+        <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.java" />
+        <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_IssuesManager.java" />
+        <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_BallotsManager.java" />
+        <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Election_CandidatesManager.java" />
+        <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Party_CandidatesManager.java" />
+        <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_VoterManager.java" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java" />
       </list>
     </option>
@@ -317,89 +317,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaSrc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="handlers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaSrc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaSrc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntityImpl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -942,7 +860,7 @@
       <option name="presentableId" value="Default" />
       <updated>1478731186165</updated>
       <workItem from="1479155501536" duration="14475000" />
-      <workItem from="1479190464244" duration="14901000" />
+      <workItem from="1479190464244" duration="22235000" />
     </task>
     <task id="LOCAL-00001" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/javaSrc/DBHelpers/Managers/CandidateManager.java&#10;">
       <created>1479155624096</created>
@@ -958,11 +876,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479183907463</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="restructured large parts plus general bug fixes">
+      <created>1479234989267</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1479234989267</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29376000" />
+    <option name="totallyTimeSpent" value="36710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1618" height="868" extended-state="6" />
@@ -976,17 +901,17 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3224432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18039773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33484456" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18199483" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19318181" sideWeight="0.49460918" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46448863" sideWeight="0.49460918" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -995,6 +920,34 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14574315" sideWeight="0.5053908" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19318181" sideWeight="0.49460918" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.042613637" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3224432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18199483" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1011,37 +964,44 @@
     <confirmMoveToFailedCommit value="1" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/javaSrc/DBHelpers/Managers/CandidateManager.java&#10;" />
     <MESSAGE value="reworked managers/entities&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="reworked managers/entities&#10;" />
+    <MESSAGE value="restructured large parts plus general bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="restructured large parts plus general bug fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java</url>
-          <line>42</line>
+          <url>file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_VoterManager.java</url>
+          <line>112</line>
           <properties />
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_VoterManager.java</url>
+          <line>178</line>
+          <properties />
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java</url>
-          <line>30</line>
+          <line>74</line>
           <properties />
-          <option name="timeStamp" value="8" />
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/VoterManager.java</url>
-          <line>118</line>
+          <url>file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/TraverseHelper.java</url>
+          <line>29</line>
           <properties />
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/StoreHelper.java</url>
-          <line>75</line>
+          <url>file://$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java</url>
+          <line>67</line>
           <properties />
-          <option name="timeStamp" value="11" />
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="12" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1073,66 +1033,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_VoterManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
-          <folding>
-            <marker date="1479196260275" expanded="true" signature="1267:1332" placeholder="insert into District_Voters... " />
-            <marker date="1479196260275" expanded="true" signature="7300:7366" placeholder="delete from " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Election_CandidatesManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
-          <folding>
-            <marker date="1479155636501" expanded="true" signature="761:834" placeholder="insert into Election_Candidates... " />
-            <marker date="1479155636501" expanded="true" signature="5627:5701" placeholder="delete from " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1663">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <marker date="1479155636463" expanded="true" signature="781:848" placeholder="insert into Ballot_Elections... " />
-            <marker date="1479155636463" expanded="true" signature="5208:5276" placeholder="delete from " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_IssuesManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3150">
-          <caret line="134" column="36" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
-          <folding>
-            <marker date="1479155636470" expanded="true" signature="747:808" placeholder="insert into Ballot_Issues... " />
-            <marker date="1479155636470" expanded="true" signature="5084:5146" placeholder="delete from " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/Entities/Election.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_BallotsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1875">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <marker date="1479155636477" expanded="true" signature="850:915" placeholder="insert into District_Voters... " />
-            <marker date="1479155636477" expanded="true" signature="3611:3679" placeholder="delete from " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1149,17 +1054,6 @@
         <state relative-caret-position="250">
           <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Party_CandidatesManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <marker date="1479155636508" expanded="true" signature="803:870" placeholder="insert into Party_Candidates... " />
-            <marker date="1479155636508" expanded="true" signature="5617:5685" placeholder="delete from " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1191,14 +1085,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="13" column="63" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/scripts/evote-schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2825">
-          <caret line="131" column="50" selection-start-line="131" selection-start-column="50" selection-end-line="131" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -1299,18 +1185,6 @@
           <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/BallotManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2125">
-          <caret line="102" column="45" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
-          <folding>
-            <marker date="1479232622530" expanded="true" signature="2405:2464" placeholder="insert into Ballot... " />
-            <marker date="1479232622530" expanded="true" signature="2498:2544" placeholder="update Ballo... " />
-            <marker date="1479232622530" expanded="true" signature="3752:3790" placeholder="delete from " />
           </folding>
         </state>
       </provider>
@@ -1417,22 +1291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/handlers/DataHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/Entities/Voter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1449,14 +1307,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/StoreHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-729">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/FindHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1430">
@@ -1465,10 +1315,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/StoreHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/VoterManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="100" column="173" selection-start-line="100" selection-start-column="173" selection-end-line="100" selection-end-column="173" />
+        <state relative-caret-position="277">
+          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
           <folding>
             <marker date="1479233164145" expanded="true" signature="3300:3444" placeholder="insert into Voter... " />
             <marker date="1479233164145" expanded="true" signature="3477:3618" placeholder="update Voter... " />
@@ -1477,42 +1335,145 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_IssuesManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="168" column="22" selection-start-line="168" selection-start-column="22" selection-end-line="168" selection-end-column="22" />
+        <state relative-caret-position="-750">
+          <caret line="137" column="52" selection-start-line="137" selection-start-column="52" selection-end-line="137" selection-end-column="52" />
+          <folding>
+            <marker date="1479244302353" expanded="true" signature="747:808" placeholder="insert into Ballot_Issues... " />
+            <marker date="1479244302353" expanded="true" signature="5190:5252" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/BallotManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1263">
+          <caret line="102" column="45" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
+          <folding>
+            <marker date="1479232622530" expanded="true" signature="2405:2464" placeholder="insert into Ballot... " />
+            <marker date="1479232622530" expanded="true" signature="2498:2544" placeholder="update Ballo... " />
+            <marker date="1479232622530" expanded="true" signature="3752:3790" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_BallotsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="895">
+          <caret line="87" column="57" selection-start-line="87" selection-start-column="57" selection-end-line="87" selection-end-column="57" />
+          <folding>
+            <marker date="1479244302340" expanded="true" signature="850:915" placeholder="insert into District_Voters... " />
+            <marker date="1479244302340" expanded="true" signature="3670:3738" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Party_CandidatesManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="142" column="51" selection-start-line="142" selection-start-column="51" selection-end-line="142" selection-end-column="51" />
+          <folding>
+            <marker date="1479244302367" expanded="true" signature="803:870" placeholder="insert into Party_Candidates... " />
+            <marker date="1479244302367" expanded="true" signature="5727:5795" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/District_VoterManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+          <folding>
+            <element signature="e#3927#3934#0" expanded="true" />
+            <marker date="1479245031993" expanded="true" signature="912:977" placeholder="insert into District_Voters... " />
+            <marker date="1479245031993" expanded="true" signature="7016:7082" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Election_CandidatesManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="141" column="51" selection-start-line="141" selection-start-column="51" selection-end-line="141" selection-end-column="51" />
+          <folding>
+            <marker date="1479244302380" expanded="true" signature="761:834" placeholder="insert into Election_Candidates... " />
+            <marker date="1479244302380" expanded="true" signature="5734:5808" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/handlers/DataHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="52" column="30" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/TraverseHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/scripts/evote-schema.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="88" column="58" selection-start-line="88" selection-start-column="58" selection-end-line="88" selection-end-column="58" />
+        <state relative-caret-position="-50">
+          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1439">
+          <caret line="151" column="54" selection-start-line="151" selection-start-column="47" selection-end-line="151" selection-end-column="54" />
+          <folding>
+            <marker date="1479244302395" expanded="true" signature="781:848" placeholder="insert into Ballot_Elections... " />
+            <marker date="1479244302395" expanded="true" signature="5315:5383" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="153" column="28" selection-start-line="153" selection-start-column="28" selection-end-line="153" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="134" column="27" selection-start-line="134" selection-start-column="27" selection-end-line="134" selection-end-column="27" />
+        <state relative-caret-position="177">
+          <caret line="97" column="28" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7358">
-          <caret line="354" column="33" selection-start-line="354" selection-start-column="33" selection-end-line="354" selection-end-column="33" />
+        <state relative-caret-position="240">
+          <caret line="280" column="43" selection-start-line="280" selection-start-column="43" selection-end-line="280" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2452">
+          <caret line="308" column="0" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/TraverseHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="40" column="57" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
           <folding />
         </state>
       </provider>

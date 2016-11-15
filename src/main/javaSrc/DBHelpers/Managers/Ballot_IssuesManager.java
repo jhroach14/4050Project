@@ -89,6 +89,7 @@ public class Ballot_IssuesManager {
                     newBallot.setId( ballotId );
                     newBallot.setOpenDate( startDate );
                     newBallot.setCloseDate( closeDate );
+                    newBallot.setPersistent(true);
                     break;
                 }
                 return newBallot;
@@ -134,6 +135,7 @@ public class Ballot_IssuesManager {
 
                     newBallotItem = new BallotItemImpl();
                     newBallotItem.setVoteCount(voteCount);
+                    newBallotItem.setPersistent(true);
 
                     ballotItems.add(newBallotItem);
                 }
