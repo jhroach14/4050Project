@@ -2,60 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1ab4881-2ed0-450e-b8b3-5a6ff98dfe5e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/DbConfig.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/DbConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/BallotManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/BallotManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/Ballot_IssuesManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/Ballot_IssuesManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/CandidateManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/CandidateManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/District_BallotsManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/District_BallotsManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/District_VoterManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/District_VoterManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/Election_CandidatesManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/Election_CandidatesManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionsOfficerManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionsOfficerManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectoralDistrictManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectoralDistrictManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/IssueManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/IssueManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/Party_CandidatesManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/Party_CandidatesManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/PoliticalPartyManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/PoliticalPartyManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/VoteRecordManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/VoteRecordManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/VoterManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/VoterManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/ObjectLayer.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/ObjectLayer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/ObjectLayerImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/ObjectLayerImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/PersistenceLayer.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/PersistenceLayer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/PersistenceLayerImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/PersistenceLayerImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/BallotImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/BallotImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/CandidateImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/CandidateImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectionImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectionImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectionsOfficerImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectionsOfficerImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectoralDistrictImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/ElectoralDistrictImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/IssueImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/IssueImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/PoliticalPartyImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/PoliticalPartyImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/VoterImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/VoterImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/VoterRecordImpl.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Entities/EntityImpl/VoterRecordImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Test/Tester.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/Test/Tester.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4050Project.iml" afterPath="$PROJECT_DIR$/4050Project.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/scripts/evote-schema.sql" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/scripts/evote-schema.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/DeleteHelper.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/DeleteHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/DbConfig.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/DbConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/BallotManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/BallotManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_IssuesManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_IssuesManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/ElectionManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/ElectionManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayer.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayerImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayerImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayer.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayerImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayerImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/BallotImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/BallotImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/CandidateImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/CandidateImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectionImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectionImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectionsOfficerImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectionsOfficerImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectoralDistrictImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectoralDistrictImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/IssueImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/IssueImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/PoliticalPartyImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/PoliticalPartyImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/VoterImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/VoterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/VoterRecordImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/VoterRecordImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java" />
     </list>
     <ignored path="4050Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,11 +23,11 @@
     <favorites_list name="4050Project" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Tester.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1860">
+            <state relative-caret-position="1611">
               <caret line="124" column="30" selection-start-line="124" selection-start-column="30" selection-end-line="124" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -102,7 +49,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Alex'sTesting" />
       </map>
     </option>
   </component>
@@ -179,8 +126,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -208,8 +155,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -586,6 +531,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -913,7 +860,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479234989267</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Tested all of my entities and they all work 100% except for the getBallotGivenBallotItems case. I can't figure out why">
+      <created>1479364655508</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1479364655508</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -929,7 +883,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -939,11 +893,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37722772" sideWeight="0.5021299" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3768997" sideWeight="0.4978701" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33012047" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15335463" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15307583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1004,7 +958,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/javaSrc/DBHelpers/Managers/CandidateManager.java&#10;" />
     <MESSAGE value="reworked managers/entities&#10;" />
     <MESSAGE value="restructured large parts plus general bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="restructured large parts plus general bug fixes" />
+    <MESSAGE value="Tested all of my entities and they all work 100% except for the getBallotGivenBallotItems case. I can't figure out why" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tested all of my entities and they all work 100% except for the getBallotGivenBallotItems case. I can't figure out why" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1051,7 +1006,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1059,7 +1013,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1067,7 +1020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1075,7 +1027,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1083,7 +1034,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-549">
           <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1091,7 +1041,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1099,7 +1048,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1107,7 +1055,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,7 +1070,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1160,7 +1106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1747">
           <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1168,9 +1113,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#660#670#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1178,7 +1120,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="161" column="4" selection-start-line="161" selection-start-column="4" selection-end-line="161" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1186,7 +1127,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="466">
           <caret line="109" column="90" selection-start-line="109" selection-start-column="90" selection-end-line="109" selection-end-column="90" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1194,7 +1134,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="46" column="50" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1202,7 +1141,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1210,7 +1148,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-540">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1218,7 +1155,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-329">
           <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1234,9 +1170,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#283#284#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1251,7 +1184,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1259,7 +1191,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="61">
           <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1267,7 +1198,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1275,7 +1205,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1283,7 +1212,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1291,7 +1219,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1306,7 +1233,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1314,7 +1240,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1330,7 +1255,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1338,9 +1262,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding>
-            <element signature="e#2475#2476#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1376,10 +1297,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="33" column="88" selection-start-line="33" selection-start-column="88" selection-end-line="33" selection-end-column="88" />
-          <folding>
-            <element signature="e#489#490#0" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1387,10 +1304,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
           <caret line="289" column="33" selection-start-line="289" selection-start-column="33" selection-end-line="289" selection-end-column="33" />
-          <folding>
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#597#598#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1398,7 +1311,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="221" column="48" selection-start-line="221" selection-start-column="48" selection-end-line="221" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1423,9 +1335,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding>
-            <element signature="e#4163#4175#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1433,7 +1342,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1454,7 +1362,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1860">
+        <state relative-caret-position="1611">
           <caret line="124" column="30" selection-start-line="124" selection-start-column="30" selection-end-line="124" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
