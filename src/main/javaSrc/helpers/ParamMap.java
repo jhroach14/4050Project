@@ -34,7 +34,7 @@ public class ParamMap {
                 System.exit(0);
             }
         }
-        log.out("created paramMap:\n"+query_pairs.toString());
+        log.out("created paramMap: "+query_pairs.toString());
         return query_pairs;// returns key value map
     }
 
@@ -48,7 +48,8 @@ public class ParamMap {
         if(present){
             return paramMap.get(param);
         }else{
-            return "error param not found";
+            log.error("Parameter "+param+" not found returning empty string");
+            return "";
         }
 
     }

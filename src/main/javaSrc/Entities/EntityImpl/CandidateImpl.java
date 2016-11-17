@@ -79,6 +79,12 @@ public class CandidateImpl extends EntityImpl implements Candidate {
         return stmt;
     }
 
+    @JsonIgnore
+    @Override
+    public String getType() {
+        return "Candidate";
+    }
+
     @Override
     public String getName() {
         return name;

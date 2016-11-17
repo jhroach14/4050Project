@@ -93,6 +93,11 @@ public class ElectionImpl extends BallotItemImpl implements Election{
         
         return stmt;
     }
+    @JsonIgnore
+    @Override
+    public String getType(){
+        return "Election";
+    }
 
     @Override
     public String getOffice() {

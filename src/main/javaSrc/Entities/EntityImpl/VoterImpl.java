@@ -182,6 +182,12 @@ public class VoterImpl extends UserImpl implements Voter{
         return stmt;
     }
 
+    @JsonIgnore
+    @Override
+    public String getType() {
+        return "Voter";
+    }
+
     @Override
     public int getAge() {
         return age;

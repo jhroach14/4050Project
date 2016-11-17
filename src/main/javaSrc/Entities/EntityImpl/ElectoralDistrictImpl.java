@@ -63,6 +63,12 @@ public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistri
         return stmt;
     }
 
+    @JsonIgnore
+    @Override
+    public String getType() {
+        return "ElectoralDistrict";
+    }
+
     @Override
     public String getName() {
         return name;

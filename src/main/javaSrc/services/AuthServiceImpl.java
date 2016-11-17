@@ -5,20 +5,20 @@ import main.javaSrc.helpers.Logger;
 //this handler takes care of client authorization
 public class AuthServiceImpl implements AuthService{
 
-    private static Logger log = new Logger(AuthService.class);
+    private static Logger log = new Logger(AuthServiceImpl.class);
 
     //TODO: implement non mock
     @Override
     public boolean isValidToken(String token) {
         if(token==null){
-            log.out("Null token");
+            log.error("Null token");
             return false;
         }
         if(token.equals("testToken123")){
             log.out("Token "+token+" valid");
             return true;
         }
-        log.out("token "+token+"invalid");
+        log.error("token "+token+" invalid");
         return false;
     }
 
@@ -27,13 +27,13 @@ public class AuthServiceImpl implements AuthService{
         String[] response = new String[2];
         if (user.equals("officer@gmail.com") && pass.equals("officerpassword")) {
             response[0] = "testToken123";
-            response[1] = "https://localhost:9001/officerIndex.html";
+            response[1] = "http://localhost:9001/officerIndex.html";
         } else if (user.equals("voter@gmail.com") && pass.equals("voterpassword")){
             response[0] = "testToken123";
-            response[1] = "https://localhost:9001/voterIndex.html";
+            response[1] = "http://localhost:9001/voterIndex.html";
         } else {
             response[0] = "testToken123";
-            response[1] = "https://localhost:9001/officerIndex.html";
+            response[1] = "http://localhost:9001/officerIndex.html";
         }
 
         return response;

@@ -102,6 +102,12 @@ public class IssueImpl extends BallotItemImpl implements Issue {
 
     }
 
+    @JsonIgnore
+    @Override
+    public String getType(){
+        return "Issue";
+    }
+
     @Override
     public String getQuestion() {
         return question;

@@ -1,3 +1,4 @@
+# noinspection SqlNoDataSourceInspectionForFile
 DROP TABLE IF EXISTS ElectionsOfficer, Party, Party_Candidates, District_Voters, Candidate, District_Ballots, District, Ballot, Election, Ballot_Elections, Voter, Record, Issue, Ballot_Issues, Election_Candidates;
 
 /*Done.*/
@@ -114,7 +115,6 @@ CREATE TABLE Record (
 /* Done.*/
 CREATE TABLE Issue (
  Issue_ID INT AUTO_INCREMENT NOT NULL,
- District_ID INT,
  Question VARCHAR(5000) NOT NULL,
  Vote_Count INT,
  Yes_Count INT,

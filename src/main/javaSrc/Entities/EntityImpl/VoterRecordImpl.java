@@ -94,6 +94,12 @@ public class VoterRecordImpl extends EntityImpl implements VoteRecord {
     }
 
     @Override
+    public String getType() {
+        return "VoterRecord";
+    }
+
+
+    @Override
     public Date getDate() {
         return date;
     }

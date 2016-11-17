@@ -46,6 +46,13 @@ public class BallotImpl extends EntityImpl implements Ballot {
 
         return stmt;
     }
+
+    @JsonIgnore
+    @Override
+    public String getType() {
+        return "Ballot";
+    }
+
     @JsonIgnore
     @Override
     public String getRestoreString() {
