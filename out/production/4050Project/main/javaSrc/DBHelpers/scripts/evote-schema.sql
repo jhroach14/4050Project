@@ -1,5 +1,5 @@
 # noinspection SqlNoDataSourceInspectionForFile
-DROP TABLE IF EXISTS ElectionsOfficer, Party, Party_Candidates, District_Voters, Candidate, District_Ballots, District, Ballot, Election, Ballot_Elections, Voter, Record, Issue, Ballot_Issues, Election_Candidates;
+DROP TABLE IF EXISTS ElectionsOfficer, Party, Party_Candidates, District_Voters, Candidate, District_Ballots, District, Ballot, Election, Ballot_Elections, Voter, Record, Issue, Ballot_Issues, Election_Candidates, Token;
 
 /*Done.*/
 CREATE TABLE ElectionsOfficer (
@@ -17,7 +17,7 @@ CREATE TABLE ElectionsOfficer (
  PRIMARY KEY(Elections_Officer_ID)
 );
 insert into ElectionsOfficer ( First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip)
-values ( "John", "smith", "officerJS", "1234", "jsmith@gmail.com", "1 street", "athens", "GA", "30067" );
+values ( "John", "smith", "officer", "1234", "jsmith@gmail.com", "1 street", "athens", "GA", "30067" );
 /*Done.*/
 CREATE TABLE Party (
  Party_ID INT AUTO_INCREMENT NOT NULL,
@@ -155,5 +155,13 @@ CREATE TABLE District_Voters (
  FOREIGN KEY(District_ID) REFERENCES District(District_ID),
  FOREIGN KEY(Voter_ID) REFERENCES Voter(Voter_ID)
 );
+
+Create Table Token(
+ User_Name VARCHAR(100) NOT NULL,
+ Token VARCHAR(100) NOT NULL,
+
+ PRIMARY KEY(User_Name)
+);
+INSERT INTO Token VALUES ("TestUser", "testToken123");
 
 
