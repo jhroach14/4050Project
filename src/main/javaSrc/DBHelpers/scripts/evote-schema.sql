@@ -162,5 +162,6 @@ Create Table Token(
 
  PRIMARY KEY(User_Name)
 );
+INSERT INTO Token VALUES ("TestUser", "testToken123");
 
 
