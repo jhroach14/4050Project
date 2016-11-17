@@ -128,6 +128,12 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
+    public void deleteElectionFromAllAssociations( Election election ) throws EVException {
+        ballot_electionsManager.delete(election);
+    }
+
+
+    @Override
     public List<ElectoralDistrict> restoreElectoralDistrict(ElectoralDistrict modelElectoralDistrict) throws EVException {
         return electoralDistrictManager.restore(modelElectoralDistrict);
     }
@@ -155,6 +161,11 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     @Override
     public void deleteIssue(Issue issue) throws EVException {
         issueManager.delete(issue);
+    }
+
+    @Override
+    public void deleteIssueFromAllAssociations( Issue issue ) throws EVException {
+        ballot_issuesManager.delete(issue);
     }
 
     @Override
@@ -235,6 +246,13 @@ public class PersistenceLayerImpl implements PersistenceLayer{
             ballot_issuesManager.delete(ballot,ballotItem);
         }
     }
+
+    @Override
+    public void deleteBallotFromAllAssociations( Ballot ballot ) throws EVException {
+        ballot_electionsManager.delete(ballot);
+        ballot_issuesManager.delete(ballot);
+    }
+
 
     @Override
     public void storeCandidateIsCandidateInElection(Candidate candidate, Election election) throws EVException {

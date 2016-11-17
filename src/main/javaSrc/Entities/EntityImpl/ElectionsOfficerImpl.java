@@ -32,7 +32,7 @@ public class ElectionsOfficerImpl extends UserImpl implements ElectionsOfficer{
         condition.setLength( 0 );
         query.append( restoreStr );
 
-        if( getId() >= 0 ) { // id is unique, so it is sufficient to get a person
+        if( getId() > 0 ) { // id is unique, so it is sufficient to get a person
             query.append(" where Elections_Officer_ID = " + getId());
         }
         else {

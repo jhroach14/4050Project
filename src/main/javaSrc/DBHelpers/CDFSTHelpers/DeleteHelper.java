@@ -34,6 +34,7 @@ public class DeleteHelper extends CDFSTHelper {
                 case "Ballot":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), BallotImpl.class);
+                        objectLayer.deleteLink((Ballot) entity);
                         objectLayer.deleteBallot((Ballot) entity);
                     }
                     break;
@@ -46,6 +47,7 @@ public class DeleteHelper extends CDFSTHelper {
                 case "Election":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), ElectionImpl.class);
+                        objectLayer.deleteLink((Election) entity);
                         objectLayer.deleteElection((Election) entity);
                     }
                     break;
@@ -64,6 +66,7 @@ public class DeleteHelper extends CDFSTHelper {
                 case "Issue":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), IssueImpl.class);
+                        objectLayer.deleteLink((Issue) entity);
                         objectLayer.deleteIssue((Issue) entity);
                     }
                     break;
