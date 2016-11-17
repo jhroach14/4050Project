@@ -1,6 +1,8 @@
 package main.javaSrc.handlers;
 
 import com.sun.net.httpserver.HttpExchange;
+import main.javaSrc.DBHelpers.DbConnHelper;
+import main.javaSrc.DBHelpers.DbConnHelperImpl;
 import main.javaSrc.HttpClasses.Exchange;
 import main.javaSrc.helpers.Logger;
 import main.javaSrc.services.AuthService;
@@ -21,11 +23,9 @@ public class AuthHandler extends Handler {
     public void handle(HttpExchange httpExchange) throws IOException {
 
         Exchange exchange = new Exchange(httpExchange);//create exchange to handle nitty gritty
+        DbConnHelper dbConnHelper = new DbConnHelperImpl();
+        String[] response = auth.isValidCredentials(exchange,dbConnHelper); //use service to validate credintials
 
-        String user = exchange.getParam("user");
-        String pass = exchange.getParam("pass");
-        String[] resopnse = auth.isValidCredentials(user,pass); //use service to validate credintials
-
-        exchange.respondStr((resopnse[1]+"?token="+resopnse[0]), "text/html"); //return redirect
+        exchange.respondStr((response[1]+"?token="+response[0]), "text/html"); //return redirect
     }
 }

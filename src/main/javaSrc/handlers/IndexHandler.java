@@ -1,6 +1,7 @@
 package main.javaSrc.handlers;
 
 import com.sun.net.httpserver.HttpExchange;
+import main.javaSrc.DBHelpers.DbConnHelperImpl;
 import main.javaSrc.HttpClasses.Exchange;
 import main.javaSrc.helpers.Logger;
 import main.javaSrc.services.AuthService;
@@ -24,7 +25,7 @@ public class IndexHandler extends Handler {
 
         if (exchange.isHtmlRequest()){//if they request an html page
 
-            if (auth.isValidToken(token)){//respond with resource if valid token
+            if (auth.isValidToken(token,new DbConnHelperImpl())){//respond with resource if valid token
                 exchange.respondFile();
             }else{
                 exchange.respondFile("login.html");//requests with invalid token sent to login

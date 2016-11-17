@@ -4,7 +4,7 @@ var app = angular.module('loginApp', []);
 
 app.controller('loginCtrl', ['$scope', '$http',function($scope,$http) {
     $scope.submit = function () {
-        var request = "https://localhost:9001/auth?user="+$scope.email+"&pass="+$scope.password;
+        var request = "http://localhost:9001/auth?user="+$scope.UserName+"&pass="+$scope.password;
         console.log("sending :\n"+request);
         $http.get(request).success( 
             function (response) {

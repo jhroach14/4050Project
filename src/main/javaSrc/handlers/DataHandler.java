@@ -24,13 +24,14 @@ public class DataHandler extends Handler {
     public void handle(HttpExchange httpExchange){
         DBExchange exchange = new DBExchange(httpExchange);
         token = exchange.getParam("token");
+        DbConnHelper dbConnHelper = new DbConnHelperImpl();
 
-        if(auth.isValidToken(token)){
+        if(auth.isValidToken(token,dbConnHelper)){
 
             CDFSTHelper helper=null;
             String actionType = exchange.getDBRequestType();
 
-            DbConnHelper dbConnHelper = new DbConnHelperImpl();
+
 
             switch (actionType){
 
