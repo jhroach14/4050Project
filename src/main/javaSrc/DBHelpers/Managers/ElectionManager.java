@@ -43,6 +43,7 @@ public class ElectionManager extends Manager{
 
                 int electionId;
                 String officeName;
+                int isPartisanInt;
                 boolean isPartisan;
                 int voteCount;
                 Election   nextElection = null;
@@ -54,7 +55,11 @@ public class ElectionManager extends Manager{
 
                     electionId = rs.getInt( 1 );
                     officeName = rs.getString( 2 );
-                    isPartisan = rs.getBoolean( 3 );
+                    isPartisanInt = rs.getInt( 3 );
+                    if(isPartisanInt == 1)
+                        isPartisan = true;
+                    else
+                        isPartisan = false;
                     voteCount = rs.getInt( 4 );
 
                     nextElection = objectLayer.createElection(); // create a proxy election object

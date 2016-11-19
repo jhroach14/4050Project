@@ -215,6 +215,10 @@ public class ObjectLayerImpl implements ObjectLayer {
     }
 
     @Override
+    public void deleteLink(Issue issue) throws EVException {
+        persistenceLayer.deleteIssueFromAllAssociations(issue);
+    }
+    @Override
     public Election createElection(String office, boolean isPartisan) throws EVException {
         Election election = new ElectionImpl(office, isPartisan);
         return election;
@@ -238,6 +242,11 @@ public class ObjectLayerImpl implements ObjectLayer {
     @Override
     public void deleteElection(Election election) throws EVException {
         persistenceLayer.deleteElection(election);
+    }
+
+    @Override
+    public void deleteLink(Election election) throws EVException {
+        persistenceLayer.deleteElectionFromAllAssociations(election);
     }
 
     @Override
@@ -284,6 +293,11 @@ public class ObjectLayerImpl implements ObjectLayer {
     @Override
     public void deleteLink(Ballot ballot, BallotItem ballotItem) throws EVException {
         persistenceLayer.deleteBallotIncludesBallotItem(ballot,ballotItem);
+    }
+
+    @Override
+    public void deleteLink(Ballot ballot) throws EVException {
+        persistenceLayer.deleteBallotFromAllAssociations(ballot);
     }
 
     @Override

@@ -123,17 +123,32 @@ public class BallotManager extends Manager{
     public void delete(Ballot ballot) throws EVException {
 
         String               deleteBallot = "delete from Ballot where Ballot_ID = ?";
+        String               deleteBallotInBallotIssues = "delete from Ballot_Issues where Ballot_ID = ?";
+        String               deleteBallotInBallotElections = "delete from Ballot_Elections where Ballot_ID = ?";
+
         PreparedStatement    stmt = null;
+        PreparedStatement    stmt1 = null;
+        PreparedStatement    stmt2 = null;
         int                  queryExecution;
+        int                  queryExecution1;
+        int                  queryExecution2;
 
         if( !ballot.isPersistent() ) // is the ballot object persistent?  If not, nothing to actually delete
             return;
 
         try {
             stmt = conn.prepareStatement( deleteBallot );
+            stmt1 = conn.prepareStatement( deleteBallotInBallotIssues );
+            stmt2 = conn.prepareStatement( deleteBallotInBallotElections );
             stmt.setInt( 1, ballot.getId() );
+            stmt1.setInt( 1, ballot.getId() );
+            stmt2.setInt( 1, ballot.getId() );
+            //queryExecution1 = stmt1.executeUpdate();
+            //queryExecution2 = stmt2.executeUpdate();
             queryExecution = stmt.executeUpdate();
-            if( queryExecution == 1 ) {
+
+
+            if( queryExecution == 1 /*&& queryExecution1 == 1 && queryExecution2 == 1*/) {
                 return;
             }
             else
