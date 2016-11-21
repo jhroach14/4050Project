@@ -6,8 +6,8 @@ CREATE TABLE ElectionsOfficer (
  Elections_Officer_ID INT AUTO_INCREMENT NOT NULL,
  First_Name VARCHAR(100) NOT NULL,
  Last_Name VARCHAR(100) NOT NULL,
- Username VARCHAR(100) NOT NULL,  
- User_Password VARCHAR(100) NOT NULL, 
+ Username VARCHAR(100) NOT NULL,
+ User_Password VARCHAR(100) NOT NULL,
  Email_Address VARCHAR(100),
  Address VARCHAR(100),
  City VARCHAR(100),
@@ -70,7 +70,7 @@ CREATE TABLE Election (
 CREATE TABLE Election_Candidates (
   Candidate_ID INT,
   Election_ID INT,
-  
+
   FOREIGN KEY(Candidate_ID) REFERENCES Candidate(Candidate_ID),
   FOREIGN KEY(Election_ID) REFERENCES Election(Election_ID)
 );
@@ -79,7 +79,7 @@ CREATE TABLE Election_Candidates (
 CREATE TABLE Ballot_Elections (
   Ballot_ID INT,
   Election_ID INT,
-  
+
   FOREIGN KEY(Ballot_ID) REFERENCES Ballot(Ballot_ID),
   FOREIGN KEY(Election_ID) REFERENCES Election(Election_ID)
 );
@@ -127,7 +127,7 @@ CREATE TABLE Issue (
 CREATE TABLE Ballot_Issues (
   Ballot_ID INT,
   Issue_ID INT,
-  
+
   FOREIGN KEY(Ballot_ID) REFERENCES Ballot(Ballot_ID),
   FOREIGN KEY(Issue_ID) REFERENCES Issue(Issue_ID)
 );
@@ -163,5 +163,6 @@ Create Table Token(
  PRIMARY KEY(User_Name)
 );
 INSERT INTO Token VALUES ("TestUser", "testToken123");
+
 
 

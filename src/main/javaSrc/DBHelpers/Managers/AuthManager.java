@@ -18,18 +18,21 @@ public class AuthManager {
 
             String queryStr = "select User_Password from ElectionsOfficer where Username = '"+userName+"'";
             Statement stmt = conn.createStatement();
-                stmt.execute(queryStr);
-                ResultSet rs = stmt.getResultSet();
-                String userPass="";
+            stmt.execute(queryStr);
+            ResultSet rs = stmt.getResultSet();
+            String userPass="";
+
             if(rs.next()){
-                //while(rs.next()){
+
                     userPass = rs.getString(1);
-                //}
+
                 if (password.equals(userPass)){
+
                     String[] response = new String[2];
                     response[0] = createToken(userName,conn);
                     response[1] = "http://localhost:9001/officerIndex.html";
                     return response;
+
                 }else{
                     throw new EVException("incorrect password for officer "+userName);
                 }
@@ -39,7 +42,7 @@ public class AuthManager {
                 if (stmt.execute(queryStr)){
                     ResultSet rsv = stmt.getResultSet();
                     String userPassv ="";
-                    while(rsv.next()){
+                    if(rsv.next()){
                         userPassv = rsv.getString(1);
                     }
                     if (password.equals(userPassv)){
@@ -50,6 +53,9 @@ public class AuthManager {
                     }else{
                         throw new EVException("incorrect password for voter "+userName);
                     }
+
+                }else{
+                    throw new EVException("Unknown userName "+userName);
                 }
             }
 
