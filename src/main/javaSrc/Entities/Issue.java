@@ -1,6 +1,8 @@
 package main.javaSrc.Entities;
 
 import main.javaSrc.helpers.EVException;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
+
 
 public interface Issue extends BallotItem {
     
@@ -19,7 +21,7 @@ public interface Issue extends BallotItem {
     int getNoCount();
     
 
-
+    void setNoCount(int noCount) throws EVException;
 
     
     void addYesVote();

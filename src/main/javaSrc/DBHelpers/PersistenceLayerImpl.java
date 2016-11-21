@@ -2,13 +2,9 @@ package main.javaSrc.DBHelpers;
 
 import main.javaSrc.DBHelpers.Managers.*;
 import main.javaSrc.Entities.*;
-import main.javaSrc.Entities.EntityImpl.ElectionsOfficerImpl;
 import main.javaSrc.helpers.EVException;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
+import java.sql.Connection;
 import java.util.List;
 
 /**
@@ -25,17 +21,34 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     PoliticalPartyManager politicalPartyManager = null;
     VoterManager voterManager = null;
     VoteRecordManager voteRecordManager = null;
+    Ballot_ElectionsManager ballot_electionsManager = null;
+    Ballot_IssuesManager ballot_issuesManager = null;
+    Election_CandidatesManager election_candidatesManager = null;
+    District_BallotsManager district_ballotsManager= null;
+    District_VoterManager district_voterManager = null;
+    Party_CandidatesManager party_candidatesManager = null;
+
 
     public PersistenceLayerImpl() {
-        this.ballotManager = new BallotManager();
-        this.candidateManager = new CandidateManager();
-        this.electionManager = new ElectionManager();
-        this.electionsOfficerManager = new ElectionsOfficerManager();
-        this.electoralDistrictManager = new ElectoralDistrictManager();
-        this.issueManager = new IssueManager();
-        this.politicalPartyManager =  new PoliticalPartyManager();
-        this.voterManager = new VoterManager();
-        this.voteRecordManager = new VoteRecordManager();
+
+    }
+
+    public PersistenceLayerImpl(Connection connection,ObjectLayer objectLayer) {
+        this.ballotManager = new BallotManager(connection,objectLayer);
+        this.candidateManager = new CandidateManager(connection,objectLayer);
+        this.electionManager = new ElectionManager(connection,objectLayer);
+        this.electionsOfficerManager = new ElectionsOfficerManager(connection,objectLayer);
+        this.electoralDistrictManager = new ElectoralDistrictManager(connection,objectLayer);
+        this.issueManager = new IssueManager(connection,objectLayer);
+        this.politicalPartyManager =  new PoliticalPartyManager(connection,objectLayer);
+        this.voterManager = new VoterManager(connection,objectLayer);
+        this.voteRecordManager = new VoteRecordManager(connection,objectLayer);
+        this.ballot_electionsManager = new Ballot_ElectionsManager(connection,objectLayer);
+        this.ballot_issuesManager = new Ballot_IssuesManager(objectLayer,connection);
+        this.election_candidatesManager = new Election_CandidatesManager(objectLayer,connection);
+        this.district_ballotsManager = new District_BallotsManager(objectLayer,connection);
+        this.district_voterManager = new District_VoterManager(objectLayer,connection);
+        this.party_candidatesManager = new Party_CandidatesManager(objectLayer,connection);
     }
 
     @Override
@@ -44,8 +57,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeElectionsOfficer(ElectionsOfficer electionsOfficer) throws EVException {
-        electionsOfficerManager.store(electionsOfficer);
+    public ElectionsOfficer storeElectionsOfficer(ElectionsOfficer electionsOfficer) throws EVException {
+        return electionsOfficerManager.store(electionsOfficer);
 
     }
 
@@ -60,8 +73,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeVoter(Voter voter) throws EVException {
-        voterManager.store(voter);
+    public Voter storeVoter(Voter voter) throws EVException {
+        return voterManager.store(voter);
     }
 
     @Override
@@ -75,8 +88,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeBallot(Ballot ballot) throws EVException {
-        ballotManager.store(ballot);
+    public Ballot storeBallot(Ballot ballot) throws EVException {
+        return ballotManager.store(ballot);
     }
 
     @Override
@@ -90,8 +103,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeCandidate(Candidate candidate) throws EVException {
-        candidateManager.store(candidate);
+    public Candidate storeCandidate(Candidate candidate) throws EVException {
+        return candidateManager.store(candidate);
     }
 
     @Override
@@ -105,8 +118,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeElection(Election election) throws EVException {
-        electionManager.store(election);
+    public Election storeElection(Election election) throws EVException {
+        return electionManager.store(election);
     }
 
     @Override
@@ -120,8 +133,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
-        electoralDistrictManager.store(electoralDistrict);
+    public ElectoralDistrict storeElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
+        return electoralDistrictManager.store(electoralDistrict);
     }
 
     @Override
@@ -135,8 +148,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeIssue(Issue issue) throws EVException {
-        issueManager.store(issue);
+    public Issue storeIssue(Issue issue) throws EVException {
+        return issueManager.store(issue);
     }
 
     @Override
@@ -150,8 +163,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storePoliticalParty(PoliticalParty politicalParty) throws EVException {
-        politicalPartyManager.store(politicalParty);
+    public PoliticalParty storePoliticalParty(PoliticalParty politicalParty) throws EVException {
+        return politicalPartyManager.store(politicalParty);
     }
 
     @Override
@@ -165,8 +178,8 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void storeVoteRecord(VoteRecord voteRecord) throws EVException {
-        voteRecordManager.store(voteRecord);
+    public VoteRecord storeVoteRecord(VoteRecord voteRecord) throws EVException {
+        return voteRecordManager.store(voteRecord);
     }
 
     @Override
@@ -174,103 +187,135 @@ public class PersistenceLayerImpl implements PersistenceLayer{
         voteRecordManager.delete(voteRecord);
     }
 
+
+
+
+
+
     @Override
     public void storeBallotIncludesBallotItem(Ballot ballot, BallotItem ballotItem) throws EVException {
-        ballotManager.store(ballot, ballotItem);
+
+        if(ballotItem instanceof Election){
+            ballot_electionsManager.store(ballot,ballotItem);
+        }else
+        if(ballotItem instanceof Issue){
+            ballot_issuesManager.store(ballot,ballotItem);
+        }
     }
 
     @Override
     public Ballot restoreBallotIncludesBallotItem(BallotItem ballotItem) throws EVException {
-        return ballotManager.restore(ballotItem);
+
+        Ballot ballot = null;
+        if(ballotItem instanceof Election){
+            ballot = ballot_electionsManager.restore(ballotItem);
+        }else
+        if(ballotItem instanceof Issue){
+            ballot = ballot_issuesManager.restore(ballotItem);
+        }
+        return ballot;
     }
 
     @Override
     public List<BallotItem> restoreBallotIncludesBallotItem(Ballot ballot) throws EVException {
-        return ballotManager.restore(ballot);
+
+        List<BallotItem> ballotItems= ballot_issuesManager.restore(ballot);
+        ballotItems.addAll(ballot_electionsManager.restore(ballot));
+
+        return ballotItems;
+
     }
 
     @Override
     public void deleteBallotIncludesBallotItem(Ballot ballot, BallotItem ballotItem) throws EVException {
-        ballotManager.delete(ballot, ballotItem);
+        if(ballotItem instanceof Election){
+            ballot_electionsManager.delete(ballot,ballotItem);
+        }else
+        if(ballotItem instanceof Issue){
+            ballot_issuesManager.delete(ballot,ballotItem);
+        }
     }
 
     @Override
     public void storeCandidateIsCandidateInElection(Candidate candidate, Election election) throws EVException {
-        candidateManager.store(candidate, election);
+        election_candidatesManager.store(candidate,election);
     }
 
     @Override
     public Election restoreCandidateIsCandidateInElection(Candidate candidate) throws EVException {
-        return candidateManager.restore(candidate);
+        return election_candidatesManager.restore(candidate);
     }
 
     @Override
     public List<Candidate> restoreCandidateIsCandidateInElection(Election election) throws EVException {
-        return candidateManager.restore(election);
+        return election_candidatesManager.restore(election);
     }
 
     @Override
     public void deleteCandidateIsCandidateInElection(Candidate candidate, Election election) throws EVException {
-        candidateManager.delete(candidate, election);
+        election_candidatesManager.delete(election,candidate);
     }
+
+
+
 
     @Override
     public void storeElectoralDistrictHasBallotBallot(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException {
-        electoralDistrictManager.store(electoralDistrict, ballot);
+        district_ballotsManager.store(electoralDistrict, ballot);
     }
 
     @Override
     public ElectoralDistrict restoreElectoralDistrictHasBallotBallot(Ballot ballot) throws EVException {
-        return electoralDistrictManager.restore(ballot);
+        return district_ballotsManager.restore(ballot);
     }
 
     @Override
     public List<Ballot> restoreElectoralDistrictHasBallotBallot(ElectoralDistrict electoralDistrict) throws EVException {
-        return electoralDistrictManager.restore(electoralDistrict);
+        return district_ballotsManager.restore(electoralDistrict);
     }
 
     @Override
     public void deleteElectoralDistrictHasBallotBallot(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException {
-        electoralDistrictManager.delete(electoralDistrict, ballot);
+        district_ballotsManager.delete(electoralDistrict, ballot);
     }
 
     @Override
     public void storeCandidateIsMemberOfPoliticalParty(Candidate candidate, PoliticalParty politicalParty) throws EVException {
-        candidateManager.store(candidate, politicalParty);
+        party_candidatesManager.store(candidate, politicalParty);
     }
 
     @Override
     public PoliticalParty restoreCandidateIsMemberOfPoliticalParty(Candidate candidate) throws EVException {
-        return politicalPartyManager.restore(candidate);
+        return party_candidatesManager.restore(candidate);
     }
 
     @Override
     public List<Candidate> restoreCandidateIsMemberOfPoliticalParty(PoliticalParty politicalParty) throws EVException {
-        return candidateManager.restore(politicalParty);
+        return party_candidatesManager.restore(politicalParty);
     }
 
     @Override
     public void deleteCandidateIsMemberOfElection(Candidate candidate, PoliticalParty politicalParty) throws EVException {
-        candidateManager.delete(candidate, politicalParty);
+        party_candidatesManager.delete(candidate, politicalParty);
     }
 
     @Override
     public void storeVoterBelongsToElectoralDistrict(Voter voter, ElectoralDistrict electoralDistrict) throws EVException {
-        voterManager.store(voter, electoralDistrict);
+        district_voterManager.store(voter, electoralDistrict);
     }
 
     @Override
     public ElectoralDistrict restoreVoterBelongsToElectoralDistrict(Voter voter) throws EVException {
-        return electoralDistrictManager.restore(voter);
+        return district_voterManager.restore(voter);
     }
 
     @Override
     public List<Voter> restoreVoterBelongsToElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
-        return electoralDistrict.restore(electoralDistrict);
+        return district_voterManager.restore(electoralDistrict);
     }
 
     @Override
     public void deleteVoterBelongsToElection(Voter voter, ElectoralDistrict electoralDistrict) throws EVException {
-        voterManager.delete(voter, electoralDistrict);
+        district_voterManager.delete(voter, electoralDistrict);
     }
 }

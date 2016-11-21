@@ -1,11 +1,15 @@
 package main.javaSrc.handlers;
 
 import com.sun.net.httpserver.HttpExchange;
-import main.javaSrc.DBHelpers.CDFSHelpers.*;
+import main.javaSrc.DBHelpers.CDFSTHelpers.*;
+import main.javaSrc.DBHelpers.DbConnHelper;
+import main.javaSrc.DBHelpers.DbConnHelperImpl;
 import main.javaSrc.Entities.Entity;
 import main.javaSrc.HttpClasses.DBExchange;
 import main.javaSrc.helpers.Logger;
 import main.javaSrc.services.AuthService;
+
+import java.util.List;
 
 //handler for processing data requests
 public class DataHandler extends Handler {
@@ -22,24 +26,32 @@ public class DataHandler extends Handler {
         token = exchange.getParam("token");
 
         if(auth.isValidToken(token)){
-            CDFSHelper helper=null;
+
+            CDFSTHelper helper=null;
             String actionType = exchange.getDBRequestType();
+
+            DbConnHelper dbConnHelper = new DbConnHelperImpl();
+
             switch (actionType){
 
                 case "create":
-                    helper = new CreateHelper(exchange);
+                    helper = new CreateHelper(exchange,dbConnHelper);
                     break;
 
                 case "delete":
-                    helper = new DeleteHelper(exchange);
+                    helper = new DeleteHelper(exchange,dbConnHelper);
                     break;
 
                 case "find":
-                    helper = new FindHelper(exchange);
+                    helper = new FindHelper(exchange,dbConnHelper);
                     break;
 
                 case "store":
-                    helper = new StoreHelper(exchange);
+                    helper = new StoreHelper(exchange,dbConnHelper);
+                    break;
+
+                case "traverse":
+                    helper = new TraverseHelper(exchange,dbConnHelper);
                     break;
 
                 default:
@@ -47,8 +59,13 @@ public class DataHandler extends Handler {
                     break;
             }
             if(helper != null){
-                Entity entity = helper.execute();
-                exchange.returnObject(entity);
+                List<Entity> entities = helper.execute();
+
+                if(entities.get(0) != null) {
+                    exchange.returnObjectList(entities);
+                }else{
+                    exchange.respondStr("200 success","text/html");
+                }
             }
         }else{
             exchange.invalidToken();

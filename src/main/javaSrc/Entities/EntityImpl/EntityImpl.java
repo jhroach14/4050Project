@@ -5,7 +5,7 @@ import main.javaSrc.Entities.Entity;
 /**
  * Created by User on 10/31/2016.
  */
-public class EntityImpl  implements Entity{
+public abstract class EntityImpl  implements Entity{
     private int id;
     private boolean persistent=false;
 

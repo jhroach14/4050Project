@@ -1,5 +1,6 @@
 package main.javaSrc;
 
+import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpsServer;
 import main.javaSrc.handlers.AuthHandler;
 import main.javaSrc.handlers.DataHandler;
@@ -17,13 +18,13 @@ import java.security.KeyStore;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-//server class built around HttpsServer
+//server class built around HttpServer
 public class Server {
 
     private static Logger log = new Logger(Server.class);
     private int port;
 
-    private HttpsServer server;
+    private HttpServer server;
     private IndexHandler indexHandler;
     private DataHandler dataHandler;
     private AuthHandler authHandler;
@@ -33,7 +34,7 @@ public class Server {
         try {
 
             log.out("Creating Server Instance at "+port+"...");
-            server = HttpsServer.create(new InetSocketAddress(port),0);
+            server = HttpServer.create(new InetSocketAddress(port),0);
 
         } catch (Exception e) {
             log.error("Server Instantiation failed\n"+e.getMessage());
@@ -43,7 +44,7 @@ public class Server {
         log.out("server Instantiated at port "+ port);
     }
 
-
+    //bind handlers to routes and rev up server
     public void start(){
 
         log.out("Starting Server...");
@@ -53,7 +54,6 @@ public class Server {
         indexHandler = new IndexHandler(authService);
         dataHandler = new DataHandler(authService);
         authHandler = new AuthHandler(authService);
-
 
         server.createContext("/", indexHandler);
         server.createContext("/data",dataHandler);  //bind handlers
@@ -66,7 +66,7 @@ public class Server {
         log.out("Server Started");
     }
 
-    //configures server for HTTPS using selfsigned jks ssl key
+    /*//configures server for HTTPS using selfsigned jks ssl key
     public void initiateSecure(){
         try {
 
@@ -92,7 +92,7 @@ public class Server {
         }catch (Exception e){
             log.error("HTTPS initiation failed" +e.getMessage());
         }
-    }
+    }*/
 
 
 }
