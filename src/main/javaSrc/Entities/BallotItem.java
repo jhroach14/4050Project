@@ -1,7 +1,6 @@
 package main.javaSrc.Entities;
 
 
-import main.javaSrc.Entities.EntityImpl.BallotItemImpl;
 import main.javaSrc.helpers.EVException;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 

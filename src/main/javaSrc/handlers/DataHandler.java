@@ -26,11 +26,10 @@ public class DataHandler extends Handler {
         token = exchange.getParam("token");
         DbConnHelper dbConnHelper = new DbConnHelperImpl();
 
-        if(auth.isValidToken(token,dbConnHelper)){
+        String actionType = exchange.getDBRequestType();
+        if(actionType.equals("register")||auth.isValidToken(token,dbConnHelper)){
 
             CDFSTHelper helper=null;
-            String actionType = exchange.getDBRequestType();
-
 
 
             switch (actionType){
@@ -53,6 +52,10 @@ public class DataHandler extends Handler {
 
                 case "traverse":
                     helper = new TraverseHelper(exchange,dbConnHelper);
+                    break;
+
+                case "register":
+                    helper = new StoreHelper(exchange,dbConnHelper);
                     break;
 
                 default:

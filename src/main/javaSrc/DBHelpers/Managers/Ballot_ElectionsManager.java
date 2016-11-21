@@ -1,5 +1,6 @@
 package main.javaSrc.DBHelpers.Managers;
 
+
 import main.javaSrc.DBHelpers.ObjectLayer;
 import main.javaSrc.Entities.Ballot;
 import main.javaSrc.Entities.BallotItem;
@@ -65,13 +66,6 @@ public class Ballot_ElectionsManager {
             throw new EVException("Ballot_Elections.restore could not restore non persistent election");
 
         query.append("select Ballot_ID, Start_Date, End_Date, Election_ID from (select Ballot.Ballot_ID, Ballot.Start_Date, Ballot.End_Date, Ballot_Elections.Election_ID from Ballot inner join Ballot_Elections on Ballot_Elections.Ballot_ID = Ballot.Ballot_ID) as T where Election_ID = " + ballotItem.getId());
-
-//
-//        query.append("select Ballot.Ballot_ID, Ballot.Start_Date, Ballot.End_Date " );
-//        query.append("from Ballot ");
-//        query.append("join Ballot_Elections ");
-//        query.append("on Ballot.Ballot_ID = Ballot_Elections.Ballot_ID ");
-//        query.append("where Ballot_Elections.Election_ID = " + ballotItem.getId());
 
         try{
             stmt = conn.createStatement();

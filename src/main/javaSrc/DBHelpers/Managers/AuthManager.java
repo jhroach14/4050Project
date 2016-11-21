@@ -39,12 +39,13 @@ public class AuthManager {
             }else{
                 queryStr = "select User_Password from Voter where Username = '"+userName+"'";
                 stmt = conn.createStatement();
-                if (stmt.execute(queryStr)){
-                    ResultSet rsv = stmt.getResultSet();
-                    String userPassv ="";
-                    if(rsv.next()){
-                        userPassv = rsv.getString(1);
-                    }
+                stmt.execute(queryStr);
+                ResultSet rsv = stmt.getResultSet();
+                String userPassv ="";
+                if (rsv.next()){
+
+                    userPassv = rsv.getString(1);
+
                     if (password.equals(userPassv)){
                         String[] response = new String[2];
                         response[0] = createToken(userName,conn);
@@ -103,9 +104,9 @@ public class AuthManager {
         boolean isValid = false;
         try {
             Statement stmt = connection.createStatement();
-            //I don't think this logic is correct, this if statement only checks if the query ran okay
-            //i.e. there were no sql syntax errors, not that it actually returns something.
-            if(stmt.execute(query)){
+            stmt.execute(query);
+            ResultSet rs = stmt.getResultSet();
+            if(rs.next()){
                 isValid = true;
             }
         } catch (SQLException e) {
