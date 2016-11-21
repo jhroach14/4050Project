@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="4050Project-master">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jackson-mapper-asl-1.9.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jackson-core-asl-1.9.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ojdbc14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-connector-java-5.1.40-bin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
