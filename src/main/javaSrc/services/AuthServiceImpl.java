@@ -22,6 +22,7 @@ public class AuthServiceImpl implements AuthService{
     public boolean isValidToken(String token,DbConnHelper dbConnHelper) {
 
         Connection conn = dbConnHelper.getConnection();
+        dbConnHelper.disableAutoCommit(conn);
         boolean isValid = authManager.validateToken(token,conn);
         dbConnHelper.commit(conn);
         return isValid;
@@ -33,6 +34,7 @@ public class AuthServiceImpl implements AuthService{
         String userName = exchange.getParam("user");
         String password = exchange.getParam("pass");
         Connection conn = dbConnHelper.getConnection();
+        dbConnHelper.disableAutoCommit(conn);
 
         try {
             response = authManager.validateCredentials(userName,password,conn);

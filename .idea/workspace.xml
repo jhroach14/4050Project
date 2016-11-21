@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1ab4881-2ed0-450e-b8b3-5a6ff98dfe5e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/javaSrc/HttpClasses/Configurator.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionsOfficerManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectionsOfficerManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectoralDistrictManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/ElectoralDistrictManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/IssueManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/IssueManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/PoliticalPartyManager.class" afterPath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/Managers/PoliticalPartyManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/DbConfig.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/DbConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/AuthManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/AuthManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/Ballot_ElectionsManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/Ballot.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/Ballot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/BallotItem.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/BallotItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/VoteRecord.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/VoteRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/Voter.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/Voter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Server.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/handlers/DataHandler.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/handlers/DataHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/js/login.js" afterPath="$PROJECT_DIR$/src/main/resources/js/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/login.html" afterPath="$PROJECT_DIR$/src/main/resources/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/login.js" afterPath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/login.html" afterPath="$PROJECT_DIR$/out/production/4050Project/main/resources/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/services/AuthServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/services/AuthServiceImpl.java" />
     </list>
     <ignored path="4050Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,12 +48,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AuthHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/javaSrc/handlers/AuthHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
               <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthServiceImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/javaSrc/services/AuthServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="488">
+              <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DbConnHelperImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/DbConnHelperImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="641">
+              <caret line="63" column="26" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/javaSrc/handlers/IndexHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/javaSrc/services/AuthService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -143,7 +173,6 @@
         <option value="$PROJECT_DIR$/src/main/javaSrc/handlers/AuthHandler.java" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/services/AuthService.java" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/handlers/IndexHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/javaSrc/services/AuthServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/scripts/evote-schema.sql" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/Entities/BallotItem.java" />
@@ -158,6 +187,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/login.html" />
         <option value="$PROJECT_DIR$/src/main/javaSrc/handlers/DataHandler.java" />
         <option value="$PROJECT_DIR$/src/main/resources/js/login.js" />
+        <option value="$PROJECT_DIR$/src/main/javaSrc/services/AuthServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -299,6 +329,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="javaSrc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javaSrc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -814,7 +870,7 @@
       <workItem from="1479740444988" duration="207000" />
       <workItem from="1479740676526" duration="737000" />
       <workItem from="1479741444198" duration="157000" />
-      <workItem from="1479741636591" duration="7252000" />
+      <workItem from="1479741636591" duration="7804000" />
     </task>
     <task id="LOCAL-00001" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/javaSrc/DBHelpers/Managers/CandidateManager.java&#10;">
       <created>1479155624096</created>
@@ -879,11 +935,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479741598871</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="voter registration should work now">
+      <created>1479756872530</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1479756872530</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70755000" />
+    <option name="totallyTimeSpent" value="71307000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1618" height="868" extended-state="6" />
@@ -897,7 +960,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35085228" sideWeight="0.48898965" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.390625" sideWeight="0.48898965" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32966322" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -907,7 +970,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.49274743" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.49274743" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -967,7 +1030,8 @@
     <MESSAGE value="minor change to schema for testing" />
     <MESSAGE value="merged justin's debugging changes" />
     <MESSAGE value="intellij bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="intellij bug" />
+    <MESSAGE value="voter registration should work now" />
+    <option name="LAST_COMMIT_MESSAGE" value="voter registration should work now" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1024,22 +1088,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/services/AuthServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/handlers/IndexHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectionsOfficerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -1148,14 +1196,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/DbConnHelperImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="63" column="26" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1451,16 +1491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/services/AuthService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/HttpClasses/DBExchange.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -1509,11 +1539,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/DBHelpers/DbConnHelperImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="641">
+          <caret line="63" column="26" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/handlers/IndexHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/services/AuthService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/javaSrc/handlers/AuthHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/javaSrc/services/AuthServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
