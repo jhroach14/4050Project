@@ -83,7 +83,7 @@ public class CandidateManager extends Manager{
     }
 
     public Candidate store(Candidate candidate) throws EVException{
-        String insertCandidate = "insert into Candidate ( Candidate_Name, Vote_Count) values ( ?, ?, ? )";
+        String insertCandidate = "insert into Candidate ( Candidate_Name, Vote_Count) values ( ?, ? )";
         String updateCandidate = "update Candidate set Candidate_Name = ?, Vote_Count = ?";
         PreparedStatement stmt = null;
         int queryExecution;

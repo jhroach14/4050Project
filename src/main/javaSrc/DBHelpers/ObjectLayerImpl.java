@@ -377,7 +377,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public void createLink(PoliticalParty party, Candidate candidate) throws EVException {
-        persistenceLayer.storeCandidateIsMemberOfPoliticalParty(candidate,party);
+        persistenceLayer.storeCandidateIsMemberOfPoliticalParty(candidate, party);
     }
 
     @Override

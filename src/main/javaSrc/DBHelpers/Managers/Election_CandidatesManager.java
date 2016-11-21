@@ -60,11 +60,11 @@ public class Election_CandidatesManager {
         if(candidate.getId() <1)
             throw new EVException("Election_Candidates.restore could not restore non persistent candidate");
 
-        query.append("select Election.Election_ID, Election.Office_Name, Election.Is_Partisan, Election.Vote_Count ");
-        query.append(" from Election ");
-        query.append("join Election_Candidates");
-        query.append("on Election.Election_ID = Election_Candidates.Election_ID");
-        query.append("Where Election_Candidates.Candidate_ID = '" + candidate.getId() + "'");
+        query.append("select Election.Election_ID, Election.Office_Name, Election.Is_Partisan, Election.Vote_Count");
+        query.append(" from Election");
+        query.append(" join Election_Candidates");
+        query.append(" on Election.Election_ID = Election_Candidates.Election_ID");
+        query.append(" where Election_Candidates.Candidate_ID = " + candidate.getId());
 
         try{
             stmt = conn.createStatement();
@@ -111,18 +111,45 @@ public class Election_CandidatesManager {
         if (election.getId() < 1)
             throw new EVException("CandidateManger.restore could not restore persistent Candidate_Elections");
 
-        query.append("select Candidate.Candidate_Name, Candidate.Vote_Count");
-        query.append(" from Candidate ");
-        query.append("join Election_Candidates");
-        query.append("on Election.Election_ID = Election_Candidates.Election_ID");
-        query.append("Where Election.Election_ID = '" + election.getId() + "'");
+        /*query.append("select Candidate.Candidate_Name, Candidate.Vote_Count");
+        query.append(" from Candidate");
+        query.append(" join Election_Candidates");
+        query.append(" on Election.Election_ID = Election_Candidates.Election_ID");
+        query.append(" where Election.Election_ID = " + election.getId());
+*/
+        query.append("select Candidate_ID, Candidate_Name, Vote_Count from (select Candidate.Candidate_ID, Candidate.Candidate_Name, Candidate.Vote_Count, Election_Candidates.Election_ID from Candidate inner join Election_Candidates on Candidate.Candidate_ID = Election_Candidates.Candidate_ID) as T where Election_ID = " + election.getId());
+
 
         try {
             stmt = conn.createStatement();
 
             if (stmt.execute(query.toString())) { // statement returned a result
 
+                int candidateId;
                 String candidateName;
+                int voteCount;
+
+
+                Candidate newCandidate = null;
+
+                ResultSet rs = stmt.getResultSet();
+
+
+                while (rs.next()) {
+
+                    candidateId = rs.getInt(1);
+                    candidateName = rs.getString(2);
+                    voteCount = rs.getInt(3);
+
+                    newCandidate = new CandidateImpl();
+                    newCandidate.setId(candidateId);
+                    newCandidate.setName(candidateName);
+                    newCandidate.setVoteCount(voteCount);
+                    newCandidate.setPersistent(true);
+
+                    candidates.add(newCandidate);
+                }
+                /*String candidateName;
                 int voteCount;
 
 
@@ -143,6 +170,7 @@ public class Election_CandidatesManager {
 
                     candidates.add(newCandidate);
                 }
+                */
 
                 return candidates;
             }

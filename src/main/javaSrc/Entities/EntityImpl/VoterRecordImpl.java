@@ -6,6 +6,7 @@ import main.javaSrc.Entities.Voter;
 import main.javaSrc.helpers.EVException;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -76,17 +77,17 @@ public class VoterRecordImpl extends EntityImpl implements VoteRecord {
         //Cannot be null
 
         if( getDate() != null )
-            stmt.setDate( 1, (Date) getDate());
+            stmt.setDate( 1, getDate());
         else
             throw new EVException( "VoteRecordManager.save: can't save a  Date undefined" );
 
         if( getVoter().getId() >= 0 )
-            stmt.setInt( 2, getVoter().getId() );
+            stmt.setInt( 2, getVoter().getId());
         else
             throw new EVException( "VoteRecordManager.save: can't save a  Voter_ID undefined" );
 
         if( getBallot().getId() >= 0 )
-            stmt.setInt( 3, getBallot().getId() );
+            stmt.setInt( 3, getBallot().getId());
         else
             throw new EVException( "VoteRecordManager.save: can't save a  Ballot_ID undefined" );
 

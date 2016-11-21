@@ -62,11 +62,7 @@ public class Party_CandidatesManager {
         if(candidate.getId() <1)
             throw new EVException("Party_Candidates.restore could not restore non persistent candidate");
 
-        query.append("select Party_ID, Party_Name");
-        query.append(" from Party");
-        query.append("join Party_Candidates");
-        query.append("on Party.Party_ID = Party_Candidates.Party_ID");
-        query.append("Where Party_Candidates.Candidate_ID = '" + candidate.getId() + "'");
+        query.append("select Party_ID, Party_Name from (select Party.Party_ID, Party.Party_Name, Party_Candidates.Candidate_ID from Party inner join Party_Candidates on Party.Party_ID = Party_Candidates.Party_ID) as T where Candidate_ID = " + candidate.getId());
 
         try{
             stmt = conn.createStatement();
@@ -109,11 +105,7 @@ public class Party_CandidatesManager {
         if (politicalParty.getId() < 1)
             throw new EVException("CandidateManger.restore could not restore persistent Candidate_Elections");
 
-        query.append("select Candidate.Candidate_ID,Candidate.Candidate_Name, Candidate.Vote_Count");
-        query.append(" from Candidate ");
-        query.append("join Party_Candidates");
-        query.append("on Party.Party_ID = Party_Candidates.Party_ID");
-        query.append("Where Party.Party_ID = '" + politicalParty.getId() + "'");
+        query.append("select Candidate_ID, Candidate_Name, Vote_Count from (select Candidate.Candidate_ID, Candidate.Candidate_Name, Candidate.Vote_Count, Party_Candidates.Party_ID from Candidate inner join Party_Candidates on Candidate.Candidate_ID = Party_Candidates.Candidate_ID) as T where Party_ID = " + politicalParty.getId());
 
         try {
             stmt = conn.createStatement();

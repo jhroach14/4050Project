@@ -46,36 +46,5 @@ public class AuthServiceImpl implements AuthService{
         return response;
     }
 
-    //TODO: implement non mock
-    /*@Override
-    public boolean isValidToken(String token) {
-        if(token==null){
-            log.error("Null token");
-            return false;
-        }
-        if(token.equals("testToken123")){
-            log.out("Token "+token+" valid");
-            return true;
-        }
-        log.error("token "+token+" invalid");
-        return false;
-    }
-
-    @Override
-    public String[] isValidCredentials(String user, String pass) {
-        String[] response = new String[2];
-        if (user.equals("officer@gmail.com") && pass.equals("officerpassword")) {
-            response[0] = "testToken123";
-            response[1] = "http://localhost:9001/officerIndex.html";
-        } else if (user.equals("voter@gmail.com") && pass.equals("voterpassword")){
-            response[0] = "testToken123";
-            response[1] = "http://localhost:9001/voterIndex.html";
-        } else {
-            response[0] = "testToken123";
-            response[1] = "http://localhost:9001/officerIndex.html";
-        }
-
-        return response;
-    }*/
 
 }
