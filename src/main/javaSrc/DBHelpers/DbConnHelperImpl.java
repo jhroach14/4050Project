@@ -39,6 +39,7 @@ public class DbConnHelperImpl implements DbConnHelper {
     @Override
     public void commit(Connection conn) {
         try {
+            log.out("Committing changes to Database");
             conn.commit();
         }catch (SQLException ex){
             log.error("SQLException committing connection");
@@ -68,7 +69,7 @@ public class DbConnHelperImpl implements DbConnHelper {
         }
 
         try {
-
+            log.out("connecting to EVOTE database");
             dbConnection = DriverManager.getConnection(
                     DbConfig.DB_CONNECTION_URL, DbConfig.DB_CONNECTION_USERNAME, DbConfig.DB_CONNECTION_PWD);
             return dbConnection;

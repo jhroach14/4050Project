@@ -2,6 +2,7 @@ package main.javaSrc.DBHelpers.Managers;
 
 import main.javaSrc.DBHelpers.ObjectLayer;
 import main.javaSrc.Entities.Entity;
+import main.javaSrc.helpers.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,8 @@ import java.sql.SQLException;
  * Created by User on 11/14/2016.
  */
 public abstract class Manager {
+
+    private static Logger log = new Logger(Manager.class);
 
     protected ObjectLayer objectLayer = null;
     protected Connection conn = null;
@@ -42,6 +45,7 @@ public abstract class Manager {
                     entity.setId( id ); // set this person's db id (proxy object)
             }
         }
+        log.out("inserted "+entity.getType()+" into EVOTE database with primaryKey "+entity.getId());
         return entity;
     }
 

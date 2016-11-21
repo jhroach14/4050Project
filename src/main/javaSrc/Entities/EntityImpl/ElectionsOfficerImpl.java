@@ -175,4 +175,10 @@ public class ElectionsOfficerImpl extends UserImpl implements ElectionsOfficer{
         return stmt;
     }
 
+    @JsonIgnore
+    @Override
+    public String getType() {
+        return "ElectionsOfficer";
+    }
+
 }

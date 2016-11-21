@@ -60,6 +60,12 @@ public class PoliticalPartyImpl extends EntityImpl implements PoliticalParty {
         return stmt;
     }
 
+    @JsonIgnore
+    @Override
+    public String getType() {
+        return "PoliticalParty";
+    }
+
     @Override
     public String getName() {
         return name;

@@ -29,6 +29,7 @@ public class CreateHelper extends CDFSTHelper {
             switch (objectType){
 
                 case "Ballot":
+                    log.out("Attempting to create Ballot");
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), BallotImpl.class);
                         objectLayer.createBallot(((Ballot)entity).getOpenDate(),((Ballot)entity).getCloseDate(),false);
@@ -37,6 +38,7 @@ public class CreateHelper extends CDFSTHelper {
                     }
                     break;
                 case "Candidate":
+                    log.out("Attempting to create Candidate");
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), CandidateImpl.class);
                         objectLayer.createCandidate(((Candidate)entity).getName());
@@ -45,6 +47,7 @@ public class CreateHelper extends CDFSTHelper {
                     }
                     break;
                 case "Election":
+                    log.out("Attempting to create Election");
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), ElectionImpl.class);
                         objectLayer.createElection(((Election)entity).getOffice(),((Election)entity).getIsPartisan());
@@ -53,6 +56,7 @@ public class CreateHelper extends CDFSTHelper {
                     }
                     break;
                 case "ElectionOfficer":
+                    log.out("Attempting to create ElectionOfficer");
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), ElectionsOfficerImpl.class);
                         objectLayer.createElectionsOfficer(((ElectionsOfficer)entity).getFirstName(),((ElectionsOfficer)entity).getLastName(),((ElectionsOfficer)entity).getUserName(),((ElectionsOfficer)entity).getUserPassword(),((ElectionsOfficer)entity).getEmailAddress(),((ElectionsOfficer)entity).getAddress(),((ElectionsOfficer)entity).getState(),((ElectionsOfficer)entity).getZip(),((ElectionsOfficer)entity).getCity());
@@ -61,6 +65,7 @@ public class CreateHelper extends CDFSTHelper {
                     }
                     break;
                 case "ElectoralDistrict":
+                    log.out("Attempting to create ElectoralDistrict");
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), ElectoralDistrictImpl.class);
                         objectLayer.createElectoralDistrict(((ElectoralDistrict)entity).getName());
@@ -69,6 +74,7 @@ public class CreateHelper extends CDFSTHelper {
                     }
                     break;
                 case "Issue":
+                    log.out("Attempting to create Issue");
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), IssueImpl.class);
                         objectLayer.createIssue(((Issue)entity).getQuestion());
@@ -77,6 +83,7 @@ public class CreateHelper extends CDFSTHelper {
                     }
                     break;
                 case "PoliticalParty":
+                    log.out("Attempting to create PoliticalParty");
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), PoliticalPartyImpl.class);
                         objectLayer.createPoliticalParty(((PoliticalParty)entity).getName());
@@ -85,6 +92,7 @@ public class CreateHelper extends CDFSTHelper {
                     }
                     break;
                 case "Voter":
+                    log.out("Attempting to create Voter");
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), VoterImpl.class);
                         objectLayer.createVoter(((Voter)entity).getFirstName(),((Voter)entity).getLastName(),((Voter)entity).getUserName(),((Voter)entity).getUserPassword(),((Voter)entity).getEmailAddress(),((Voter)entity).getAddress(),((Voter)entity).getAge(),((Voter)entity).getState(),((Voter)entity).getZip(),((Voter)entity).getCity());
@@ -93,6 +101,7 @@ public class CreateHelper extends CDFSTHelper {
                     }
                     break;
                 case "VoterRecord":
+                    log.out("Attempting to create VoterRecord");
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), VoterRecordImpl.class);
                         objectLayer.createVoterRecord(((VoterRecordImpl)entity).getDate(),((VoterRecordImpl)entity).getVoter(),((VoterRecordImpl)entity).getBallot());
@@ -101,6 +110,7 @@ public class CreateHelper extends CDFSTHelper {
                     }
                     break;
                 default:
+                    log.error("Uknown object type "+objectType);
                     break;
             }
 

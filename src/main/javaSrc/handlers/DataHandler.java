@@ -61,7 +61,7 @@ public class DataHandler extends Handler {
             if(helper != null){
                 List<Entity> entities = helper.execute();
 
-                if(entities != null) {
+                if(entities.get(0) != null) {
                     exchange.returnObjectList(entities);
                 }else{
                     exchange.respondStr("200 success","text/html");

@@ -22,8 +22,9 @@ public class Exchange {
 
         this.httpExchange = httpExchange;
         this.request = getRequest();
-        String spacer = "\n\n*********************************************";
-        log.out(spacer+"Received request:\n"+request);
+        String spacer = "*********************************************";
+        log.out(spacer);
+        log.out("Received request: "+request);
         try {
             this.paramMap = new ParamMap(request);
         } catch (Exception e) {
@@ -109,7 +110,7 @@ public class Exchange {
             log.out("serving response " + response);
 
         }catch (Exception e){
-            log.out("response error "+e.getStackTrace().toString());
+            log.error("response error "+e.getStackTrace());
         }
     }
 

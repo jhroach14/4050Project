@@ -19,16 +19,20 @@ public class DBExchange extends Exchange{
 
     private String requestBody;
     public DBExchange(HttpExchange httpExchange) {
+        String spacer = "*********************************************";
+        log.out(spacer);
         this.httpExchange = httpExchange;
-        this.paramMap = new ParamMap(getRequest());
         this.dbRequest = getDbRequest();
+        log.out("Received DB request: "+dbRequest);
         this.requestBody = getDBRequestBody();
-        String spacer = "\n\n*********************************************";
-        log.out(spacer+"Received DB request:\n"+dbRequest);
+        this.paramMap = new ParamMap(getRequest());
     }
 
     public void returnObjectList(List<Entity> entities) {
         try {
+            for(Entity entity : entities){
+                log.out("serving "+entity.getType()+" with id "+entity.getId());
+            }
             httpExchange.sendResponseHeaders(200,0);
             ObjectMapper mapper = new ObjectMapper();
             OutputStream outputStream = httpExchange.getResponseBody();
@@ -41,6 +45,7 @@ public class DBExchange extends Exchange{
 
     public void returnObject(Entity entity){
         try {
+            log.out("serving "+entity+" with id "+entity.getId());
             httpExchange.sendResponseHeaders(200,0);
             ObjectMapper mapper = new ObjectMapper();
             OutputStream outputStream = httpExchange.getResponseBody();

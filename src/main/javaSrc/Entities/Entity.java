@@ -18,6 +18,8 @@ public interface Entity {
     String getRestoreString() throws EVException;
 
     PreparedStatement insertStoreData(PreparedStatement stmt) throws EVException, SQLException;
+
+    String getType();
 }
 
 

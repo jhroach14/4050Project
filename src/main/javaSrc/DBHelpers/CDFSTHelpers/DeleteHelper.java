@@ -34,48 +34,56 @@ public class DeleteHelper extends CDFSTHelper {
                 case "Ballot":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), BallotImpl.class);
+                        log.out("attempting to delete Ballot with id "+entity.getId());
                         objectLayer.deleteBallot((Ballot) entity);
                     }
                     break;
                 case "Candidate":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), CandidateImpl.class);
+                        log.out("attempting to delete Candidate with id "+entity.getId());
                         objectLayer.deleteCandidate((Candidate) entity);
                     }
                     break;
                 case "Election":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), ElectionImpl.class);
+                        log.out("attempting to delete Election with id "+entity.getId());
                         objectLayer.deleteElection((Election) entity);
                     }
                     break;
                 case "ElectionOfficer":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), ElectionsOfficerImpl.class);
+                        log.out("attempting to delete ElectionOfficer with id "+entity.getId());
                         objectLayer.deleteElectionsOfficer((ElectionsOfficer) entity);
                     }
                     break;
                 case "ElectoralDistrict":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), ElectoralDistrictImpl.class);
+                        log.out("attempting to delete ElectoralDistrict with id "+entity.getId());
                         objectLayer.deleteElectoralDistrict((ElectoralDistrict) entity);
                     }
                     break;
                 case "Issue":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), IssueImpl.class);
+                        log.out("attempting to delete Issue with id "+entity.getId());
                         objectLayer.deleteIssue((Issue) entity);
                     }
                     break;
                 case "PoliticalParty":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), PoliticalPartyImpl.class);
+                        log.out("attempting to delete PoliticalParty with id "+entity.getId());
                         objectLayer.deletePoliticalParty((PoliticalParty) entity);
                     }
                     break;
                 case "Voter":
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), VoterImpl.class);
+                        log.out("attempting to delete Voter with id "+entity.getId());
                         objectLayer.deleteVoter((Voter) entity);
                     }
                     break;
@@ -84,6 +92,7 @@ public class DeleteHelper extends CDFSTHelper {
                         String[] ballot_ballotItem = parseObjects(dbExchange.getRequestBody());
                         Ballot ballot = mapper.readValue(ballot_ballotItem[0],BallotImpl.class);
                         BallotItem ballotItem = mapper.readValue(ballot_ballotItem[1],ElectionImpl.class);
+                        log.out("attempting to delete link between Ballot with id "+ballot.getId()+" and Election with id "+ballotItem.getId());
                         objectLayer.deleteLink(ballot,ballotItem);
                     }
                     break;
@@ -92,6 +101,7 @@ public class DeleteHelper extends CDFSTHelper {
                         String[] ballot_ballotItem = parseObjects(dbExchange.getRequestBody());
                         Ballot ballot = mapper.readValue(ballot_ballotItem[0],BallotImpl.class);
                         BallotItem ballotItem = mapper.readValue(ballot_ballotItem[1],IssueImpl.class);
+                        log.out("attempting to delete link between Ballot with id "+ballot.getId()+" and Issue with id "+ballotItem.getId());
                         objectLayer.deleteLink(ballot,ballotItem);
                     }
                     break;
@@ -100,6 +110,7 @@ public class DeleteHelper extends CDFSTHelper {
                         String[] election_candidate = parseObjects(dbExchange.getRequestBody());
                         Election election = mapper.readValue(election_candidate[0],ElectionImpl.class);
                         Candidate candidate = mapper.readValue(election_candidate[1],CandidateImpl.class);
+                        log.out("attempting to delete link between Election with id "+election.getId()+" and Candidate with id "+candidate.getId());
                         objectLayer.deleteLink(candidate,election);
                     }
                     break;
@@ -108,6 +119,7 @@ public class DeleteHelper extends CDFSTHelper {
                         String[] district_ballots = parseObjects(dbExchange.getRequestBody());
                         ElectoralDistrict electoralDistrict = mapper.readValue(district_ballots[0],ElectoralDistrictImpl.class);
                         Ballot ballot = mapper.readValue(district_ballots[1],BallotImpl.class);
+                        log.out("attempting to delete link between District with id "+electoralDistrict.getId()+" and Ballot with id "+ballot.getId());
                         objectLayer.deleteLink(electoralDistrict,ballot);
                     }
                     break;
@@ -116,6 +128,7 @@ public class DeleteHelper extends CDFSTHelper {
                         String[] district_ballots = parseObjects(dbExchange.getRequestBody());
                         ElectoralDistrict electoralDistrict = mapper.readValue(district_ballots[0],ElectoralDistrictImpl.class);
                         Voter voter = mapper.readValue(district_ballots[1],VoterImpl.class);
+                        log.out("attempting to delete link between District with id "+electoralDistrict.getId()+" and Voter with id "+voter.getId());
                         objectLayer.deleteLink(electoralDistrict,voter);
                     }
                     break;
@@ -124,16 +137,19 @@ public class DeleteHelper extends CDFSTHelper {
                         String[] party_candidate = parseObjects(dbExchange.getRequestBody());
                         PoliticalParty party = mapper.readValue(party_candidate[0],PoliticalPartyImpl.class);
                         Candidate candidate = mapper.readValue(party_candidate[1],CandidateImpl.class);
+                        log.out("attempting to delete link between Party with id "+party.getId()+" and Candidate with id"+candidate.getId());
                         objectLayer.deleteLink(party,candidate);
                     }
                     break;
                 case "VoterRecord":
                     if(sourced.equals("true")){
                         entity = mapper.readValue(dbExchange.getRequestBody(), VoterRecordImpl.class);
+                        log.out("attempting to delete VoterRecord with id "+entity.getId());
                         objectLayer.deleteVoteRecord((VoteRecord) entity);
                     }
                     break;
                 default:
+                    log.error("Unsupported object type "+objectType);
                     break;
             }
         }catch (IOException e){

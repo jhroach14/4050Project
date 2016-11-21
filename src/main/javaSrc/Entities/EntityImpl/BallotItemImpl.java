@@ -4,6 +4,7 @@ import main.javaSrc.Entities.Ballot;
 import main.javaSrc.Entities.BallotItem;
 import main.javaSrc.Entities.Entity;
 import main.javaSrc.helpers.EVException;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -14,7 +15,6 @@ import java.sql.SQLException;
 public  class BallotItemImpl extends EntityImpl implements BallotItem {
 
     private int voteCount;
-
 
     @Override
     public int getVoteCount() {
@@ -39,5 +39,11 @@ public  class BallotItemImpl extends EntityImpl implements BallotItem {
     @Override
     public PreparedStatement insertStoreData(PreparedStatement stmt) throws EVException, SQLException {
         return null;
+    }
+
+    @JsonIgnore
+    @Override
+    public String getType() {
+        return "BallotItem";
     }
 }
