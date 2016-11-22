@@ -15,6 +15,6 @@ public class DbConfig {
 
     public static  String DB_CONNECTION_USERNAME = "root";
 
-    public static  String DB_CONNECTION_PWD = "1234";
+    public static  String DB_CONNECTION_PWD = "milo";
 
 }
