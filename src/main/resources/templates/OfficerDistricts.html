@@ -1,18 +1,18 @@
 <!-- ng-app="officerDistrictApp" -->
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/officer.css">
+<!--<link rel="stylesheet" href="css/bootstrap.css">-->
+<!--<link rel="stylesheet" href="css/officer.css">-->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-<script src="js/officerIndex.js"></script>
-<script src="js/controllers/officerHome.js"></script>
-<script src="js/controllers/officerDistricts.js"></script>
-<script src="js/controllers/officerElections.js"></script>
-<script src="js/controllers/officerIssues.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>-->
+<!--<script src="js/officerIndex.js"></script>-->
+<!--<script src="js/controllers/officerHome.js"></script>-->
+<!--<script src="js/controllers/officerDistricts.js"></script>-->
+<!--<script src="js/controllers/officerElections.js"></script>-->
+<!--<script src="js/controllers/officerIssues.js"></script>-->
 
-<div ng-app="officerDistrictApp" class="container-fluid">
+<div class="container-fluid">
     <div id="contentRow" class="row">
         <div class="col-md-1"></div>
         <div class="col-md-4">
@@ -32,10 +32,10 @@
             </div>
         </div>
         <div class="col-md-2">
-            <div id="newDistrictFormLink" class="form-actions">
+            <div id="newDistrictFormLink" class="form-actions" ng-controller="tokenGetter">
                 <span class="glyphicon glyphicon-plus"></span>
-                <a class="btn btn-default" data-toggle="collapse" href=".newDistrictForm">New District</a>
-                <!-- <a href="#/newDistrict" class="btn btn-default">New District</a> -->
+                <!--<a class="btn btn-default" data-toggle="collapse" href=".newDistrictForm">New District</a>-->
+                 <a href="http://localhost:9001/newDistrict.html?token=" class="btn btn-default">New District</a>
             </div>
         </div>
         <div class="col-md-4">
@@ -78,14 +78,14 @@
     </div>
 
     <!-- New Stuff -->
-    <form name="newDistrictForm" ng-controller="newDistrictsCtrl" class="newDistrictForm collapse">
-            <div class="form-group">
-                <label for="districtName">District Name:</label>
-                <input ng-model="districtName" type="text" class="form-control" id="districtName" required>
-            </div>
-            <div class="form-actions">
-                <button ng-disabled="districtForm.$invalid" ng-click="submit()" type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
+    <!--<form name="newDistrictForm" ng-controller="districtsCtrl" class="newDistrictForm collapse">-->
+            <!--<div class="form-group">-->
+                <!--<label for="districtName">District Name:</label>-->
+                <!--<input ng-model="districtName" type="text" class="form-control" id="districtName" required>-->
+            <!--</div>-->
+            <!--<div class="form-actions">-->
+                <!--<button ng-disabled="districtForm.$invalid" ng-click="submit()" type="submit" class="btn btn-primary">Submit</button>-->
+            <!--</div>-->
+        <!--</form>-->
 
 </div>

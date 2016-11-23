@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>login</title>
+    <link rel="stylesheet" href="css/newDistrict.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="js/controllers/newDistrict.js"></script>
+</head>
+
+<body>
+<div ng-app="newDistrictApp" class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 sidePanel">
+        </div>
+        <div class=" col-md-6">
+            <div id="mainCol" class="panel panel-default">
+                <div class="panel-body">
+                    <div id="header" class="jumbotron">
+                        <h2>Create a new Electoral District</h2>
+                        <p>fill out the information below</p>
+                    </div>
+                    <form name="newDistrictForm" ng-controller="newDistrictCtrl" class="newDistrictForm">
+                        <div class="form-group">
+                            <label for="districtName">District Name:</label>
+                            <input ng-model="districtName" type="text" class="form-control" id="districtName" required>
+                        </div>
+                        <div class="form-actions">
+                            <button ng-disabled="districtForm.$invalid" ng-click="submit()" type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 sidePanel">
+        </div>
+    </div>
+</div>
+</body>
+</html>
