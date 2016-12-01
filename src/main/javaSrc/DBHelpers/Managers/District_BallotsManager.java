@@ -26,7 +26,7 @@ public class District_BallotsManager {
     }
 
     public void store(ElectoralDistrict electoralDistrict, Ballot ballot) {
-        String insertBallot_electoralDistrict = "insert into District_Voters (District_ID, Voter_ID) values (?, ?)";
+        String insertBallot_electoralDistrict = "insert into District_Ballots (District_ID, Ballot_ID) values (?, ?)";
         PreparedStatement stmt = null;
         int queryExecution;
 
@@ -136,8 +136,8 @@ public class District_BallotsManager {
         query.append( "select Ballot.Ballot_ID, Ballot.Start_Date, Ballot.End_Date " );
         query.append(" from Ballot ");
         query.append("join District_Ballots");
-        query.append("on District.District_ID = District_Ballots.District_ID");
-        query.append("Where District.District_ID = '" + electoralDistrict.getId() + "'");
+        query.append(" on Ballot.Ballot_ID = District_Ballots.Ballot_ID");
+        query.append(" Where District_Ballots.District_ID = '" + electoralDistrict.getId() + "'");
 
         try {
 
@@ -166,6 +166,7 @@ public class District_BallotsManager {
                     nextBallot.setId( ballotId );
                     nextBallot.setOpenDate( startDate );
                     nextBallot.setCloseDate( closeDate );
+                    nextBallot.setPersistent(true);
 
                     ballots.add( nextBallot );
                 }

@@ -6,6 +6,7 @@ import main.javaSrc.Entities.Ballot;
 import main.javaSrc.Entities.BallotItem;
 import main.javaSrc.Entities.Election;
 import main.javaSrc.Entities.EntityImpl.BallotItemImpl;
+import main.javaSrc.Entities.EntityImpl.ElectionImpl;
 import main.javaSrc.helpers.EVException;
 
 import java.sql.*;
@@ -109,32 +110,36 @@ public class Ballot_ElectionsManager {
         if(ballot.getId() <1)
             throw new EVException("Ballot_Elections.restore could not restore persistent Ballot_Elections");
 
-        query.append("select Vote_Count from (select Election.Vote_Count, Ballot_Elections.Ballot_ID from Election inner join Ballot_Elections on Ballot_Elections.Election_ID = Election.Election_ID) as T where Ballot_ID = " + ballot.getId());
-
-//
-//        query.append("select Election.Vote_Count");
-//        query.append(" from Election ");
-//        query.append("join Ballot_Elections");
-//        query.append("on Ballot.Ballot_ID = Ballot_Elections.Ballot_ID");
-//        query.append("Where Ballot.Ballot_ID = '" + ballot.getId() + "'");
+        query.append("select Election_ID, Office_Name, Is_Partisan, Alternate_Allowed, Vote_Count from (select Election.Election_ID, Election.Office_Name, Election.Is_Partisan, Election.Alternate_Allowed, Election.Vote_Count, Ballot_Elections.Ballot_ID from Election inner join Ballot_Elections on Ballot_Elections.Election_ID = Election.Election_ID) as T where Ballot_ID = " + ballot.getId());
 
         try {
             stmt = conn.createStatement();
 
             if (stmt.execute(query.toString())) { // statement returned a result
 
+                int electionId;
+                String officeName;
+                boolean isPartisan;
+                boolean alternateAllowed;
                 int voteCount;
 
-                BallotItem newBallotItem = null;
+                ElectionImpl newBallotItem = null;
 
                 ResultSet rs = stmt.getResultSet();
 
 
                 while (rs.next()) {
 
-                    voteCount = rs.getInt(1);
+                    electionId = rs.getInt(1);
+                    officeName = rs.getString(2);
+                    isPartisan = rs.getBoolean(3);
+                    alternateAllowed = rs.getBoolean(4);
+                    voteCount = rs.getInt(5);
 
-                    newBallotItem = new BallotItemImpl();
+                    newBallotItem = new ElectionImpl();
+                    newBallotItem.setId(electionId);
+                    newBallotItem.setOffice(officeName);
+                    newBallotItem.setIsPartisan(isPartisan);
                     newBallotItem.setVoteCount(voteCount);
                     newBallotItem.setPersistent(true);
 

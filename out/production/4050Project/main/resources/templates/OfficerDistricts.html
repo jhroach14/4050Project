@@ -8,24 +8,20 @@
                     District List
                 </div>
                 <div class="panel-body">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active">District 1</a>
-                        <a href="#" class="list-group-item">District 2</a>
-                        <a href="#" class="list-group-item">District 3</a>
-                        <a href="#" class="list-group-item">District 4</a>
-                        <a href="#" class="list-group-item">District 5</a>
+                    <div id="districtList" class="list-group">
+                        <a ng-repeat="district in districtList" ng-click="selectDistrict(district)" class="list-group-item">{{district.name}}</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-2">
-            <div id="newButton">
+            <div id="newButton" ng-click="normalView = !normalView">
                 <span class="glyphicon glyphicon-plus"></span>
                 <button class="btn btn-default">New District</button>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="panel panel-default contentPanel">
+            <div ng-if="normalView" class="panel panel-default contentPanel">
                 <div class="panel-heading">
                     District View
                 </div>
@@ -33,18 +29,17 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p>Name:</p>
-                            <p>Population:</p>
                             <p>Registered voters:</p>
-                            <p>Votes cast:</p>
-                            <p>Ballot:</p>
+                            <p>Ballot Items:</p>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-5">
-                            <p>District 1</p>
-                            <p>20,000</p>
-                            <p>11,000</p>
-                            <p>9,000</p>
-                            <button class="btn btn-default">Show Ballot</button>
+                            <p>{{selectedDistrict.name}}</p>
+                            <p>{{registeredVoters}}</p>
+                            <p ng-repeat="ballotItem in districtBallotItems">
+                                <span ng-if="ballotItem.office">{{ballotItem.office}}</span>
+                                <span ng-if="!ballotItem.office">{{ballotItem.question}}</span>
+                            </p>
                         </div>
                     </div>
                     <div id="buttonRow" class="row">
@@ -56,6 +51,25 @@
                             <button class="btn btn-danger infoButton">Delete</button>
                         </div>
                         <div class="col-md-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="!normalView" class="panel panel-default contentPanel">
+                <div class="panel-heading">
+                    New District
+                </div>
+                <div id="createBody" class="panel-body">
+                    <div class="row">
+                        <form name="createForm">
+                            <div class="form-group">
+                                <label for="newName">DistrictName:</label>
+                                <input ng-model="formData.newName" type="text" class="form-control" id="newName" required>
+                            </div>
+                            <div class="form-actions">
+                                <button ng-click="createNewDistrict()" type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

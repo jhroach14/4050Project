@@ -26,7 +26,7 @@ public class Tester {
 
         try {
 
-            //ObjectMapper mapper = new ObjectMapper();
+            /*//ObjectMapper mapper = new ObjectMapper();
 
             //Alex's work
 
@@ -153,12 +153,11 @@ public class Tester {
 
 
 
+*/
 
 
 
 
-
-/*
             //James' work
             ElectionsOfficer officer1 = new ElectionsOfficerImpl("john","smith","jsmith","1234","jsmith@com.com","123 street","GA",3000,"athens");
             officer1=(ElectionsOfficer)stringToEntity(writeToServer("store","ElectionOfficer",entityToString(officer1)),ElectionsOfficerImpl.class);
@@ -241,14 +240,19 @@ public class Tester {
             writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue2));
             writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue3));
 
-            System.out.println(writeToServer("traverse","getBallotGivenBallotItem",entityToString(issue1)));
+            writeToServer("store", "District_Ballot", entityToString(electoralDistrict)+"**|**"+entityToString(ballot1));
+            writeToServer("store", "District_Ballot", entityToString(electoralDistrict)+"**|**"+entityToString(ballot2));
+
+
+           /* System.out.println(writeToServer("traverse","getBallotGivenBallotItem",entityToString(issue1)));
             System.out.println(writeToServer("traverse","getBallotItemsGivenBallot",entityToString(ballot2)));
 
             VoterRecordImpl voteRecord1 = new VoterRecordImpl(date,voter1,ballot1);
             voteRecord1 = (VoterRecordImpl) stringToEntity(writeToServer("store","VoterRecord",entityToString(voteRecord1)),VoterRecordImpl.class);
             VoterRecordImpl voteRecord2 = new VoterRecordImpl(date,voter2,ballot2);
             voteRecord2 = (VoterRecordImpl) stringToEntity(writeToServer("store","VoterRecord",entityToString(voteRecord2)),VoterRecordImpl.class);
-
+*/
+/*
 
             writeToServer("delete","VoterRecord",entityToString(voteRecord1));
             writeToServer("delete","VoterRecord",entityToString(voteRecord2));
@@ -300,11 +304,11 @@ public class Tester {
             writeToServer("delete","Voter",entityToString(voter1));
 
             writeToServer("delete","ElectoralDistrict",entityToString(electoralDistrict));
+*/
 
             //writeToServer("store","ElectionOfficer",entityToString(officer1));
             //writeToServer("store","ElectionOfficer",entityToString(officer2));
 
-*/
 
         } catch (Exception e) {
             e.printStackTrace();

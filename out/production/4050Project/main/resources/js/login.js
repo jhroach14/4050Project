@@ -47,19 +47,3 @@ app.controller('registerCtrl', ['$scope', '$http',function($scope,$http) {
     }
 }]);
 
-var toVoter = function (firstName,lastName,userName,userPassword,emailAddress,address,state,zip,city,age) {
-
-    var voter = {
-        firstName: firstName,
-        lastName: lastName,
-        userName: userName,
-        userPassword: userPassword,
-        emailAddress: emailAddress,
-        address: address,
-        state: state,
-        zip: zip,
-        city: city,
-        age: age
-    };
-    return voter;
-};

@@ -4,6 +4,7 @@ import main.javaSrc.DBHelpers.ObjectLayer;
 import main.javaSrc.Entities.Ballot;
 import main.javaSrc.Entities.BallotItem;
 import main.javaSrc.Entities.EntityImpl.BallotItemImpl;
+import main.javaSrc.Entities.EntityImpl.IssueImpl;
 import main.javaSrc.Entities.Issue;
 import main.javaSrc.helpers.EVException;
 
@@ -115,32 +116,37 @@ public class Ballot_IssuesManager {
         if(ballot.getId() <1)
             throw new EVException("Ballot_Issues.restore could not restore persistent Ballot_Issues");
 
-        query.append("select Vote_Count from (select Issue.Vote_Count, Ballot_Issues.Ballot_ID from Issue inner join Ballot_Issues on Ballot_Issues.Issue_ID = Issue.Issue_ID) as T where Ballot_ID = " + ballot.getId());
-//
-//        query.append("select Issue.Vote_Count ");
-//        query.append("from Issue ");
-//        query.append("join Ballot_Issues ");
-//        query.append("on Ballot.Ballot_ID = Ballot_Issues.Ballot_ID ");
-//        query.append("where Ballot.Ballot_ID = " + ballot.getId());
-
+        query.append("select Issue_ID, Question, Vote_Count, Yes_Count, No_Count from (select Issue.Issue_ID, Issue.Question, Issue.Vote_Count, Issue.Yes_Count, Issue.No_count, Ballot_Issues.Ballot_ID from Issue inner join Ballot_Issues on Ballot_Issues.Issue_ID = Issue.Issue_ID) as T where Ballot_ID = " + ballot.getId());
         try {
             stmt = conn.createStatement();
 
             if (stmt.execute(query.toString())) { // statement returned a result
 
+                int issueId;
                 int voteCount;
+                int yesCount;
+                int noCount;
+                String question;
 
-                BallotItem newBallotItem = null;
+                Issue newBallotItem = null;
 
                 ResultSet rs = stmt.getResultSet();
 
 
                 while (rs.next()) {
 
-                    voteCount = rs.getInt(1);
+                    issueId = rs.getInt(1);
+                    question = rs.getString(2);
+                    voteCount = rs.getInt(3);
+                    noCount = rs.getInt(4);
+                    yesCount = rs.getInt(5);
 
-                    newBallotItem = new BallotItemImpl();
+                    newBallotItem = new IssueImpl();
+                    newBallotItem.setId(issueId);
                     newBallotItem.setVoteCount(voteCount);
+                    newBallotItem.setYesCount(yesCount);
+                    newBallotItem.setNoCount(noCount);
+                    newBallotItem.setQuestion(question);
                     newBallotItem.setPersistent(true);
 
                     ballotItems.add(newBallotItem);

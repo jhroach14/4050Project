@@ -43,7 +43,14 @@ CREATE TABLE District (
 
  PRIMARY KEY(District_ID)
 );
-
+/*insert into District ( District_Name )
+values ( "District1" );
+insert into District ( District_Name )
+values ( "District2" );
+insert into District ( District_Name )
+values ( "District3" );
+insert into District ( District_Name )
+values ( "District4" );*/
 /*Done.*/
 CREATE TABLE Ballot (
  Ballot_ID INT AUTO_INCREMENT NOT NULL,

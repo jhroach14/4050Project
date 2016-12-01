@@ -20,18 +20,6 @@ import java.util.List;
     
     
       void setCloseDate(Date closeDate);
-    
-    
 
-      List<BallotItem> getBallotItems() throws EVException;
-    
-    
-      void addBallotItem(BallotItem ballotItem) throws EVException;
-    
-    
-      void deleteBallotItem(BallotItem ballotItem) throws EVException;
-    
-    
-      List<VoteRecord> getVoterVoteRecords() throws EVException;
 
 }
