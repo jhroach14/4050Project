@@ -16,10 +16,10 @@ import java.util.List;
  * Created by User on 11/9/2016.
  */
 public class Ballot_IssuesManager {
-    
+
     private ObjectLayer objectLayer;
     private Connection conn;
-    
+
     public Ballot_IssuesManager(ObjectLayer objectLayer, Connection conn){
         this.objectLayer=objectLayer;
         this.conn=conn;
