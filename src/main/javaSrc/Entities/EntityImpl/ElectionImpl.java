@@ -1,7 +1,6 @@
 package main.javaSrc.Entities.EntityImpl;
 
-import main.javaSrc.Entities.Candidate;
-import main.javaSrc.Entities.Election;
+import main.javaSrc.Entities.*;
 import main.javaSrc.helpers.EVException;
 import org.codehaus.jackson.annotate.JsonIgnore;
 

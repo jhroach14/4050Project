@@ -2,19 +2,135 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1ab4881-2ed0-450e-b8b3-5a6ff98dfe5e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/4050Project/js/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/css.css" afterPath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/css.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/login.css" afterPath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/login.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/login.js" afterPath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/login.html" afterPath="$PROJECT_DIR$/out/production/4050Project/main/resources/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/js/controllers/officerCandidates.js" afterPath="$PROJECT_DIR$/src/main/resources/js/controllers/officerCandidates.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/js/controllers/officerParties.js" afterPath="$PROJECT_DIR$/src/main/resources/js/controllers/officerParties.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/user_tokenManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/TokenImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/Token.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Application_jar/Application.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/javaSrc/DBHelpers/scripts/evote-schema.sql" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/OfficerDistricts.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/OfficerElections.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/OfficerHome.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/OfficerIssues.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/Voter.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/css.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/login.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/css/officer.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/controllers/officerDistricts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/controllers/officerElections.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/controllers/officerHome.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/controllers/officerIssues.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/controllers/voterHome.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/login.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/officerIndex.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/js/voterIndex.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/key.jks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/login.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/officerIndex.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/templates/OfficerDistricts.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/templates/OfficerElections.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/templates/OfficerHome.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/templates/OfficerIssues.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/templates/VoterHome.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/4050Project/main/resources/voterIndex.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/css/OfficerDistricts.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/css/OfficerHome.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/css/OfficerIssues.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/css/Voter.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/css/css.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/css/officer.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/js/controllers/officerDistricts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/js/officerIndex.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/js/voterIndex.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/CDFSHelpers/CDFSHelper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/CDFSHelpers/CreateHelper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/CDFSHelpers/DeleteHelper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/CDFSHelpers/FindHelper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/CDFSHelpers/StoreHelper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/DbConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/DbConnHelper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/DbConnHelperImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/Managers/BallotManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/Managers/CandidateManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/Managers/ElectionManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/Managers/ElectionsOfficerManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/Managers/ElectoralDistrictManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/Managers/IssueManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/Managers/PoliticalPartyManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/Managers/VoteRecordManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/Managers/VoterManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/ObjectLayer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/ObjectLayerImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/PersistenceLayer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/PersistenceLayerImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/DBHelpers/scripts/evote-schema.sql" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/Ballot.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/BallotItem.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/Candidate.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/Election.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/ElectionsOfficer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/ElectoralDistrict.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/Entity.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/BallotImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/BallotItemImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/CandidateImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/ElectionImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/ElectionsOfficerImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/ElectoralDistrictImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/EntityImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/IssueImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/PoliticalPartyImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/UserImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/VoterImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/EntityImpl/VoterRecordImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/Issue.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/PoliticalParty.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/VoteRecord.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Entities/Voter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/HttpClasses/DBExchange.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Test/Tester$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/Test/Tester.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/helpers/EVException.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/javaSrc/services/AuthServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/css/OfficerElections.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/css/login.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/js/controllers/officerElections.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/js/controllers/officerHome.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/js/controllers/officerIssues.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/js/controllers/voterHome.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/key.jks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/login.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/officerIndex.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/templates/OfficerElections.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/templates/OfficerIssues.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/main/resources/voterIndex.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/templates/OfficerDistricts.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/templates/OfficerHome.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Application/templates/VoterHome.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4050Project.iml" afterPath="$PROJECT_DIR$/4050Project.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/TraverseHelper.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/CDFSTHelpers/TraverseHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/AuthManager.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/Managers/AuthManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayer.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayerImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/ObjectLayerImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayer.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayerImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/DBHelpers/PersistenceLayerImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/BallotItemImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/BallotItemImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectionImpl.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Entities/EntityImpl/ElectionImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java" afterPath="$PROJECT_DIR$/src/main/javaSrc/Test/Tester.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/js/officerIndex.js" afterPath="$PROJECT_DIR$/src/main/resources/js/officerIndex.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/js/voterIndex.js" afterPath="$PROJECT_DIR$/src/main/resources/js/voterIndex.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/OfficerElections.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/OfficerElections.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/OfficerIssues.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/OfficerIssues.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/VoterHome.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/VoterHome.html" />
     </list>
     <ignored path="4050Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -257,6 +373,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -759,9 +878,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1204,6 +1320,7 @@
       <workItem from="1479741636591" duration="8187000" />
       <workItem from="1480452109305" duration="27426000" />
       <workItem from="1480798854032" duration="1442000" />
+      <workItem from="1480801175655" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/javaSrc/DBHelpers/Managers/CandidateManager.java&#10;">
       <created>1479155624096</created>
@@ -1300,7 +1417,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100558000" />
+    <option name="totallyTimeSpent" value="100564000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1618" height="868" extended-state="6" />
@@ -1308,7 +1425,6 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43323863" sideWeight="0.4974093" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44602272" sideWeight="0.50259066" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1316,7 +1432,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5148964" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5148964" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1328,6 +1444,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.515625" sideWeight="0.49274743" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43323863" sideWeight="0.4974093" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.012784091" sideWeight="0.48898965" order="3" side_tool="false" content_ui="tabs" />
@@ -1439,7 +1556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1447,7 +1563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1465,7 +1580,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="507">
           <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1489,7 +1603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="79" column="38" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1553,7 +1666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="101" column="38" selection-start-line="101" selection-start-column="38" selection-end-line="101" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1561,7 +1673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1585,7 +1696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="176" column="48" selection-start-line="176" selection-start-column="48" selection-end-line="176" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1609,7 +1719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="125" column="16" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1630,7 +1739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1638,7 +1746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1650,59 +1757,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/temp/AddCandidates.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/temp/CreateCandidate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/temp/CreateElection.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-132">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/CreateDistrict.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/temp/CreateIssue.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-168">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/temp/CreateParty.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-132">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/temp/AddCandidates.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/temp/CreateCandidate.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/temp/CreateElection.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/CreateDistrict.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/temp/CreateIssue.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/temp/CreateParty.html" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/OfficerCandidates.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1710,7 +1774,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1718,7 +1781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1726,7 +1788,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-652">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1734,7 +1795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1742,7 +1802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1750,7 +1809,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-278">
           <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1758,7 +1816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>

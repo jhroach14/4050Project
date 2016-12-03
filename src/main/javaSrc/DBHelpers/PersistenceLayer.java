@@ -157,4 +157,6 @@ public interface PersistenceLayer {
 
 
     public void deleteVoterBelongsToElection( Voter voter, ElectoralDistrict electoralDistrict ) throws EVException;
+
+    public User restoreUserGivenToken( Token token ) throws EVException;
 }

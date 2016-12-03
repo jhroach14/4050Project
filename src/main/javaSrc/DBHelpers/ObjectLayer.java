@@ -184,6 +184,12 @@ public interface ObjectLayer {
     PoliticalParty getParty(Candidate candidate) throws EVException;
     void createLink(PoliticalParty party, Candidate candidate) throws EVException;
 
+    public User getUser(Token token) throws EVException;
+
+    public Token createToken(String tokenValue) throws EVException;
+
+    public Token createToken() throws EVException;
+
     VoteRecord createVoterRecord();
 
     VoteRecord createVoterRecord(Date date, Voter voter, Ballot ballot);

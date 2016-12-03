@@ -4,6 +4,7 @@ import main.javaSrc.DBHelpers.DbConnHelper;
 import main.javaSrc.Entities.Ballot;
 import main.javaSrc.Entities.Entity;
 import main.javaSrc.Entities.EntityImpl.*;
+import main.javaSrc.Entities.Token;
 import main.javaSrc.HttpClasses.DBExchange;
 import main.javaSrc.helpers.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -36,6 +37,13 @@ public class TraverseHelper extends CDFSTHelper{
                         model = mapper.readValue(dbExchange.getRequestBody(), BallotItemImpl.class);
                         log.out("attempting to find Ballot belonging to the Ballot Item received");
                         entities.add(objectLayer.getBallot((BallotItemImpl)model));
+                    }
+                    break;
+                case"getUserGivenToken":
+                    if(sourced.equals("true")){
+                        model = mapper.readValue(dbExchange.getRequestBody(), TokenImpl.class);
+                        log.out("attempting to find User given the token received");
+                        entities.add(objectLayer.getUser((TokenImpl)model));
                     }
                     break;
                 case"getBallotItemsGivenBallot":

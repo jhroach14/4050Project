@@ -23,6 +23,10 @@ angular.module("officerIndexApp").config(function($routeProvider) {
             templateUrl : "templates/OfficerIssues.html?token="+token,
             controller : "issuesCtrl"
         })
+        .when("/candidates", {
+            templateUrl : "templates/OfficerCandidates.html?token="+token,
+            controller : "candidatesCtrl"
+        })
         .when("/parties", {
             templateUrl : "templates/OfficerParties.html?token="+token,
             controller : "partiesCtrl"

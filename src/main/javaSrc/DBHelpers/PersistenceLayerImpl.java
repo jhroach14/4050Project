@@ -27,6 +27,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     District_BallotsManager district_ballotsManager= null;
     District_VoterManager district_voterManager = null;
     Party_CandidatesManager party_candidatesManager = null;
+    user_tokenManager user_tokenManager = null;
 
 
     public PersistenceLayerImpl() {
@@ -49,6 +50,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
         this.district_ballotsManager = new District_BallotsManager(objectLayer,connection);
         this.district_voterManager = new District_VoterManager(objectLayer,connection);
         this.party_candidatesManager = new Party_CandidatesManager(objectLayer,connection);
+        this.user_tokenManager = new user_tokenManager(objectLayer, connection);
     }
 
     @Override
@@ -336,4 +338,10 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     public void deleteVoterBelongsToElection(Voter voter, ElectoralDistrict electoralDistrict) throws EVException {
         district_voterManager.delete(voter, electoralDistrict);
     }
+
+    @Override
+    public User restoreUserGivenToken( Token token ) throws EVException {
+        return user_tokenManager.restore(token);
+    }
+
 }

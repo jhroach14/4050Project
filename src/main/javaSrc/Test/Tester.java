@@ -26,223 +26,229 @@ public class Tester {
 
         try {
 
-            /*//ObjectMapper mapper = new ObjectMapper();
-
-            //Alex's work
-
-            //Date conversion for sql
-            String startDate="09-09-2016";
-            String endDate="10-10-2016";
-            SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
-            java.util.Date date = sdf1.parse(startDate);
-            java.util.Date date1 = sdf1.parse(endDate);
-            java.sql.Date sqlStartDate = new java.sql.Date(date.getTime());
-            java.sql.Date sqlEndDate = new java.sql.Date(date1.getTime());
-
-            //Ballot
-            Ballot ballot1 = new BallotImpl(sqlStartDate, sqlEndDate, true);
-            ballot1 = (Ballot)stringToEntity(writeToServer("store", "Ballot", entityToString(ballot1)),BallotImpl.class);
-            //Check DB for Ballot insert
-            ballot1.setCloseDate(sqlStartDate);
-            ballot1 = (Ballot)stringToEntity(writeToServer("store", "Ballot", entityToString(ballot1)),BallotImpl.class);
-            //Check DB for Ballot update
-            Ballot ballot2 = new BallotImpl(sqlStartDate, sqlStartDate, false);
-            ballot2 = (Ballot)stringToEntity(writeToServer("store", "Ballot", entityToString(ballot2)),BallotImpl.class);
-            //Check for create
-            Ballot ballot3 = new BallotImpl(sqlStartDate, sqlStartDate, false);
-            ballot3 = (Ballot)stringToEntity(writeToServer("create", "Ballot", entityToString(ballot3)),BallotImpl.class);
-            writeToServer("store", "Ballot", entityToString(ballot3));
-
-            //Election
-            Election election1 = new ElectionImpl("President", true);
-            election1 = (Election)stringToEntity(writeToServer("store", "Election", entityToString(election1)), ElectionImpl.class);
-            //Check DB for Ballot insert
-            election1.setOffice("New President");
-            election1 = (Election)stringToEntity(writeToServer("store", "Election", entityToString(election1)), ElectionImpl.class);
-            //Check DB for Ballot update
-            Election election2 = new ElectionImpl("New President", true);
-            election2 = (Election)stringToEntity(writeToServer("store", "Election", entityToString(election2)), ElectionImpl.class);
-            //Check for create
-            Election election3 = new ElectionImpl("New President", true);
-            election3 = (Election)stringToEntity(writeToServer("create", "Election", entityToString(election3)), ElectionImpl.class);
-            writeToServer("store", "Election", entityToString(election3));
-
-            //Issue
-            Issue issue1 = new IssueImpl("Do you like the color blue?");
-            issue1 = (Issue) stringToEntity(writeToServer("store", "Issue", entityToString(issue1)), IssueImpl.class);
-            //Check DB for Issue insert
-            issue1.setQuestion("Is the sky blue?");
-            issue1 = (Issue) stringToEntity(writeToServer("store", "Issue", entityToString(issue1)), IssueImpl.class);
-            //Check DB for Issue update
-            Issue issue2 = new IssueImpl("Is the sky blue?");
-            issue2 = (Issue) stringToEntity(writeToServer("store", "Issue", entityToString(issue2)), IssueImpl.class);
-            //Check for create
-            Issue issue3 = new IssueImpl("Do you think this works?");
-            issue3 = (Issue) stringToEntity(writeToServer("create", "Issue", entityToString(issue3)), IssueImpl.class);
-            writeToServer("store", "Issue", entityToString(issue3));
-
-            //Ballot_Issues
-            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue1));
-            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue2));
-            writeToServer("store","Ballot_Issue",entityToString(ballot2)+"**|**"+entityToString(issue1));
-            writeToServer("store","Ballot_Issue",entityToString(ballot2)+"**|**"+entityToString(issue2));
-
-            //Ballot_Elections
-            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election1));
-            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election2));
-            writeToServer("store","Ballot_Election",entityToString(ballot2)+"**|**"+entityToString(election1));
-            writeToServer("store","Ballot_Election",entityToString(ballot2)+"**|**"+entityToString(election2));
-
-            //ModelElection to Test
-            Election electionModel = new ElectionImpl();
-            electionModel.setOffice("New President");
-            electionModel.setIsPartisan(true);
-
-            //ModelBallot to Test
-            Ballot ballotModel = new BallotImpl();
-            ballotModel.setCloseDate(sqlStartDate);
-
-            //ModelIssue to Test
-            Issue issueModel = new IssueImpl();
-            issueModel.setQuestion("Is the sky blue?");
-
-
-            //Print out find of Ballot, Election, Issue
-            System.out.println(writeToServer("find", "Ballot", entityToString(ballot1)));
-            System.out.println(writeToServer("find", "Ballot", entityToString(ballot2)));
-            System.out.println(writeToServer("find", "Ballot", entityToString(ballotModel)));
-
-            System.out.println(writeToServer("find", "Election", entityToString(election1)));
-            System.out.println(writeToServer("find", "Election", entityToString(election2)));
-            System.out.println(writeToServer("find", "Election", entityToString(electionModel)));
-
-            System.out.println(writeToServer("find", "Issue", entityToString(issue1)));
-            System.out.println(writeToServer("find", "Issue", entityToString(issue2)));
-            System.out.println(writeToServer("find", "Issue", entityToString(issueModel)));
-
-            //Print out traversal of BallotGivenBallotItem and BallotItemGivenBallot
-            //THESE TWO LINES AREN'T WORKING
-            //I DON'T KNOW WHY
-            System.out.println(writeToServer("traverse","getBallotGivenBallotItem",entityToString(election1)));
-            System.out.println(writeToServer("traverse","getBallotGivenBallotItem",entityToString(election2)));
-
-            System.out.println(writeToServer("traverse","getBallotItemsGivenBallot",entityToString(ballot1)));
-            System.out.println(writeToServer("traverse","getBallotItemsGivenBallot",entityToString(ballot2)));
-
-            //Delete Ballot_Elections and Ballot_Issues
-            writeToServer("delete","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election1));
-            //writeToServer("delete","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election2));
-            writeToServer("delete","Ballot_Election",entityToString(ballot2)+"**|**"+entityToString(election1));
-            //writeToServer("delete","Ballot_Election",entityToString(ballot2)+"**|**"+entityToString(election2));
-
-            writeToServer("delete","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue1));
-            //writeToServer("delete","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue2));
-            writeToServer("delete","Ballot_Issue",entityToString(ballot2)+"**|**"+entityToString(issue1));
-            //writeToServer("delete","Ballot_Issue",entityToString(ballot2)+"**|**"+entityToString(issue2));
-
-            //Delete Ballot, Election, Issue
-
-            writeToServer("delete","Election",entityToString(election1));
-            writeToServer("delete","Election",entityToString(election2));
-
-            writeToServer("delete","Issue",entityToString(issue1));
-            writeToServer("delete","Issue",entityToString(issue2));
-
-            writeToServer("delete","Ballot",entityToString(ballot1));
-            writeToServer("delete","Ballot",entityToString(ballot2));
-
-
-
-*/
+//            //ObjectMapper mapper = new ObjectMapper();
+//
+//            //Alex's work
+//
+//            //Date conversion for sql
+//            String startDate="09-09-2016";
+//            String endDate="10-10-2016";
+//            SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+//            java.util.Date date = sdf1.parse(startDate);
+//            java.util.Date date1 = sdf1.parse(endDate);
+//            java.sql.Date sqlStartDate = new java.sql.Date(date.getTime());
+//            java.sql.Date sqlEndDate = new java.sql.Date(date1.getTime());
+//
+//            //Ballot
+//            Ballot ballot1 = new BallotImpl(sqlStartDate, sqlEndDate, true);
+//            ballot1 = (Ballot)stringToEntity(writeToServer("store", "Ballot", entityToString(ballot1)),BallotImpl.class);
+//            //Check DB for Ballot insert
+//            ballot1.setCloseDate(sqlStartDate);
+//            ballot1 = (Ballot)stringToEntity(writeToServer("store", "Ballot", entityToString(ballot1)),BallotImpl.class);
+//            //Check DB for Ballot update
+//            Ballot ballot2 = new BallotImpl(sqlStartDate, sqlStartDate, false);
+//            ballot2 = (Ballot)stringToEntity(writeToServer("store", "Ballot", entityToString(ballot2)),BallotImpl.class);
+//            //Check for create
+//            Ballot ballot3 = new BallotImpl(sqlStartDate, sqlStartDate, false);
+//            ballot3 = (Ballot)stringToEntity(writeToServer("create", "Ballot", entityToString(ballot3)),BallotImpl.class);
+//            writeToServer("store", "Ballot", entityToString(ballot3));
+//
+//            //Election
+//            Election election1 = new ElectionImpl("President", true);
+//            election1 = (Election)stringToEntity(writeToServer("store", "Election", entityToString(election1)), ElectionImpl.class);
+//            //Check DB for Ballot insert
+//            election1.setOffice("New President");
+//            election1 = (Election)stringToEntity(writeToServer("store", "Election", entityToString(election1)), ElectionImpl.class);
+//            //Check DB for Ballot update
+//            Election election2 = new ElectionImpl("New President", true);
+//            election2 = (Election)stringToEntity(writeToServer("store", "Election", entityToString(election2)), ElectionImpl.class);
+//            //Check for create
+//            Election election3 = new ElectionImpl("New President", true);
+//            election3 = (Election)stringToEntity(writeToServer("create", "Election", entityToString(election3)), ElectionImpl.class);
+//            writeToServer("store", "Election", entityToString(election3));
+//
+//            //Issue
+//            Issue issue1 = new IssueImpl("Do you like the color blue?");
+//            issue1 = (Issue) stringToEntity(writeToServer("store", "Issue", entityToString(issue1)), IssueImpl.class);
+//            //Check DB for Issue insert
+//            issue1.setQuestion("Is the sky blue?");
+//            issue1 = (Issue) stringToEntity(writeToServer("store", "Issue", entityToString(issue1)), IssueImpl.class);
+//            //Check DB for Issue update
+//            Issue issue2 = new IssueImpl("Is the sky blue?");
+//            issue2 = (Issue) stringToEntity(writeToServer("store", "Issue", entityToString(issue2)), IssueImpl.class);
+//            //Check for create
+//            Issue issue3 = new IssueImpl("Do you think this works?");
+//            issue3 = (Issue) stringToEntity(writeToServer("create", "Issue", entityToString(issue3)), IssueImpl.class);
+//            writeToServer("store", "Issue", entityToString(issue3));
+//
+//            //Ballot_Issues
+//            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue1));
+//            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue2));
+//            writeToServer("store","Ballot_Issue",entityToString(ballot2)+"**|**"+entityToString(issue1));
+//            writeToServer("store","Ballot_Issue",entityToString(ballot2)+"**|**"+entityToString(issue2));
+//
+//            //Ballot_Elections
+//            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election1));
+//            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election2));
+//            writeToServer("store","Ballot_Election",entityToString(ballot2)+"**|**"+entityToString(election1));
+//            writeToServer("store","Ballot_Election",entityToString(ballot2)+"**|**"+entityToString(election2));
+//
+//            //ModelElection to Test
+//            Election electionModel = new ElectionImpl();
+//            electionModel.setOffice("New President");
+//            electionModel.setIsPartisan(true);
+//
+//            //ModelBallot to Test
+//            Ballot ballotModel = new BallotImpl();
+//            ballotModel.setCloseDate(sqlStartDate);
+//
+//            //ModelIssue to Test
+//            Issue issueModel = new IssueImpl();
+//            issueModel.setQuestion("Is the sky blue?");
+//
+//
+//            //Print out find of Ballot, Election, Issue
+//            System.out.println(writeToServer("find", "Ballot", entityToString(ballot1)));
+//            System.out.println(writeToServer("find", "Ballot", entityToString(ballot2)));
+//            System.out.println(writeToServer("find", "Ballot", entityToString(ballotModel)));
+//
+//            System.out.println(writeToServer("find", "Election", entityToString(election1)));
+//            System.out.println(writeToServer("find", "Election", entityToString(election2)));
+//            System.out.println(writeToServer("find", "Election", entityToString(electionModel)));
+//
+//            System.out.println(writeToServer("find", "Issue", entityToString(issue1)));
+//            System.out.println(writeToServer("find", "Issue", entityToString(issue2)));
+//            System.out.println(writeToServer("find", "Issue", entityToString(issueModel)));
+//
+//            //Print out traversal of BallotGivenBallotItem and BallotItemGivenBallot
+//            //THESE TWO LINES AREN'T WORKING
+//            //I DON'T KNOW WHY
+//            System.out.println(writeToServer("traverse","getBallotGivenBallotItem",entityToString(election1)));
+//            System.out.println(writeToServer("traverse","getBallotGivenBallotItem",entityToString(election2)));
+//
+//            System.out.println(writeToServer("traverse","getBallotItemsGivenBallot",entityToString(ballot1)));
+//            System.out.println(writeToServer("traverse","getBallotItemsGivenBallot",entityToString(ballot2)));
+//
+//            //Delete Ballot_Elections and Ballot_Issues
+//            writeToServer("delete","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election1));
+//            //writeToServer("delete","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election2));
+//            writeToServer("delete","Ballot_Election",entityToString(ballot2)+"**|**"+entityToString(election1));
+//            //writeToServer("delete","Ballot_Election",entityToString(ballot2)+"**|**"+entityToString(election2));
+//
+//            writeToServer("delete","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue1));
+//            //writeToServer("delete","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue2));
+//            writeToServer("delete","Ballot_Issue",entityToString(ballot2)+"**|**"+entityToString(issue1));
+//            //writeToServer("delete","Ballot_Issue",entityToString(ballot2)+"**|**"+entityToString(issue2));
+//
+//            //Delete Ballot, Election, Issue
+//
+//            writeToServer("delete","Election",entityToString(election1));
+//            writeToServer("delete","Election",entityToString(election2));
+//
+//            writeToServer("delete","Issue",entityToString(issue1));
+//            writeToServer("delete","Issue",entityToString(issue2));
+//
+//            writeToServer("delete","Ballot",entityToString(ballot1));
+//            writeToServer("delete","Ballot",entityToString(ballot2));
+//
 
 
 
 
-            //James' work
-            ElectionsOfficer officer1 = new ElectionsOfficerImpl("john","smith","jsmith","1234","jsmith@com.com","123 street","GA",3000,"athens");
-            officer1=(ElectionsOfficer)stringToEntity(writeToServer("store","ElectionOfficer",entityToString(officer1)),ElectionsOfficerImpl.class);
-            ElectionsOfficer officer2 = new ElectionsOfficerImpl("john2","smith2","jsmith2","12342","jsmith@com.com2","123 street2","GA",30002,"athens2");
-            officer2= (ElectionsOfficer) stringToEntity(writeToServer("store","ElectionOfficer",entityToString(officer2)),ElectionsOfficerImpl.class);
 
-            ElectoralDistrictImpl electoralDistrict = new ElectoralDistrictImpl("district1");
-            electoralDistrict = (ElectoralDistrictImpl) stringToEntity(writeToServer("store","ElectoralDistrict",entityToString(electoralDistrict)),ElectoralDistrictImpl.class);
+            //Test User given Token
+            Token token = new TokenImpl();
+            token.setTokenValue("EOofficerJSTokeng0yw");
+//            token.setPersistent(true);
+//            token.setId(1);
+            System.out.println(writeToServer("traverse","getUserGivenToken",entityToString(token)));
 
-            Voter voter1 = new VoterImpl("john3","smith3","jsmith3","12343","jsmith@com.com3","123 street3",21,"GA",30003,"athens3");
-            voter1= (Voter) stringToEntity(writeToServer("store","Voter",entityToString(voter1)),VoterImpl.class);
-            Voter voter2 = new VoterImpl("john4","smith4","jsmith4","12344","jsmith@com.com4","123 street4",21,"GA",30004,"athens4");
-            voter2= (Voter) stringToEntity(writeToServer("store","Voter",entityToString(voter2)),VoterImpl.class);
 
-            writeToServer("store","District_Voter",entityToString(electoralDistrict)+"**|**"+entityToString(voter1));
-            writeToServer("store","District_Voter",entityToString(electoralDistrict)+"**|**"+entityToString(voter2));
-
-            System.out.println(writeToServer("traverse","getDistrictGivenVoter",entityToString(voter1)));
-            System.out.println(writeToServer("traverse","getVotersGivenDistrict",entityToString(electoralDistrict)));
-
-            PoliticalParty politicalParty1 = new PoliticalPartyImpl("part1");
-            politicalParty1 = (PoliticalParty) stringToEntity(writeToServer("store","PoliticalParty",entityToString(politicalParty1)),PoliticalPartyImpl.class);
-            PoliticalParty politicalParty2 = new PoliticalPartyImpl("part2");
-            politicalParty2 = (PoliticalParty) stringToEntity(writeToServer("store","PoliticalParty",entityToString(politicalParty2)),PoliticalPartyImpl.class);
-
-            Issue issue1 = new IssueImpl("q1");
-            issue1 = (Issue) stringToEntity(writeToServer("store","Issue",entityToString(issue1)),IssueImpl.class);
-            Issue issue2 = new IssueImpl("q2");
-            issue2 = (Issue) stringToEntity(writeToServer("store","Issue",entityToString(issue2)),IssueImpl.class);
-            Issue issue3 = new IssueImpl("q3");
-            issue3 = (Issue) stringToEntity(writeToServer("store","Issue",entityToString(issue3)),IssueImpl.class);
-
-            Election election1 = new ElectionImpl("office1",true);
-            election1 = (Election) stringToEntity(writeToServer("store","Election",entityToString(election1)),ElectionImpl.class);
-            Election election2 = new ElectionImpl("office2",false);
-            election2 = (Election) stringToEntity(writeToServer("store","Election",entityToString(election2)),ElectionImpl.class);
-            Election election3 = new ElectionImpl("office3",false);
-            election3 = (Election) stringToEntity(writeToServer("store","Election",entityToString(election3)),ElectionImpl.class);
-
-            Candidate candidate1 = new CandidateImpl("cantidate1");
-            candidate1 = (Candidate) stringToEntity(writeToServer("store","Candidate",entityToString(candidate1)),CandidateImpl.class);
-            Candidate candidate2 = new CandidateImpl("cantidate2");
-            candidate2 = (Candidate) stringToEntity(writeToServer("store","Candidate",entityToString(candidate2)),CandidateImpl.class);
-            Candidate candidate3 = new CandidateImpl("cantidat3");
-            candidate3 = (Candidate) stringToEntity(writeToServer("store","Candidate",entityToString(candidate3)),CandidateImpl.class);
-
-            writeToServer("store","Party_Candidate",entityToString(politicalParty1)+"**|**"+entityToString(candidate1));
-            writeToServer("store","Party_Candidate",entityToString(politicalParty2)+"**|**"+entityToString(candidate2));
-
-            System.out.println(writeToServer("traverse","getCandidatesGivenParty",entityToString(politicalParty1)));
-            System.out.println(writeToServer("traverse","getPartyGivenCandidate",entityToString(candidate2)));
-
-            writeToServer("store", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate1));
-            writeToServer("store", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate2));
-            writeToServer("store", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate3));
-            writeToServer("store", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate1));
-            writeToServer("store", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate2));
-            writeToServer("store", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate3));
-            writeToServer("store", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate1));
-            writeToServer("store", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate2));
-            writeToServer("store", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate3));
-
-            System.out.println(writeToServer("traverse","getElectionGivenCandidate",entityToString(candidate3)));
-            System.out.println(writeToServer("traverse","getCandidatesGivenElection",entityToString(election1)));
-
-            long num = 123123;
-            java.sql.Date date = new Date(num);
-            Ballot ballot1 = new BallotImpl(date,date,false);
-            ballot1 = (Ballot) stringToEntity(writeToServer("store","Ballot",entityToString(ballot1)),BallotImpl.class);
-            Ballot ballot2 = new BallotImpl(date,date,false);
-            ballot2 = (Ballot) stringToEntity(writeToServer("store","Ballot",entityToString(ballot2)),BallotImpl.class);
-
-            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election1));
-            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election2));
-            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election3));
-
-            System.out.println(writeToServer("traverse","getBallotGivenBallotItem",entityToString(election2)));
-
-            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue1));
-            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue2));
-            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue3));
-
-            writeToServer("store", "District_Ballot", entityToString(electoralDistrict)+"**|**"+entityToString(ballot1));
-            writeToServer("store", "District_Ballot", entityToString(electoralDistrict)+"**|**"+entityToString(ballot2));
-
+//            //James' work
+//            ElectionsOfficer officer1 = new ElectionsOfficerImpl("john","smith","jsmith","1234","jsmith@com.com","123 street","GA",3000,"athens");
+//            officer1=(ElectionsOfficer)stringToEntity(writeToServer("store","ElectionOfficer",entityToString(officer1)),ElectionsOfficerImpl.class);
+//            ElectionsOfficer officer2 = new ElectionsOfficerImpl("john2","smith2","jsmith2","12342","jsmith@com.com2","123 street2","GA",30002,"athens2");
+//            officer2= (ElectionsOfficer) stringToEntity(writeToServer("store","ElectionOfficer",entityToString(officer2)),ElectionsOfficerImpl.class);
+//
+//            ElectoralDistrictImpl electoralDistrict = new ElectoralDistrictImpl("district1");
+//            electoralDistrict = (ElectoralDistrictImpl) stringToEntity(writeToServer("store","ElectoralDistrict",entityToString(electoralDistrict)),ElectoralDistrictImpl.class);
+//
+//            Voter voter1 = new VoterImpl("john3","smith3","jsmith3","12343","jsmith@com.com3","123 street3",21,"GA",30003,"athens3");
+//            voter1= (Voter) stringToEntity(writeToServer("store","Voter",entityToString(voter1)),VoterImpl.class);
+//            Voter voter2 = new VoterImpl("john4","smith4","jsmith4","12344","jsmith@com.com4","123 street4",21,"GA",30004,"athens4");
+//            voter2= (Voter) stringToEntity(writeToServer("store","Voter",entityToString(voter2)),VoterImpl.class);
+//
+//            writeToServer("store","District_Voter",entityToString(electoralDistrict)+"**|**"+entityToString(voter1));
+//            writeToServer("store","District_Voter",entityToString(electoralDistrict)+"**|**"+entityToString(voter2));
+//
+//            System.out.println(writeToServer("traverse","getDistrictGivenVoter",entityToString(voter1)));
+//            System.out.println(writeToServer("traverse","getVotersGivenDistrict",entityToString(electoralDistrict)));
+//
+////            PoliticalParty politicalParty1 = new PoliticalPartyImpl("part1");
+//            politicalParty1 = (PoliticalParty) stringToEntity(writeToServer("store","PoliticalParty",entityToString(politicalParty1)),PoliticalPartyImpl.class);
+//            PoliticalParty politicalParty2 = new PoliticalPartyImpl("part2");
+//            politicalParty2 = (PoliticalParty) stringToEntity(writeToServer("store","PoliticalParty",entityToString(politicalParty2)),PoliticalPartyImpl.class);
+//
+//            Issue issue1 = new IssueImpl("q1");
+//            issue1 = (Issue) stringToEntity(writeToServer("store","Issue",entityToString(issue1)),IssueImpl.class);
+//            Issue issue2 = new IssueImpl("q2");
+//            issue2 = (Issue) stringToEntity(writeToServer("store","Issue",entityToString(issue2)),IssueImpl.class);
+//            Issue issue3 = new IssueImpl("q3");
+//            issue3 = (Issue) stringToEntity(writeToServer("store","Issue",entityToString(issue3)),IssueImpl.class);
+//
+//            Election election1 = new ElectionImpl("office1",true);
+//            election1 = (Election) stringToEntity(writeToServer("store","Election",entityToString(election1)),ElectionImpl.class);
+//            Election election2 = new ElectionImpl("office2",false);
+//            election2 = (Election) stringToEntity(writeToServer("store","Election",entityToString(election2)),ElectionImpl.class);
+//            Election election3 = new ElectionImpl("office3",false);
+//            election3 = (Election) stringToEntity(writeToServer("store","Election",entityToString(election3)),ElectionImpl.class);
+//
+//            Candidate candidate1 = new CandidateImpl("cantidate1");
+//            candidate1 = (Candidate) stringToEntity(writeToServer("store","Candidate",entityToString(candidate1)),CandidateImpl.class);
+//            Candidate candidate2 = new CandidateImpl("cantidate2");
+//            candidate2 = (Candidate) stringToEntity(writeToServer("store","Candidate",entityToString(candidate2)),CandidateImpl.class);
+//            Candidate candidate3 = new CandidateImpl("cantidat3");
+//            candidate3 = (Candidate) stringToEntity(writeToServer("store","Candidate",entityToString(candidate3)),CandidateImpl.class);
+//
+//            writeToServer("store","Party_Candidate",entityToString(politicalParty1)+"**|**"+entityToString(candidate1));
+//            writeToServer("store","Party_Candidate",entityToString(politicalParty2)+"**|**"+entityToString(candidate2));
+//
+//            System.out.println(writeToServer("traverse","getCandidatesGivenParty",entityToString(politicalParty1)));
+//            System.out.println(writeToServer("traverse","getPartyGivenCandidate",entityToString(candidate2)));
+//
+//            writeToServer("store", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate1));
+//            writeToServer("store", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate2));
+//            writeToServer("store", "Election_Candidate",entityToString(election1)+"**|**"+entityToString(candidate3));
+//            writeToServer("store", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate1));
+//            writeToServer("store", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate2));
+//            writeToServer("store", "Election_Candidate",entityToString(election2)+"**|**"+entityToString(candidate3));
+//            writeToServer("store", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate1));
+//            writeToServer("store", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate2));
+//            writeToServer("store", "Election_Candidate",entityToString(election3)+"**|**"+entityToString(candidate3));
+//
+//            System.out.println(writeToServer("traverse","getElectionGivenCandidate",entityToString(candidate3)));
+//            System.out.println(writeToServer("traverse","getCandidatesGivenElection",entityToString(election1)));
+//
+//            long num = 123123;
+//            java.sql.Date date = new Date(num);
+//            Ballot ballot1 = new BallotImpl(date,date,false);
+//            ballot1 = (Ballot) stringToEntity(writeToServer("store","Ballot",entityToString(ballot1)),BallotImpl.class);
+//            Ballot ballot2 = new BallotImpl(date,date,false);
+//            ballot2 = (Ballot) stringToEntity(writeToServer("store","Ballot",entityToString(ballot2)),BallotImpl.class);
+//
+//            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election1));
+//            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election2));
+//            writeToServer("store","Ballot_Election",entityToString(ballot1)+"**|**"+entityToString(election3));
+//
+//            System.out.println(writeToServer("traverse","getBallotGivenBallotItem",entityToString(election2)));
+//
+//            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue1));
+//            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue2));
+//            writeToServer("store","Ballot_Issue",entityToString(ballot1)+"**|**"+entityToString(issue3));
+//
+//            writeToServer("store", "District_Ballot", entityToString(electoralDistrict)+"**|**"+entityToString(ballot1));
+//            writeToServer("store", "District_Ballot", entityToString(electoralDistrict)+"**|**"+entityToString(ballot2));
+//
 
            /* System.out.println(writeToServer("traverse","getBallotGivenBallotItem",entityToString(issue1)));
             System.out.println(writeToServer("traverse","getBallotItemsGivenBallot",entityToString(ballot2)));
