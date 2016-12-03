@@ -1,6 +1,6 @@
-angular.module("officerIndexApp").controller('issuesCtrl', ['$scope', '$http',
+angular.module("officerIndexApp").controller('candidatesCtrl', ['$scope', '$http',
     function($scope, $http) {
-        setStyleSheet("OfficerIssues");
-        window.document.title = "VRS Issues";
+        setStyleSheet("OfficerCandidates");
+        window.document.title = "VRS Candidates";
     }
 ]);

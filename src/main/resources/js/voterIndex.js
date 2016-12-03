@@ -10,11 +10,7 @@ angular.module("voterIndexApp").config(function($routeProvider) {
         .when("/results", {
                      templateUrl : "templates/VoterResults.html?token="+token,
                      controller : "homeCtrl"
-                })
-        .when("/modifyvoter", {
-             templateUrl : "templates/ModifyVoter.html?token="+token,
-             controller : "homeCtrl"
-        });
+        })
 });
 
 $(document).on('click', '.nav li', function() {
