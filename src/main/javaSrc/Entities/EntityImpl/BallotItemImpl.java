@@ -1,8 +1,6 @@
 package main.javaSrc.Entities.EntityImpl;
 
-import main.javaSrc.Entities.Ballot;
-import main.javaSrc.Entities.BallotItem;
-import main.javaSrc.Entities.Entity;
+import main.javaSrc.Entities.*;
 import main.javaSrc.helpers.EVException;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
@@ -31,11 +29,13 @@ public  class BallotItemImpl extends EntityImpl implements BallotItem {
         voteCount++;
     }
 
+    @JsonIgnore
     @Override
     public String getRestoreString() throws EVException {
         return null;
     }
 
+    @JsonIgnore
     @Override
     public PreparedStatement insertStoreData(PreparedStatement stmt) throws EVException, SQLException {
         return null;

@@ -381,6 +381,21 @@ public class ObjectLayerImpl implements ObjectLayer {
     }
 
     @Override
+    public User getUser(Token token) throws EVException {
+        return persistenceLayer.restoreUserGivenToken(token);
+    }
+
+    @Override
+    public Token createToken(String tokenValue) throws EVException {
+        return new TokenImpl(tokenValue);
+    }
+
+    @Override
+    public Token createToken() throws EVException {
+        return new TokenImpl();
+    }
+
+    @Override
     public VoteRecord createVoterRecord() {
         return new VoterRecordImpl();
     }

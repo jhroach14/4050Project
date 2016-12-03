@@ -29,7 +29,7 @@ public class AuthManager {
                 if (password.equals(userPass)){
 
                     String[] response = new String[2];
-                    response[0] = createToken(userName,conn);
+                    response[0] = createToken("EO" + userName,conn);
                     response[1] = "http://localhost:9001/officerIndex.html";
                     return response;
 
@@ -48,7 +48,7 @@ public class AuthManager {
 
                     if (password.equals(userPassv)){
                         String[] response = new String[2];
-                        response[0] = createToken(userName,conn);
+                        response[0] = createToken("VO" + userName,conn);
                         response[1] = "http://localhost:9001/voterIndex.html";
                         return response;
                     }else{
@@ -70,10 +70,11 @@ public class AuthManager {
 
         RandomString randStr = new RandomString(4);
         String token = userName+"Token"+randStr.nextString();
+        String uname = userName.substring(2);
 
-        checkUserHasExistingToken(userName,conn);
+        checkUserHasExistingToken(uname,conn);
 
-        String query = "insert into Token values ( '"+userName+"', '"+token+"')";
+        String query = "insert into Token values ( '"+uname+"', '"+token+"')";
         try {
             PreparedStatement stmt = conn.prepareStatement(query);
             if(stmt.executeUpdate()>=1){
