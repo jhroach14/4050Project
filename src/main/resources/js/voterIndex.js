@@ -6,6 +6,14 @@ angular.module("voterIndexApp").config(function($routeProvider) {
         .when("/", {
             templateUrl : "templates/VoterHome.html?token="+token,
             controller : "homeCtrl"
+        })
+        .when("/results", {
+                     templateUrl : "templates/VoterResults.html?token="+token,
+                     controller : "homeCtrl"
+                })
+        .when("/modifyvoter", {
+             templateUrl : "templates/ModifyVoter.html?token="+token,
+             controller : "homeCtrl"
         });
 });
 
