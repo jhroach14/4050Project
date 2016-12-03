@@ -57,6 +57,10 @@ public class PoliticalPartyImpl extends EntityImpl implements PoliticalParty {
         else
             throw new EVException( "PoliticalPartyManager.save: can't save a politicalParty: Name undefined" );
 
+        if(isPersistent()){
+            stmt.setInt(2,this.getId());
+        }
+
         return stmt;
     }
 

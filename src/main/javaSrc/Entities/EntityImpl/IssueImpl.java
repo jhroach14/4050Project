@@ -98,6 +98,10 @@ public class IssueImpl extends BallotItemImpl implements Issue {
         else
             stmt.setNull( 4, java.sql.Types.INTEGER );
 
+        if (isPersistent()){
+            stmt.setInt(4,this.getId());
+        }
+
         return stmt;
 
     }

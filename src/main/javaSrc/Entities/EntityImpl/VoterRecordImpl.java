@@ -91,6 +91,10 @@ public class VoterRecordImpl extends EntityImpl implements VoteRecord {
         else
             throw new EVException( "VoteRecordManager.save: can't save a  Ballot_ID undefined" );
 
+        if(isPersistent()){
+            stmt.setInt(4, this.getId());
+        }
+
         return stmt;
     }
 

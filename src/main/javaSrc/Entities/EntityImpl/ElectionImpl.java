@@ -96,6 +96,10 @@ public class ElectionImpl extends BallotItemImpl implements Election{
             stmt.setInt( 3, getVoteCount() );
         else
             stmt.setNull( 3, java.sql.Types.INTEGER );
+
+        if(isPersistent()){
+            stmt.setInt(4,this.getId());
+        }
         
         return stmt;
     }

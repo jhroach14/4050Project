@@ -75,6 +75,10 @@ public class CandidateImpl extends EntityImpl implements Candidate {
             stmt.setInt( 2, getVoteCount() );
         else
             stmt.setNull( 2, java.sql.Types.INTEGER );
+
+        if (isPersistent()){
+            stmt.setInt(3,this.getId());
+        }
         
         return stmt;
     }

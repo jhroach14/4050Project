@@ -3,7 +3,7 @@ angular.module("officerIndexApp").controller('districtsCtrl', ['$scope', '$http'
         setStyleSheet("OfficerDistricts");
         window.document.title = "VRS Districts";
         
-        $scope.normalView = true;
+        $scope.normalView = 1;
         $scope.formData = {};
         
         var token = getValue(location.search,"token");
@@ -60,7 +60,27 @@ angular.module("officerIndexApp").controller('districtsCtrl', ['$scope', '$http'
                 }
             );
 
-            $scope.normalView = true;
+            $scope.normalView = 1;
+        };
+
+        $scope.modDistrict = function () {
+            var url = "http://localhost:9001/data/store/ElectoralDistrict?sourced=true&token="+token;
+            $http.post(url,$scope.selectedDistrict).success(
+                function (response) {
+                    var url = "http://localhost:9001/data/find/ElectoralDistrict?sourced=true&token="+token;
+                    $http.post(url,toDistrict(null)).success(
+                        function (response) {
+                            $scope.districtList = response;
+                        }
+                    );
+                }
+            );
+
+            $scope.normalView = 1;
+        };
+
+        $scope.normal3 = function () {
+            $scope.normalView = 3;
         }
     }
 ]);

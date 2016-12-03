@@ -5,7 +5,7 @@
         <div class="col-md-4">
             <div class="panel panel-default contentPanel">
                 <div class="panel-heading">
-                    District List
+                    District List {{normalView}}
                 </div>
                 <div class="panel-body">
                     <div id="districtList" class="list-group">
@@ -15,13 +15,13 @@
             </div>
         </div>
         <div class="col-md-2">
-            <div id="newButton" ng-click="normalView = !normalView">
+            <div id="newButton" ng-click="normalView = 2">
                 <span class="glyphicon glyphicon-plus"></span>
                 <button class="btn btn-default">New District</button>
             </div>
         </div>
         <div class="col-md-4">
-            <div ng-if="normalView" class="panel panel-default contentPanel">
+            <div ng-if="normalView == 1" class="panel panel-default contentPanel">
                 <div class="panel-heading">
                     District View
                 </div>
@@ -44,7 +44,7 @@
                     </div>
                     <div id="buttonRow" class="row">
                         <div class="col-md-2"></div>
-                        <div class="col-md-5">
+                        <div ng-click="normal3()" class="col-md-5">
                             <button class="btn btn-primary infoButton">Modify</button>
                         </div>
                         <div class="col-md-5">
@@ -55,7 +55,7 @@
                 </div>
             </div>
 
-            <div ng-if="!normalView" class="panel panel-default contentPanel">
+            <div ng-if="normalView == 2" class="panel panel-default contentPanel">
                 <div class="panel-heading">
                     New District
                 </div>
@@ -68,6 +68,25 @@
                             </div>
                             <div class="form-actions">
                                 <button ng-click="createNewDistrict()" type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="normalView == 3" class="panel panel-default contentPanel">
+                <div class="panel-heading">
+                    Modify District
+                </div>
+                <div id="modifyBody" class="panel-body">
+                    <div class="row">
+                        <form name="modifyForm">
+                            <div class="form-group">
+                                <label for="modName">DistrictName:</label>
+                                <input value="{{selectedDistrict.name}}" ng-model="selectedDistrict.name" type="text" class="form-control" id="modName" required>
+                            </div>
+                            <div class="form-actions">
+                                <button ng-click="modDistrict()" type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </form>
                     </div>

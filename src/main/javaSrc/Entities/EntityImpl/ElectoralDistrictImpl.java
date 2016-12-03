@@ -60,6 +60,10 @@ public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistri
         else
             throw new EVException( "ElectoralDistrictManager.save: can't save a electoralDistrict: Name undefined" );
 
+        if(isPersistent()){
+            stmt.setInt(2,getId());
+        }
+
         return stmt;
     }
 

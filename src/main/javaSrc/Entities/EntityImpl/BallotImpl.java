@@ -42,6 +42,10 @@ public class BallotImpl extends EntityImpl implements Ballot {
             throw new EVException("BallotManager.save: can't save a ballot: Close Date undefined");
         }
 
+        if (isPersistent()){
+            stmt.setInt(3,this.getId());
+        }
+
         return stmt;
     }
 

@@ -75,7 +75,7 @@ public class ElectoralDistrictManager extends Manager{
 
     public ElectoralDistrict store(ElectoralDistrict electoralDistrict) throws EVException{
         String insertElectoralDistrict = "insert into District ( District_Name ) values ( ? )";
-        String updateElectoralDistrict = "update District set District_Name = ?";
+        String updateElectoralDistrict = "update District set District_Name = ? where District_ID = ?";
         PreparedStatement stmt = null;
         int queryExecution;
         int electoralDistrictId;

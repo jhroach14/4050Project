@@ -96,7 +96,7 @@ public class VoteRecordManager extends Manager{
 
     public VoteRecord store(VoteRecord voteRecord) throws EVException{
         String insertVoteRecord = "insert into Record ( Record_Date, Voter_ID, Ballot_ID ) values ( ?, ?, ? )";
-        String updateVoteRecord = "update Record set Record_Date = ?, Voter_ID = ?, Ballot_ID = ? ";
+        String updateVoteRecord = "update Record set Record_Date = ?, Voter_ID = ?, Ballot_ID = ? where Record_ID = ?";
         PreparedStatement stmt = null;
         int queryExecution;
         int voteRecordId;

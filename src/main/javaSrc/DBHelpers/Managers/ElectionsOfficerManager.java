@@ -98,7 +98,7 @@ public class ElectionsOfficerManager extends Manager{
 
     public ElectionsOfficer store(ElectionsOfficer electionsOfficer) throws EVException{
         String insertElectionsOfficer = "insert into ElectionsOfficer ( First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip) values ( ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-        String updateElectionsOfficer = "update ElectionsOfficer set First_Name = ?, Last_Name = ?, Username = ?, User_Password = ?, Email_Address = ?, Address = ?, City = ?, State = ?, Zip = ?";
+        String updateElectionsOfficer = "update ElectionsOfficer set First_Name = ?, Last_Name = ?, Username = ?, User_Password = ?, Email_Address = ?, Address = ?, City = ?, State = ?, Zip = ? where Elections_Officer_ID = ?";
         PreparedStatement stmt = null;
         int queryExecution;
         int electionsOfficerId;
