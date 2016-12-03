@@ -31,13 +31,13 @@ public class ElectionImpl extends BallotItemImpl implements Election{
     public String getRestoreString() throws EVException {
         StringBuffer query = new StringBuffer( 100 );
         StringBuffer condition = new StringBuffer( 100 );
-        String restoreStr = "select Election_ID, District_ID, Office_Name, Is_Partisan, Vote_Count from Election";
+        String restoreStr = "select Election_ID, Office_Name, Is_Partisan, Vote_Count from Election";
 
         condition.setLength( 0 );
         query.append( restoreStr );
 
-        if( getId() >= 0 ) { // id is unique, so it is sufficient to get a person
-            query.append(" where Elections_Officer_ID = " + getId());
+        if( getId() > 0 ) { // id is unique, so it is sufficient to get a person
+            query.append(" where Election_ID = " + getId());
         }
         else {
 
@@ -50,7 +50,13 @@ public class ElectionImpl extends BallotItemImpl implements Election{
                     condition.append( " and" );
                 else
                     condition.append( " where" );
-                condition.append( " Is_Partisan = '" + getIsPartisan() + "'" );
+
+                int partisan;
+                if( getIsPartisan() )
+                    partisan = 1;
+                else
+                    partisan = 0;
+                condition.append( " Is_Partisan = " + partisan );
             }
 
 
@@ -59,7 +65,7 @@ public class ElectionImpl extends BallotItemImpl implements Election{
                     condition.append( " and" );
                 else
                     condition.append( " where" );
-                condition.append( " Vote_Count = '" + getVoteCount() + "'" );
+                condition.append( " Vote_Count = " + getVoteCount() );
 
             }
         }

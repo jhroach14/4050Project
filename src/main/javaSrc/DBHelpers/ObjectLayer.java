@@ -155,6 +155,12 @@ public interface ObjectLayer {
 
     public void deleteLink(Ballot ballot, BallotItem ballotItem)throws EVException;
 
+    public void deleteLink(Ballot ballot)throws EVException;
+
+    public void deleteLink(Issue issue) throws EVException;
+
+    public void deleteLink(Election election) throws EVException;
+
     public void createLink(Candidate candidate,Election election) throws EVException;
 
     public Election getElection(Candidate candidate) throws EVException;

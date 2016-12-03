@@ -5,7 +5,6 @@ import com.sun.net.httpserver.HttpsServer;
 import main.javaSrc.handlers.AuthHandler;
 import main.javaSrc.handlers.DataHandler;
 import main.javaSrc.handlers.IndexHandler;
-import main.javaSrc.HttpClasses.Configurator;
 import main.javaSrc.helpers.Logger;
 import main.javaSrc.services.AuthService;
 import main.javaSrc.services.AuthServiceImpl;

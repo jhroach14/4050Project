@@ -101,6 +101,15 @@ public interface PersistenceLayer {
     public void deleteBallotIncludesBallotItem( Ballot ballot, BallotItem ballotItem ) throws EVException;
 
 
+    public void deleteBallotFromAllAssociations( Ballot ballot ) throws EVException;
+
+
+    public void deleteIssueFromAllAssociations( Issue issue ) throws EVException;
+
+
+    public void deleteElectionFromAllAssociations( Election election ) throws EVException;
+
+
     public void storeCandidateIsCandidateInElection( Candidate candidate, Election election ) throws EVException;
 
 

@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div ng-app="loginApp" class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 sidePanel">
+            </div>
+            <div class=" col-md-6">
+                <div id="mainCol" class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="header" class="jumbotron">
+                            <h2>Modify this Party in the system</h2>
+                        </div>
+                        <form name="loginForm" ng-controller="loginCtrl" class="loginForm collapse in">
+                            <div class="form-group">
+                                <label for="UserName">Party Name:</label>
+                                <input ng-model="UserName" type="text" value="Republican" class="form-control" id="UserName" required>
+                            </div>
+                            <div id="buttonRow" class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-5">
+                                    <button onclick="window.location.href='#/modifyparty'" class="btn btn-primary infoButton">Save</button>
+                                </div>
+                                <div class="col-md-5">
+                                    <button class="btn btn-danger infoButton">Delete Party</button>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                        </form>
+                        <div id="loginLinks" class="form-actions">
+                            <a class="loginForm collapse" data-toggle="collapse" href=".loginForm">Return to login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 sidePanel">
+            </div>
+        </div>
+    </div>
+</div>

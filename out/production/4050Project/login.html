@@ -26,8 +26,8 @@
                             </div>
                             <form name="loginForm" ng-controller="loginCtrl" class="loginForm collapse in">
                                 <div class="form-group">
-                                    <label for="email">Email address:</label>
-                                    <input ng-model="email" type="email" class="form-control" id="email" required>
+                                    <label for="UserName">UserName:</label>
+                                    <input ng-model="UserName" type="text" class="form-control" id="UserName" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="pwd">Password:</label>
@@ -43,12 +43,20 @@
                             </div>
                             <form name="registerForm" ng-controller="registerCtrl" class="loginForm collapse">
                                 <div class="form-group">
-                                    <label for="email2">Email address(will be your username):</label>
-                                    <input ng-model="email" type="email" class="form-control" id="email2" required>
+                                    <label for="userName2">UserName:</label>
+                                    <input ng-model="userName" type="text" class="form-control" id="userName2" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Full Name:</label>
-                                    <input ng-model="name" type="text" class="form-control" id="name" required>
+                                    <label for="email2">Email address:</label>
+                                    <input ng-model="emailAddress" type="email" class="form-control" id="email2" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">First Name:</label>
+                                    <input ng-model="firstName" type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name:</label>
+                                    <input ng-model="lastName" type="text" class="form-control" id="lastName" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="age">Age:</label>
@@ -57,6 +65,22 @@
                                 <div class="form-group">
                                     <label for="address">Address:</label>
                                     <input ng-model="address" type="text" class="form-control" id="address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">City:</label>
+                                    <input ng-model="city" type="text" class="form-control" id="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State:</label>
+                                    <input ng-model="state" type="text" class="form-control" id="state" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">Zip Code:</label>
+                                    <input ng-model="zip" type="text" class="form-control" id="zip" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password:</label>
+                                    <input ng-model="userPassword" type="text" class="form-control" id="password" required>
                                 </div>
                                 <div class="form-actions">
                                     <button ng-disabled="registerForm.$invalid" ng-click="submit()" type="submit" class="btn btn-primary">Submit</button>

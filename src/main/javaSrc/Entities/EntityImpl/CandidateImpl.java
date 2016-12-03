@@ -35,7 +35,7 @@ public class CandidateImpl extends EntityImpl implements Candidate {
         condition.setLength( 0 );
         query.append( restoreStr );
 
-        if( getId() >= 0 ) { // id is unique, so it is sufficient to get a person
+        if( getId() > 0 ) { // id is unique, so it is sufficient to get a person
             query.append(" where Candidate_ID = " + getId());
         }
         else {

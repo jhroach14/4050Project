@@ -4,6 +4,7 @@ import main.javaSrc.DBHelpers.ObjectLayer;
 import main.javaSrc.Entities.Ballot;
 import main.javaSrc.Entities.BallotItem;
 import main.javaSrc.Entities.EntityImpl.BallotItemImpl;
+import main.javaSrc.Entities.Issue;
 import main.javaSrc.helpers.EVException;
 
 import java.sql.*;
@@ -63,11 +64,14 @@ public class Ballot_IssuesManager {
         if(ballotItem.getId() <1)
             throw new EVException("Ballot_Issues.restore could not restore non persistent issue");
 
-        query.append( "select Ballot.Ballot_ID, Ballot.Start_Date, Ballot.End_Date " );
-        query.append(" from Ballot ");
-        query.append("join Ballot_Issues");
-        query.append("on Ballot.Ballot_ID = Ballot_Issues.Ballot_ID");
-        query.append("Where Ballot_Issues.Issues_ID = '" + ballotItem.getId() + "'");
+        query.append("select Ballot_ID, Start_Date, End_Date, Issue_ID from (select Ballot.Ballot_ID, Ballot.Start_Date, Ballot.End_Date, Ballot_Issues.Issue_ID from Ballot inner join Ballot_Issues on Ballot_Issues.Ballot_ID = Ballot.Ballot_ID) as T where Issue_ID = " + ballotItem.getId());
+
+//
+//        query.append( "select Ballot.Ballot_ID, Ballot.Start_Date, Ballot.End_Date " );
+//        query.append(" from Ballot ");
+//        query.append("join Ballot_Issues");
+//        query.append("on Ballot.Ballot_ID = Ballot_Issues.Ballot_ID");
+//        query.append("Where Ballot_Issues.Issues_ID = '" + ballotItem.getId() + "'");
 
         try{
             stmt = conn.createStatement();
@@ -111,11 +115,13 @@ public class Ballot_IssuesManager {
         if(ballot.getId() <1)
             throw new EVException("Ballot_Issues.restore could not restore persistent Ballot_Issues");
 
-        query.append("select Issue.Vote_Count");
-        query.append(" from Issue ");
-        query.append("join Ballot_Issues");
-        query.append("on Ballot.Ballot_ID = Ballot_Issues.Ballot_ID");
-        query.append("Where Ballot.Ballot_ID = '" + ballot.getId() + "'");
+        query.append("select Vote_Count from (select Issue.Vote_Count, Ballot_Issues.Ballot_ID from Issue inner join Ballot_Issues on Ballot_Issues.Issue_ID = Issue.Issue_ID) as T where Ballot_ID = " + ballot.getId());
+//
+//        query.append("select Issue.Vote_Count ");
+//        query.append("from Issue ");
+//        query.append("join Ballot_Issues ");
+//        query.append("on Ballot.Ballot_ID = Ballot_Issues.Ballot_ID ");
+//        query.append("where Ballot.Ballot_ID = " + ballot.getId());
 
         try {
             stmt = conn.createStatement();
@@ -175,6 +181,51 @@ public class Ballot_IssuesManager {
             throw new EVException( "Ballot_IssuesManager.delete: failed to delete a ballot: " + e );
         }
     }
+
+    public void delete(Ballot ballot) throws EVException{
+        String               deleteBallot = "delete from Ballot_Issues where Ballot_ID = ?";
+        PreparedStatement    stmt = null;
+        int                  queryExecution;
+
+        try{
+            stmt = conn.prepareStatement( deleteBallot );
+            if(ballot.getId() > 0)
+                stmt.setInt(1, ballot.getId());
+            else
+                throw new EVException("Ballot_Issues.delete failed to delete ballot_Issues");
+
+            queryExecution = stmt.executeUpdate();
+            //if(queryExecution != 1 )
+                //throw new EVException("Ballot_IssuesManager.delete failed to delete");
+        }
+        catch( SQLException e ) {
+            e.printStackTrace();
+            throw new EVException( "Ballot_IssuesManager.delete: failed to delete a ballot: " + e );
+        }
+    }
+
+    public void delete(Issue issue) throws EVException{
+        String               deleteBallot = "delete from Ballot_Issues where Issue_ID = ?";
+        PreparedStatement    stmt = null;
+        int                  queryExecution;
+
+        try{
+            stmt = conn.prepareStatement( deleteBallot );
+            if(issue.getId() > 0)
+                stmt.setInt(1, issue.getId());
+            else
+                throw new EVException("Ballot_Issues.delete failed to delete ballot_Issues");
+
+            queryExecution = stmt.executeUpdate();
+            //if(queryExecution != 1 )
+            //throw new EVException("Ballot_IssuesManager.delete failed to delete");
+        }
+        catch( SQLException e ) {
+            e.printStackTrace();
+            throw new EVException( "Ballot_IssuesManager.delete: failed to delete a ballot: " + e );
+        }
+    }
+
 }
 
 

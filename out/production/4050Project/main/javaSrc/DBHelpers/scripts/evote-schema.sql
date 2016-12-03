@@ -1,13 +1,13 @@
 # noinspection SqlNoDataSourceInspectionForFile
-DROP TABLE IF EXISTS ElectionsOfficer, Party, Party_Candidates, District_Voters, Candidate, District_Ballots, District, Ballot, Election, Ballot_Elections, Voter, Record, Issue, Ballot_Issues, Election_Candidates;
+DROP TABLE IF EXISTS ElectionsOfficer, Party, Party_Candidates, District_Voters, Candidate, District_Ballots, District, Ballot, Election, Ballot_Elections, Voter, Record, Issue, Ballot_Issues, Election_Candidates, Token;
 
 /*Done.*/
 CREATE TABLE ElectionsOfficer (
  Elections_Officer_ID INT AUTO_INCREMENT NOT NULL,
  First_Name VARCHAR(100) NOT NULL,
  Last_Name VARCHAR(100) NOT NULL,
- Username VARCHAR(100) NOT NULL,  
- User_Password VARCHAR(100) NOT NULL, 
+ Username VARCHAR(100) NOT NULL,
+ User_Password VARCHAR(100) NOT NULL,
  Email_Address VARCHAR(100),
  Address VARCHAR(100),
  City VARCHAR(100),
@@ -17,7 +17,7 @@ CREATE TABLE ElectionsOfficer (
  PRIMARY KEY(Elections_Officer_ID)
 );
 insert into ElectionsOfficer ( First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip)
-values ( "John", "smith", "officerJS", "1234", "jsmith@gmail.com", "1 street", "athens", "GA", "30067" );
+values ( "John", "smith", "officer", "1234", "jsmith@gmail.com", "1 street", "athens", "GA", "30067" );
 /*Done.*/
 CREATE TABLE Party (
  Party_ID INT AUTO_INCREMENT NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE Election (
 CREATE TABLE Election_Candidates (
   Candidate_ID INT,
   Election_ID INT,
-  
+
   FOREIGN KEY(Candidate_ID) REFERENCES Candidate(Candidate_ID),
   FOREIGN KEY(Election_ID) REFERENCES Election(Election_ID)
 );
@@ -79,7 +79,7 @@ CREATE TABLE Election_Candidates (
 CREATE TABLE Ballot_Elections (
   Ballot_ID INT,
   Election_ID INT,
-  
+
   FOREIGN KEY(Ballot_ID) REFERENCES Ballot(Ballot_ID),
   FOREIGN KEY(Election_ID) REFERENCES Election(Election_ID)
 );
@@ -99,6 +99,9 @@ CREATE TABLE Voter (
 
   PRIMARY KEY(Voter_ID)
 );
+
+insert into Voter (First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip)
+values ( "Justin", "Starner", "voter", "1234", "jsmith@gmail.com", "1 street", "athens", "GA", "30067" );
 
 /*Done.*/
 CREATE TABLE Record (
@@ -127,7 +130,7 @@ CREATE TABLE Issue (
 CREATE TABLE Ballot_Issues (
   Ballot_ID INT,
   Issue_ID INT,
-  
+
   FOREIGN KEY(Ballot_ID) REFERENCES Ballot(Ballot_ID),
   FOREIGN KEY(Issue_ID) REFERENCES Issue(Issue_ID)
 );
@@ -155,5 +158,14 @@ CREATE TABLE District_Voters (
  FOREIGN KEY(District_ID) REFERENCES District(District_ID),
  FOREIGN KEY(Voter_ID) REFERENCES Voter(Voter_ID)
 );
+
+Create Table Token(
+ User_Name VARCHAR(100) NOT NULL,
+ Token VARCHAR(100) NOT NULL,
+
+ PRIMARY KEY(User_Name)
+);
+INSERT INTO Token VALUES ("TestUser", "testToken123");
+
 
 

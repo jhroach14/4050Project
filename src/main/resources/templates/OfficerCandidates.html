@@ -1,19 +1,18 @@
-
 <div class="container-fluid">
     <div id="contentRow" class="row">
         <div class="col-md-1"></div>
         <div class="col-md-4">
             <div class="panel panel-default contentPanel">
                 <div class="panel-heading">
-                    District List
+                    Candidate List
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
-                        <a href="#" class="list-group-item active">District 1</a>
-                        <a href="#" class="list-group-item">District 2</a>
-                        <a href="#" class="list-group-item">District 3</a>
-                        <a href="#" class="list-group-item">District 4</a>
-                        <a href="#" class="list-group-item">District 5</a>
+                        <a href="#" class="list-group-item active">Candidate 1</a>
+                        <a href="#" class="list-group-item">Candidate 2</a>
+                        <a href="#" class="list-group-item">Candidate 3</a>
+                        <a href="#" class="list-group-item">Candidate 4</a>
+                        <a href="#" class="list-group-item">Candidate 5</a>
                     </div>
                 </div>
             </div>
@@ -21,39 +20,34 @@
         <div class="col-md-2">
             <div id="newButton">
                 <span class="glyphicon glyphicon-plus"></span>
-                <button class="btn btn-default">New District</button>
+                <button onclick="window.location.href='#/createcandidate'" class="btn btn-default">New Candidate</button>
             </div>
         </div>
         <div class="col-md-4">
             <div class="panel panel-default contentPanel">
                 <div class="panel-heading">
-                    District View
+                    Candidate View
                 </div>
                 <div id="listBody" class="panel-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <p>Name:</p>
-                            <p>Population:</p>
-                            <p>Registered voters:</p>
-                            <p>Votes cast:</p>
-                            <p>Ballot:</p>
+                            <p>Name:<br/></p>
+                            <p>Vote Count<br/><p>
+                            <p>Party:<br/></p>
+                            <p>Election:</p>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-5">
-                            <p>District 1</p>
-                            <p>20,000</p>
-                            <p>11,000</p>
-                            <p>9,000</p>
-                            <button class="btn btn-default">Show Ballot</button>
+                            <p>Candidate 1<br/></p>
+                            <p>256<br/></p>
+                            <p>Libertarian</p>
+                            <p>Office 1</p>
                         </div>
                     </div>
                     <div id="buttonRow" class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-5">
-                            <button class="btn btn-primary infoButton">Modify</button>
-                        </div>
-                        <div class="col-md-5">
-                            <button class="btn btn-danger infoButton">Delete</button>
+                            <button onclick="window.location.href='#/modifycandidate'" class="btn btn-primary infoButton">Modify</button>
                         </div>
                         <div class="col-md-2"></div>
                     </div>
