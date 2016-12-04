@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface ObjectLayer {
 
+    List<Ballot> getBallots(BallotItem ballotItem) throws EVException;
+
     void setPersistenceLayer(PersistenceLayer persistenceLayer);
     
     public ElectionsOfficer createElectionsOfficer(String firstName, String lastName, String userName,
@@ -171,7 +173,7 @@ public interface ObjectLayer {
 
     void createLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException;
     void deleteLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException;
-    List<Ballot> getBallots(ElectoralDistrict district)throws EVException;
+    Ballot getBallot(ElectoralDistrict district)throws EVException;
     ElectoralDistrict getDistrict(Ballot ballot)throws EVException;
 
     void createLink(ElectoralDistrict electoralDistrict, Voter voter) throws EVException;

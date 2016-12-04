@@ -28,6 +28,14 @@ var setStyleSheet = function (name) {
     head.appendChild(link);
 };
 
+var toParty = function (name) {
+    var party = {
+        name: name
+    };
+    
+    return party;
+};
+
 var toVoter = function (firstName,lastName,userName,userPassword,emailAddress,address,state,zip,city,age) {
 
     var voter = {
@@ -45,21 +53,18 @@ var toVoter = function (firstName,lastName,userName,userPassword,emailAddress,ad
     return voter;
 };
 
-var toCandidate = function (name, isAlternate, voteCount) {
+var toCandidate = function (name, voteCount) {
     var candidate = {
         name: name,
-        isAlternate: isAlternate,
         voteCount: voteCount
     };
     return candidate;
 };
 
-var toElection = function (office, isPartisan, voteCount, alternateAllowed) {
+var toElection = function (office, isPartisan) {
     var election = {
         office: office,
-        isPartisan: isPartisan,
-        voteCount: voteCount,
-        alternateAllowed: alternateAllowed
+        isPartisan: isPartisan
     };
     return election;
 };
@@ -69,3 +74,7 @@ var toDistrict = function (name) {
     };
     return district;
 };
+
+var toBallot = function () {
+    
+}

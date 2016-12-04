@@ -1,3 +1,5 @@
+-- noinspection SqlDialectInspectionForFile
+-- noinspection SqlNoDataSourceInspectionForFile
 # noinspection SqlNoDataSourceInspectionForFile
 DROP TABLE IF EXISTS ElectionsOfficer, Party, Party_Candidates, District_Voters, Candidate, District_Ballots, District, Ballot, Election, Ballot_Elections, Voter, Record, Issue, Ballot_Issues, Election_Candidates, Token;
 
@@ -30,7 +32,6 @@ CREATE TABLE Party (
 CREATE TABLE Candidate (
  Candidate_ID INT AUTO_INCREMENT NOT NULL,
  Candidate_Name VARCHAR(100) NOT NULL,
- Is_Alternate BOOLEAN,
  Vote_Count INT,
 
  PRIMARY KEY(Candidate_ID)
@@ -66,7 +67,6 @@ CREATE TABLE Election (
  Election_ID INT AUTO_INCREMENT NOT NULL,
  Office_Name VARCHAR(100) NOT NULL,
  Is_Partisan BOOLEAN NOT NULL,
- Alternate_Allowed BOOLEAN,
  Vote_Count INT,
 
  PRIMARY KEY(Election_ID)

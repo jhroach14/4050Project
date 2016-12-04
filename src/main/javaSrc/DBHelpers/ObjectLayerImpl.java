@@ -127,7 +127,14 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public ElectoralDistrict storeElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
-        return persistenceLayer.storeElectoralDistrict(electoralDistrict);
+        boolean isNew = electoralDistrict.isPersistent();
+        ElectoralDistrict district = persistenceLayer.storeElectoralDistrict(electoralDistrict);
+        if(!isNew){
+            Ballot ballot = persistenceLayer.storeBallot(new BallotImpl(new Date(1,1,1),new Date(1,1,2),true));
+            persistenceLayer.storeElectoralDistrictHasBallotBallot(district,ballot);
+        }
+
+        return district;
     }
 
     @Override
@@ -326,7 +333,7 @@ public class ObjectLayerImpl implements ObjectLayer {
     }
 
     @Override
-    public List<Ballot> getBallots(ElectoralDistrict district) throws EVException {
+    public Ballot getBallot(ElectoralDistrict district) throws EVException {
         return persistenceLayer.restoreElectoralDistrictHasBallotBallot(district);
     }
 
@@ -404,6 +411,11 @@ public class ObjectLayerImpl implements ObjectLayer {
     public VoteRecord createVoterRecord(Date date, Voter voter, Ballot ballot) {
         VoteRecord voteRecord = new VoterRecordImpl(date,voter,ballot);
         return voteRecord;
+    }
+
+    @Override
+    public List<Ballot> getBallots(BallotItem ballotItem) throws EVException {
+        return persistenceLayer.restoreBallotsIncludesBallotItem(ballotItem);
     }
 
     public void setPersistenceLayer(PersistenceLayer persistenceLayer) {

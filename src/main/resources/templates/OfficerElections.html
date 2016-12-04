@@ -8,24 +8,20 @@
                     Election List
                 </div>
                 <div class="panel-body">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active">Office 1</a>
-                        <a href="#" class="list-group-item">Office 2</a>
-                        <a href="#" class="list-group-item">Office 3</a>
-                        <a href="#" class="list-group-item">Office 4</a>
-                        <a href="#" class="list-group-item">Office 5</a>
+                    <div id="electionList" class="list-group">
+                        <a ng-repeat="election in electionList" ng-click="selectElection(election)" class="list-group-item">{{election.office}}</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-2">
-            <div id="newButton">
+            <div id="newButton" ng-click="normalView = 2">
                 <span class="glyphicon glyphicon-plus"></span>
                 <button  class="btn btn-default">New Election</button>
             </div>
         </div>
         <div class="col-md-4">
-            <div  class="panel panel-default contentPanel">
+            <div ng-if="normalView == 1" class="panel panel-default contentPanel">
                 <div class="panel-heading">
                     Election View
                 </div>
@@ -33,29 +29,90 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p>Office:</p>
-                            <p>Cantidate1:</p>
-                            <p>Cantidate2:</p>
-                            <p>Votes Cast:</p>
                             <p>Districts voting:</p>
+                            <p>Candidates:</p>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-5">
-                            <p>Office1</p>
-                            <p> John Smith</p>
-                            <p>Jane Smith</p>
-                            <p>9,000</p>
-                            <p>district1, district2, district3,</p>
+                            <p>{{selectedElection.office}}</p>
+                            <p ng-repeat="district in selectedDistricts">{{district.name}}</p>
+                            <p ng-repeat="candidate in selectedCandidates">{{candidate.name}}</p>
                         </div>
                     </div>
-                    <div id="buttonRow" class="row">
+                    <div id="buttonRow" class="row" ng-if="selectedElection">
                         <div class="col-md-2"></div>
-                        <div class="col-md-5">
+                        <div ng-click="normal3()" class="col-md-5">
                             <button class="btn btn-primary infoButton">Modify</button>
                         </div>
-                        <div class="col-md-5">
+                        <div ng-click="deleteElection()" class="col-md-5">
                             <button class="btn btn-danger infoButton">Delete</button>
                         </div>
                         <div class="col-md-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="normalView == 2" class="panel panel-default contentPanel">
+                <div class="panel-heading">
+                    New Election
+                </div>
+                <div id="createBody" class="panel-body">
+                    <div class="row">
+                        <form name="createForm">
+                            <div class="form-group">
+                                <label for="newOffice">Election Office:</label>
+                                <input ng-model="formData.newOffice" type="text" class="form-control" id="newOffice" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newIsPartisan">Is Partisan:
+                                    <input id="newIsPartisan" type="checkbox" ng-model="formData.newIsPartisan">
+                                </label>
+                            </div>
+                            <p>Districts</p>
+                            <div class="form-group">
+                                <div ng-repeat="district in districtList">
+                                    <label>
+                                        {{district.name}}:
+                                        <input type="checkbox" ng-model="district.selected">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button ng-click="createNewElection()" type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="normalView == 3" class="panel panel-default contentPanel">
+                <div class="panel-heading">
+                    Modify Election
+                </div>
+                <div id="modifyBody" class="panel-body">
+                    <div class="row">
+                        <form name="modifyForm">
+                            <div class="form-group">
+                                <label for="modOffice">Election Office:</label>
+                                <input value="{{selectedElection.office}}" ng-model="selectedElection.office" type="text" class="form-control" id="modOffice" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="modIsPartisan">Is Partisan:
+                                    <input id="modIsPartisan" type="checkbox" value="{{selectedElection.isPartisan}}" ng-model="selectedElection.isPartisan">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <div ng-repeat="district in districtList">
+                                    <label>
+                                        {{district.name}}:
+                                        <input type="checkbox" ng-model="district.selected">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button ng-click="modElection()" type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

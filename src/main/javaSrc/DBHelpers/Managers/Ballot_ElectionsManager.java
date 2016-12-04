@@ -59,6 +59,49 @@ public class Ballot_ElectionsManager {
 
     }
 
+    public List<Ballot> restoreMult (BallotItem ballotItem) throws EVException{
+        StringBuffer query = new StringBuffer(500);
+        Statement stmt = null;
+
+        if(ballotItem.getId() <1)
+            throw new EVException("Ballot_Elections.restore could not restore non persistent election");
+
+        query.append("select Ballot_ID, Start_Date, End_Date, Election_ID from (select Ballot.Ballot_ID, Ballot.Start_Date, Ballot.End_Date, Ballot_Elections.Election_ID from Ballot inner join Ballot_Elections on Ballot_Elections.Ballot_ID = Ballot.Ballot_ID) as T where Election_ID = " + ballotItem.getId());
+
+        try{
+            stmt = conn.createStatement();
+
+            if(stmt.execute(query.toString())) {
+                int ballotId;
+                Date startDate;
+                Date closeDate;
+                Ballot newBallot = null;
+
+                ResultSet rs = stmt.getResultSet();
+                List<Ballot> ballots =new ArrayList<>();
+                while(rs.next()){
+                    ballotId = rs.getInt( 1 );
+                    startDate = rs.getDate( 2 );
+                    closeDate = rs.getDate( 3 );
+
+                    newBallot = objectLayer.createBallot();
+                    newBallot.setId( ballotId );
+                    newBallot.setOpenDate( startDate );
+                    newBallot.setCloseDate( closeDate );
+                    newBallot.setPersistent(true);
+                    ballots.add(newBallot);
+                }
+                return ballots;
+            }
+        }
+
+        catch(SQLException e){
+            e.printStackTrace();
+            throw new EVException("Ballot_Elections.store failed to save a ballot_Election" +e);
+        }
+        throw new EVException("Ballot_Elections.restore could not restore ballot object");
+    }
+
     public Ballot restore (BallotItem ballotItem) throws EVException{
         StringBuffer query = new StringBuffer(500);
         Statement stmt = null;

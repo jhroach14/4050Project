@@ -7,6 +7,8 @@ import main.javaSrc.helpers.EVException;
 import java.util.List;
 
 public interface PersistenceLayer {
+
+    List<Ballot> restoreBallotsIncludesBallotItem(BallotItem ballotItem) throws EVException;
     
     public List<ElectionsOfficer> restoreElectionsOfficer(ElectionsOfficer modelElectionsOfficer ) throws EVException;
 
@@ -128,7 +130,7 @@ public interface PersistenceLayer {
     public ElectoralDistrict restoreElectoralDistrictHasBallotBallot( Ballot ballot ) throws EVException;
 
 
-    public List<Ballot> restoreElectoralDistrictHasBallotBallot( ElectoralDistrict electoralDistrict ) throws EVException;
+    public Ballot restoreElectoralDistrictHasBallotBallot( ElectoralDistrict electoralDistrict ) throws EVException;
 
 
     public void deleteElectoralDistrictHasBallotBallot( ElectoralDistrict electoralDistrict, Ballot ballot ) throws EVException;

@@ -54,6 +54,18 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
+    public List<Ballot> restoreBallotsIncludesBallotItem(BallotItem ballotItem) throws EVException {
+        List<Ballot> ballots=null;
+        if(ballotItem instanceof Election){
+            ballots = ballot_electionsManager.restoreMult(ballotItem);
+        }else
+        if(ballotItem instanceof Issue){
+            ballots = ballot_issuesManager.restoreMult(ballotItem);
+        }
+        return ballots;
+    }
+
+    @Override
     public List<ElectionsOfficer> restoreElectionsOfficer(ElectionsOfficer electionsOfficer) throws EVException {
         return electionsOfficerManager.restore(electionsOfficer);
     }
@@ -290,7 +302,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public List<Ballot> restoreElectoralDistrictHasBallotBallot(ElectoralDistrict electoralDistrict) throws EVException {
+    public Ballot restoreElectoralDistrictHasBallotBallot(ElectoralDistrict electoralDistrict) throws EVException {
         return district_ballotsManager.restore(electoralDistrict);
     }
 

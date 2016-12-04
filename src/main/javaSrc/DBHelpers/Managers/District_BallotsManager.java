@@ -62,11 +62,14 @@ public class District_BallotsManager {
         if(ballot.getId() <1)
             throw new EVException("voter_district.restore could not restore non persistent voter");
 
-        query.append("select District.District_ID, District.DistrictName");
+        /*query.append("select District.District_ID, District.DistrictName");
         query.append(" from District ");
         query.append("join District_Ballots");
         query.append("on District.District_ID = District_Ballots.District_ID");
-        query.append("Where District_Ballots.Ballot_ID = '" + ballot.getId() + "'");
+        query.append("Where District_Ballots.Ballot_ID = '" + ballot.getId() + "'");*/
+
+        query.append("select District_ID, District_Name, Ballot_ID from (select District.District_ID, District.District_Name, District_Ballots.Ballot_ID from District inner join District_Ballots on District_Ballots.District_ID = District.District_ID) as T where Ballot_ID = " + ballot.getId());
+
 
         try{
             stmt = conn.createStatement();
@@ -124,11 +127,10 @@ public class District_BallotsManager {
 
     }
 
-    public List<Ballot> restore(ElectoralDistrict electoralDistrict) throws EVException{
+    public Ballot restore(ElectoralDistrict electoralDistrict) throws EVException{
         StringBuffer query = new StringBuffer(500);
         Statement stmt = null;
-        List<Voter> voters = new ArrayList<Voter>();
-        List<Ballot>   ballots = new ArrayList<Ballot>();
+        Ballot ballot = null;
 
         if (electoralDistrict.getId() < 1)
             throw new EVException("CandidateManger.restore could not restore persistent Candidate_Elections");
@@ -168,10 +170,10 @@ public class District_BallotsManager {
                     nextBallot.setCloseDate( closeDate );
                     nextBallot.setPersistent(true);
 
-                    ballots.add( nextBallot );
+                    break;
                 }
 
-                return ballots;
+                return nextBallot;
             }
         } catch (Exception e) {
             e.printStackTrace();

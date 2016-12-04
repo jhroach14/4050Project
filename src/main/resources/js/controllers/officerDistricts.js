@@ -12,8 +12,13 @@ angular.module("officerIndexApp").controller('districtsCtrl', ['$scope', '$http'
 
         $http.post(url,toDistrict(null)).success(
             function (response) {
-                $scope.districtList = response;
-                console.log(JSON.stringify(districtList));
+                if(response!="200 success"){
+                    $scope.districtList = response;
+                }else{
+                    $scope.districtList = null;
+                }
+
+                console.log(angular.toJson(districtList));
             }
         );
         $scope.selectDistrict = function (district) {
@@ -30,14 +35,18 @@ angular.module("officerIndexApp").controller('districtsCtrl', ['$scope', '$http'
                     }
                 }
             );
-            url = "http://localhost:9001/data/traverse/getBallotsGivenDistrict?sourced=true&token="+token;
+            url = "http://localhost:9001/data/traverse/getBallotGivenDistrict?sourced=true&token="+token;
             $http.post(url,district).success(
                 function (ballot) {
                     if(ballot != "200 success") {
                         url = "http://localhost:9001/data/traverse/getBallotItemsGivenBallot?sourced=true&token=" + token;
                         $http.post(url, ballot[0]).success(
                             function (response) {
-                                $scope.districtBallotItems = response;
+                                if(response != "200 success") {
+                                    $scope.districtBallotItems = response;
+                                }else{
+                                    $scope.districtBallotItems = null;
+                                }
                             }
                         );
                     }
@@ -81,7 +90,22 @@ angular.module("officerIndexApp").controller('districtsCtrl', ['$scope', '$http'
 
         $scope.normal3 = function () {
             $scope.normalView = 3;
-        }
+        };
+
+        $scope.deleteDistrict = function(){
+            var url = "http://localhost:9001/data/delete/ElectoralDistrict?sourced=true&token="+token;
+            $http.post(url,$scope.selectedDistrict).success(
+                function (response) {
+                    var url = "http://localhost:9001/data/find/ElectoralDistrict?sourced=true&token="+token;
+                    $http.post(url,toDistrict(null)).success(
+                        function (response) {
+                            $scope.districtList = response;
+                            $scope.selectedDistrict = null;
+                        }
+                    );
+                }
+            );
+        };
     }
 ]);
 

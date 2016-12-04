@@ -44,21 +44,6 @@ public class ElectionImpl extends BallotItemImpl implements Election{
                 condition.append( " where Office_Name = '" + getOffice() + "'" );
 
 
-            if( getIsPartisan() || !getIsPartisan()){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-
-                int partisan;
-                if( getIsPartisan() )
-                    partisan = 1;
-                else
-                    partisan = 0;
-                condition.append( " Is_Partisan = " + partisan );
-            }
-
-
             if( getVoteCount() >= 0 ){
                 if( condition.length() > 0 )
                     condition.append( " and" );
