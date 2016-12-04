@@ -55,67 +55,67 @@ public class VoterImpl extends UserImpl implements Voter{
                 condition.append( " Last_Name = '" + getLastName() + "'" );
             }
 
-            if( getUserName() != null ){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
+            if( getUserName() != null ) {
+                if (condition.length() > 0)
+                    condition.append(" and");
                 else
-                    condition.append( " where" );
-                condition.append( " User_Name = '" + getUserName() + "'" );
-            }
+                    condition.append(" where");
+                condition.append(" User_Name = '" + getUserName() + "'");
 
 
-            if( getUserPassword() != null ){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " User_Password = '" + getUserPassword() + "'" );
+                if (getUserPassword() != null) {
+                    if (condition.length() > 0)
+                        condition.append(" and");
+                    else
+                        condition.append(" where");
+                    condition.append(" User_Password = '" + getUserPassword() + "'");
 
-            }
+                }
 
-            if( getEmailAddress() != null ){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " Email_Address = '" + getEmailAddress() + "'" );
+                if (getEmailAddress() != null) {
+                    if (condition.length() > 0)
+                        condition.append(" and");
+                    else
+                        condition.append(" where");
+                    condition.append(" Email_Address = '" + getEmailAddress() + "'");
 
-            }
+                }
 
-            if( getAddress() != null ){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " Address = '" + getAddress() + "'" );
+                if (getAddress() != null) {
+                    if (condition.length() > 0)
+                        condition.append(" and");
+                    else
+                        condition.append(" where");
+                    condition.append(" Address = '" + getAddress() + "'");
 
-            }
+                }
 
-            if( getCity() != null ){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " City = '" + getCity() + "'" );
+                if (getCity() != null) {
+                    if (condition.length() > 0)
+                        condition.append(" and");
+                    else
+                        condition.append(" where");
+                    condition.append(" City = '" + getCity() + "'");
 
-            }
+                }
 
-            if( getState() != null ){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " State = '" + getState() + "'" );
+                if (getState() != null) {
+                    if (condition.length() > 0)
+                        condition.append(" and");
+                    else
+                        condition.append(" where");
+                    condition.append(" State = '" + getState() + "'");
 
-            }
+                }
 
-            if( Integer.toString(getZip()) != null ){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " Zip = '" + getZip() + "'" );
+                if (Integer.toString(getZip()) != null) {
+                    if (condition.length() > 0)
+                        condition.append(" and");
+                    else
+                        condition.append(" where");
+                    condition.append(" Zip = '" + getZip() + "'");
 
+                }
             }
             query.append(condition);
         }

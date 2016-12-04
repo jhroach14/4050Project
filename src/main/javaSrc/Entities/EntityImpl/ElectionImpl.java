@@ -40,17 +40,18 @@ public class ElectionImpl extends BallotItemImpl implements Election{
         }
         else {
 
-            if( getOffice() != null )
-                condition.append( " where Office_Name = '" + getOffice() + "'" );
+            if( getOffice() != null ) {
+                condition.append(" where Office_Name = '" + getOffice() + "'");
 
 
-            if( getVoteCount() >= 0 ){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " Vote_Count = " + getVoteCount() );
+                if (getVoteCount() >= 0) {
+                    if (condition.length() > 0)
+                        condition.append(" and");
+                    else
+                        condition.append(" where");
+                    condition.append(" Vote_Count = " + getVoteCount());
 
+                }
             }
         }
         query.append( condition );

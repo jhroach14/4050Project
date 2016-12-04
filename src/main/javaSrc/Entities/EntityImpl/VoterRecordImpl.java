@@ -48,7 +48,7 @@ public class VoterRecordImpl extends EntityImpl implements VoteRecord {
             if( getDate() != null )
                 condition.append( " where Record_Date = '" + getDate() + "'" );
 
-            if( getVoter().getId() >= 0 ) {
+            if( getVoter() != null && getVoter().getId() >= 0 ) {
                 if( condition.length() > 0 )
                     condition.append( " and" );
                 else
@@ -56,7 +56,7 @@ public class VoterRecordImpl extends EntityImpl implements VoteRecord {
                 condition.append( " Voter_ID = '" + getVoter().getId() + "'" );
             }
 
-            if( getBallot().getId() >= 0){
+            if( getBallot() != null && getBallot().getId() >= 0){
                 if( condition.length() > 0 )
                     condition.append( " and" );
                 else
