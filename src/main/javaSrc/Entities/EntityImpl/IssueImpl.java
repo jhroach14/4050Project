@@ -40,31 +40,32 @@ public class IssueImpl extends BallotItemImpl implements Issue {
         }
         else {
 
-            if( getQuestion() != null )
-                condition.append( " where Question = '" + getQuestion() + "'" );
+            if( getQuestion() != null ) {
+                condition.append(" where Question = '" + getQuestion() + "'");
 
-            if( getVoteCount() >= 0){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " Vote_Count = '" + getVoteCount() + "'" );
-            }
+                if (getVoteCount() >= 0) {
+                    if (condition.length() > 0)
+                        condition.append(" and");
+                    else
+                        condition.append(" where");
+                    condition.append(" Vote_Count = '" + getVoteCount() + "'");
+                }
 
-            if( getYesCount() >= 0){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " Yes_Count = '" + getYesCount() + "'" );
-            }
+                if (getYesCount() >= 0) {
+                    if (condition.length() > 0)
+                        condition.append(" and");
+                    else
+                        condition.append(" where");
+                    condition.append(" Yes_Count = '" + getYesCount() + "'");
+                }
 
-            if( getNoCount() >= 0){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " No_Count = '" + getNoCount() + "'" );
+                if (getNoCount() >= 0) {
+                    if (condition.length() > 0)
+                        condition.append(" and");
+                    else
+                        condition.append(" where");
+                    condition.append(" No_Count = '" + getNoCount() + "'");
+                }
             }
             query.append( condition );
         }

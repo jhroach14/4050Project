@@ -53,6 +53,38 @@ var toVoter = function (firstName,lastName,userName,userPassword,emailAddress,ad
     return voter;
 };
 
+var toUser = function (firstName,lastName,userName,userPassword,emailAddress,address,state,zip,city) {
+
+    var user = {
+        firstName: firstName,
+        lastName: lastName,
+        userName: userName,
+        userPassword: userPassword,
+        emailAddress: emailAddress,
+        address: address,
+        state: state,
+        zip: zip,
+        city: city
+    };
+    return user;
+};
+
+var toElectionsOfficer = function (firstName,lastName,userName,userPassword,emailAddress,address,state,zip,city) {
+
+    var electionsOfficer = {
+        firstName: firstName,
+        lastName: lastName,
+        userName: userName,
+        userPassword: userPassword,
+        emailAddress: emailAddress,
+        address: address,
+        state: state,
+        zip: zip,
+        city: city
+    };
+    return electionsOfficer;
+};
+
 var toCandidate = function (name, voteCount) {
     var candidate = {
         name: name,
@@ -75,6 +107,32 @@ var toDistrict = function (name) {
     return district;
 };
 
-var toBallot = function () {
-    
-}
+var toIssue = function (question, voteCount, yesCount, noCount) {
+    var issue = {
+        question: question,
+        voteCount: voteCount,
+        yesCount: yesCount,
+        noCount: noCount
+    };
+    return issue;
+};
+
+var toToken = function (tokenValue) {
+    var token = {
+        tokenValue: tokenValue
+    };
+    return token;
+};
+
+var toRecord = function (date, voter, ballot) {
+    var record = {
+        date: date,
+        voter: voter,
+        ballot: ballot
+    };
+    return record;
+};
+
+//var toBallot = function () {
+//
+//};
