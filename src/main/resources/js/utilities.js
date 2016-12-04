@@ -28,7 +28,7 @@ var setStyleSheet = function (name) {
     head.appendChild(link);
 };
 
-var toVoter = function (firstName,lastName,userName,userPassword,emailAddress,address,state,zip,city,age) {
+var toVoter = function (firstName,lastName,userName,userPassword,emailAddress,address,state,zip,city) {
 
     var voter = {
         firstName: firstName,
@@ -40,9 +40,40 @@ var toVoter = function (firstName,lastName,userName,userPassword,emailAddress,ad
         state: state,
         zip: zip,
         city: city,
-        age: age
     };
     return voter;
+};
+
+var toUser = function (firstName,lastName,userName,userPassword,emailAddress,address,state,zip,city) {
+
+    var user = {
+        firstName: firstName,
+        lastName: lastName,
+        userName: userName,
+        userPassword: userPassword,
+        emailAddress: emailAddress,
+        address: address,
+        state: state,
+        zip: zip,
+        city: city
+    };
+    return user;
+};
+
+var toElectionsOfficer = function (firstName,lastName,userName,userPassword,emailAddress,address,state,zip,city) {
+
+    var electionsOfficer = {
+        firstName: firstName,
+        lastName: lastName,
+        userName: userName,
+        userPassword: userPassword,
+        emailAddress: emailAddress,
+        address: address,
+        state: state,
+        zip: zip,
+        city: city
+    };
+    return electionsOfficer;
 };
 
 var toCandidate = function (name, isAlternate, voteCount) {
@@ -54,12 +85,12 @@ var toCandidate = function (name, isAlternate, voteCount) {
     return candidate;
 };
 
-var toElection = function (office, isPartisan, voteCount, alternateAllowed) {
+var toElection = function (office, isPartisan, voteCount/*, alternateAllowed*/) {
     var election = {
         office: office,
         isPartisan: isPartisan,
         voteCount: voteCount,
-        alternateAllowed: alternateAllowed
+        //alternateAllowed: alternateAllowed
     };
     return election;
 };
@@ -68,4 +99,30 @@ var toDistrict = function (name) {
         name: name
     };
     return district;
+};
+
+var toIssue = function (question, voteCount, yesCount, noCount) {
+    var issue = {
+        question: question,
+        voteCount: voteCount,
+        yesCount: yesCount,
+        noCount: noCount
+    };
+    return issue;
+};
+
+var toToken = function (tokenValue) {
+    var token = {
+        tokenValue: tokenValue
+    };
+    return token;
+};
+
+var toRecord = function (date, voter, ballot) {
+    var record = {
+        date: date,
+        voter: voter,
+        ballot: ballot
+    };
+    return record;
 };

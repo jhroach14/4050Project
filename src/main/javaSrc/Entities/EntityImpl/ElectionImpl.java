@@ -40,32 +40,33 @@ public class ElectionImpl extends BallotItemImpl implements Election{
         }
         else {
 
-            if( getOffice() != null )
-                condition.append( " where Office_Name = '" + getOffice() + "'" );
+            if (getOffice() != null){
+                condition.append(" where Office_Name = '" + getOffice() + "'");
 
 
-            if( getIsPartisan() || !getIsPartisan()){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
+            if (getIsPartisan() || !getIsPartisan()) {
+                if (condition.length() > 0)
+                    condition.append(" and");
                 else
-                    condition.append( " where" );
+                    condition.append(" where");
 
                 int partisan;
-                if( getIsPartisan() )
+                if (getIsPartisan())
                     partisan = 1;
                 else
                     partisan = 0;
-                condition.append( " Is_Partisan = " + partisan );
+                condition.append(" Is_Partisan = " + partisan);
             }
 
 
-            if( getVoteCount() >= 0 ){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
+            if (getVoteCount() >= 0) {
+                if (condition.length() > 0)
+                    condition.append(" and");
                 else
-                    condition.append( " where" );
-                condition.append( " Vote_Count = " + getVoteCount() );
+                    condition.append(" where");
+                condition.append(" Vote_Count = " + getVoteCount());
 
+            }
             }
         }
         query.append( condition );
