@@ -327,7 +327,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void deleteCandidateIsMemberOfElection(Candidate candidate, PoliticalParty politicalParty) throws EVException {
+    public void deleteCandidateIsMemberOfPoliticalParty(Candidate candidate, PoliticalParty politicalParty) throws EVException {
         party_candidatesManager.delete(candidate, politicalParty);
     }
 
@@ -354,6 +354,23 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     @Override
     public User restoreUserGivenToken( Token token ) throws EVException {
         return user_tokenManager.restore(token);
+    }
+
+    @Override
+    public void deleteCandidateIsCandidateInElection(Candidate candidate) throws EVException {
+        election_candidatesManager.deleteElections(candidate);
+    }
+
+    @Override
+    public void deleteCandidateFromAllAssociations(Candidate candidate) throws EVException {
+        election_candidatesManager.deleteElections(candidate);
+        party_candidatesManager.deleteParties(candidate);
+    }
+
+    @Override
+    public void deleteElectoralDistrictFromAllAssociations(ElectoralDistrict district) throws EVException {
+        district_ballotsManager.deleteBallots(district);
+        district_voterManager.deleteVoters(district);
     }
 
 }

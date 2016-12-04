@@ -309,6 +309,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public void createLink(Candidate candidate, Election election) throws EVException {
+        persistenceLayer.deleteCandidateIsCandidateInElection(candidate);
         persistenceLayer.storeCandidateIsCandidateInElection(candidate,election);
     }
 
@@ -349,7 +350,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public void deleteLink(PoliticalParty party, Candidate candidate) throws EVException {
-        persistenceLayer.deleteCandidateIsMemberOfElection(candidate,party);
+        persistenceLayer.deleteCandidateIsMemberOfPoliticalParty(candidate,party);
     }
 
     @Override
@@ -411,6 +412,16 @@ public class ObjectLayerImpl implements ObjectLayer {
     public VoteRecord createVoterRecord(Date date, Voter voter, Ballot ballot) {
         VoteRecord voteRecord = new VoterRecordImpl(date,voter,ballot);
         return voteRecord;
+    }
+
+    @Override
+    public void deleteLink(Candidate candidate) throws EVException {
+        persistenceLayer.deleteCandidateFromAllAssociations(candidate);
+    }
+
+    @Override
+    public void deleteLink(ElectoralDistrict district) throws EVException {
+        persistenceLayer.deleteElectoralDistrictFromAllAssociations(district);
     }
 
     @Override

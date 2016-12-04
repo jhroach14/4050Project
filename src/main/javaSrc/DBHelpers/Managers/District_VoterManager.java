@@ -210,4 +210,27 @@ public class District_VoterManager {
         }
         
     }
+
+    public void deleteVoters(ElectoralDistrict electoralDistrict) throws EVException{
+
+        String               deleteElection = "delete from District_Voters where District_ID = ?";
+        PreparedStatement    stmt = null;
+        int                  queryExecution;
+
+        try{
+            stmt = conn.prepareStatement( deleteElection );
+            if(electoralDistrict.getId() > 0)
+                stmt.setInt(1, electoralDistrict.getId());
+            else
+                throw new EVException("Election_CandidatesManager.delete failed to delete candidate_Issues");
+            queryExecution = stmt.executeUpdate();
+            if(queryExecution != 1)
+                throw new EVException("Election_CandidatesManager.delete failed to delete");
+        }
+        catch( SQLException e ) {
+            e.printStackTrace();
+            throw new EVException( "Election_CandidatesManager.delete: failed to delete a candidate: " + e );
+        }
+
+    }
 }

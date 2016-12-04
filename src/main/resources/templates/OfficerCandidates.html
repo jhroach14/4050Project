@@ -36,8 +36,8 @@
                         <div class="col-md-5">
                             <p>{{selectedCandidate.name}}<br/></p>
                             <p>{{selectedCandidate.voteCount}}<br/></p>
-                            <p>{{selectedParty.name}}</p>
-                            <p>{{selectedElection.office}}</p>
+                            <p>{{data.selectedParty.name}}</p>
+                            <p>{{data.selectedElection.office}}</p>
                         </div>
                     </div>
                     <div id="buttonRow" class="row" ng-if="selectedCandidate">
@@ -66,12 +66,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="newParty">Candidate Party</label>
-                                <select id="newParty" ng-model="selectedParty" ng-options="party.name for party in parties">
+                                <select id="newParty" ng-model="data.selectedParty" ng-options="party.name for party in parties">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="newElection">Candidate Election</label>
-                                <select id="newElection" ng-model="selectedElection" ng-options="election.office for election in elections">
+                                <select id="newElection" ng-model="data.selectedElection" ng-options="election.office for election in elections">
                                 </select>
                             </div>
                             <div class="form-actions">
@@ -95,12 +95,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="modParty">Candidate Party</label>
-                                <select id="modParty" ng-model="selectedParty" ng-options="party.name for party in parties">
+                                <select id="modParty" ng-model="data.selectedParty" ng-options="party.name for party in parties">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="modElection">Candidate Election</label>
-                                <select id="modElection" ng-model="selectedElection" ng-options="election.office for election in elections">
+                                <select id="modElection" ng-model="data.selectedElection" ng-options="election.office for election in elections">
                                 </select>
                             </div>
                             <div class="form-actions">

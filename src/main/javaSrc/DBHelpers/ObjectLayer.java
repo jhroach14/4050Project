@@ -195,6 +195,10 @@ public interface ObjectLayer {
     VoteRecord createVoterRecord();
 
     VoteRecord createVoterRecord(Date date, Voter voter, Ballot ballot);
+
+    void deleteLink(Candidate entity) throws EVException;
+
+    void deleteLink(ElectoralDistrict entity) throws EVException;
 }
 
 

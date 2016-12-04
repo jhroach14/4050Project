@@ -5,8 +5,7 @@ angular.module("officerIndexApp").controller('candidatesCtrl', ['$scope', '$http
 
         $scope.normalView = 1;
         $scope.formData = {};
-        $scope.selectedParty = null;
-        $scope.selectedElection = null;
+        $scope.data = {};
 
         var token = getValue(location.search,"token");
         var url = "http://localhost:9001/data/find/Candidate?sourced=true&token="+token;
@@ -45,17 +44,17 @@ angular.module("officerIndexApp").controller('candidatesCtrl', ['$scope', '$http
         );
 
         $scope.selectCandidate = function (candidate) {
-            $scope.selectedParty = null;
-            $scope.selectedElection = null;
+            $scope.data.selectedParty = null;
+            $scope.data.selectedElection = null;
             $scope.selectedCandidate = candidate;
 
             var url = "http://localhost:9001/data/traverse/getElectionGivenCandidate?sourced=true&token="+token;
             $http.post(url,candidate).success(
                 function (response) {
                     if(response != "200 success"){
-                        $scope.selectedElection = response.office;
+                        $scope.data.selectedElection = response[0];
                     }else{
-                        $scope.selectedElection = "none";
+                        $scope.data.selectedElection = {office:"none"};
                     }
                 }
             );
@@ -64,9 +63,9 @@ angular.module("officerIndexApp").controller('candidatesCtrl', ['$scope', '$http
             $http.post(url,candidate).success(
                 function (response) {
                     if(response != "200 success"){
-                        $scope.selectedParty = response.name;
+                        $scope.data.selectedParty = response[0];
                     }else{
-                        $scope.selectedParty = "none";
+                        $scope.data.selectedParty = {name:"none"};
                     }
                 }
             );
@@ -79,22 +78,25 @@ angular.module("officerIndexApp").controller('candidatesCtrl', ['$scope', '$http
             var url = "http://localhost:9001/data/store/Candidate?sourced=true&token="+token;
             $http.post(url,candidate).success(
                 function (response) {
+                    candidate = response;
                     var url = "http://localhost:9001/data/find/Candidate?sourced=true&token="+token;
                     $http.post(url,toCandidate(null,null)).success(
                         function (response) {
                             $scope.candidateList = response;
                         }
                     );
+
+                    if(typeof $scope.data.selectedParty !== "undefined" && $scope.data.selectedParty.name !== "none"){
+                        var url = "http://localhost:9001/data/store/Party_Candidate?sourced=true&token="+token;
+                        $http.post(url,(angular.toJson($scope.data.selectedParty)+"**|**"+angular.toJson(candidate[0])));
+                    }
+                    if(typeof $scope.data.selectedElection !== "undefined" && $scope.data.selectedElection.office !== "none"){
+                        var url = "http://localhost:9001/data/store/Election_Candidate?sourced=true&token="+token;
+                        $http.post(url,(angular.toJson($scope.data.selectedElection)+"**|**"+angular.toJson(candidate[0])));
+                    }
                 }
             );
-            if(typeof $scope.selectedParty !== "undefined" && $scope.selectedParty !== "none"){
-                var url = "http://localhost:9001/data/store/Party_Candidate?sourced=true&token="+token;
-                $http.post(url,(angular.toJson($scope.selectedParty)+"**|**"+angular.toJson($scope.selectedCandidate)));
-            }
-            if(typeof $scope.selectedElection !== "undefined" && $scope.selectedElection != "none"){
-                var url = "http://localhost:9001/data/store/Election_Candidate?sourced=true&token="+token;
-                $http.post(url,(angular.toJson($scope.selectedElection)+"**|**"+angular.toJson($scope.selectedCandidate)));
-            }
+
 
             $scope.normalView = 1;
         };
@@ -111,13 +113,14 @@ angular.module("officerIndexApp").controller('candidatesCtrl', ['$scope', '$http
                     );
                 }
             );
-            if(typeof $scope.selectedParty !== "undefined" && $scope.selectedElection != "none"){
+            
+            if(typeof $scope.data.selectedParty !== "undefined" && $scope.data.selectedParty.name !== "none"){
                 var url = "http://localhost:9001/data/store/Party_Candidate?sourced=true&token="+token;
-                $http.post(url,(angular.toJson($scope.selectedParty)+"**|**"+angular.toJson($scope.selectedCandidate)));
+                $http.post(url,(angular.toJson($scope.data.selectedParty)+"**|**"+angular.toJson($scope.selectedCandidate)));
             }
-            if(typeof $scope.selectedElection !== "undefined" && $scope.selectedElection != "none"){
+            if(typeof $scope.data.selectedElection !== "undefined" && $scope.data.selectedElection.office !== "none"){
                 var url = "http://localhost:9001/data/store/Election_Candidate?sourced=true&token="+token;
-                $http.post(url,(angular.toJson($scope.selectedElection)+"**|**"+angular.toJson($scope.selectedCandidate)));
+                $http.post(url,(angular.toJson($scope.data.selectedElection)+"**|**"+angular.toJson($scope.selectedCandidate)));
             }
             $scope.normalView = 1;
         };

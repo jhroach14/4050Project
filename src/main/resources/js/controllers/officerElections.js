@@ -47,22 +47,24 @@ angular.module("officerIndexApp").controller('electionsCtrl', ['$scope', '$http'
                     }else{
                         $scope.selectedDistricts = toDistrict("none");
                     }
-                }
-            );
 
-            $scope.districtList.forEach(
-                function (district, index) {
-                    $scope.selectedDistricts.forEach(
-                        function (sDistrict) {
-                            if(district.id == sDistrict.id){
-                                district.selected = true;
-                            }else{
-                                district.selected = false;
-                            }
+                    $scope.districtList.forEach(
+                        function (district, index) {
+                            $scope.selectedDistricts.forEach(
+                                function (sDistrict) {
+                                    if(district.id == sDistrict.id){
+                                        district.selected = true;
+                                    }else{
+                                        district.selected = false;
+                                    }
+                                }
+                            );
                         }
                     );
                 }
             );
+
+
 
             var url = "http://localhost:9001/data/traverse/getCandidatesGivenElection?sourced=true&token="+token;
             $http.post(url,election).success(

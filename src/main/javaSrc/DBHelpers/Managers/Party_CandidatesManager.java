@@ -173,4 +173,25 @@ public class Party_CandidatesManager {
         }
 
     }
+
+    public void deleteParties(Candidate candidate) throws EVException{
+        String               deleteElection = "delete from Party_Candidates where Candidate_ID = ? ";
+        PreparedStatement    stmt = null;
+        int                  queryExecution;
+
+        try{
+            stmt = conn.prepareStatement( deleteElection );
+            if(candidate.getId() >0)
+                stmt.setInt(1, candidate.getId());
+            else
+                throw new EVException("Election_Candidates.delete failed to delete candidate_Issues");
+            queryExecution = stmt.executeUpdate();
+            if(queryExecution != 1)
+                throw new EVException("Election_CandidatesManager.delete failed to delete");
+        }
+        catch( SQLException e ) {
+            e.printStackTrace();
+            throw new EVException( "Election_CandidatesManager.delete: failed to delete a candidate: " + e );
+        }
+    }
 }
