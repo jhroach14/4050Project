@@ -171,7 +171,9 @@ public class ElectionsOfficerImpl extends UserImpl implements ElectionsOfficer{
         else
             stmt.setNull( 9, java.sql.Types.CHAR );
 
-
+        if(isPersistent()){
+            stmt.setInt(10,this.getId());
+        }
         return stmt;
     }
 

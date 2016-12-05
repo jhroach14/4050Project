@@ -26,7 +26,7 @@ public class District_BallotsManager {
     }
 
     public void store(ElectoralDistrict electoralDistrict, Ballot ballot) {
-        String insertBallot_electoralDistrict = "insert into District_Voters (District_ID, Voter_ID) values (?, ?)";
+        String insertBallot_electoralDistrict = "insert into District_Ballots (District_ID, Ballot_ID) values (?, ?)";
         PreparedStatement stmt = null;
         int queryExecution;
 
@@ -62,11 +62,14 @@ public class District_BallotsManager {
         if(ballot.getId() <1)
             throw new EVException("voter_district.restore could not restore non persistent voter");
 
-        query.append("select District.District_ID, District.DistrictName");
+        /*query.append("select District.District_ID, District.DistrictName");
         query.append(" from District ");
         query.append("join District_Ballots");
         query.append("on District.District_ID = District_Ballots.District_ID");
-        query.append("Where District_Ballots.Ballot_ID = '" + ballot.getId() + "'");
+        query.append("Where District_Ballots.Ballot_ID = '" + ballot.getId() + "'");*/
+
+        query.append("select District_ID, District_Name, Ballot_ID from (select District.District_ID, District.District_Name, District_Ballots.Ballot_ID from District inner join District_Ballots on District_Ballots.District_ID = District.District_ID) as T where Ballot_ID = " + ballot.getId());
+
 
         try{
             stmt = conn.createStatement();
@@ -124,11 +127,10 @@ public class District_BallotsManager {
 
     }
 
-    public List<Ballot> restore(ElectoralDistrict electoralDistrict) throws EVException{
+    public Ballot restore(ElectoralDistrict electoralDistrict) throws EVException{
         StringBuffer query = new StringBuffer(500);
         Statement stmt = null;
-        List<Voter> voters = new ArrayList<Voter>();
-        List<Ballot>   ballots = new ArrayList<Ballot>();
+        Ballot ballot = null;
 
         if (electoralDistrict.getId() < 1)
             throw new EVException("CandidateManger.restore could not restore persistent Candidate_Elections");
@@ -136,8 +138,8 @@ public class District_BallotsManager {
         query.append( "select Ballot.Ballot_ID, Ballot.Start_Date, Ballot.End_Date " );
         query.append(" from Ballot ");
         query.append("join District_Ballots");
-        query.append("on District.District_ID = District_Ballots.District_ID");
-        query.append("Where District.District_ID = '" + electoralDistrict.getId() + "'");
+        query.append(" on Ballot.Ballot_ID = District_Ballots.Ballot_ID");
+        query.append(" Where District_Ballots.District_ID = '" + electoralDistrict.getId() + "'");
 
         try {
 
@@ -166,16 +168,41 @@ public class District_BallotsManager {
                     nextBallot.setId( ballotId );
                     nextBallot.setOpenDate( startDate );
                     nextBallot.setCloseDate( closeDate );
+                    nextBallot.setPersistent(true);
 
-                    ballots.add( nextBallot );
+                    break;
                 }
 
-                return ballots;
+                return nextBallot;
             }
         } catch (Exception e) {
             e.printStackTrace();
             throw new EVException("BallotManager.store failed to save a ballot_issue" + e);
         }
         throw new EVException("BallotManager.restore could not restore ballot object");
+    }
+
+    public void deleteBallots(ElectoralDistrict electoralDistrict) throws EVException {
+
+
+        String               deleteElection = "delete from District_Ballots where District_ID = ? ";
+        PreparedStatement    stmt = null;
+        int                  queryExecution;
+
+        try{
+            stmt = conn.prepareStatement( deleteElection );
+            if(electoralDistrict.getId() > 0)
+                stmt.setInt(1, electoralDistrict.getId());
+            else
+                throw new EVException("Election_CandidatesManager.delete failed to delete candidate_Issues");
+            queryExecution = stmt.executeUpdate();
+            if(queryExecution != 1)
+                throw new EVException("Election_CandidatesManager.delete failed to delete");
+        }
+        catch( SQLException e ) {
+            e.printStackTrace();
+            throw new EVException( "Election_CandidatesManager.delete: failed to delete a candidate: " + e );
+        }
+
     }
 }

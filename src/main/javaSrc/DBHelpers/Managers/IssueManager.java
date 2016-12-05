@@ -84,7 +84,7 @@ public class IssueManager extends Manager{
 
     public Issue store(Issue issue) throws EVException{
         String insertIssue = "insert into Issue ( Question, Vote_Count, Yes_Count, No_Count ) values ( ?, ?, ?, ? )";
-        String updateIssue = "update Issue set Question = ?, Vote_Count = ?, Yes_Count = ?, No_Count = ?";
+        String updateIssue = "update Issue set Question = ?, Vote_Count = ?, Yes_Count = ?, No_Count = ? where Issue_ID = ?";
         PreparedStatement stmt = null;
         int queryExecution;
 

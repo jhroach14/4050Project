@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface ObjectLayer {
 
+    List<Ballot> getBallots(BallotItem ballotItem) throws EVException;
+
     void setPersistenceLayer(PersistenceLayer persistenceLayer);
     
     public ElectionsOfficer createElectionsOfficer(String firstName, String lastName, String userName,
@@ -58,7 +60,7 @@ public interface ObjectLayer {
     public void deletePoliticalParty( PoliticalParty politicalParty ) throws EVException;
 
     
-    public ElectoralDistrict createElectoralDistrict(String name ) throws EVException;
+    public ElectoralDistrict createElectoralDistrict(String name , String zip) throws EVException;
 
     
     public ElectoralDistrict createElectoralDistrict();
@@ -171,7 +173,7 @@ public interface ObjectLayer {
 
     void createLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException;
     void deleteLink(ElectoralDistrict electoralDistrict, Ballot ballot) throws EVException;
-    List<Ballot> getBallots(ElectoralDistrict district)throws EVException;
+    Ballot getBallot(ElectoralDistrict district)throws EVException;
     ElectoralDistrict getDistrict(Ballot ballot)throws EVException;
 
     void createLink(ElectoralDistrict electoralDistrict, Voter voter) throws EVException;
@@ -184,9 +186,19 @@ public interface ObjectLayer {
     PoliticalParty getParty(Candidate candidate) throws EVException;
     void createLink(PoliticalParty party, Candidate candidate) throws EVException;
 
+    public User getUser(Token token) throws EVException;
+
+    public Token createToken(String tokenValue) throws EVException;
+
+    public Token createToken() throws EVException;
+
     VoteRecord createVoterRecord();
 
     VoteRecord createVoterRecord(Date date, Voter voter, Ballot ballot);
+
+    void deleteLink(Candidate entity) throws EVException;
+
+    void deleteLink(ElectoralDistrict entity) throws EVException;
 }
 
 

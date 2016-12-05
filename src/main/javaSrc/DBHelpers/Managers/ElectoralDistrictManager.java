@@ -43,6 +43,7 @@ public class ElectoralDistrictManager extends Manager{
 
                 int electoralDistrictId;
                 String name;
+                String zip;
                 ElectoralDistrict nextElectoralDistrict = null;
 
                 ResultSet rs = stmt.getResultSet();
@@ -52,11 +53,13 @@ public class ElectoralDistrictManager extends Manager{
 
                     electoralDistrictId = rs.getInt( 1 );
                     name = rs.getString( 2 );
+                    zip = rs.getString( 3 );
 
                     nextElectoralDistrict = objectLayer.createElectoralDistrict(); // create a proxy electoralDistrict object
                     // and now set its retrieved attributes
                     nextElectoralDistrict.setId( electoralDistrictId );
                     nextElectoralDistrict.setName( name );
+                    nextElectoralDistrict.setZip( zip );
                     nextElectoralDistrict.setPersistent(true);
 
                     electoralDistricts.add( nextElectoralDistrict );
@@ -74,8 +77,8 @@ public class ElectoralDistrictManager extends Manager{
     }
 
     public ElectoralDistrict store(ElectoralDistrict electoralDistrict) throws EVException{
-        String insertElectoralDistrict = "insert into District ( District_Name ) values ( ? )";
-        String updateElectoralDistrict = "update District set District_Name = ?";
+        String insertElectoralDistrict = "insert into District ( District_Name , District_Zip) values ( ?, ?)";
+        String updateElectoralDistrict = "update District set District_Name = ?, District_Zip = ? where District_ID = ?";
         PreparedStatement stmt = null;
         int queryExecution;
         int electoralDistrictId;

@@ -1,7 +1,6 @@
 package main.javaSrc.Entities.EntityImpl;
 
-import main.javaSrc.Entities.Candidate;
-import main.javaSrc.Entities.Election;
+import main.javaSrc.Entities.*;
 import main.javaSrc.helpers.EVException;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
@@ -41,32 +40,18 @@ public class ElectionImpl extends BallotItemImpl implements Election{
         }
         else {
 
-            if( getOffice() != null )
-                condition.append( " where Office_Name = '" + getOffice() + "'" );
+            if( getOffice() != null ) {
+                condition.append(" where Office_Name = '" + getOffice() + "'");
 
 
-            if( getIsPartisan() || !getIsPartisan()){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
+                if (getVoteCount() >= 0) {
+                    if (condition.length() > 0)
+                        condition.append(" and");
+                    else
+                        condition.append(" where");
+                    condition.append(" Vote_Count = " + getVoteCount());
 
-                int partisan;
-                if( getIsPartisan() )
-                    partisan = 1;
-                else
-                    partisan = 0;
-                condition.append( " Is_Partisan = " + partisan );
-            }
-
-
-            if( getVoteCount() >= 0 ){
-                if( condition.length() > 0 )
-                    condition.append( " and" );
-                else
-                    condition.append( " where" );
-                condition.append( " Vote_Count = " + getVoteCount() );
-
+                }
             }
         }
         query.append( condition );
@@ -96,6 +81,10 @@ public class ElectionImpl extends BallotItemImpl implements Election{
             stmt.setInt( 3, getVoteCount() );
         else
             stmt.setNull( 3, java.sql.Types.INTEGER );
+
+        if(isPersistent()){
+            stmt.setInt(4,this.getId());
+        }
         
         return stmt;
     }

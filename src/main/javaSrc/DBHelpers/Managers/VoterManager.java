@@ -99,7 +99,7 @@ public class VoterManager extends Manager{
 
     public Voter store(Voter voter) throws EVException{
         String insertVoter = "insert into Voter (First_Name, Last_Name, Username, User_Password, Email_Address, Address, City, State, Zip) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        String updateVoter = "update Voter set First_Name = ?, Last_Name = ?, Username = ?, User_Password = ?, Email_Address = ?, Address = ?, City = ?, State = ?, Zip = ?";
+        String updateVoter = "update Voter set First_Name = ?, Last_Name = ?, Username = ?, User_Password = ?, Email_Address = ?, Address = ?, City = ?, State = ?, Zip = ? where Voter_ID = ?";
         PreparedStatement stmt = null;
         int queryExecution;
         int voterId;

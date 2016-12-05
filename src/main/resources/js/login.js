@@ -17,6 +17,7 @@ app.controller('loginCtrl', ['$scope', '$http',function($scope,$http) {
 
 app.controller('registerCtrl', ['$scope', '$http',function($scope,$http) {
     $scope.submit = function () {
+
         var voter = toVoter($scope.firstName,$scope.lastName,$scope.userName,$scope.userPassword,$scope.emailAddress,$scope.address,$scope.state,$scope.zip,$scope.city,$scope.age);
         var url = "http://localhost:9001/data/register/Voter?sourced=true";
         console.log("sending \n"+url);
@@ -46,19 +47,3 @@ app.controller('registerCtrl', ['$scope', '$http',function($scope,$http) {
     }
 }]);
 
-var toVoter = function (firstName,lastName,userName,userPassword,emailAddress,address,state,zip,city,age) {
-
-    var voter = {
-        firstName: firstName,
-        lastName: lastName,
-        userName: userName,
-        userPassword: userPassword,
-        emailAddress: emailAddress,
-        address: address,
-        state: state,
-        zip: zip,
-        city: city,
-        age: age
-    };
-    return voter;
-};

@@ -22,3 +22,11 @@ html,body{
     padding-top: 0px!important;
     margin-top: -7px;
 }
+.voteBtnGreen{
+    height:25px;
+    padding:5px!important;
+    padding-top: 0px!important;
+    margin-top: -7px;
+    color: light-green;
+    background-color: green;
+}

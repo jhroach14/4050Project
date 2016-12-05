@@ -110,8 +110,8 @@ public class ObjectLayerImpl implements ObjectLayer {
     }
 
     @Override
-    public ElectoralDistrict createElectoralDistrict(String name) throws EVException {
-        ElectoralDistrict district = new ElectoralDistrictImpl(name);
+    public ElectoralDistrict createElectoralDistrict(String name, String zip) throws EVException {
+        ElectoralDistrict district = new ElectoralDistrictImpl(name, zip);
         return district;
     }
 
@@ -127,7 +127,14 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public ElectoralDistrict storeElectoralDistrict(ElectoralDistrict electoralDistrict) throws EVException {
-        return persistenceLayer.storeElectoralDistrict(electoralDistrict);
+        boolean isNew = electoralDistrict.isPersistent();
+        ElectoralDistrict district = persistenceLayer.storeElectoralDistrict(electoralDistrict);
+        if(!isNew){
+            Ballot ballot = persistenceLayer.storeBallot(new BallotImpl(new Date(1,1,1),new Date(1,1,2),true));
+            persistenceLayer.storeElectoralDistrictHasBallotBallot(district,ballot);
+        }
+
+        return district;
     }
 
     @Override
@@ -302,6 +309,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public void createLink(Candidate candidate, Election election) throws EVException {
+        persistenceLayer.deleteCandidateIsCandidateInElection(candidate);
         persistenceLayer.storeCandidateIsCandidateInElection(candidate,election);
     }
 
@@ -326,7 +334,7 @@ public class ObjectLayerImpl implements ObjectLayer {
     }
 
     @Override
-    public List<Ballot> getBallots(ElectoralDistrict district) throws EVException {
+    public Ballot getBallot(ElectoralDistrict district) throws EVException {
         return persistenceLayer.restoreElectoralDistrictHasBallotBallot(district);
     }
 
@@ -342,7 +350,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 
     @Override
     public void deleteLink(PoliticalParty party, Candidate candidate) throws EVException {
-        persistenceLayer.deleteCandidateIsMemberOfElection(candidate,party);
+        persistenceLayer.deleteCandidateIsMemberOfPoliticalParty(candidate,party);
     }
 
     @Override
@@ -381,6 +389,21 @@ public class ObjectLayerImpl implements ObjectLayer {
     }
 
     @Override
+    public User getUser(Token token) throws EVException {
+        return persistenceLayer.restoreUserGivenToken(token);
+    }
+
+    @Override
+    public Token createToken(String tokenValue) throws EVException {
+        return new TokenImpl(tokenValue);
+    }
+
+    @Override
+    public Token createToken() throws EVException {
+        return new TokenImpl();
+    }
+
+    @Override
     public VoteRecord createVoterRecord() {
         return new VoterRecordImpl();
     }
@@ -389,6 +412,21 @@ public class ObjectLayerImpl implements ObjectLayer {
     public VoteRecord createVoterRecord(Date date, Voter voter, Ballot ballot) {
         VoteRecord voteRecord = new VoterRecordImpl(date,voter,ballot);
         return voteRecord;
+    }
+
+    @Override
+    public void deleteLink(Candidate candidate) throws EVException {
+        persistenceLayer.deleteCandidateFromAllAssociations(candidate);
+    }
+
+    @Override
+    public void deleteLink(ElectoralDistrict district) throws EVException {
+        persistenceLayer.deleteElectoralDistrictFromAllAssociations(district);
+    }
+
+    @Override
+    public List<Ballot> getBallots(BallotItem ballotItem) throws EVException {
+        return persistenceLayer.restoreBallotsIncludesBallotItem(ballotItem);
     }
 
     public void setPersistenceLayer(PersistenceLayer persistenceLayer) {

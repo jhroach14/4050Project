@@ -2,12 +2,15 @@ package main.javaSrc.DBHelpers.CDFSTHelpers;
 
 import main.javaSrc.DBHelpers.DbConnHelper;
 import main.javaSrc.Entities.Ballot;
+import main.javaSrc.Entities.ElectoralDistrict;
 import main.javaSrc.Entities.Entity;
 import main.javaSrc.Entities.EntityImpl.*;
+import main.javaSrc.Entities.Token;
 import main.javaSrc.HttpClasses.DBExchange;
 import main.javaSrc.helpers.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,11 +34,42 @@ public class TraverseHelper extends CDFSTHelper{
 
             switch (objectType){
 
+                case"getDistrictsGivenElection":
+                    if(sourced.equals("true")){
+                        model = mapper.readValue(dbExchange.getRequestBody(),ElectionImpl.class);
+                        log.out("attempting to find districts given Election received");
+                        List<Ballot> ballots = objectLayer.getBallots((ElectionImpl)model);
+                        List<ElectoralDistrict> districts = new ArrayList<>();
+                        for(Ballot ballot : ballots){
+                            districts.add(objectLayer.getDistrict(ballot));
+                        }
+                        entities.addAll(districts);
+                    }
+                    break;
+                case"getDistrictsGivenIssue":
+                    if(sourced.equals("true")){
+                        model = mapper.readValue(dbExchange.getRequestBody(),IssueImpl.class);
+                        log.out("attempting to find districts given Issue received");
+                        List<Ballot> ballots = objectLayer.getBallots((IssueImpl)model);
+                        List<ElectoralDistrict> districts = new ArrayList<>();
+                        for(Ballot ballot : ballots){
+                            districts.add(objectLayer.getDistrict(ballot));
+                        }
+                        entities.addAll(districts);
+                    }
+                    break;
                 case"getBallotGivenBallotItem":
                     if(sourced.equals("true")){
                         model = mapper.readValue(dbExchange.getRequestBody(), BallotItemImpl.class);
                         log.out("attempting to find Ballot belonging to the Ballot Item received");
                         entities.add(objectLayer.getBallot((BallotItemImpl)model));
+                    }
+                    break;
+                case"getUserGivenToken":
+                    if(sourced.equals("true")){
+                        model = mapper.readValue(dbExchange.getRequestBody(), TokenImpl.class);
+                        log.out("attempting to find User given the token received");
+                        entities.add(objectLayer.getUser((TokenImpl)model));
                     }
                     break;
                 case"getBallotItemsGivenBallot":
@@ -59,11 +93,11 @@ public class TraverseHelper extends CDFSTHelper{
                         entities.add(objectLayer.getElection((CandidateImpl)model));
                     }
                     break;
-                case"getBallotsGivenDistrict":
+                case"getBallotGivenDistrict":
                     if (sourced.equals("true")){
                         model = mapper.readValue(dbExchange.getRequestBody(), ElectoralDistrictImpl.class);
-                        log.out("attempting to find Ballots belonging to the District received");
-                        entities.addAll(objectLayer.getBallots((ElectoralDistrictImpl)model));
+                        log.out("attempting to find Ballot belonging to the District received");
+                        entities.add(objectLayer.getBallot((ElectoralDistrictImpl)model));
                     }
                     break;
                 case"getDistrictGivenBallot":

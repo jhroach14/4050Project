@@ -7,6 +7,8 @@ import main.javaSrc.helpers.EVException;
 import java.util.List;
 
 public interface PersistenceLayer {
+
+    List<Ballot> restoreBallotsIncludesBallotItem(BallotItem ballotItem) throws EVException;
     
     public List<ElectionsOfficer> restoreElectionsOfficer(ElectionsOfficer modelElectionsOfficer ) throws EVException;
 
@@ -128,7 +130,7 @@ public interface PersistenceLayer {
     public ElectoralDistrict restoreElectoralDistrictHasBallotBallot( Ballot ballot ) throws EVException;
 
 
-    public List<Ballot> restoreElectoralDistrictHasBallotBallot( ElectoralDistrict electoralDistrict ) throws EVException;
+    public Ballot restoreElectoralDistrictHasBallotBallot( ElectoralDistrict electoralDistrict ) throws EVException;
 
 
     public void deleteElectoralDistrictHasBallotBallot( ElectoralDistrict electoralDistrict, Ballot ballot ) throws EVException;
@@ -142,12 +144,11 @@ public interface PersistenceLayer {
 
 
     public List<Candidate> restoreCandidateIsMemberOfPoliticalParty( PoliticalParty politicalParty ) throws EVException;
+    
 
+    void deleteCandidateIsMemberOfPoliticalParty(Candidate candidate, PoliticalParty politicalParty) throws EVException;
 
-    public void deleteCandidateIsMemberOfElection( Candidate candidate, PoliticalParty politicalParty ) throws EVException;
-
-
-    public void storeVoterBelongsToElectoralDistrict( Voter voter, ElectoralDistrict electoralDistrict ) throws EVException;
+    public void storeVoterBelongsToElectoralDistrict(Voter voter, ElectoralDistrict electoralDistrict ) throws EVException;
 
 
     public ElectoralDistrict restoreVoterBelongsToElectoralDistrict( Voter voter ) throws EVException;
@@ -157,4 +158,12 @@ public interface PersistenceLayer {
 
 
     public void deleteVoterBelongsToElection( Voter voter, ElectoralDistrict electoralDistrict ) throws EVException;
+
+    public User restoreUserGivenToken( Token token ) throws EVException;
+
+    void deleteCandidateIsCandidateInElection(Candidate candidate) throws EVException;
+
+    void deleteCandidateFromAllAssociations(Candidate candidate) throws EVException;
+
+    void deleteElectoralDistrictFromAllAssociations(ElectoralDistrict district) throws EVException;
 }

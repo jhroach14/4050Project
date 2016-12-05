@@ -43,6 +43,7 @@ public class DeleteHelper extends CDFSTHelper {
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), CandidateImpl.class);
                         log.out("attempting to delete Candidate with id "+entity.getId());
+                        objectLayer.deleteLink((Candidate) entity);
                         objectLayer.deleteCandidate((Candidate) entity);
                     }
                     break;
@@ -65,6 +66,7 @@ public class DeleteHelper extends CDFSTHelper {
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), ElectoralDistrictImpl.class);
                         log.out("attempting to delete ElectoralDistrict with id "+entity.getId());
+                        objectLayer.deleteLink((ElectoralDistrict)entity);
                         objectLayer.deleteElectoralDistrict((ElectoralDistrict) entity);
                     }
                     break;
@@ -80,6 +82,7 @@ public class DeleteHelper extends CDFSTHelper {
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), PoliticalPartyImpl.class);
                         log.out("attempting to delete PoliticalParty with id "+entity.getId());
+                        //objectLayer.
                         objectLayer.deletePoliticalParty((PoliticalParty) entity);
                     }
                     break;

@@ -74,7 +74,7 @@ public class PoliticalPartyManager extends Manager{
 
     public PoliticalParty store(PoliticalParty politicalParty) throws EVException{
         String insertPoliticalParty = "insert into Party ( Party_Name ) values ( ? )";
-        String updatePoliticalParty = "update Party set Party_Name = ?";
+        String updatePoliticalParty = "update Party set Party_Name = ? where Party_ID = ?";
         PreparedStatement stmt = null;
         int queryExecution;
         int politicalPartyId;

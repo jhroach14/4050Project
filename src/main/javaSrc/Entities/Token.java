@@ -6,13 +6,10 @@ import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 import java.util.List;
 
-public interface ElectoralDistrict extends Entity{
-    
-    String getName();
-    String getZip();
-    
-    
-    void setName(String name);
-    void setZip(String zip);
+public interface Token extends Entity{
+
+    String getTokenValue();
+
+    void setTokenValue(String token);
 
 }

@@ -81,7 +81,7 @@ public class BallotManager extends Manager{
     public Ballot store(Ballot ballot) throws EVException{
 
         String insertBallot = "insert into Ballot ( Start_Date, End_Date ) values ( ?, ? )";
-        String updateBallot = "update Ballot set Start_Date = ?, End_Date = ?";
+        String updateBallot = "update Ballot set Start_Date = ?, End_Date = ? where Ballot_ID = ?";
         PreparedStatement stmt = null;
         int queryExecution;
 

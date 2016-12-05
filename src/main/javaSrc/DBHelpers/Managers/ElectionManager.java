@@ -86,7 +86,7 @@ public class ElectionManager extends Manager{
 
     public Election store(Election election) throws EVException{
         String insertElection = "insert into Election ( Office_Name, Is_Partisan, Vote_Count) values ( ?, ?, ? )";
-        String updateElection = "update Election set  Office_Name = ?, Is_Partisan = ?, Vote_Count = ?";
+        String updateElection = "update Election set  Office_Name = ?, Is_Partisan = ?, Vote_Count = ? where Election_ID = ?";
         PreparedStatement stmt = null;
         int queryExecution;
         int electionId;

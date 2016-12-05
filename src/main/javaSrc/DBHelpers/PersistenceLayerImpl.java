@@ -27,6 +27,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     District_BallotsManager district_ballotsManager= null;
     District_VoterManager district_voterManager = null;
     Party_CandidatesManager party_candidatesManager = null;
+    user_tokenManager user_tokenManager = null;
 
 
     public PersistenceLayerImpl() {
@@ -49,6 +50,19 @@ public class PersistenceLayerImpl implements PersistenceLayer{
         this.district_ballotsManager = new District_BallotsManager(objectLayer,connection);
         this.district_voterManager = new District_VoterManager(objectLayer,connection);
         this.party_candidatesManager = new Party_CandidatesManager(objectLayer,connection);
+        this.user_tokenManager = new user_tokenManager(objectLayer, connection);
+    }
+
+    @Override
+    public List<Ballot> restoreBallotsIncludesBallotItem(BallotItem ballotItem) throws EVException {
+        List<Ballot> ballots=null;
+        if(ballotItem instanceof Election){
+            ballots = ballot_electionsManager.restoreMult(ballotItem);
+        }else
+        if(ballotItem instanceof Issue){
+            ballots = ballot_issuesManager.restoreMult(ballotItem);
+        }
+        return ballots;
     }
 
     @Override
@@ -288,7 +302,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public List<Ballot> restoreElectoralDistrictHasBallotBallot(ElectoralDistrict electoralDistrict) throws EVException {
+    public Ballot restoreElectoralDistrictHasBallotBallot(ElectoralDistrict electoralDistrict) throws EVException {
         return district_ballotsManager.restore(electoralDistrict);
     }
 
@@ -313,7 +327,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     }
 
     @Override
-    public void deleteCandidateIsMemberOfElection(Candidate candidate, PoliticalParty politicalParty) throws EVException {
+    public void deleteCandidateIsMemberOfPoliticalParty(Candidate candidate, PoliticalParty politicalParty) throws EVException {
         party_candidatesManager.delete(candidate, politicalParty);
     }
 
@@ -336,4 +350,27 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     public void deleteVoterBelongsToElection(Voter voter, ElectoralDistrict electoralDistrict) throws EVException {
         district_voterManager.delete(voter, electoralDistrict);
     }
+
+    @Override
+    public User restoreUserGivenToken( Token token ) throws EVException {
+        return user_tokenManager.restore(token);
+    }
+
+    @Override
+    public void deleteCandidateIsCandidateInElection(Candidate candidate) throws EVException {
+        election_candidatesManager.deleteElections(candidate);
+    }
+
+    @Override
+    public void deleteCandidateFromAllAssociations(Candidate candidate) throws EVException {
+        election_candidatesManager.deleteElections(candidate);
+        party_candidatesManager.deleteParties(candidate);
+    }
+
+    @Override
+    public void deleteElectoralDistrictFromAllAssociations(ElectoralDistrict district) throws EVException {
+        district_ballotsManager.deleteBallots(district);
+        district_voterManager.deleteVoters(district);
+    }
+
 }

@@ -48,7 +48,7 @@ public class VoterRecordImpl extends EntityImpl implements VoteRecord {
             if( getDate() != null )
                 condition.append( " where Record_Date = '" + getDate() + "'" );
 
-            if( getVoter().getId() >= 0 ) {
+            if( getVoter() != null && getVoter().getId() >= 0 ) {
                 if( condition.length() > 0 )
                     condition.append( " and" );
                 else
@@ -56,7 +56,7 @@ public class VoterRecordImpl extends EntityImpl implements VoteRecord {
                 condition.append( " Voter_ID = '" + getVoter().getId() + "'" );
             }
 
-            if( getBallot().getId() >= 0){
+            if( getBallot() != null && getBallot().getId() >= 0){
                 if( condition.length() > 0 )
                     condition.append( " and" );
                 else
@@ -90,6 +90,10 @@ public class VoterRecordImpl extends EntityImpl implements VoteRecord {
             stmt.setInt( 3, getBallot().getId());
         else
             throw new EVException( "VoteRecordManager.save: can't save a  Ballot_ID undefined" );
+
+        if(isPersistent()){
+            stmt.setInt(4, this.getId());
+        }
 
         return stmt;
     }

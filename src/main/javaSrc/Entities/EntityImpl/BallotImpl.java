@@ -17,8 +17,6 @@ public class BallotImpl extends EntityImpl implements Ballot {
     private Date openDate;
     private Date closeDate;
     private boolean approved;
-    private List<BallotItem> ballotItems;
-    private List<VoteRecord> voteRecords;
 
     public BallotImpl(Date openDate, Date closeDate, boolean approved) {
         this.approved = approved;
@@ -42,6 +40,10 @@ public class BallotImpl extends EntityImpl implements Ballot {
             stmt.setDate(2, (Date) getCloseDate());
         }else {
             throw new EVException("BallotManager.save: can't save a ballot: Close Date undefined");
+        }
+
+        if (isPersistent()){
+            stmt.setInt(3,this.getId());
         }
 
         return stmt;
@@ -103,28 +105,6 @@ public class BallotImpl extends EntityImpl implements Ballot {
     @Override
     public void setCloseDate(Date closeDate) {
         this.closeDate = closeDate;
-    }
-
-
-
-    @Override
-    public List<BallotItem> getBallotItems() throws EVException {
-        return ballotItems;
-    }
-
-    @Override
-    public void addBallotItem(BallotItem ballotItem) throws EVException {
-        ballotItems.add(ballotItem);
-    }
-
-    @Override
-    public void deleteBallotItem(BallotItem ballotItem) throws EVException {
-        ballotItems.remove(ballotItem);
-    }
-
-    @Override
-    public List<VoteRecord> getVoterVoteRecords() throws EVException {
-        return voteRecords;
     }
 
 

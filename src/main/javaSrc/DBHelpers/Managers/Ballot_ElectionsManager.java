@@ -6,6 +6,7 @@ import main.javaSrc.Entities.Ballot;
 import main.javaSrc.Entities.BallotItem;
 import main.javaSrc.Entities.Election;
 import main.javaSrc.Entities.EntityImpl.BallotItemImpl;
+import main.javaSrc.Entities.EntityImpl.ElectionImpl;
 import main.javaSrc.helpers.EVException;
 
 import java.sql.*;
@@ -56,6 +57,49 @@ public class Ballot_ElectionsManager {
         }
 
 
+    }
+
+    public List<Ballot> restoreMult (BallotItem ballotItem) throws EVException{
+        StringBuffer query = new StringBuffer(500);
+        Statement stmt = null;
+
+        if(ballotItem.getId() <1)
+            throw new EVException("Ballot_Elections.restore could not restore non persistent election");
+
+        query.append("select Ballot_ID, Start_Date, End_Date, Election_ID from (select Ballot.Ballot_ID, Ballot.Start_Date, Ballot.End_Date, Ballot_Elections.Election_ID from Ballot inner join Ballot_Elections on Ballot_Elections.Ballot_ID = Ballot.Ballot_ID) as T where Election_ID = " + ballotItem.getId());
+
+        try{
+            stmt = conn.createStatement();
+
+            if(stmt.execute(query.toString())) {
+                int ballotId;
+                Date startDate;
+                Date closeDate;
+                Ballot newBallot = null;
+
+                ResultSet rs = stmt.getResultSet();
+                List<Ballot> ballots =new ArrayList<>();
+                while(rs.next()){
+                    ballotId = rs.getInt( 1 );
+                    startDate = rs.getDate( 2 );
+                    closeDate = rs.getDate( 3 );
+
+                    newBallot = objectLayer.createBallot();
+                    newBallot.setId( ballotId );
+                    newBallot.setOpenDate( startDate );
+                    newBallot.setCloseDate( closeDate );
+                    newBallot.setPersistent(true);
+                    ballots.add(newBallot);
+                }
+                return ballots;
+            }
+        }
+
+        catch(SQLException e){
+            e.printStackTrace();
+            throw new EVException("Ballot_Elections.store failed to save a ballot_Election" +e);
+        }
+        throw new EVException("Ballot_Elections.restore could not restore ballot object");
     }
 
     public Ballot restore (BallotItem ballotItem) throws EVException{
@@ -109,32 +153,36 @@ public class Ballot_ElectionsManager {
         if(ballot.getId() <1)
             throw new EVException("Ballot_Elections.restore could not restore persistent Ballot_Elections");
 
-        query.append("select Vote_Count from (select Election.Vote_Count, Ballot_Elections.Ballot_ID from Election inner join Ballot_Elections on Ballot_Elections.Election_ID = Election.Election_ID) as T where Ballot_ID = " + ballot.getId());
-
-//
-//        query.append("select Election.Vote_Count");
-//        query.append(" from Election ");
-//        query.append("join Ballot_Elections");
-//        query.append("on Ballot.Ballot_ID = Ballot_Elections.Ballot_ID");
-//        query.append("Where Ballot.Ballot_ID = '" + ballot.getId() + "'");
+        query.append("select Election_ID, Office_Name, Is_Partisan, Alternate_Allowed, Vote_Count from (select Election.Election_ID, Election.Office_Name, Election.Is_Partisan, Election.Alternate_Allowed, Election.Vote_Count, Ballot_Elections.Ballot_ID from Election inner join Ballot_Elections on Ballot_Elections.Election_ID = Election.Election_ID) as T where Ballot_ID = " + ballot.getId());
 
         try {
             stmt = conn.createStatement();
 
             if (stmt.execute(query.toString())) { // statement returned a result
 
+                int electionId;
+                String officeName;
+                boolean isPartisan;
+                boolean alternateAllowed;
                 int voteCount;
 
-                BallotItem newBallotItem = null;
+                ElectionImpl newBallotItem = null;
 
                 ResultSet rs = stmt.getResultSet();
 
 
                 while (rs.next()) {
 
-                    voteCount = rs.getInt(1);
+                    electionId = rs.getInt(1);
+                    officeName = rs.getString(2);
+                    isPartisan = rs.getBoolean(3);
+                    alternateAllowed = rs.getBoolean(4);
+                    voteCount = rs.getInt(5);
 
-                    newBallotItem = new BallotItemImpl();
+                    newBallotItem = new ElectionImpl();
+                    newBallotItem.setId(electionId);
+                    newBallotItem.setOffice(officeName);
+                    newBallotItem.setIsPartisan(isPartisan);
                     newBallotItem.setVoteCount(voteCount);
                     newBallotItem.setPersistent(true);
 
