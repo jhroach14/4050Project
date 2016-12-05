@@ -90,6 +90,7 @@
                             </div>
                             <div class="form-actions">
                                 <button ng-click="editProfile()" type="submit" class="btn btn-primary">Save</button>
+                                <button ng-click="deleteProfile()" type="submit" class="btn btn-danger">Delete</button>
                             </div>
                         </form>
                     </div>
@@ -118,10 +119,10 @@
                         <div class="col-md-1"></div>
                         <div class="col-md-7">
                             <p>Make a choice</p>
-
+                            <!--ng-init="getCandidates(ballotItem)"-->
                             <!--Experimental-->
-                            <p ng-repeat="ballotItem in districtBallotItems" ng-init="getCandidates(ballotItem)">
-                                <button ng-click="chooseCandidate(candidates[0], ballotItem)" class="btn voteBtn" ng-class="{'voteBtnGreen':candidates[0].selected === true}" ng-if="ballotItem.office" >{{candidates[0].name}}</button><button ng-click="chooseCandidate(candidates[1], ballotItem)" class="btn voteBtn" ng-class="{'voteBtnGreen':candidates[1].selected === true}" ng-if="ballotItem.office" >{{candidates[1].name}}</button>
+                            <p ng-repeat="ballotItem in districtBallotItems" >
+                                <button ng-init="getCandidates(ballotItem)" ng-click="chooseCandidate(0, ballotItem)" class="btn voteBtn" ng-class="{'voteBtnGreen':ballotItem.candidates[0].selected === true}" ng-if="ballotItem.office" >{{ballotItem.candidates[0].name}}</button><button ng-init="getCandidates(ballotItem)" ng-click="chooseCandidate(1, ballotItem)" class="btn voteBtn" ng-class="{'voteBtnGreen':ballotItem.candidates[1].selected === true}" ng-if="ballotItem.office" >{{ballotItem.candidates[1].name}}</button>
                                 <button ng-click="chooseFor(ballotItem)" class="btn voteBtn" ng-class="{'voteBtnGreen':ballotItem.selected === true}" ng-if="!ballotItem.office">Vote For</button><button ng-click="chooseAgainst(ballotItem)" class="btn voteBtn" ng-class="{'voteBtnGreen':ballotItem.selected === false}" ng-if="!ballotItem.office">Vote Against</button>
                             </p>
                         </div>

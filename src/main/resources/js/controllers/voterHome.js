@@ -15,7 +15,7 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
         $scope.candidateVoteCount = null;
         $scope.ballot = null;
         $scope.date = "2016-12-25";
-        $scope.candidates = null;
+
         $scope.data = {};
         //var ctrl = this;
 //        "2016-12-25"
@@ -94,6 +94,7 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
         $scope.getCandidates = function (ballotItem) {
         $scope.candidate1 = null;
         $scope.candidate2 = null;
+        $scope.candidates = null;
 
 
             var url = "http://localhost:9001/data/traverse/getCandidatesGivenElection?sourced=true&token="+token;
@@ -102,7 +103,9 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
 
                     if(response != "200 success") {
 
-                      $scope.candidates = response;
+                      ballotItem.candidates = response;
+
+//                      $scope.candidates = response;
 
                     } else {
 
@@ -113,21 +116,29 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
         };
 
         //gets the candidate for an election
-        $scope.chooseCandidate = function (candidate, ballotItem) {
+        $scope.chooseCandidate = function (index, ballotItem) {
 
+                  if(index == 0){
+                  ballotItem.candidates[0].selected = true;
+                  ballotItem.candidates[1].selected = false;
+                  }
+                  else if(index == 1) {
+                  ballotItem.candidates[1].selected = true;
+                  ballotItem.candidates[0].selected = false;
 
-                if(candidate.name == $scope.candidates[0].name){
-                    $scope.candidates[0].selected = true;
-                    $scope.candidates[1].selected = false;
-//                    $scope.buttonStyle1 = "voteBtnGreen";
-//                    $scope.buttonStyle2 = "voteBtn";
-                }
-                else if(candidate.name == $scope.candidates[1].name){
-                    $scope.candidates[1].selected = true;
-                    $scope.candidates[0].selected = false;
-//                    $scope.buttonStyle2 = "voteBtnGreen";
-//                    $scope.buttonStyle1 = "voteBtn";
-                }
+                  }
+//                if(candidate.name == $scope.candidates[0].name){
+//                    $scope.candidates[0].selected = true;
+//                    $scope.candidates[1].selected = false;
+////                    $scope.buttonStyle1 = "voteBtnGreen";
+////                    $scope.buttonStyle2 = "voteBtn";
+//                }
+//                else if(candidate.name == $scope.candidates[1].name){
+//                    $scope.candidates[1].selected = true;
+//                    $scope.candidates[0].selected = false;
+////                    $scope.buttonStyle2 = "voteBtnGreen";
+////                    $scope.buttonStyle1 = "voteBtn";
+//                }
 
         };
 
@@ -162,7 +173,7 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
                         function (ballotItem, index) {
                             if(typeof ballotItem.office !== "undefined"){
 
-                            $scope.candidates.forEach(
+                            ballotItem.candidates.forEach(
                                 function (candidate, index) {
                                 if(candidate.selected == true){
                                     delete candidate.selected;
@@ -174,7 +185,7 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
                                     var url = "http://localhost:9001/data/store/Candidate?sourced=true&token="+token;
                                     $http.post(url,candidateTemp).success(
                                         function (response) {
-
+                                            delete ballotItem.candidates;
                                                         var electionTemp = ballotItem;
                                                         var electionVoteCount = ballotItem.voteCount;
                                                         electionTemp.voteCount = electionVoteCount + 1;
@@ -245,6 +256,18 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
 
                         }
                     );
+                }
+            );
+
+            $scope.normalView = 1;
+        };
+
+        $scope.deleteProfile = function () {
+
+            var url = "http://localhost:9001/data/delete/Voter?sourced=true&token="+token;
+            $http.post(url,$scope.User).success(
+                function (response) {
+                    window.location = "http://localhost:9001/login.html";
                 }
             );
 
