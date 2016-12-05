@@ -76,8 +76,8 @@ public class user_tokenManager {
                     userPassword = rs.getString( 5 );
                     emailAddress = rs.getString( 6 );
                     address = rs.getString( 7 );
-                    state = rs.getString( 8 );
-                    city = rs.getString( 9 );
+                    city = rs.getString( 8 );
+                    state = rs.getString( 9 );
                     zip = rs.getString( 10 );
 
                     if(isEO)

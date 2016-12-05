@@ -121,14 +121,15 @@
 
                             <!--Experimental-->
                             <p ng-repeat="ballotItem in districtBallotItems" ng-init="getCandidates(ballotItem)">
-                                <button ng-click="chooseCandidate(candidate1, ballotItem)" class="btn {{buttonStyle}}" ng-if="ballotItem.office" >{{candidate1.name}}</button><button ng-click="chooseCandidate(candidate2, ballotItem)" class="btn {{buttonStyle}}" ng-if="ballotItem.office" >{{candidate2.name}}</button>
-                                <button ng-click="chooseFor(ballotItem)" class="btn {{buttonStyle}}" ng-if="!ballotItem.office">Vote For</button><button ng-click="chooseAgainst(ballotItem)" class="btn {{buttonStyle}}" ng-if="!ballotItem.office">Vote Against</button>
+                                <button ng-click="chooseCandidate(candidates[0], ballotItem)" class="btn voteBtn" ng-class="{'voteBtnGreen':candidates[0].selected === true}" ng-if="ballotItem.office" >{{candidates[0].name}}</button><button ng-click="chooseCandidate(candidates[1], ballotItem)" class="btn voteBtn" ng-class="{'voteBtnGreen':candidates[1].selected === true}" ng-if="ballotItem.office" >{{candidates[1].name}}</button>
+                                <button ng-click="chooseFor(ballotItem)" class="btn voteBtn" ng-class="{'voteBtnGreen':ballotItem.selected === true}" ng-if="!ballotItem.office">Vote For</button><button ng-click="chooseAgainst(ballotItem)" class="btn voteBtn" ng-class="{'voteBtnGreen':ballotItem.selected === false}" ng-if="!ballotItem.office">Vote Against</button>
                             </p>
                         </div>
                     </div>
                     <div id="buttonRow" class="row">
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
+                            <!--ng-click="submitBallot()"-->
                             <button class="btn btn-danger infoButton" ng-click="submitBallot()" >Submit Ballot</button>
                         </div>
                         <div class="col-md-4"></div>
