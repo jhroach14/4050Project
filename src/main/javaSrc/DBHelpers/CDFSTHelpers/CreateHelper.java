@@ -68,7 +68,7 @@ public class CreateHelper extends CDFSTHelper {
                     log.out("Attempting to create ElectoralDistrict");
                     if (sourced.equals("true")) {
                         entity = mapper.readValue(dbExchange.getRequestBody(), ElectoralDistrictImpl.class);
-                        objectLayer.createElectoralDistrict(((ElectoralDistrict)entity).getName());
+                        objectLayer.createElectoralDistrict(((ElectoralDistrict)entity).getName(), ((ElectoralDistrict)entity).getZip());
                     } else {
                         entity = objectLayer.createElectoralDistrict();
                     }

@@ -56,7 +56,8 @@ angular.module("officerIndexApp").controller('districtsCtrl', ['$scope', '$http'
         
         $scope.createNewDistrict = function () {
             var newName = $scope.formData.newName;
-            var district = toDistrict(newName);
+            var newZip = $scope.formData.newZip;
+            var district = toDistrict(newName, newZip);
             var url = "http://localhost:9001/data/store/ElectoralDistrict?sourced=true&token="+token;
             $http.post(url,district).success(
                 function (response) {

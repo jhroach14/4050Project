@@ -79,7 +79,7 @@ public class CandidateImpl extends EntityImpl implements Candidate {
         if (isPersistent()){
             stmt.setInt(3,this.getId());
         }
-        
+
         return stmt;
     }
 

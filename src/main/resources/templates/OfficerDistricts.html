@@ -28,12 +28,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p>Name:</p>
+                            <p>Zip Code:</p>
                             <p>Registered voters:</p>
                             <p>Ballot Items:</p>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-5">
                             <p>{{selectedDistrict.name}}</p>
+                            <p>{{selectedDistrict.zip}}</p>
                             <p>{{registeredVoters}}</p>
                             <p ng-repeat="ballotItem in districtBallotItems">
                                 <span ng-if="ballotItem.office">{{ballotItem.office}}</span>
@@ -62,11 +64,15 @@
                     <div class="row">
                         <form name="createForm">
                             <div class="form-group">
-                                <label for="newName">DistrictName:</label>
+                                <label for="newName">District Name:</label>
                                 <input ng-model="formData.newName" type="text" class="form-control" id="newName" required>
                             </div>
+                            <div class="form-group">
+                                <label for="newZip">District Zip Code:</label>
+                                <input ng-model="formData.newZip" type="text" class="form-control" id="newZip" required>
+                            </div>
                             <div class="form-actions">
-                                <button ng-click="createNewDistrict()" type="submit" class="btn btn-primary">Create</button>
+                                <button ng-disabled="createForm.$invalid" ng-click="createNewDistrict()" type="submit" class="btn btn-primary">Create</button>
                             </div>
                         </form>
                     </div>
@@ -81,8 +87,12 @@
                     <div class="row">
                         <form name="modifyForm">
                             <div class="form-group">
-                                <label for="modName">DistrictName:</label>
+                                <label for="modName">District Name:</label>
                                 <input value="{{selectedDistrict.name}}" ng-model="selectedDistrict.name" type="text" class="form-control" id="modName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="modZip">District Zip Code:</label>
+                                <input value="{{selectedDistrict.zip}}" ng-model="selectedDistrict.zip" type="text" class="form-control" id="modZip" required>
                             </div>
                             <div class="form-actions">
                                 <button ng-click="modDistrict()" type="submit" class="btn btn-primary">Save</button>

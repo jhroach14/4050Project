@@ -85,7 +85,7 @@ public class ElectionImpl extends BallotItemImpl implements Election{
         if(isPersistent()){
             stmt.setInt(4,this.getId());
         }
-        
+
         return stmt;
     }
     @JsonIgnore

@@ -8,7 +8,7 @@ import main.javaSrc.Entities.EntityImpl.*;
 import main.javaSrc.helpers.EVException;
 import main.javaSrc.helpers.Logger;
 
-public class ObjectLayerImpl  implements ObjectLayer {
+public class ObjectLayerImpl implements ObjectLayer {
 
     private static Logger log = new Logger( ObjectLayerImpl.class);
 
@@ -110,8 +110,8 @@ public class ObjectLayerImpl  implements ObjectLayer {
     }
 
     @Override
-    public ElectoralDistrict createElectoralDistrict(String name) throws EVException {
-        ElectoralDistrict district = new ElectoralDistrictImpl(name);
+    public ElectoralDistrict createElectoralDistrict(String name, String zip) throws EVException {
+        ElectoralDistrict district = new ElectoralDistrictImpl(name, zip);
         return district;
     }
 

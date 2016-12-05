@@ -9,7 +9,7 @@ import java.util.List;
 public interface PersistenceLayer {
 
     List<Ballot> restoreBallotsIncludesBallotItem(BallotItem ballotItem) throws EVException;
-    
+
     public List<ElectionsOfficer> restoreElectionsOfficer(ElectionsOfficer modelElectionsOfficer ) throws EVException;
 
     
@@ -144,7 +144,7 @@ public interface PersistenceLayer {
 
 
     public List<Candidate> restoreCandidateIsMemberOfPoliticalParty( PoliticalParty politicalParty ) throws EVException;
-    
+
 
     void deleteCandidateIsMemberOfPoliticalParty(Candidate candidate, PoliticalParty politicalParty) throws EVException;
 

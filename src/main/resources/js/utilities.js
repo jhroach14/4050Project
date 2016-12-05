@@ -100,9 +100,11 @@ var toElection = function (office, isPartisan) {
     };
     return election;
 };
-var toDistrict = function (name) {
+
+var toDistrict = function (name, zip) {
     var district = {
-        name: name
+        name: name,
+        zip: zip
     };
     return district;
 };

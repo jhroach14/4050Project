@@ -16,9 +16,11 @@ import java.util.List;
 public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistrict {
 
     private String name;
+    private String zip;
 
-    public ElectoralDistrictImpl(String name) {
+    public ElectoralDistrictImpl(String name, String zip) {
         this.name = name;
+        this.zip = zip;
     }
 
     public ElectoralDistrictImpl() {
@@ -31,7 +33,7 @@ public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistri
 
         StringBuffer query = new StringBuffer( 100 );
         StringBuffer condition = new StringBuffer( 100 );
-        String restoreStr = "select District_ID, District_Name from District";
+        String restoreStr = "select District_ID, District_Name, District_Zip from District";
 
         condition.setLength( 0 );
         query.append( restoreStr );
@@ -43,6 +45,12 @@ public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistri
 
             if( getName() != null )
                 condition.append( " where District_Name = '" + getName() + "'" );
+            else {
+
+                if( getZip() != null )
+                    condition.append( " where District_Zip = '" + getZip() + "'" );
+
+            }
 
         }
         query.append( condition );
@@ -55,13 +63,14 @@ public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistri
     public PreparedStatement insertStoreData(PreparedStatement stmt) throws EVException, SQLException {
         //Cannot be null
 
-        if( getName() != null )
-            stmt.setString( 1, getName() );
-        else
+        if( getName() != null && getZip() != null ) {
+            stmt.setString(1, getName());
+            stmt.setString(2, getZip());
+        } else
             throw new EVException( "ElectoralDistrictManager.save: can't save a electoralDistrict: Name undefined" );
 
         if(isPersistent()){
-            stmt.setInt(2,getId());
+            stmt.setInt(3,getId());
         }
 
         return stmt;
@@ -79,9 +88,15 @@ public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistri
     }
 
     @Override
+    public String getZip() {
+        return zip;
+    }
+
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
-
+    @Override
+    public void setZip(String zip) { this.zip = zip; }
 }

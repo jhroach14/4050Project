@@ -75,7 +75,7 @@
                                 </select>
                             </div>
                             <div class="form-actions">
-                                <button ng-click="createNewCandidate()" type="submit" class="btn btn-primary">Create</button>
+                                <button ng-disabled="createForm.$invalid" ng-click="createNewCandidate()" type="submit" class="btn btn-primary">Create</button>
                             </div>
                         </form>
                     </div>

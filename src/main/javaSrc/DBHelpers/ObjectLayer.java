@@ -60,7 +60,7 @@ public interface ObjectLayer {
     public void deletePoliticalParty( PoliticalParty politicalParty ) throws EVException;
 
     
-    public ElectoralDistrict createElectoralDistrict(String name ) throws EVException;
+    public ElectoralDistrict createElectoralDistrict(String name , String zip) throws EVException;
 
     
     public ElectoralDistrict createElectoralDistrict();
