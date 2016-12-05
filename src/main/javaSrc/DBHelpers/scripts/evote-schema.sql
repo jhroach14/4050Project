@@ -41,6 +41,7 @@ CREATE TABLE Candidate (
 CREATE TABLE District (
  District_ID INT AUTO_INCREMENT NOT NULL,
  District_Name VARCHAR(100) NOT NULL,
+ District_Zip CHAR(5),
 
  PRIMARY KEY(District_ID)
 );

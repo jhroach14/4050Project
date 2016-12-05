@@ -44,23 +44,22 @@ angular.module("officerIndexApp").controller('electionsCtrl', ['$scope', '$http'
                 function (response) {
                     if(response != "200 success"){
                         $scope.selectedDistricts = response;
+                        $scope.districtList.forEach(
+                            function (district, index) {
+                                $scope.selectedDistricts.forEach(
+                                    function (sDistrict) {
+                                        if(district.id == sDistrict.id){
+                                            district.selected = true;
+                                        }else{
+                                            district.selected = false;
+                                        }
+                                    }
+                                );
+                            }
+                        );
                     }else{
                         $scope.selectedDistricts = toDistrict("none");
                     }
-
-                    $scope.districtList.forEach(
-                        function (district, index) {
-                            $scope.selectedDistricts.forEach(
-                                function (sDistrict) {
-                                    if(district.id == sDistrict.id){
-                                        district.selected = true;
-                                    }else{
-                                        district.selected = false;
-                                    }
-                                }
-                            );
-                        }
-                    );
                 }
             );
 
@@ -86,6 +85,23 @@ angular.module("officerIndexApp").controller('electionsCtrl', ['$scope', '$http'
             var url = "http://localhost:9001/data/store/Election?sourced=true&token="+token;
             $http.post(url,election).success(
                 function (response) {
+                    election = response[0];
+                    $scope.districtList.forEach(
+                        function (district, index) {
+                            if(typeof district.selected !== "undefined"){
+                                if(district.selected == true){
+                                    var url = "http://localhost:9001/data/traverse/getBallotGivenDistrict?sourced=true&token="+token;
+                                    delete district.selected;
+                                    $http.post(url,district).success(
+                                        function (response) {
+                                            var url = "http://localhost:9001/data/store/Ballot_Election?sourced=true&token="+token;
+                                            $http.post(url,(angular.toJson(response[0])+"**|**"+angular.toJson(election)));
+                                        }
+                                    );
+                                }
+                            }
+                        }
+                    );
                     var url = "http://localhost:9001/data/find/Election?sourced=true&token="+token;
                     $http.post(url,toElection(null,null)).success(
                         function (response) {
@@ -95,22 +111,7 @@ angular.module("officerIndexApp").controller('electionsCtrl', ['$scope', '$http'
                 }
             );
 
-            $scope.districtList.forEach(
-                function (district, index) {
-                    if(typeof district.selected !== "undefined"){
-                        if(district.selected == true){
-                            var url = "http://localhost:9001/data/traverse/getBallotGivenDistrict?sourced=true&token="+token;
-                            delete district.selected;
-                            $http.post(url,district).success(
-                                function (response) {
-                                    var url = "http://localhost:9001/data/store/Ballot_Election?sourced=true&token="+token;
-                                    $http.post(url,(angular.toJson(response[0])+"**|**"+angular.toJson($scope.selectedElection)));
-                                }
-                            );
-                        }
-                    }
-                }
-            );
+            
 
             $scope.normalView = 1;
         };

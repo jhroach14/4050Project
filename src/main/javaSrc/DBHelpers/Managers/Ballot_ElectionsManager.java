@@ -153,7 +153,7 @@ public class Ballot_ElectionsManager {
         if(ballot.getId() <1)
             throw new EVException("Ballot_Elections.restore could not restore persistent Ballot_Elections");
 
-        query.append("select Election_ID, Office_Name, Is_Partisan, Alternate_Allowed, Vote_Count from (select Election.Election_ID, Election.Office_Name, Election.Is_Partisan, Election.Alternate_Allowed, Election.Vote_Count, Ballot_Elections.Ballot_ID from Election inner join Ballot_Elections on Ballot_Elections.Election_ID = Election.Election_ID) as T where Ballot_ID = " + ballot.getId());
+        query.append("select Election_ID, Office_Name, Is_Partisan, Vote_Count from (select Election.Election_ID, Election.Office_Name, Election.Is_Partisan, Election.Vote_Count, Ballot_Elections.Ballot_ID from Election inner join Ballot_Elections on Ballot_Elections.Election_ID = Election.Election_ID) as T where Ballot_ID = " + ballot.getId());
 
         try {
             stmt = conn.createStatement();
@@ -163,7 +163,6 @@ public class Ballot_ElectionsManager {
                 int electionId;
                 String officeName;
                 boolean isPartisan;
-                boolean alternateAllowed;
                 int voteCount;
 
                 ElectionImpl newBallotItem = null;
@@ -176,8 +175,7 @@ public class Ballot_ElectionsManager {
                     electionId = rs.getInt(1);
                     officeName = rs.getString(2);
                     isPartisan = rs.getBoolean(3);
-                    alternateAllowed = rs.getBoolean(4);
-                    voteCount = rs.getInt(5);
+                    voteCount = rs.getInt(4);
 
                     newBallotItem = new ElectionImpl();
                     newBallotItem.setId(electionId);
