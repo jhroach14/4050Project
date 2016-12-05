@@ -1,3 +1,4 @@
+
 angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
     function($scope, $http) {
         setStyleSheet("voter");
@@ -15,7 +16,6 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
         $scope.ballot = null;
         $scope.date = "2016-12-25";
         $scope.candidates = null;
-        $scope.buttonStyle = "voteBtn";
         //var ctrl = this;
 //        "2016-12-25"
 
