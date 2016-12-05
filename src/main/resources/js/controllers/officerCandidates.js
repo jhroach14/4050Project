@@ -191,8 +191,14 @@ angular.module("officerIndexApp").controller('candidatesCtrl', ['$scope', '$http
                     var url = "http://localhost:9001/data/find/Candidate?sourced=true&token="+token;
                     $http.post(url,toCandidate(null,null)).success(
                         function (response) {
+                           if(response != "200 success") {
                             $scope.candidateList = response;
                             $scope.selectedCandidate = null;
+                           }else{
+                            $scope.candidateList = null;
+                            $scope.selectedCandidate = null;
+                           }
+
                         }
                     );
                 }

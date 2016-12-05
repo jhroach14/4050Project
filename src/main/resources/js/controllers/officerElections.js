@@ -170,8 +170,16 @@ angular.module("officerIndexApp").controller('electionsCtrl', ['$scope', '$http'
                     var url = "http://localhost:9001/data/find/Election?sourced=true&token="+token;
                     $http.post(url,toElection(null,null)).success(
                         function (response) {
+
+                           if(response != "200 success") {
                             $scope.electionList = response;
                             $scope.selectedElection = null;
+                           }else{
+                            $scope.electionList = null;
+                            $scope.selectedElection = null;
+                           }
+
+
                         }
                     );
                 }

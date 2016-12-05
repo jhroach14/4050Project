@@ -144,6 +144,7 @@ public class PersistenceLayerImpl implements PersistenceLayer{
     @Override
     public void deleteElectionFromAllAssociations( Election election ) throws EVException {
         ballot_electionsManager.delete(election);
+        election_candidatesManager.delete(election);
     }
 
 

@@ -83,8 +83,14 @@ angular.module("officerIndexApp").controller('partiesCtrl', ['$scope', '$http',
                     var url = "http://localhost:9001/data/find/PoliticalParty?sourced=true&token="+token;
                     $http.post(url,toParty(null)).success(
                         function (response) {
+                            if(response != "200 success") {
                             $scope.partyList = response;
                             $scope.selectedParty = null;
+                            }else{
+                            $scope.partyList = null;
+                            $scope.selectedParty = null;
+                            }
+
                         }
                     );
                 }

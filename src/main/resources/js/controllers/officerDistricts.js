@@ -100,8 +100,16 @@ angular.module("officerIndexApp").controller('districtsCtrl', ['$scope', '$http'
                     var url = "http://localhost:9001/data/find/ElectoralDistrict?sourced=true&token="+token;
                     $http.post(url,toDistrict(null)).success(
                         function (response) {
+
+                           if(response != "200 success") {
                             $scope.districtList = response;
                             $scope.selectedDistrict = null;
+                           }else{
+                            $scope.districtList = null;
+                            $scope.selectedDistrict = null;
+                           }
+
+
                         }
                     );
                 }
