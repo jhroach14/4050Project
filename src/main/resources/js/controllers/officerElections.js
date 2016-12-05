@@ -180,7 +180,7 @@ angular.module("officerIndexApp").controller('electionsCtrl', ['$scope', '$http'
     }
 ]);
 
-$(document).on('click', '#districtList a', function() {
-    $("#districtList a").removeClass("active");
+$(document).on('click', '#electionList a', function() {
+    $("#electionList a").removeClass("active");
     $(this).addClass("active");
 });

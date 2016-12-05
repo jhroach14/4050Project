@@ -93,6 +93,11 @@ public class FindHelper extends CDFSTHelper {
                         entities.addAll(objectLayer.findVoteRecord((VoteRecord) model));
                     }
                     break;
+                case "sysOpen":
+                    log.out("attempting to find VoterRecord based on model object");
+                    String isSysOpen = objectLayer.findSysOpen();
+                    entities.add(new PoliticalPartyImpl(isSysOpen));
+                    break;
                 default:
                     log.error("Unsupported object type "+objectType);
                     break;

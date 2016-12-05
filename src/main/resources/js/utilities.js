@@ -109,12 +109,9 @@ var toDistrict = function (name, zip) {
     return district;
 };
 
-var toIssue = function (question, voteCount, yesCount, noCount) {
+var toIssue = function (question) {
     var issue = {
-        question: question,
-        voteCount: voteCount,
-        yesCount: yesCount,
-        noCount: noCount
+        question: question
     };
     return issue;
 };

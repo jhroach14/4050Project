@@ -3,6 +3,13 @@
 # noinspection SqlNoDataSourceInspectionForFile
 DROP TABLE IF EXISTS ElectionsOfficer, Party, Party_Candidates, District_Voters, Candidate, District_Ballots, District, Ballot, Election, Ballot_Elections, Voter, Record, Issue, Ballot_Issues, Election_Candidates, Token;
 
+CREATE TABLE sysOpen(
+    SysOpen_ID INT AUTO_INCREMENT not NULL,
+    IsOpen VARCHAR(10),
+
+    PRIMARY KEY (SysOpen_ID)
+);
+INSERT INTO sysOpen (IsOpen) VALUE ("closed");
 /*Done.*/
 CREATE TABLE ElectionsOfficer (
  Elections_Officer_ID INT AUTO_INCREMENT NOT NULL,

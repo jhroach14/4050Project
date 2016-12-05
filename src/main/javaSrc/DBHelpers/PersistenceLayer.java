@@ -170,5 +170,11 @@ public interface PersistenceLayer {
     void deletePoliticalPartyFormAllAssociations(PoliticalParty party) throws EVException;
 
     void deleteVoterFromAllAssociations(Voter voter) throws EVException;
+
+    void deleteCandidateFromParties(Candidate candidate) throws EVException;
+
+    void storeSysState(String open) throws EVException;
+
+    String restoreSysOpen() throws EVException;
 }
 

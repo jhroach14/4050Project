@@ -16,6 +16,7 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
         $scope.ballot = null;
         $scope.date = "2016-12-25";
         $scope.candidates = null;
+        $scope.data = {};
         //var ctrl = this;
 //        "2016-12-25"
 
@@ -25,6 +26,18 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
         //Get User from token
         var url3 = "http://localhost:9001/data/traverse/getUserGivenToken?sourced=true&token="+token;
         console.log("requesting user");
+
+        var urlx = "http://localhost:9001/data/find/sysOpen?token="+token;
+
+        $http.get(urlx).success(
+            function (response) {
+                if(response[0].name == "open"){
+                    $scope.data.open = true;
+                }else{
+                    $scope.data.open = false;
+                }
+            }
+        );
 
         $http.post(url3,toToken(token)).success(
 

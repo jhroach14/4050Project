@@ -57,7 +57,6 @@ public class DataHandler extends Handler {
                 case "register":
                     helper = new StoreHelper(exchange,dbConnHelper);
                     break;
-
                 default:
                     exchange.pageNotFound();
                     break;

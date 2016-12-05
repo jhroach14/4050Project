@@ -110,7 +110,7 @@ public class ObjectLayerImpl implements ObjectLayer {
     }
 
     @Override
-    public ElectoralDistrict createElectoralDistrict(String name, String zip) throws EVException {
+    public ElectoralDistrict createElectoralDistrict(String name, int zip) throws EVException {
         ElectoralDistrict district = new ElectoralDistrictImpl(name, zip);
         return district;
     }
@@ -432,6 +432,21 @@ public class ObjectLayerImpl implements ObjectLayer {
     @Override
     public void deleteLink(Voter voter) throws EVException {
         persistenceLayer.deleteVoterFromAllAssociations(voter);
+    }
+
+    @Override
+    public void deleteLinkParty(Candidate candidate) throws EVException {
+        persistenceLayer.deleteCandidateFromParties(candidate);
+    }
+
+    @Override
+    public void storeSysState(String open) throws EVException{
+        persistenceLayer.storeSysState(open);
+    }
+
+    @Override
+    public String findSysOpen() throws EVException {
+        return persistenceLayer.restoreSysOpen();
     }
 
     @Override

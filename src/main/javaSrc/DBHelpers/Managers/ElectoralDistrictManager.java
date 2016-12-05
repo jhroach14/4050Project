@@ -43,7 +43,7 @@ public class ElectoralDistrictManager extends Manager{
 
                 int electoralDistrictId;
                 String name;
-                String zip;
+                int zip;
                 ElectoralDistrict nextElectoralDistrict = null;
 
                 ResultSet rs = stmt.getResultSet();
@@ -53,7 +53,7 @@ public class ElectoralDistrictManager extends Manager{
 
                     electoralDistrictId = rs.getInt( 1 );
                     name = rs.getString( 2 );
-                    zip = rs.getString( 3 );
+                    zip = Integer.parseInt(rs.getString( 3 ));
 
                     nextElectoralDistrict = objectLayer.createElectoralDistrict(); // create a proxy electoralDistrict object
                     // and now set its retrieved attributes

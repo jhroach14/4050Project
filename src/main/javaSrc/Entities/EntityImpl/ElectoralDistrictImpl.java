@@ -16,9 +16,9 @@ import java.util.List;
 public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistrict {
 
     private String name;
-    private String zip;
+    private int zip;
 
-    public ElectoralDistrictImpl(String name, String zip) {
+    public ElectoralDistrictImpl(String name, int zip) {
         this.name = name;
         this.zip = zip;
     }
@@ -47,7 +47,7 @@ public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistri
                 condition.append( " where District_Name = '" + getName() + "'" );
             else {
 
-                if( getZip() != null )
+                if( getZip() != 0 )
                     condition.append( " where District_Zip = '" + getZip() + "'" );
 
             }
@@ -63,9 +63,9 @@ public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistri
     public PreparedStatement insertStoreData(PreparedStatement stmt) throws EVException, SQLException {
         //Cannot be null
 
-        if( getName() != null && getZip() != null ) {
+        if( getName() != null && getZip() != 0 ) {
             stmt.setString(1, getName());
-            stmt.setString(2, getZip());
+            stmt.setInt(2, getZip());
         } else
             throw new EVException( "ElectoralDistrictManager.save: can't save a electoralDistrict: Name undefined" );
 
@@ -88,7 +88,7 @@ public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistri
     }
 
     @Override
-    public String getZip() {
+    public int getZip() {
         return zip;
     }
 
@@ -98,5 +98,5 @@ public class ElectoralDistrictImpl extends EntityImpl implements ElectoralDistri
     }
 
     @Override
-    public void setZip(String zip) { this.zip = zip; }
+    public void setZip(int zip) { this.zip = zip; }
 }

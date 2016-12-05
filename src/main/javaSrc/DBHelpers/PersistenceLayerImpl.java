@@ -383,4 +383,19 @@ public class PersistenceLayerImpl implements PersistenceLayer{
         district_voterManager.deleteDistricts(voter);
     }
 
+    @Override
+    public void deleteCandidateFromParties(Candidate candidate) throws EVException {
+        party_candidatesManager.deleteParties(candidate);
+    }
+
+    @Override
+    public void storeSysState(String open) throws EVException {
+        electionsOfficerManager.storeSysState(open);
+    }
+
+    @Override
+    public String restoreSysOpen() throws EVException {
+        return electionsOfficerManager.restoreSysState();
+    }
+
 }

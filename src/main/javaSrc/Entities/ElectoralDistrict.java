@@ -9,10 +9,10 @@ import java.util.List;
 public interface ElectoralDistrict extends Entity{
     
     String getName();
-    String getZip();
+    int getZip();
 
     
     void setName(String name);
-    void setZip(String zip);
+    void setZip(int zip);
 
 }

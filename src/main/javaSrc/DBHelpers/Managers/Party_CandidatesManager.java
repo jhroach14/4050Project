@@ -164,8 +164,8 @@ public class Party_CandidatesManager {
             else
                 throw new EVException("Election_CandidatesManager.delete failed to delete candidate_Issues");
             queryExecution = stmt.executeUpdate();
-            if(queryExecution != 1)
-                throw new EVException("Election_CandidatesManager.delete failed to delete");
+            /*if(queryExecution != 1)
+                throw new EVException("Election_CandidatesManager.delete failed to delete");*/
         }
         catch( SQLException e ) {
             e.printStackTrace();
@@ -186,8 +186,8 @@ public class Party_CandidatesManager {
             else
                 throw new EVException("Election_Candidates.delete failed to delete candidate_Issues");
             queryExecution = stmt.executeUpdate();
-            if(queryExecution != 1)
-                throw new EVException("Election_CandidatesManager.delete failed to delete");
+            /*if(queryExecution != 1)
+                throw new EVException("Election_CandidatesManager.delete failed to delete");*/
         }
         catch( SQLException e ) {
             e.printStackTrace();
@@ -208,8 +208,8 @@ public class Party_CandidatesManager {
             else
                 throw new EVException("Election_Candidates.delete failed to delete candidate_Issues");
             queryExecution = stmt.executeUpdate();
-            if(queryExecution != 1)
-                throw new EVException("Election_CandidatesManager.delete failed to delete");
+            /*if(queryExecution != 1)
+                throw new EVException("Election_CandidatesManager.delete failed to delete");*/
         }
         catch( SQLException e ) {
             e.printStackTrace();

@@ -43,7 +43,7 @@ public class CandidateImpl extends EntityImpl implements Candidate {
             if( getName() != null )
                 condition.append( " where Candidate_Name = '" + getName() + "'" );
 
-            if( getVoteCount() >= 0){
+            if( getVoteCount() > 0){
                 if( condition.length() > 0 )
                     condition.append( " and" );
                 else

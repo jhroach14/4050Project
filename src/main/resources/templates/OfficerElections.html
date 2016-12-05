@@ -29,12 +29,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p>Office:</p>
+                            <p>Is Partisan:</p>
                             <p>Districts voting:</p>
                             <p>Candidates:</p>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-5">
                             <p>{{selectedElection.office}}</p>
+                            <p>{{selectedElection.isPartisan}}</p>
                             <p ng-repeat="district in selectedDistricts">{{district.name}}</p>
                             <p ng-repeat="candidate in selectedCandidates">{{candidate.name}}</p>
                         </div>

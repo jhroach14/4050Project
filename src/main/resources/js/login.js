@@ -19,7 +19,7 @@ app.controller('registerCtrl', ['$scope', '$http',function($scope,$http) {
     $scope.submit = function () {
 
         var voter = toVoter($scope.firstName,$scope.lastName,$scope.userName,$scope.userPassword,$scope.emailAddress,$scope.address,$scope.state,$scope.zip,$scope.city,$scope.age);
-        var url = "http://localhost:9001/data/register/Voter?sourced=true";
+        var url = "http://localhost:9001/data/register/newVoter?sourced=true";
         console.log("sending \n"+url);
         $http.post(url,voter).success(
             function (response) {

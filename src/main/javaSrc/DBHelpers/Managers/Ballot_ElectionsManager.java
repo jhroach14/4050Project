@@ -215,8 +215,8 @@ public class Ballot_ElectionsManager {
             else
                 throw new EVException("Ballot_ElectionsManager.delete failed to delete ballot_Election");
             queryExecution = stmt.executeUpdate();
-            if(queryExecution != 1 )
-                throw new EVException("Ballot_ElectionsManager.delete failed to delete");
+            /*if(queryExecution != 1 )
+                throw new EVException("Ballot_ElectionsManager.delete failed to delete");*/
         }
         catch( SQLException e ) {
             e.printStackTrace();

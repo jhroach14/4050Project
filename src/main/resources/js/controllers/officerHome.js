@@ -121,6 +121,16 @@ angular.module("officerIndexApp").controller('homeCtrl', ['$scope', '$http',
             }
         );
 
+        $scope.open = function () {
+            var url = "http://localhost:9001/data/store/sysOpen?token="+token;
+            $http.get(url);
+        };
+
+        $scope.close = function () {
+            var url = "http://localhost:9001/data/store/sysClosed?token="+token;
+            $http.get(url);
+        };
+
 
         $scope.editProfile = function () {
 

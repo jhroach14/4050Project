@@ -60,7 +60,7 @@ public interface ObjectLayer {
     public void deletePoliticalParty( PoliticalParty politicalParty ) throws EVException;
 
     
-    public ElectoralDistrict createElectoralDistrict(String name , String zip) throws EVException;
+    public ElectoralDistrict createElectoralDistrict(String name , int zip) throws EVException;
 
     
     public ElectoralDistrict createElectoralDistrict();
@@ -203,6 +203,12 @@ public interface ObjectLayer {
     void deleteLink(PoliticalParty entity) throws EVException;
 
     void deleteLink(Voter entity)throws EVException;
+
+    void deleteLinkParty(Candidate candidate) throws EVException;
+
+    void storeSysState(String open) throws EVException;
+
+    String findSysOpen() throws EVException;
 }
 
 

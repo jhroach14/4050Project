@@ -159,5 +159,55 @@ public class ElectionsOfficerManager extends Manager{
             throw new EVException( "electionsOfficerManager.delete: failed to delete a electionsOfficer: " + e );        }
     }
 
+    public void storeSysState(String open) throws EVException {
+
+        String updateSysState = "update sysOpen set IsOpen = ?";
+        PreparedStatement stmt = null;
+        int queryExecution;
+
+        try {
+            stmt = conn.prepareStatement( updateSysState );
+
+            stmt.setString(1,open);
+
+            queryExecution = stmt.executeUpdate();
+
+            if( queryExecution < 1 )
+                throw new EVException( "sysState.save: failed to save a state" );
+        }
+        catch( SQLException e ) {
+            e.printStackTrace();
+            throw new EVException( "SysState.save: failed to save a state: " + e );
+        }
+
+    }
+    public String restoreSysState() throws EVException {
+
+        Statement    stmt = null;
+        String query = "select IsOpen from sysOpen where SysOpen_ID = 1";
+
+        try {
+
+            stmt = conn.createStatement();
+
+
+            if( stmt.execute( query) ) { // statement returned a result
+
+                ResultSet rs = stmt.getResultSet();
+                String isOpen= "false";
+                while( rs.next() ) {
+                    isOpen = rs.getString(1);
+                }
+
+                return isOpen;
+            }
+        }
+        catch( Exception e ) {      // just in case...
+            throw new EVException( "sys.restore: Could not restore persistent sys objects; Root cause: " + e );
+        }
+
+        throw new EVException( "sys.restore: Could not restore persistent sys objects" );
+
+    }
 }
 

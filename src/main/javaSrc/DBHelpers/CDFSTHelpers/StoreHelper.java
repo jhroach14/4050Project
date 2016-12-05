@@ -85,12 +85,24 @@ public class StoreHelper extends CDFSTHelper {
                         entity = objectLayer.storeVoter((Voter) entity);
                     }
                     break;
+                case "newVoter":
+                    if (sourced.equals("true")) {
+                        log.out("attempting to store newVoter");
+                        entity = mapper.readValue(dbExchange.getRequestBody(), VoterImpl.class);
+                        entity = objectLayer.storeVoter((Voter) entity);
+                        ElectoralDistrict modelDistrict = new ElectoralDistrictImpl(null,((Voter)entity).getZip());
+                        ElectoralDistrict district = objectLayer.findElectoralDistrict(modelDistrict).get(0);
+                        objectLayer.createLink(district,((Voter)entity));
+
+                    }
+                    break;
                 case "Ballot_Election":
                     if (sourced.equals("true")) {
                         String[] ballot_ballotItem = parseObjects(dbExchange.getRequestBody());
                         Ballot ballot = mapper.readValue(ballot_ballotItem[0], BallotImpl.class);
                         BallotItem ballotItem = mapper.readValue(ballot_ballotItem[1], ElectionImpl.class);
                         log.out("attempting to store Link between Ballot with id "+ballot.getId()+" and Election with id "+ballotItem.getId());
+                        objectLayer.deleteLink(ballot,ballotItem);
                         objectLayer.createLink(ballot, ballotItem);
                     }
                     break;
@@ -100,6 +112,7 @@ public class StoreHelper extends CDFSTHelper {
                         Ballot ballot = mapper.readValue(ballot_ballotItem[0], BallotImpl.class);
                         BallotItem ballotItem = mapper.readValue(ballot_ballotItem[1], IssueImpl.class);
                         log.out("attempting to store Link between Ballot with id "+ballot.getId()+" and Issue with id "+ballotItem.getId());
+                        objectLayer.deleteLink(ballot,ballotItem);
                         objectLayer.createLink(ballot, ballotItem);
                     }
                     break;
@@ -109,6 +122,7 @@ public class StoreHelper extends CDFSTHelper {
                         Election election = mapper.readValue(election_candidate[0], ElectionImpl.class);
                         Candidate candidate = mapper.readValue(election_candidate[1], CandidateImpl.class);
                         log.out("attempting to store Link between Election with id "+election.getId()+" and Candidate with id "+candidate.getId());
+
                         objectLayer.createLink(candidate, election);
                     }
                     break;
@@ -136,6 +150,7 @@ public class StoreHelper extends CDFSTHelper {
                         PoliticalParty party = mapper.readValue(party_candidate[0],PoliticalPartyImpl.class);
                         Candidate candidate = mapper.readValue(party_candidate[1],CandidateImpl.class);
                         log.out("attempting to store Link between Party with id "+party.getId()+" and Candidate with id "+candidate.getId());
+                        objectLayer.deleteLinkParty(candidate);
                         objectLayer.createLink(party,candidate);
                     }
                     break;
@@ -145,6 +160,16 @@ public class StoreHelper extends CDFSTHelper {
                         entity = mapper.readValue(dbExchange.getRequestBody(), VoterRecordImpl.class);
                         entity = objectLayer.storeVoteRecord((VoteRecord)entity);
                     }
+                    break;
+                case "sysOpen":
+                    log.out("attempting to store sysOpen");
+                    entity = new ElectionImpl();
+                    objectLayer.storeSysState("open");
+                    break;
+                case "sysClosed":
+                    log.out("attempting to store sysClosed");
+                    entity = new ElectionImpl();
+                    objectLayer.storeSysState("closed");
                     break;
                 default:
                     log.error("Unsupported object type "+objectType);
