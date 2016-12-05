@@ -1,3 +1,4 @@
+
 angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
     function($scope, $http) {
         setStyleSheet("voter");
@@ -14,7 +15,8 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
         $scope.candidateVoteCount = null;
         $scope.ballot = null;
         $scope.date = "2016-12-25";
-        $scope.buttonStyle = "voteBtn";
+        $scope.candidates = null;
+        //var ctrl = this;
 //        "2016-12-25"
 
         //Get # Of Districts
@@ -80,14 +82,14 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
         $scope.candidate1 = null;
         $scope.candidate2 = null;
 
+
             var url = "http://localhost:9001/data/traverse/getCandidatesGivenElection?sourced=true&token="+token;
             $http.post(url,ballotItem).success(
                 function (response) {
 
                     if(response != "200 success") {
 
-                    $scope.candidate1 = response[0];
-                    $scope.candidate2 = response[1];
+                      $scope.candidates = response;
 
                     } else {
 
@@ -100,134 +102,119 @@ angular.module("voterIndexApp").controller('homeCtrl', ['$scope', '$http',
         //gets the candidate for an election
         $scope.chooseCandidate = function (candidate, ballotItem) {
 
-//            if($scope.buttonStyle === "voteBtn"){
-            var candidateTemp = candidate;
-            var candidateVoteCount = candidate.voteCount;
-            candidateTemp.voteCount = candidateVoteCount + 1;
 
-            var electionTemp = ballotItem;
-            var electionVoteCount = ballotItem.voteCount;
-            electionTemp.voteCount = electionVoteCount + 1;
-
-//            //$scope.buttonStyle = "voteBtnGreen";
-//
-//            } else {
-//            var candidateTemp = candidate;
-//            var candidateVoteCount = candidate.voteCount;
-//            var candidateTemp.voteCount = candidateVoteCount - 1;
-//
-//            var electionTemp = ballotItem;
-//            var electionVoteCount = ballotItem.voteCount;
-//            electionTemp.voteCount = electionVoteCount - 1;
-//
-//            //$scope.buttonStyle = "voteBtn";
-//
-//            }
-
-
-            var url = "http://localhost:9001/data/store/Candidate?sourced=true&token="+token;
-            $http.post(url,candidateTemp).success(
-                function (response) {
-
-                    if(response != "200 success") {
-
-                        var url2 = "http://localhost:9001/data/store/Election?sourced=true&token="+token;
-                        $http.post(url2,electionTemp).success(
-                            function (response) {
-
-                                if(response != "200 success") {
-//                                        $scope.buttonStyle = "voteBtnGreen";
-
-                                    } else {
-
-                                }
-
-                            }
-                        );
-
-                        } else {
-
-                    }
-
+                if(candidate.name == $scope.candidates[0].name){
+                    $scope.candidates[0].selected = true;
+                    $scope.candidates[1].selected = false;
+//                    $scope.buttonStyle1 = "voteBtnGreen";
+//                    $scope.buttonStyle2 = "voteBtn";
                 }
-            );
+                else if(candidate.name == $scope.candidates[1].name){
+                    $scope.candidates[1].selected = true;
+                    $scope.candidates[0].selected = false;
+//                    $scope.buttonStyle2 = "voteBtnGreen";
+//                    $scope.buttonStyle1 = "voteBtn";
+                }
+
         };
 
 
         //choose the for option
         $scope.chooseFor = function (ballotItem) {
 
-            var ballotItemTemp = ballotItem;
-            var ballotItemYesCount = ballotItem.yesCount;
-            var ballotItemVoteCount = ballotItem.voteCount;
-            ballotItemTemp.yesCount = ballotItemYesCount + 1;
-            ballotItemTemp.voteCount = ballotItemVoteCount + 1;
 
-            var url = "http://localhost:9001/data/store/Issue?sourced=true&token="+token;
-            $http.post(url,ballotItemTemp).success(
-                function (response) {
+                        ballotItem.selected = true;
+//                        $scope.buttonStyle3 = "voteBtnGreen";
+//                        $scope.buttonStyle4 = "voteBtn";
 
-                    if(response != "200 success") {
 
-                        } else {
-
-                    }
-
-                }
-            );
         };
 
         //chooses the against vote
         $scope.chooseAgainst = function (ballotItem) {
 
 
-            var ballotItemTemp = ballotItem;
-            var ballotItemNoCount = ballotItem.noCount;
-            var ballotItemVoteCount = ballotItem.voteCount;
-            ballotItemTemp.noCount = ballotItemNoCount + 1;
-            ballotItemTemp.voteCount = ballotItemVoteCount + 1;
+                        ballotItem.selected = false;
+//                        $scope.buttonStyle4 = "voteBtnGreen";
+//                        $scope.buttonStyle3 = "voteBtn";
 
-            var url = "http://localhost:9001/data/store/Issue?sourced=true&token="+token;
-            $http.post(url,ballotItemTemp).success(
-                function (response) {
 
-                    if(response != "200 success") {
 
-                        } else {
-
-                    }
-
-                }
-            );
         };
 
         //submits the ballot
         $scope.submitBallot = function () {
 
+                    $scope.districtBallotItems.forEach(
+                        function (ballotItem, index) {
+                            if(typeof ballotItem.office !== "undefined"){
+
+                            $scope.candidates.forEach(
+                                function (candidate, index) {
+                                if(candidate.selected == true){
+                                    delete candidate.selected;
+
+                                                var candidateTemp = candidate;
+                                                var candidateVoteCount = candidate.voteCount;
+                                                candidateTemp.voteCount = candidateVoteCount + 1;
+
+                                    var url = "http://localhost:9001/data/store/Candidate?sourced=true&token="+token;
+                                    $http.post(url,candidateTemp).success(
+                                        function (response) {
+
+                                                        var electionTemp = ballotItem;
+                                                        var electionVoteCount = ballotItem.voteCount;
+                                                        electionTemp.voteCount = electionVoteCount + 1;
+
+                                            var url = "http://localhost:9001/data/store/Election?sourced=true&token="+token;
+                                            $http.post(url,electionTemp);
+                                        }
+                                    );
+                                }
+
+                            }
+                            )
+                        } else if(typeof ballotItem.question !== "undefined"){
+                                if(ballotItem.selected == true){
+                                    delete ballotItem.selected;
+
+                                        var ballotItemTemp = ballotItem;
+                                        var ballotItemYesCount = ballotItem.yesCount;
+                                        var ballotItemNoCount = ballotItem.noCount;
+                                        var ballotItemVoteCount = ballotItem.voteCount;
+                                        ballotItemTemp.noCount = ballotItemNoCount;
+                                        ballotItemTemp.yesCount = ballotItemYesCount + 1;
+                                        ballotItemTemp.voteCount = ballotItemVoteCount + 1;
+
+                                    var url = "http://localhost:9001/data/store/Issue?sourced=true&token="+token;
+                                    $http.post(url,ballotItemTemp).success(
+                                        function (response) {
+
+                                        }
+                                    );
+                                } else if(ballotItem.selected == false){
+                                       delete ballotItem.selected;
+
+                                           var ballotItemTemp = ballotItem;
+                                           var ballotItemNoCount = ballotItem.noCount;
+                                           var ballotItemYesCount = ballotItem.yesCount;
+                                           var ballotItemVoteCount = ballotItem.voteCount;
+                                           ballotItemTemp.yesCount = ballotItemYesCount;
+                                           ballotItemTemp.noCount = ballotItemNoCount + 1;
+                                           ballotItemTemp.voteCount = ballotItemVoteCount + 1;
+
+                                       var url = "http://localhost:9001/data/store/Issue?sourced=true&token="+token;
+                                       $http.post(url,ballotItemTemp).success(
+                                           function (response) {
+
+                                           }
+                                       );
+                                   }
+                        }
+                        }
+                    );
+
             $scope.ballotView = 2;
-//            if(!$scope.clicked){
-//            }
-//            else {
-//            var candidateTemp = candidate;
-//            var candidateVoteCount = candidate.voteCount;
-//            var candidateTemp.voteCount = candidateVoteCount - 1;
-//            }
-//            var url = "http://localhost:9001/data/create/VoterRecord?sourced=true&token="+token;
-//            $http.post(url,toRecord($scope.date, $scope.User, $scope.ballot)).success(
-//                function (response) {
-//
-//                    if(response != "200 success") {
-////                        if(!$scope.clicked){
-////                        $scope.clicked = true;
-////                        }
-////                        else {
-////                        $scope.clicked = false;
-//                        } else {
-//
-//                    }
-//
-//                }
-//            );
 
         };
 

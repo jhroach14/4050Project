@@ -138,8 +138,8 @@ public class Ballot_IssuesManager {
                     issueId = rs.getInt(1);
                     question = rs.getString(2);
                     voteCount = rs.getInt(3);
-                    noCount = rs.getInt(4);
-                    yesCount = rs.getInt(5);
+                    yesCount = rs.getInt(4);
+                    noCount = rs.getInt(5);
 
                     newBallotItem = new IssueImpl();
                     newBallotItem.setId(issueId);
