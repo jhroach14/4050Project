@@ -166,4 +166,9 @@ public interface PersistenceLayer {
     void deleteCandidateFromAllAssociations(Candidate candidate) throws EVException;
 
     void deleteElectoralDistrictFromAllAssociations(ElectoralDistrict district) throws EVException;
+
+    void deletePoliticalPartyFormAllAssociations(PoliticalParty party) throws EVException;
+
+    void deleteVoterFromAllAssociations(Voter voter) throws EVException;
 }
+

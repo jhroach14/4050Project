@@ -373,4 +373,14 @@ public class PersistenceLayerImpl implements PersistenceLayer{
         district_voterManager.deleteVoters(district);
     }
 
+    @Override
+    public void deletePoliticalPartyFormAllAssociations(PoliticalParty party) throws EVException {
+        party_candidatesManager.deleteCandidates(party);
+    }
+
+    @Override
+    public void deleteVoterFromAllAssociations(Voter voter) throws EVException {
+        district_voterManager.deleteDistricts(voter);
+    }
+
 }

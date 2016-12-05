@@ -8,7 +8,7 @@ import main.javaSrc.Entities.EntityImpl.*;
 import main.javaSrc.helpers.EVException;
 import main.javaSrc.helpers.Logger;
 
-public class ObjectLayerImpl implements ObjectLayer {
+public class ObjectLayerImpl  implements ObjectLayer {
 
     private static Logger log = new Logger( ObjectLayerImpl.class);
 
@@ -422,6 +422,16 @@ public class ObjectLayerImpl implements ObjectLayer {
     @Override
     public void deleteLink(ElectoralDistrict district) throws EVException {
         persistenceLayer.deleteElectoralDistrictFromAllAssociations(district);
+    }
+
+    @Override
+    public void deleteLink(PoliticalParty party) throws EVException{
+        persistenceLayer.deletePoliticalPartyFormAllAssociations(party);
+    }
+
+    @Override
+    public void deleteLink(Voter voter) throws EVException {
+        persistenceLayer.deleteVoterFromAllAssociations(voter);
     }
 
     @Override

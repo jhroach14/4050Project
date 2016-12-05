@@ -199,6 +199,10 @@ public interface ObjectLayer {
     void deleteLink(Candidate entity) throws EVException;
 
     void deleteLink(ElectoralDistrict entity) throws EVException;
+
+    void deleteLink(PoliticalParty entity) throws EVException;
+
+    void deleteLink(Voter entity)throws EVException;
 }
 
 
